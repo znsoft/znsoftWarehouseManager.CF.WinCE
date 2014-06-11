@@ -33,21 +33,7 @@ namespace SmartDeviceProject2
 
 
             var x = CallWebService();
-
-            //MessageBox.Show(x);
             Console.Write(x);
-            //var x = FormXml();
-
-            //var root = GetXmlRoot("http://test.com/1.xml");
-            //response.GetResponseStream();
-            //XDocument xd =  XDocument.Load(
-            //var test = new List<Uri>();
-            //test.Add("http://google.com");
-            //test.Add("https://wasm.ru");
-
-            //var query = from x in test where x.Scheme = "https" select new { host=x.Host, scheme = x.Scheme };
-            //var google = query.FirstOrDefault();
-            //MessageBox.Show(google.host);
         }
 
         private static XDocument GetXmlRoot(string url)
@@ -81,9 +67,6 @@ namespace SmartDeviceProject2
 
 
             var re = new Regex("^te", RegexOptions.Compiled);
-
-            //Regex.Match("test", "^(te)").Groups[1];
-
             var testStr = @"C:\";
 
 
