@@ -29,9 +29,6 @@ namespace SmartDeviceProject2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-
             var x = CallWebService();
             Console.Write(x);
         }
@@ -90,42 +87,25 @@ namespace SmartDeviceProject2
         public static string CallWebService()
         {
             var _url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws";
-            //var _action = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws?wsdl";
-
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
-            //Console.Write(soapEnvelopeXml.ToString());
             HttpWebRequest webRequest = CreateWebRequest(_url);
             InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
-            //Console.Write(webRequest.ToString());
-
-
             //var xd = new XDocument();
             //var response = (HttpWebResponse)webRequest.GetResponse();
             //using (var rgs = response.GetResponseStream())
             //using (XmlTextReader xtr = new XmlTextReader(rgs))
-            //{
             //    xd = XDocument.Load(xtr);
-            //}
             //return xd.ToString();
-
-
             IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
-            //Console.Write(asyncResult.ToString());
             asyncResult.AsyncWaitHandle.WaitOne();
-            //Console.Write(asyncResult.AsyncState.ToString());
-
-            string soapResult;// = new String;
+            string soapResult;
             using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
             {
                 using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
                 {
                     soapResult = rd.ReadToEnd();
                 }
-
-                //Console.Write(soapResult);
             }
-            //Console.Write(soapResult);
-
             return soapResult;
         }
 
@@ -147,28 +127,17 @@ namespace SmartDeviceProject2
         private static XmlDocument CreateSoapEnvelope()
         {
             XmlDocument soapEnvelop = new XmlDocument();
-            soapEnvelop.LoadXml(String.Format(@"<soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/""><soap:Header/><soap:Body>
-                                            <m:updatefirmware xmlns:m=""http://www.dns-shop.tsd.ru"">
-                                            <m:version xmlns:xs=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""> 100</m:version>
+            soapEnvelop.LoadXml(String.Format(@"<soap:Envelope xmlns:soap=""http://schemas.xmlsoap.org/soap/envelope/""><soap:Header/><soap:Body><m:updatefirmware xmlns:m=""http://www.dns-shop.tsd.ru"">
+                                            <m:version xmlns:xs=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">100</m:version>
                                             </m:updatefirmware>	</soap:Body>\n</soap:Envelope>", 125));
             return soapEnvelop;
         }
 
         private static void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
-            //var xbytes = Encoding.UTF8.GetBytes(soapEnvelopeXml.ToString());
-            //webRequest.ContentLength = xbytes.Length;
-           // webRequest.ContentLength = soapEnvelopeXml.ToString().Length;
-
-            //using (instr)
-            //{
-            //    instr.Write(xbytes, 0, xbytes.Length);
-            //}
-
             using (Stream stream = webRequest.GetRequestStream())
             {
                 soapEnvelopeXml.Save(stream);
-                //stream.Write(xbytes, 0, xbytes.Length);
             }
         }
 
@@ -177,9 +146,6 @@ namespace SmartDeviceProject2
         {
             XDocument srcTree = new XDocument();
             return srcTree;
-
         }
-
-    
     }
 }
