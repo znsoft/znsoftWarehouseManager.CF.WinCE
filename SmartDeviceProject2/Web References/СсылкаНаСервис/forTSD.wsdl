@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="http://www.dns-shop.tsd.ru" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.dns-shop.tsd.ru" name="forTSD" targetNamespace="http://www.dns-shop.tsd.ru" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="http://www.dns-shop.tsd.ru" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.dns-shop.tsd.ru" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="СписокНоменклатуры">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Номенклатура" type="xs1:СтрокаНоменклатуры" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="СтрокаНоменклатуры">
+        <xs:sequence>
+          <xs:element name="Код" type="xs:string" />
+          <xs:element name="Наименование" type="xs:string" />
+          <xs:element name="Количество" type="xs:integer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ОбменТСД">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ВидОперации" type="xs:string" />
+            <xs:element name="Список" type="xs1:СписокНоменклатуры" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ОбменТСДResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:СписокНоменклатуры" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatefirmware">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="version" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatefirmwareResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="ОбменТСДRequestMessage">
+    <part name="parameters" element="xsd1:ОбменТСД" />
+  </message>
+  <message name="ОбменТСДResponseMessage">
+    <part name="parameters" element="xsd1:ОбменТСДResponse" />
+  </message>
+  <message name="updatefirmwareRequestMessage">
+    <part name="parameters" element="xsd1:updatefirmware" />
+  </message>
+  <message name="updatefirmwareResponseMessage">
+    <part name="parameters" element="xsd1:updatefirmwareResponse" />
+  </message>
+  <portType name="forTSDPortType">
+    <operation name="ОбменТСД">
+      <input message="xsd1:ОбменТСДRequestMessage" />
+      <output message="xsd1:ОбменТСДResponseMessage" />
+    </operation>
+    <operation name="updatefirmware">
+      <input message="xsd1:updatefirmwareRequestMessage" />
+      <output message="xsd1:updatefirmwareResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="forTSDSoapBinding" type="xsd1:forTSDPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ОбменТСД">
+      <soapbind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:ОбменТСД" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updatefirmware">
+      <soapbind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:updatefirmware" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="forTSDSoap12Binding" type="xsd1:forTSDPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="ОбменТСД">
+      <soap12bind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:ОбменТСД" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="updatefirmware">
+      <soap12bind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:updatefirmware" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="forTSD">
+    <port name="forTSDSoap" binding="xsd1:forTSDSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws" />
+    </port>
+    <port name="forTSDSoap12" binding="xsd1:forTSDSoap12Binding">
+      <soap12bind:address location="http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws" />
+    </port>
+  </service>
+</definitions>

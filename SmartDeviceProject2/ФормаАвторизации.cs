@@ -15,20 +15,37 @@ using System.IO;
 namespace SmartDeviceProject2
 {
 
-    public partial class Form1 : Form
+    public partial class ФормаАвторизации : Form
     {
-        public Form1()
+        public ФормаАвторизации()
         {
+            
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
+            var Соединение = СоединениеВебСервис.ПолучитьСервис();
+            var Сервис = Соединение.Сервис;
+            Сервис.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws?wsdl";
+            List<СсылкаНаСервис.СтрокаНоменклатуры> Список = new List<SmartDeviceProject2.СсылкаНаСервис.СтрокаНоменклатуры>();
+            СсылкаНаСервис.СтрокаНоменклатуры СтрокаНоменклатуры = new СсылкаНаСервис.СтрокаНоменклатуры();
+            СтрокаНоменклатуры.Код = "423";
+            СтрокаНоменклатуры.Количество = "503";
+            СтрокаНоменклатуры.Наименование = "123";
+            Список.Add(СтрокаНоменклатуры);
+            СсылкаНаСервис.СтрокаНоменклатуры[] СписокПользователей = Сервис.ОбменТСД("СписокПользователей",Список.ToArray());
+            foreach (var СтрокаПользователь in СписокПользователей)
+            Сотрудник.Items.Add(СтрокаПользователь.Наименование);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var frm2 = new Form2();
+            frm2.Show();
+            frm2.Activate();
             var x = CallWebService();
             Console.Write(x);
         }
@@ -146,6 +163,23 @@ namespace SmartDeviceProject2
         {
             XDocument srcTree = new XDocument();
             return srcTree;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void СписокФирм_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
