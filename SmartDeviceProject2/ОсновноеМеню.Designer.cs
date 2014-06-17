@@ -1,6 +1,6 @@
 ﻿namespace SmartDeviceProject2
 {
-    partial class Form2
+    partial class ОсновноеМеню
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -32,6 +32,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.Выход = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -50,17 +51,33 @@
             this.button1.Text = "button1";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // Выход
+            // 
+            this.Выход.Location = new System.Drawing.Point(4, 254);
+            this.Выход.Name = "Выход";
+            this.Выход.Size = new System.Drawing.Size(72, 20);
+            this.Выход.TabIndex = 3;
+            this.Выход.Text = "Выход";
+            this.Выход.Click += new System.EventHandler(this.Выход_Click);
+            // 
+            // ОсновноеМеню
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.BackColor = System.Drawing.SystemColors.Info;
+            this.ClientSize = new System.Drawing.Size(240, 320);
+            this.ControlBox = false;
+            this.Controls.Add(this.Выход);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Menu = this.mainMenu1;
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "ОсновноеМеню";
+            this.Text = "Основное меню";
+            this.Load += new System.EventHandler(this.ОсновноеМеню_Load);
+            this.Closed += new System.EventHandler(this.ОсновноеМеню_Closed);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.ОсновноеМеню_Closing);
             this.ResumeLayout(false);
 
         }
@@ -69,5 +86,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Выход;
     }
 }

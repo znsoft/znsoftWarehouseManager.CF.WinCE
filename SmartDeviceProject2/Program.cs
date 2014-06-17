@@ -13,7 +13,11 @@ namespace SmartDeviceProject2
         [MTAThread]
         static void Main()
         {
-            Application.Run(new ФормаАвторизации());
+            var ФормаЛогинПароль = new ФормаАвторизации();
+            var РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
+            if (РезультатАвторизации == DialogResult.OK)
+            Application.Run(new ОсновноеМеню());
+
         }
     }
 }

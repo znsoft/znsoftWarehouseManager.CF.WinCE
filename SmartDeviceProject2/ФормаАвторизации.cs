@@ -26,16 +26,10 @@ namespace SmartDeviceProject2
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            var Соединение = СоединениеВебСервис.ПолучитьСервис();
-            var Сервис = Соединение.Сервис;
-            Сервис.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws";
-            List<СсылкаНаСервис.СтрокаНоменклатуры> Список = new List<SmartDeviceProject2.СсылкаНаСервис.СтрокаНоменклатуры>();
-            СсылкаНаСервис.СтрокаНоменклатуры СтрокаНоменклатуры = new СсылкаНаСервис.СтрокаНоменклатуры();
-            СтрокаНоменклатуры.Код = "423";
-            СтрокаНоменклатуры.Количество = "503";
-            СтрокаНоменклатуры.Наименование = "123";
-            Список.Add(СтрокаНоменклатуры);
-            СсылкаНаСервис.СтрокаНоменклатуры[] СписокПользователей = Сервис.ОбменТСД("СписокПользователей",Список.ToArray());
+            //var Соединение = СоединениеВебСервис.ПолучитьСервис();
+            //Соединение.Сервис.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws"; //  необходимо считать настройки из файла и применить УРЛ
+            var Обмен = new Пакеты("СписокПользователей");
+            var СписокПользователей = Обмен.ПослатьСтроку("123", "123", 123);
             foreach (var СтрокаПользователь in СписокПользователей)
             Сотрудник.Items.Add(СтрокаПользователь.Наименование);
 
@@ -43,13 +37,22 @@ namespace SmartDeviceProject2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var Обмен = new Пакеты("ТСД");
+            var Сервис = СоединениеВебСервис.ПолучитьСервис();
+            Сервис.Сервис.Credentials = new NetworkCredential(Сотрудник.Text, Пароль.Text);
+            try
+            {
+                var СписокПользователей = Обмен.ПослатьСтроку("Авторизация", "192.168.1.1", 1234);
+            }
+            catch (WebException o)
+            {
+                Console.WriteLine("{0}", o.GetBaseException().Message);
+                return;
+            }
             
+            this.DialogResult = DialogResult.OK;
+            this.Close();
             
-            
-            var frm2 = new Form2();
-            frm2.Show();
-            frm2.Activate();
-
         }
 
 
@@ -57,7 +60,9 @@ namespace SmartDeviceProject2
        
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+            // Application.Exit();
         }
 
         private void СписокФирм_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,6 +81,11 @@ namespace SmartDeviceProject2
         {
             Пароль.PasswordChar = ПоказыватьПароль.Checked?(char)0:'*';
             Пароль.Update();
+        }
+
+        private void ФормаАвторизации_Closing(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

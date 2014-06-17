@@ -11,14 +11,17 @@ using System.Net;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
+using SmartDeviceProject2.СсылкаНаСервис;
 
 namespace SmartDeviceProject2
 {
     class СоединениеВебСервис
     {
         private static СоединениеВебСервис Экземпляр;
-        public СсылкаНаСервис.forTSD Сервис; 
+        public forTSD Сервис; 
 
+
+        //Синглтон для работы с классом из всех окон приложения
         public static СоединениеВебСервис ПолучитьСервис()
         {
             if (Экземпляр == null)
@@ -28,29 +31,9 @@ namespace SmartDeviceProject2
 
      
         private СоединениеВебСервис() {
-            Сервис = new СсылкаНаСервис.forTSD();
+            Сервис = new forTSD();
             Сервис.Credentials = new NetworkCredential("WebConnection", "951");
         }
-        
-
-
-        // public void НачатьвебСоединение()
-        //{
-        //    List<СсылкаНаСервис.СтрокаНоменклатуры> Список = new List<SmartDeviceProject2.СсылкаНаСервис.СтрокаНоменклатуры>();
-        //    СсылкаНаСервис.СтрокаНоменклатуры СтрокаНоменклатуры = new СсылкаНаСервис.СтрокаНоменклатуры;
-        //    СтрокаНоменклатуры.Код = "423";
-        //    СтрокаНоменклатуры.Количество = 503;
-        //    СтрокаНоменклатуры.Наименование = "123";
-        //    Список.Add(СтрокаНоменклатуры);
-        //    СсылкаНаСервис.forTSD Сервис = new СсылкаНаСервис.forTSD();
-        //     Сервис.Url =  
-        //    Сервис.Credentials = new NetworkCredential("WebConnection", "951");
-        //    СсылкаНаСервис.forTSD СписокПользователей = Сервис.ОбменТСД("СписокПользователей",Список.ToArray());
-
-        //}
-        
-
-
 
     }
 }
