@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Пароль = new System.Windows.Forms.TextBox();
             this.Сотрудник = new System.Windows.Forms.ComboBox();
+            this.ПоказыватьПароль = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -69,6 +70,7 @@
             // 
             // СписокФирм
             // 
+            this.СписокФирм.Enabled = false;
             this.СписокФирм.Items.Add("Прим Аэртон");
             this.СписокФирм.Items.Add("Тест");
             this.СписокФирм.Location = new System.Drawing.Point(4, 70);
@@ -103,7 +105,7 @@
             this.Пароль.Location = new System.Drawing.Point(4, 185);
             this.Пароль.Name = "Пароль";
             this.Пароль.PasswordChar = '*';
-            this.Пароль.Size = new System.Drawing.Size(230, 21);
+            this.Пароль.Size = new System.Drawing.Size(191, 21);
             this.Пароль.TabIndex = 7;
             // 
             // Сотрудник
@@ -114,12 +116,22 @@
             this.Сотрудник.TabIndex = 11;
             this.Сотрудник.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // ПоказыватьПароль
+            // 
+            this.ПоказыватьПароль.Location = new System.Drawing.Point(197, 185);
+            this.ПоказыватьПароль.Name = "ПоказыватьПароль";
+            this.ПоказыватьПароль.Size = new System.Drawing.Size(39, 20);
+            this.ПоказыватьПароль.TabIndex = 12;
+            this.ПоказыватьПароль.Text = "показать";
+            this.ПоказыватьПароль.CheckStateChanged += new System.EventHandler(this.ПоказыватьПароль_CheckStateChanged);
+            // 
             // ФормаАвторизации
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
+            this.Controls.Add(this.ПоказыватьПароль);
             this.Controls.Add(this.Сотрудник);
             this.Controls.Add(this.Пароль);
             this.Controls.Add(this.label3);
@@ -150,6 +162,7 @@
         private System.Windows.Forms.TextBox Пароль;
         private System.Windows.Forms.MenuItem Меню;
         private System.Windows.Forms.ComboBox Сотрудник;
+        private System.Windows.Forms.CheckBox ПоказыватьПароль;
     }
 }
 

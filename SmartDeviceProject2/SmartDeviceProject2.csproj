@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateXML.cs" />
+    <Compile Include="Пакеты.cs" />
     <Compile Include="СоединениеВебСервис.cs">
     </Compile>
     <Compile Include="ФормаАвторизации.cs">
