@@ -1,4 +1,4 @@
-﻿namespace SmartDeviceProject2
+﻿namespace СкладскойУчет
 {
     partial class ФормаАвторизации
     {
@@ -37,6 +37,8 @@
             this.Пароль = new System.Windows.Forms.TextBox();
             this.Сотрудник = new System.Windows.Forms.ComboBox();
             this.ПоказыватьПароль = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ТекстОшибки = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -49,7 +51,7 @@
             // 
             // Войти
             // 
-            this.Войти.Location = new System.Drawing.Point(45, 240);
+            this.Войти.Location = new System.Drawing.Point(45, 207);
             this.Войти.Name = "Войти";
             this.Войти.Size = new System.Drawing.Size(150, 24);
             this.Войти.TabIndex = 0;
@@ -58,21 +60,21 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(9, 104);
+            this.label2.Location = new System.Drawing.Point(9, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.Text = "Сотрудник";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(9, 161);
+            this.label3.Location = new System.Drawing.Point(9, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(222, 21);
             this.label3.Text = "Пароль";
             // 
             // Пароль
             // 
-            this.Пароль.Location = new System.Drawing.Point(4, 185);
+            this.Пароль.Location = new System.Drawing.Point(4, 152);
             this.Пароль.Name = "Пароль";
             this.Пароль.PasswordChar = '*';
             this.Пароль.Size = new System.Drawing.Size(230, 21);
@@ -80,7 +82,7 @@
             // 
             // Сотрудник
             // 
-            this.Сотрудник.Location = new System.Drawing.Point(4, 128);
+            this.Сотрудник.Location = new System.Drawing.Point(4, 95);
             this.Сотрудник.Name = "Сотрудник";
             this.Сотрудник.Size = new System.Drawing.Size(230, 22);
             this.Сотрудник.TabIndex = 11;
@@ -88,25 +90,44 @@
             // 
             // ПоказыватьПароль
             // 
-            this.ПоказыватьПароль.Location = new System.Drawing.Point(45, 212);
+            this.ПоказыватьПароль.Location = new System.Drawing.Point(45, 179);
             this.ПоказыватьПароль.Name = "ПоказыватьПароль";
             this.ПоказыватьПароль.Size = new System.Drawing.Size(150, 20);
             this.ПоказыватьПароль.TabIndex = 12;
             this.ПоказыватьПароль.Text = "показать пароль";
             this.ПоказыватьПароль.CheckStateChanged += new System.EventHandler(this.ПоказыватьПароль_CheckStateChanged);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
+            this.label1.Location = new System.Drawing.Point(0, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(240, 34);
+            this.label1.Text = "Автоматизация складского учета компании ДНС";
+            // 
+            // ТекстОшибки
+            // 
+            this.ТекстОшибки.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
+            this.ТекстОшибки.Location = new System.Drawing.Point(8, 238);
+            this.ТекстОшибки.Name = "ТекстОшибки";
+            this.ТекстОшибки.Size = new System.Drawing.Size(225, 27);
+            this.ТекстОшибки.Text = "Необходимо выбрать себя из списка и ввести пароль";
+            // 
             // ФормаАвторизации
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(240, 294);
+            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.ТекстОшибки);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ПоказыватьПароль);
             this.Controls.Add(this.Сотрудник);
             this.Controls.Add(this.Пароль);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Войти);
+            this.Menu = this.mainMenu1;
             this.Name = "ФормаАвторизации";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -124,6 +145,8 @@
         private System.Windows.Forms.MenuItem Меню;
         private System.Windows.Forms.ComboBox Сотрудник;
         private System.Windows.Forms.CheckBox ПоказыватьПароль;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ТекстОшибки;
     }
 }
 

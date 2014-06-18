@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SmartDeviceProject2
+namespace СкладскойУчет
 {
     class CreateXML
     {

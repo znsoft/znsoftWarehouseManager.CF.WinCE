@@ -7,8 +7,8 @@
     <ProjectGuid>{649F3B7B-40C1-4242-8856-EDD0947C713D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartDeviceProject2</RootNamespace>
-    <AssemblyName>SmartDeviceProject2</AssemblyName>
+    <RootNamespace>СкладскойУчет</RootNamespace>
+    <AssemblyName>СкладскойУчет</AssemblyName>
     <ProjectTypeGuids>{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PlatformFamilyName>PocketPC</PlatformFamilyName>
     <PlatformID>4118C335-430C-497f-BE48-11C3316B135E</PlatformID>
@@ -61,6 +61,7 @@
     <Compile Include="Пакеты.cs" />
     <Compile Include="СоединениеВебСервис.cs">
     </Compile>
+    <Compile Include="СуперКлиент.cs" />
     <Compile Include="ФормаАвторизации.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Web References\СсылкаНаСервис\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -122,7 +124,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\СсылкаНаСервис\СтрокаНоменклатуры1.datasource">
+    <None Include="Web References\СсылкаНаСервис\СтрокаНоменклатуры.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>

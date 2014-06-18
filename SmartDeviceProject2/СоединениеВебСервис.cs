@@ -11,12 +11,14 @@ using System.Net;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
-using SmartDeviceProject2.СсылкаНаСервис;
+using СкладскойУчет.СсылкаНаСервис;
 
-namespace SmartDeviceProject2
+namespace СкладскойУчет
 {
     class СоединениеВебСервис
     {
+        public static string СтрокаДоступныхРолей;
+        public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;
         public forTSD Сервис; 
 
@@ -31,8 +33,10 @@ namespace SmartDeviceProject2
 
      
         private СоединениеВебСервис() {
-            Сервис = new forTSD();
+            Сервис = new СуперКлиент();
             Сервис.Credentials = new NetworkCredential("WebConnection", "951");
+            Сервис.PreAuthenticate = false;
+            Сервис.AllowAutoRedirect = false;
         }
 
     }

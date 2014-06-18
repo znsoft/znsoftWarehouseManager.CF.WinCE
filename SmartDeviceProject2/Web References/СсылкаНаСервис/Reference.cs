@@ -11,7 +11,7 @@
 // 
 // Этот исходный текст был создан автоматически: Microsoft.CompactFramework.Design.Data, версия: 2.0.50727.5477.
 // 
-namespace SmartDeviceProject2.СсылкаНаСервис {
+namespace СкладскойУчет.СсылкаНаСервис {
     using System.Diagnostics;
     using System.Web.Services;
     using System.ComponentModel;
@@ -29,6 +29,7 @@ namespace SmartDeviceProject2.СсылкаНаСервис {
         /// <remarks/>
         public forTSD() {
             this.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws";
+            
         }
         
         /// <remarks/>
@@ -36,6 +37,7 @@ namespace SmartDeviceProject2.СсылкаНаСервис {
         [return: System.Xml.Serialization.XmlArrayAttribute("return")]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("Номенклатура", IsNullable=false)]
         public СтрокаНоменклатуры[] ОбменТСД(string ВидОперации, [System.Xml.Serialization.XmlArrayItemAttribute("Номенклатура", IsNullable=false)] СтрокаНоменклатуры[] Список) {
+
             object[] results = this.Invoke("ОбменТСД", new object[] {
                         ВидОперации,
                         Список});

@@ -12,7 +12,8 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 
-namespace SmartDeviceProject2
+
+namespace СкладскойУчет
 {
 
     public partial class ФормаАвторизации : Form
@@ -25,11 +26,10 @@ namespace SmartDeviceProject2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //var Соединение = СоединениеВебСервис.ПолучитьСервис();
-            //Соединение.Сервис.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws"; //  необходимо считать настройки из файла и применить УРЛ
+            var СлучайноеЧисло = new Random();
+            СоединениеВебСервис.ИдентификаторСоединения = СлучайноеЧисло.Next().ToString();
             var Обмен = new Пакеты("СписокПользователей");
-            var СписокПользователей = Обмен.ПослатьСтроку("123", "123", 123);
+            var СписокПользователей = Обмен.ПослатьСтроку("1", СоединениеВебСервис.ИдентификаторСоединения, 0);
             foreach (var СтрокаПользователь in СписокПользователей)
             Сотрудник.Items.Add(СтрокаПользователь.Наименование);
 
@@ -37,21 +37,25 @@ namespace SmartDeviceProject2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bool УспешнаяАвторизация = false;
             var Обмен = new Пакеты("ТСД");
-            var Сервис = СоединениеВебСервис.ПолучитьСервис();
-            Сервис.Сервис.Credentials = new NetworkCredential(Сотрудник.Text, Пароль.Text);
-            try
-            {
-                var СписокПользователей = Обмен.ПослатьСтроку("Авторизация", "192.168.1.1", 1234);
-            }
-            catch (WebException o)
-            {
-                Console.WriteLine("{0}", o.GetBaseException().Message);
-                return;
-            }
             
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            Обмен.Соединение.Сервис.Credentials = new NetworkCredential(Сотрудник.Text, Пароль.Text);
+            var СписокПользователей = Обмен.ПослатьСтроку("Авторизация", СоединениеВебСервис.ИдентификаторСоединения, 0);
+
+            foreach (var СтрокаПользователь in СписокПользователей)
+            {
+                УспешнаяАвторизация = УспешнаяАвторизация || СтрокаПользователь.Наименование.Contains("Успех");
+                СоединениеВебСервис.СтрокаДоступныхРолей = СтрокаПользователь.Код;
+            }
+
+                if (УспешнаяАвторизация)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    return;
+                }
+            
             
         }
 
@@ -62,7 +66,6 @@ namespace SmartDeviceProject2
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-            // Application.Exit();
         }
 
         private void СписокФирм_SelectedIndexChanged(object sender, EventArgs e)
