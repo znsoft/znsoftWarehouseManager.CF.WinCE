@@ -49,27 +49,27 @@
             // 
             // Выход
             // 
-            this.Выход.Location = new System.Drawing.Point(3, 199);
+            this.Выход.Location = new System.Drawing.Point(3, 187);
             this.Выход.Name = "Выход";
-            this.Выход.Size = new System.Drawing.Size(232, 24);
+            this.Выход.Size = new System.Drawing.Size(232, 38);
             this.Выход.TabIndex = 3;
             this.Выход.Text = "0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Перемещение
             // 
-            this.Перемещение.Location = new System.Drawing.Point(3, 170);
+            this.Перемещение.Location = new System.Drawing.Point(3, 143);
             this.Перемещение.Name = "Перемещение";
-            this.Перемещение.Size = new System.Drawing.Size(232, 24);
+            this.Перемещение.Size = new System.Drawing.Size(232, 38);
             this.Перемещение.TabIndex = 5;
             this.Перемещение.Text = "1.Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Инвентаризация
             // 
-            this.Инвентаризация.Location = new System.Drawing.Point(3, 143);
+            this.Инвентаризация.Location = new System.Drawing.Point(3, 101);
             this.Инвентаризация.Name = "Инвентаризация";
-            this.Инвентаризация.Size = new System.Drawing.Size(232, 22);
+            this.Инвентаризация.Size = new System.Drawing.Size(232, 36);
             this.Инвентаризация.TabIndex = 7;
             this.Инвентаризация.Text = "2.Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -98,6 +98,7 @@
             // 
             // Панель_Информации
             // 
+            this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
             this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
             this.Панель_Информации.Name = "Панель_Информации";
             this.Панель_Информации.Size = new System.Drawing.Size(240, 228);
