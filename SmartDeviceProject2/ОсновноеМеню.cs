@@ -12,8 +12,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
 
-
-
 namespace СкладскойУчет
 {
     public partial class ОсновноеМеню : Form
@@ -22,10 +20,26 @@ namespace СкладскойУчет
         {
             InitializeComponent();
             this.KeyPreview = true;
+            Выход.Focus();
         }
 
+        public void _Выход()
+        {
+            Выход.Enabled = false;
+            Выход.Text = "Отключение...";
+            this.Close();
+        }
+
+        public void _Перемещение()
+        {
 
 
+        }
+
+        public void _Инвентаризация()
+        {
+
+        }
 
         private void ОсновноеМеню_Load(object sender, EventArgs e)
         {
@@ -40,22 +54,20 @@ namespace СкладскойУчет
             method.Invoke(this, null);
         }
 
-
-
         private void ОсновноеМеню_Closing(object sender, CancelEventArgs e)
         {
+
         }
 
         private void ОсновноеМеню_Closed(object sender, EventArgs e)
         {
-
             new Пакеты("ТСД").ПослатьСтроку("Выход", "Выход", 123);
         }
         
         private void ОсновноеМеню_KeyDown(object sender, KeyEventArgs e)
         {
-
-            foreach (var ЭлементФормы in Панель_ОсновногоМеню.Controls)
+            var Панель = Табулятор.TabPages[Табулятор.SelectedIndex].Controls;
+            foreach (var ЭлементФормы in Панель)
                 if (ЭлементФормы is Button)
                 {
                     Button Кнопка = (Button)ЭлементФормы;
@@ -67,8 +79,6 @@ namespace СкладскойУчет
                     }
                 }
 
-
-
             if ((e.KeyCode == System.Windows.Forms.Keys.Up))
             {
                 // Up
@@ -79,11 +89,11 @@ namespace СкладскойУчет
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.Left))
             {
-                // Left
+               Табулятор.SelectedIndex = 0;
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.Right))
             {
-                // Right
+                Табулятор.SelectedIndex = 1;
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.Enter))
             {
@@ -91,34 +101,6 @@ namespace СкладскойУчет
             }
 
         }
-
-        public void _Выход()
-        {
-            Выход.Enabled = false;
-            Выход.Text = "Отключение...";
-            this.Close();
-        }
-
-        public void _Перемещение()
-        {
-
-
-
-
-        }
-
-        public void _Инвентаризация()
-        {
-
-
-
-
-        }
-
-
-
-
-
 
     }
 }

@@ -18,21 +18,40 @@ namespace СкладскойУчет
 
     public partial class ФормаАвторизации : Form
     {
+
+        Настройки ПараметрыСеанса = new Настройки();
+
+
         public ФормаАвторизации()
         {
-            
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ПараметрыСеанса.Загрузить();
             var СлучайноеЧисло = new Random();
             СоединениеВебСервис.ИдентификаторСоединения = СлучайноеЧисло.Next().ToString();
             var Обмен = new Пакеты("СписокПользователей");
             var СписокПользователей = Обмен.ПослатьСтроку("1", СоединениеВебСервис.ИдентификаторСоединения, 0);
+            string Текущийсклад = "";
             foreach (var СтрокаПользователь in СписокПользователей)
-            Сотрудник.Items.Add(СтрокаПользователь.Наименование);
+            {
+                Текущийсклад = СтрокаПользователь.Код; 
+                Сотрудник.Items.Add(СтрокаПользователь.Наименование);
+            }
+            if (ПараметрыСеанса.Хранилище.ИмяПользователя == null) 
+                {
+                    Сотрудник.Focus(); 
+                }
+                else
+                {
+                    Сотрудник.Text = ПараметрыСеанса.Хранилище.ИмяПользователя;
+                    Пароль.Focus();
+                }
+            ТекущийСкладТекст.Text = Текущийсклад;
 
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,6 +70,8 @@ namespace СкладскойУчет
 
                 if (УспешнаяАвторизация)
                 {
+                    ПараметрыСеанса.Хранилище.ИмяПользователя = Сотрудник.Text;
+                    ПараметрыСеанса.Сохранить();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                     return;
@@ -89,6 +110,11 @@ namespace СкладскойУчет
         private void ФормаАвторизации_Closing(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void Пароль_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) button1_Click(sender, e);
         }
     }
 }

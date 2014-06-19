@@ -37,7 +37,7 @@
             this.Пароль = new System.Windows.Forms.TextBox();
             this.Сотрудник = new System.Windows.Forms.ComboBox();
             this.ПоказыватьПароль = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ТекущийСкладТекст = new System.Windows.Forms.Label();
             this.ТекстОшибки = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             this.Пароль.PasswordChar = '*';
             this.Пароль.Size = new System.Drawing.Size(230, 21);
             this.Пароль.TabIndex = 7;
+            this.Пароль.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Пароль_KeyDown);
             // 
             // Сотрудник
             // 
@@ -97,21 +98,21 @@
             this.ПоказыватьПароль.Text = "показать пароль";
             this.ПоказыватьПароль.CheckStateChanged += new System.EventHandler(this.ПоказыватьПароль_CheckStateChanged);
             // 
-            // label1
+            // ТекущийСкладТекст
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
-            this.label1.Location = new System.Drawing.Point(0, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 34);
-            this.label1.Text = "Автоматизация складского учета компании ДНС";
+            this.ТекущийСкладТекст.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
+            this.ТекущийСкладТекст.Location = new System.Drawing.Point(1, 29);
+            this.ТекущийСкладТекст.Name = "ТекущийСкладТекст";
+            this.ТекущийСкладТекст.Size = new System.Drawing.Size(237, 34);
+            this.ТекущийСкладТекст.Text = "Автоматизация складского учета компании ДНС";
             // 
             // ТекстОшибки
             // 
             this.ТекстОшибки.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
-            this.ТекстОшибки.Location = new System.Drawing.Point(8, 238);
+            this.ТекстОшибки.Location = new System.Drawing.Point(-1, 238);
             this.ТекстОшибки.Name = "ТекстОшибки";
-            this.ТекстОшибки.Size = new System.Drawing.Size(225, 27);
-            this.ТекстОшибки.Text = "Необходимо выбрать себя из списка и ввести пароль";
+            this.ТекстОшибки.Size = new System.Drawing.Size(240, 27);
+            this.ТекстОшибки.Text = "Необходимо выбрать себя из списка";
             // 
             // ФормаАвторизации
             // 
@@ -120,7 +121,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.ТекстОшибки);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ТекущийСкладТекст);
             this.Controls.Add(this.ПоказыватьПароль);
             this.Controls.Add(this.Сотрудник);
             this.Controls.Add(this.Пароль);
@@ -145,7 +146,7 @@
         private System.Windows.Forms.MenuItem Меню;
         private System.Windows.Forms.ComboBox Сотрудник;
         private System.Windows.Forms.CheckBox ПоказыватьПароль;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ТекущийСкладТекст;
         private System.Windows.Forms.Label ТекстОшибки;
     }
 }

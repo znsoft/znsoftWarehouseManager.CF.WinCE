@@ -49,27 +49,27 @@
             // 
             // Выход
             // 
-            this.Выход.Location = new System.Drawing.Point(4, 201);
+            this.Выход.Location = new System.Drawing.Point(3, 199);
             this.Выход.Name = "Выход";
-            this.Выход.Size = new System.Drawing.Size(233, 24);
+            this.Выход.Size = new System.Drawing.Size(232, 24);
             this.Выход.TabIndex = 3;
             this.Выход.Text = "0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Перемещение
             // 
-            this.Перемещение.Location = new System.Drawing.Point(4, 170);
+            this.Перемещение.Location = new System.Drawing.Point(3, 170);
             this.Перемещение.Name = "Перемещение";
-            this.Перемещение.Size = new System.Drawing.Size(233, 25);
+            this.Перемещение.Size = new System.Drawing.Size(232, 24);
             this.Перемещение.TabIndex = 5;
             this.Перемещение.Text = "1.Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Инвентаризация
             // 
-            this.Инвентаризация.Location = new System.Drawing.Point(4, 143);
+            this.Инвентаризация.Location = new System.Drawing.Point(3, 143);
             this.Инвентаризация.Name = "Инвентаризация";
-            this.Инвентаризация.Size = new System.Drawing.Size(233, 21);
+            this.Инвентаризация.Size = new System.Drawing.Size(232, 22);
             this.Инвентаризация.TabIndex = 7;
             this.Инвентаризация.Text = "2.Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -78,7 +78,7 @@
             // 
             this.Табулятор.Controls.Add(this.Панель_ОсновногоМеню);
             this.Табулятор.Controls.Add(this.Панель_Информации);
-            this.Табулятор.Font = new System.Drawing.Font("Courier New", 7F, System.Drawing.FontStyle.Regular);
+            this.Табулятор.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
             this.Табулятор.Location = new System.Drawing.Point(0, 0);
             this.Табулятор.Name = "Табулятор";
             this.Табулятор.SelectedIndex = 0;
@@ -93,15 +93,15 @@
             this.Панель_ОсновногоМеню.Controls.Add(this.Перемещение);
             this.Панель_ОсновногоМеню.Location = new System.Drawing.Point(0, 0);
             this.Панель_ОсновногоМеню.Name = "Панель_ОсновногоМеню";
-            this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(240, 230);
-            this.Панель_ОсновногоМеню.Text = "Задания";
+            this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(240, 228);
+            this.Панель_ОсновногоМеню.Text = "<Задания";
             // 
             // Панель_Информации
             // 
             this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
             this.Панель_Информации.Name = "Панель_Информации";
-            this.Панель_Информации.Size = new System.Drawing.Size(232, 180);
-            this.Панель_Информации.Text = "Информация";
+            this.Панель_Информации.Size = new System.Drawing.Size(240, 228);
+            this.Панель_Информации.Text = "Информация>";
             // 
             // ОсновноеМеню
             // 
