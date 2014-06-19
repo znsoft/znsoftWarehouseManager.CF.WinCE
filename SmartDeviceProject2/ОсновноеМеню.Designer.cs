@@ -32,7 +32,13 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.Пользователь = new System.Windows.Forms.Label();
             this.Выход = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Перемещение = new System.Windows.Forms.Button();
+            this.Инвентаризация = new System.Windows.Forms.Button();
+            this.Табулятор = new System.Windows.Forms.TabControl();
+            this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
+            this.Панель_Информации = new System.Windows.Forms.TabPage();
+            this.Табулятор.SuspendLayout();
+            this.Панель_ОсновногоМеню.SuspendLayout();
             this.SuspendLayout();
             // 
             // Пользователь
@@ -43,20 +49,59 @@
             // 
             // Выход
             // 
-            this.Выход.Location = new System.Drawing.Point(4, 216);
+            this.Выход.Location = new System.Drawing.Point(4, 201);
             this.Выход.Name = "Выход";
-            this.Выход.Size = new System.Drawing.Size(233, 35);
+            this.Выход.Size = new System.Drawing.Size(233, 24);
             this.Выход.TabIndex = 3;
-            this.Выход.Text = "Выход";
-            this.Выход.Click += new System.EventHandler(this.Выход_Click);
+            this.Выход.Text = "0.Выход";
+            this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
-            // button1
+            // Перемещение
             // 
-            this.button1.Location = new System.Drawing.Point(4, 169);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 41);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.Перемещение.Location = new System.Drawing.Point(4, 170);
+            this.Перемещение.Name = "Перемещение";
+            this.Перемещение.Size = new System.Drawing.Size(233, 25);
+            this.Перемещение.TabIndex = 5;
+            this.Перемещение.Text = "1.Переместить";
+            this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            // 
+            // Инвентаризация
+            // 
+            this.Инвентаризация.Location = new System.Drawing.Point(4, 143);
+            this.Инвентаризация.Name = "Инвентаризация";
+            this.Инвентаризация.Size = new System.Drawing.Size(233, 21);
+            this.Инвентаризация.TabIndex = 7;
+            this.Инвентаризация.Text = "2.Инвентаризация";
+            this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            // 
+            // Табулятор
+            // 
+            this.Табулятор.Controls.Add(this.Панель_ОсновногоМеню);
+            this.Табулятор.Controls.Add(this.Панель_Информации);
+            this.Табулятор.Font = new System.Drawing.Font("Courier New", 7F, System.Drawing.FontStyle.Regular);
+            this.Табулятор.Location = new System.Drawing.Point(0, 0);
+            this.Табулятор.Name = "Табулятор";
+            this.Табулятор.SelectedIndex = 0;
+            this.Табулятор.Size = new System.Drawing.Size(240, 251);
+            this.Табулятор.TabIndex = 8;
+            // 
+            // Панель_ОсновногоМеню
+            // 
+            this.Панель_ОсновногоМеню.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_ОсновногоМеню.Controls.Add(this.Инвентаризация);
+            this.Панель_ОсновногоМеню.Controls.Add(this.Выход);
+            this.Панель_ОсновногоМеню.Controls.Add(this.Перемещение);
+            this.Панель_ОсновногоМеню.Location = new System.Drawing.Point(0, 0);
+            this.Панель_ОсновногоМеню.Name = "Панель_ОсновногоМеню";
+            this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(240, 230);
+            this.Панель_ОсновногоМеню.Text = "Задания";
+            // 
+            // Панель_Информации
+            // 
+            this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
+            this.Панель_Информации.Name = "Панель_Информации";
+            this.Панель_Информации.Size = new System.Drawing.Size(232, 180);
+            this.Панель_Информации.Text = "Информация";
             // 
             // ОсновноеМеню
             // 
@@ -66,8 +111,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 294);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Выход);
+            this.Controls.Add(this.Табулятор);
             this.Controls.Add(this.Пользователь);
             this.Name = "ОсновноеМеню";
             this.Text = "Основное меню";
@@ -75,6 +119,8 @@
             this.Closed += new System.EventHandler(this.ОсновноеМеню_Closed);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.ОсновноеМеню_Closing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ОсновноеМеню_KeyDown);
+            this.Табулятор.ResumeLayout(false);
+            this.Панель_ОсновногоМеню.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -83,6 +129,10 @@
 
         private System.Windows.Forms.Label Пользователь;
         private System.Windows.Forms.Button Выход;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Перемещение;
+        private System.Windows.Forms.Button Инвентаризация;
+        private System.Windows.Forms.TabControl Табулятор;
+        private System.Windows.Forms.TabPage Панель_ОсновногоМеню;
+        private System.Windows.Forms.TabPage Панель_Информации;
     }
 }

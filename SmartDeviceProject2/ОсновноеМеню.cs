@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define class Класс  //;
+
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Reflection;
+
+
 
 namespace СкладскойУчет
 {
@@ -19,10 +24,8 @@ namespace СкладскойУчет
             this.KeyPreview = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //var Сервис = СоединениеВебСервис.ПолучитьСервис();
-        }
+
+
 
         private void ОсновноеМеню_Load(object sender, EventArgs e)
         {
@@ -30,12 +33,14 @@ namespace СкладскойУчет
             Пользователь.Text = Авторизован.UserName;
         }
 
-        private void Выход_Click(object sender, EventArgs e)
+        private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
-            Выход.Enabled = false;
-            Выход.Text = "Отключение...";
-            this.Close();
+            Button Кнопка = (Button)sender;
+            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+            method.Invoke(this, null);
         }
+
+
 
         private void ОсновноеМеню_Closing(object sender, CancelEventArgs e)
         {
@@ -46,17 +51,24 @@ namespace СкладскойУчет
 
             new Пакеты("ТСД").ПослатьСтроку("Выход", "Выход", 123);
         }
-
+        
         private void ОсновноеМеню_KeyDown(object sender, KeyEventArgs e)
         {
 
-            var button = (from Control c 
-                             in this.Controls
-                          where c is Button &&
-                          Debug_Test(e, c)
-                              select c).First();
-            
-            
+            foreach (var ЭлементФормы in Панель_ОсновногоМеню.Controls)
+                if (ЭлементФормы is Button)
+                {
+                    Button Кнопка = (Button)ЭлементФормы;
+                    if ((char)Кнопка.Text[0] == (char)e.KeyValue)
+                    {
+                        Кнопка.Focus();
+                        ПриНажатииНаКнопку(Кнопка, new EventArgs());
+                        return;
+                    }
+                }
+
+
+
             if ((e.KeyCode == System.Windows.Forms.Keys.Up))
             {
                 // Up
@@ -80,9 +92,33 @@ namespace СкладскойУчет
 
         }
 
-        private static bool Debug_Test(KeyEventArgs e, Control c)
+        public void _Выход()
         {
-            return c.Text[0] == (char)e.KeyValue;
+            Выход.Enabled = false;
+            Выход.Text = "Отключение...";
+            this.Close();
         }
+
+        public void _Перемещение()
+        {
+
+
+
+
+        }
+
+        public void _Инвентаризация()
+        {
+
+
+
+
+        }
+
+
+
+
+
+
     }
 }
