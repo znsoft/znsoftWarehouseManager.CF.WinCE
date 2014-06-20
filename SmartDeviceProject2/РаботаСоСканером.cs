@@ -23,7 +23,9 @@ namespace СкладскойУчет
         public РаботаСоСканером()
         {
             SystemHelper.GetDeviceType();
-            if (SystemHelper.DeviceTypeIsKown) Barcode1D_init();
+            if (SystemHelper.DeviceTypeIsKown)             
+                Barcode1D_init();
+            
         }
 
 
@@ -58,12 +60,69 @@ namespace СкладскойУчет
         public static bool НажатаКлавишаСкан(KeyEventArgs e) {
             switch(SystemHelper.CurrentDeviceType){
                 case DeviceType.C2000:
-                    return ((int)e.KeyCode == (int)ConstantKeyValue.Scan);
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.Scan || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12) || ((int)e.KeyCode == (int)ConstantKeyValue.F7) || ((int)e.KeyCode == (int)ConstantKeyValue.F8)); 
                 case DeviceType.C5000:
-                    return ((int)e.KeyCode == (int)ConstantKeyValue.Enter);
+                    return (((int)e.KeyCode == (int)ConstantKeyValue.Enter) || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12));
             }
             return false;
         }
 
     }
+
+
+    class CLR_WIFI
+    {
+
+        #region API
+        //  turn on WIFI Modem
+        [DllImport("DeviceAPI.dll", EntryPoint = "WifiOn")]
+        private static extern bool WifiOn();
+
+
+        //  turn off WIFI Modem
+        [DllImport("DeviceAPI.dll", EntryPoint = "WifiOff")]
+        private static extern bool WifiOff();
+
+        //  Obtain signal value of WIFI
+        [DllImport("DeviceAPI.dll", EntryPoint = "WifiDriver_whether_loaded")]
+        private static extern bool WifiDriver_whether_loaded();
+        #endregion
+
+
+        public static void ВключитьРадио() {
+
+            SystemHelper.GetDeviceType();
+            if (SystemHelper.DeviceTypeIsKown) if (!CLR_WIFI.isConnected()) CLR_WIFI.PowerOn();
+
+        }
+
+        //turn on WIFI Modem  
+        public static bool PowerOn()
+        {
+            return WifiOn();
+        }
+
+
+        //turn off WIFI Modem
+        public static bool PowerOff()
+        {
+            return WifiOff();
+        }
+
+        public static bool isConnected()
+        {
+            if (WifiDriver_whether_loaded())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+    }
+
+
+
 }

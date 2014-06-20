@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace СкладскойУчет
 {
+   
     static class Program
     {
         /// <summary>

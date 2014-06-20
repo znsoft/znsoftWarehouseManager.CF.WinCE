@@ -28,7 +28,7 @@ namespace СкладскойУчет.СсылкаНаСервис {
         
         /// <remarks/>
         public forTSD() {
-            this.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws";
+            this.Url = "http://adm-zheludkov.partner.ru/zheludkov_sklad/ws/TSD.1cws";
             
         }
         

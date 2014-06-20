@@ -24,7 +24,9 @@ namespace СкладскойУчет
 
         public ФормаАвторизации()
         {
+            CLR_WIFI.ВключитьРадио();
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
