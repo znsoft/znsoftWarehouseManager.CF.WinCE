@@ -1,6 +1,4 @@
-﻿//#define class Класс  //;
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +9,21 @@ using System.Windows.Forms;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using SDK.English;
 
 namespace СкладскойУчет
 {
     public partial class ОсновноеМеню : Form
     {
+        private РаботаСоСканером Сканер;
+        
+        
         public ОсновноеМеню()
         {
             InitializeComponent();
             this.KeyPreview = true;
+            Сканер = new РаботаСоСканером();
+            
             Выход.Focus();
         }
 
@@ -32,7 +36,7 @@ namespace СкладскойУчет
 
         public void _Перемещение()
         {
-
+            //Перемещение.Text = "1."+РаботаСоСканером.Scan();
 
         }
 
@@ -67,6 +71,28 @@ namespace СкладскойУчет
         private void ОсновноеМеню_KeyDown(object sender, KeyEventArgs e)
         {
             var Панель = Табулятор.TabPages[Табулятор.SelectedIndex].Controls;
+            if (РаботаСоСканером.НажатаКлавишаСкан(e)) {
+                string СтрокаСкан = РаботаСоСканером.Scan();
+                if (СтрокаСкан.Length != 0) {
+                    Табулятор.SelectedIndex = 1;
+                    Информация.Text = "Получение информации...";
+                    Табулятор.Update();
+                    var Обмен = new Пакеты("Информация");
+                    var ОтветСервера = Обмен.ПослатьСтроку(СтрокаСкан, СоединениеВебСервис.ИдентификаторСоединения, 0);
+                    Информация.Text = "Информация по коду не найдена, сканируйте снова";
+                    foreach (var СтрокаОтвета in ОтветСервера)
+                    {
+                        if (СтрокаОтвета.Код.Contains("ТекстИСвойства")) { Информация.Text = СтрокаОтвета.Наименование; return; }
+                    }
+                    return;
+                }
+            
+            
+            }
+
+
+
+
             foreach (var ЭлементФормы in Панель)
                 if (ЭлементФормы is Button)
                 {
@@ -99,6 +125,9 @@ namespace СкладскойУчет
             {
                 // Enter
             }
+
+
+
 
         }
 

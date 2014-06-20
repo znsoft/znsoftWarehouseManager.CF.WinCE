@@ -58,8 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateXML.cs" />
+    <Compile Include="SystemHelper.cs" />
     <Compile Include="Пакеты.cs" />
+    <Compile Include="РаботаСоСканером.cs" />
     <Compile Include="СоединениеВебСервис.cs">
     </Compile>
     <Compile Include="СохранениеЗагрузкаНастроек.cs" />
