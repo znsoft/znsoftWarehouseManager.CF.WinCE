@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace СкладскойУчет
 {
-    class Настройки
+    public class Настройки
     {
 
         [Serializable]
