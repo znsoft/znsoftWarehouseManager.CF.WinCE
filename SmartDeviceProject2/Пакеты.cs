@@ -31,14 +31,32 @@ namespace СкладскойУчет
         public СтрокаНоменклатуры[] Послать()
         {
                 ОтветСервера = Соединение.Сервис.ОбменТСД(Операция, СписокСтрок);
+
             return ОтветСервера;
 
         }
 
         public СтрокаНоменклатуры[] ПослатьСтроку(string Код, string Наименование, int Количество)
         {
-            ПодготовитьСтроку(Код, Наименование, Количество);
-            return Послать();
+            try
+            {
+                ПодготовитьСтроку(Код, Наименование, Количество);
+                return Послать();
+            }
+            catch (System.Exception e)
+            {
+                Ошибка ОкноОшибки = new Ошибка(e.Message);
+                ОкноОшибки.ShowDialog();
+
+                return null;
+
+            }
+            //catch (System.Net.WebException we)
+            //{
+            //    var r = (System.Net.HttpWebResponse)we.Response;
+            //    r.StatusCode = System.Net.HttpStatusCode.Unauthorized;
+            //   //we.Status = ()System.Net.WebExceptionStatus 
+            //}
         }
 
     }

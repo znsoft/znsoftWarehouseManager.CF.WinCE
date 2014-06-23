@@ -52,6 +52,7 @@ namespace СкладскойУчет
             }
             catch (System.Exception ex)
             {
+                
                 return string.Empty;
             }
 

@@ -19,6 +19,7 @@
     <FormFactorID>
     </FormFactorID>
     <ApplicationIcon>main.ico</ApplicationIcon>
+    <StartupObject>СкладскойУчет.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +60,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SystemHelper.cs" />
+    <Compile Include="Окно_выбора_из_списка.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Окно_выбора_из_списка.Designer.cs">
+      <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ошибка.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ошибка.Designer.cs">
+      <DependentUpon>Ошибка.cs</DependentUpon>
+    </Compile>
     <Compile Include="Пакеты.cs" />
+    <Compile Include="ПоследовательностьОкон.cs" />
     <Compile Include="РаботаСоСканером.cs" />
     <Compile Include="СоединениеВебСервис.cs">
     </Compile>
@@ -79,6 +93,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Окно_выбора_из_списка.resx">
+      <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ошибка.resx">
+      <DependentUpon>Ошибка.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="ФормаАвторизации.resx">
       <DependentUpon>ФормаАвторизации.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -92,6 +114,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ФормаНастроек.resx">
+      <DependentUpon>ФормаНастроек.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -101,6 +127,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаНастроек.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаНастроек.Designer.cs">
+      <DependentUpon>ФормаНастроек.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +165,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\System.Data.SqlServerCe.dll" />
     <Content Include="main.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />

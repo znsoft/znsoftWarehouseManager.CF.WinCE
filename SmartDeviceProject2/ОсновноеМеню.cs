@@ -10,6 +10,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using SDK.English;
+using System.Data.SqlTypes;
 
 namespace СкладскойУчет
 {
@@ -34,11 +35,20 @@ namespace СкладскойУчет
             this.Close();
         }
 
+        public void _Подбор()
+        {
+            ПоследовательностьОкон Окна = new ПоследовательностьОкон("Подбор");
+            Окна.ЗапуститьСледующееОкно();
+
+        }
+
         public void _Перемещение()
         {
             //Перемещение.Text = "1."+РаботаСоСканером.Scan();
 
         }
+
+
 
         public void _Инвентаризация()
         {
@@ -51,10 +61,13 @@ namespace СкладскойУчет
             Пользователь.Text = Авторизован.UserName;
         }
 
+        
+
         private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;
             MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+
             method.Invoke(this, null);
         }
 

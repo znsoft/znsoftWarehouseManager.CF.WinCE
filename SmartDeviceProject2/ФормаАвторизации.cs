@@ -12,55 +12,65 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 
-
 namespace СкладскойУчет
 {
-
     public partial class ФормаАвторизации : Form
     {
-
         Настройки ПараметрыСеанса = new Настройки();
-
 
         public ФормаАвторизации()
         {
             CLR_WIFI.ВключитьРадио();
             InitializeComponent();
-            
         }
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ПараметрыСеанса.Загрузить();
+            
+
             var СлучайноеЧисло = new Random();
             СоединениеВебСервис.ИдентификаторСоединения = СлучайноеЧисло.Next().ToString();
+            ПолучитьСписокПользователей();
+
+
+        }
+
+        private void ПолучитьСписокПользователей()
+        {
+            Сотрудник.Items.Clear();
             var Обмен = new Пакеты("СписокПользователей");
+            var Url = ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
+            Обмен.Соединение.Сервис.Url = Url;
             var СписокПользователей = Обмен.ПослатьСтроку("1", СоединениеВебСервис.ИдентификаторСоединения, 0);
+            if (СписокПользователей == null) return;
             string Текущийсклад = "";
             foreach (var СтрокаПользователь in СписокПользователей)
             {
-                Текущийсклад = СтрокаПользователь.Код; 
+                Текущийсклад = СтрокаПользователь.Код;
                 Сотрудник.Items.Add(СтрокаПользователь.Наименование);
             }
-            if (ПараметрыСеанса.Хранилище.ИмяПользователя == null) 
-                {
-                    Сотрудник.Focus(); 
-                }
-                else
-                {
-                    Сотрудник.Text = ПараметрыСеанса.Хранилище.ИмяПользователя;
-                    Пароль.Focus();
-                }
+            if (ПараметрыСеанса.Хранилище.ИмяПользователя == null)
+            {
+                Сотрудник.Focus();
+            }
+            else
+            {
+                Сотрудник.Text = ПараметрыСеанса.Хранилище.ИмяПользователя;
+                Пароль.Focus();
+            }
             ТекущийСкладТекст.Text = Текущийсклад;
-
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             bool УспешнаяАвторизация = false;
             var Обмен = new Пакеты("ТСД");
-            
+            var Url = ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
+            Обмен.Соединение.Сервис.Url = Url;
+
             Обмен.Соединение.Сервис.Credentials = new NetworkCredential(Сотрудник.Text, Пароль.Text);
             var СписокПользователей = Обмен.ПослатьСтроку("Авторизация", СоединениеВебСервис.ИдентификаторСоединения, 0);
 
@@ -70,21 +80,22 @@ namespace СкладскойУчет
                 СоединениеВебСервис.СтрокаДоступныхРолей = СтрокаПользователь.Код;
             }
 
-                if (УспешнаяАвторизация)
-                {
-                    ПараметрыСеанса.Хранилище.ИмяПользователя = Сотрудник.Text;
-                    ПараметрыСеанса.Сохранить();
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                    return;
-                }
-            
-            
+            if (УспешнаяАвторизация)
+            {
+                ПараметрыСеанса.Хранилище.ИмяПользователя = Сотрудник.Text;
+                ПараметрыСеанса.Сохранить();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                return;
+            }
+
+            ТекстОшибки.Text = "Ошибка логина или пароля";
+
         }
 
 
 
-       
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -105,7 +116,7 @@ namespace СкладскойУчет
 
         private void ПоказыватьПароль_CheckStateChanged(object sender, EventArgs e)
         {
-            Пароль.PasswordChar = ПоказыватьПароль.Checked?(char)0:'*';
+            Пароль.PasswordChar = ПоказыватьПароль.Checked ? (char)0 : '*';
             Пароль.Update();
         }
 
@@ -117,6 +128,15 @@ namespace СкладскойУчет
         private void Пароль_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) button1_Click(sender, e);
+        }
+
+        private void Меню_Click(object sender, EventArgs e)
+        {
+            var ФормаНастроек = new ФормаНастроек();
+            var РезультатНастроек = ФормаНастроек.ShowDialog();
+            if (РезультатНастроек == DialogResult.OK) {
+                ПолучитьСписокПользователей();
+            }
         }
     }
 }

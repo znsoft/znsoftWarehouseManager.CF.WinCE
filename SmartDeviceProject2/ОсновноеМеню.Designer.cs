@@ -38,6 +38,7 @@
             this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
             this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.Информация = new System.Windows.Forms.TextBox();
+            this.Подбор = new System.Windows.Forms.Button();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -51,28 +52,28 @@
             // 
             // Выход
             // 
-            this.Выход.Location = new System.Drawing.Point(3, 186);
+            this.Выход.Location = new System.Drawing.Point(3, 178);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(226, 38);
-            this.Выход.TabIndex = 3;
+            this.Выход.TabIndex = 4;
             this.Выход.Text = "0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Перемещение
             // 
-            this.Перемещение.Location = new System.Drawing.Point(3, 142);
+            this.Перемещение.Location = new System.Drawing.Point(3, 105);
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);
-            this.Перемещение.TabIndex = 2;
-            this.Перемещение.Text = "1.Переместить";
+            this.Перемещение.TabIndex = 3;
+            this.Перемещение.Text = "3.Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Инвентаризация
             // 
-            this.Инвентаризация.Location = new System.Drawing.Point(3, 100);
+            this.Инвентаризация.Location = new System.Drawing.Point(3, 63);
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);
-            this.Инвентаризация.TabIndex = 1;
+            this.Инвентаризация.TabIndex = 2;
             this.Инвентаризация.Text = "2.Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
@@ -90,6 +91,7 @@
             // Панель_ОсновногоМеню
             // 
             this.Панель_ОсновногоМеню.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_ОсновногоМеню.Controls.Add(this.Подбор);
             this.Панель_ОсновногоМеню.Controls.Add(this.Инвентаризация);
             this.Панель_ОсновногоМеню.Controls.Add(this.Выход);
             this.Панель_ОсновногоМеню.Controls.Add(this.Перемещение);
@@ -109,8 +111,6 @@
             // 
             // Информация
             // 
-            this.Информация.AcceptsReturn = true;
-            this.Информация.AcceptsTab = true;
             this.Информация.BackColor = System.Drawing.SystemColors.Info;
             this.Информация.Location = new System.Drawing.Point(4, 7);
             this.Информация.Multiline = true;
@@ -120,6 +120,15 @@
             this.Информация.Size = new System.Drawing.Size(233, 212);
             this.Информация.TabIndex = 0;
             this.Информация.Text = "Сканируйте Штрих код для получения информации о нем";
+            // 
+            // Подбор
+            // 
+            this.Подбор.Location = new System.Drawing.Point(3, 21);
+            this.Подбор.Name = "Подбор";
+            this.Подбор.Size = new System.Drawing.Size(226, 36);
+            this.Подбор.TabIndex = 1;
+            this.Подбор.Text = "1.Подбор";
+            this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // ОсновноеМеню
             // 
@@ -154,5 +163,6 @@
         private System.Windows.Forms.TabPage Панель_ОсновногоМеню;
         private System.Windows.Forms.TabPage Панель_Информации;
         private System.Windows.Forms.TextBox Информация;
+        private System.Windows.Forms.Button Подбор;
     }
 }

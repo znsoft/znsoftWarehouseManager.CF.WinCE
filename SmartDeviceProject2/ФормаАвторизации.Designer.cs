@@ -48,6 +48,7 @@
             // Меню
             // 
             this.Меню.Text = "Настройки";
+            this.Меню.Click += new System.EventHandler(this.Меню_Click);
             // 
             // Войти
             // 
