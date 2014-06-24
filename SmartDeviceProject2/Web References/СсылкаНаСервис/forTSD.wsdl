@@ -7,11 +7,23 @@
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Номенклатура" type="xs1:СтрокаНоменклатуры" />
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="Стр">
+        <xs:sequence>
+          <xs:element name="П1" type="xs:string" />
+          <xs:element name="П2" type="xs:string" />
+          <xs:element name="П3" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="СтрокаНоменклатуры">
         <xs:sequence>
           <xs:element name="Код" type="xs:string" />
           <xs:element name="Наименование" type="xs:string" />
           <xs:element name="Количество" type="xs:integer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Таб">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Стр" type="xs1:Стр" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ОбменТСД">
@@ -43,6 +55,22 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="Обмен">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Опер" type="xs:string" />
+            <xs:element name="Доп" nillable="true" type="xs:string" />
+            <xs:element name="Список" nillable="true" type="xs1:Таб" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ОбменResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs1:Таб" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
   </types>
   <message name="ОбменТСДRequestMessage">
@@ -57,6 +85,12 @@
   <message name="updatefirmwareResponseMessage">
     <part name="parameters" element="xsd1:updatefirmwareResponse" />
   </message>
+  <message name="ОбменRequestMessage">
+    <part name="parameters" element="xsd1:Обмен" />
+  </message>
+  <message name="ОбменResponseMessage">
+    <part name="parameters" element="xsd1:ОбменResponse" />
+  </message>
   <portType name="forTSDPortType">
     <operation name="ОбменТСД">
       <input message="xsd1:ОбменТСДRequestMessage" />
@@ -65,6 +99,10 @@
     <operation name="updatefirmware">
       <input message="xsd1:updatefirmwareRequestMessage" />
       <output message="xsd1:updatefirmwareResponseMessage" />
+    </operation>
+    <operation name="Обмен">
+      <input message="xsd1:ОбменRequestMessage" />
+      <output message="xsd1:ОбменResponseMessage" />
     </operation>
   </portType>
   <binding name="forTSDSoapBinding" type="xsd1:forTSDPortType">
@@ -87,6 +125,15 @@
         <soapbind:body use="literal" />
       </output>
     </operation>
+    <operation name="Обмен">
+      <soapbind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:Обмен" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
   </binding>
   <binding name="forTSDSoap12Binding" type="xsd1:forTSDPortType">
     <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -101,6 +148,15 @@
     </operation>
     <operation name="updatefirmware">
       <soap12bind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:updatefirmware" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Обмен">
+      <soap12bind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:Обмен" style="document" />
       <input>
         <soap12bind:body use="literal" />
       </input>

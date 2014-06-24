@@ -37,8 +37,8 @@
             this.Табулятор = new System.Windows.Forms.TabControl();
             this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
             this.Панель_Информации = new System.Windows.Forms.TabPage();
-            this.Информация = new System.Windows.Forms.TextBox();
             this.Подбор = new System.Windows.Forms.Button();
+            this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -103,23 +103,11 @@
             // Панель_Информации
             // 
             this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
-            this.Панель_Информации.Controls.Add(this.Информация);
+            this.Панель_Информации.Controls.Add(this.СписокИнформации);
             this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
             this.Панель_Информации.Name = "Панель_Информации";
             this.Панель_Информации.Size = new System.Drawing.Size(240, 228);
             this.Панель_Информации.Text = "Поиск>";
-            // 
-            // Информация
-            // 
-            this.Информация.BackColor = System.Drawing.SystemColors.Info;
-            this.Информация.Location = new System.Drawing.Point(4, 7);
-            this.Информация.Multiline = true;
-            this.Информация.Name = "Информация";
-            this.Информация.ReadOnly = true;
-            this.Информация.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Информация.Size = new System.Drawing.Size(233, 212);
-            this.Информация.TabIndex = 0;
-            this.Информация.Text = "Сканируйте Штрих код для получения информации о нем";
             // 
             // Подбор
             // 
@@ -129,6 +117,18 @@
             this.Подбор.TabIndex = 1;
             this.Подбор.Text = "1.Подбор";
             this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            // 
+            // СписокИнформации
+            // 
+            this.СписокИнформации.AcceptsReturn = true;
+            this.СписокИнформации.Location = new System.Drawing.Point(8, 4);
+            this.СписокИнформации.Multiline = true;
+            this.СписокИнформации.Name = "СписокИнформации";
+            this.СписокИнформации.ReadOnly = true;
+            this.СписокИнформации.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.СписокИнформации.Size = new System.Drawing.Size(225, 221);
+            this.СписокИнформации.TabIndex = 0;
+            this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
             // 
             // ОсновноеМеню
             // 
@@ -162,7 +162,7 @@
         private System.Windows.Forms.TabControl Табулятор;
         private System.Windows.Forms.TabPage Панель_ОсновногоМеню;
         private System.Windows.Forms.TabPage Панель_Информации;
-        private System.Windows.Forms.TextBox Информация;
         private System.Windows.Forms.Button Подбор;
+        private System.Windows.Forms.TextBox СписокИнформации;
     }
 }

@@ -28,8 +28,7 @@ namespace СкладскойУчет.СсылкаНаСервис {
         
         /// <remarks/>
         public forTSD() {
-            this.Url = "http://adm-zheludkov.partner.ru/zheludkov_sklad/ws/TSD.1cws";
-            
+            this.Url = "http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws";
         }
         
         /// <remarks/>
@@ -37,7 +36,6 @@ namespace СкладскойУчет.СсылкаНаСервис {
         [return: System.Xml.Serialization.XmlArrayAttribute("return")]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("Номенклатура", IsNullable=false)]
         public СтрокаНоменклатуры[] ОбменТСД(string ВидОперации, [System.Xml.Serialization.XmlArrayItemAttribute("Номенклатура", IsNullable=false)] СтрокаНоменклатуры[] Список) {
-
             object[] results = this.Invoke("ОбменТСД", new object[] {
                         ВидОперации,
                         Список});
@@ -76,6 +74,32 @@ namespace СкладскойУчет.СсылкаНаСервис {
         public byte[] Endupdatefirmware(System.IAsyncResult asyncResult) {
             object[] results = this.EndInvoke(asyncResult);
             return ((byte[])(results[0]));
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.dns-shop.tsd.ru#forTSD:Обмен", RequestNamespace="http://www.dns-shop.tsd.ru", ResponseNamespace="http://www.dns-shop.tsd.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("return", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public Стр[] Обмен(string Опер, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Доп, [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)] Стр[] Список) {
+            object[] results = this.Invoke("Обмен", new object[] {
+                        Опер,
+                        Доп,
+                        Список});
+            return ((Стр[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginОбмен(string Опер, string Доп, Стр[] Список, System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("Обмен", new object[] {
+                        Опер,
+                        Доп,
+                        Список}, callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public Стр[] EndОбмен(System.IAsyncResult asyncResult) {
+            object[] results = this.EndInvoke(asyncResult);
+            return ((Стр[])(results[0]));
         }
     }
     
@@ -119,6 +143,49 @@ namespace СкладскойУчет.СсылкаНаСервис {
             }
             set {
                 this.количествоField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.dns-shop.tsd.ru")]
+    public partial class Стр {
+        
+        private string п1Field;
+        
+        private string п2Field;
+        
+        private string п3Field;
+        
+        /// <remarks/>
+        public string П1 {
+            get {
+                return this.п1Field;
+            }
+            set {
+                this.п1Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string П2 {
+            get {
+                return this.п2Field;
+            }
+            set {
+                this.п2Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string П3 {
+            get {
+                return this.п3Field;
+            }
+            set {
+                this.п3Field = value;
             }
         }
     }

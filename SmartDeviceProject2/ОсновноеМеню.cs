@@ -17,14 +17,14 @@ namespace СкладскойУчет
     public partial class ОсновноеМеню : Form
     {
         private РаботаСоСканером Сканер;
-        
-        
+
+
         public ОсновноеМеню()
         {
             InitializeComponent();
             this.KeyPreview = true;
             Сканер = new РаботаСоСканером();
-            
+
             Выход.Focus();
         }
 
@@ -61,13 +61,28 @@ namespace СкладскойУчет
             Пользователь.Text = Авторизован.UserName;
         }
 
-        
+
 
         private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;
-            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+            switch(Кнопка.Name){
+                case "Выход":
+                    _Выход();
+                    return;
+                case "Подбор":
+                    _Подбор();
+                    return;
+                case "Перемещение":
+                    _Перемещение();
+                    return;
+                case "Инвентаризация":
+                    _Инвентаризация();
+                    return;
+            
+            }
 
+            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
             method.Invoke(this, null);
         }
 
@@ -78,29 +93,23 @@ namespace СкладскойУчет
 
         private void ОсновноеМеню_Closed(object sender, EventArgs e)
         {
-            new Пакеты("ТСД").ПослатьСтроку("Выход", "Выход", 123);
+            new Пакеты("Выход").ПослатьСтроку(СоединениеВебСервис.ИдентификаторСоединения);
         }
-        
+
+
         private void ОсновноеМеню_KeyDown(object sender, KeyEventArgs e)
         {
             var Панель = Табулятор.TabPages[Табулятор.SelectedIndex].Controls;
-            if (РаботаСоСканером.НажатаКлавишаСкан(e)) {
+            if (РаботаСоСканером.НажатаКлавишаСкан(e))
+            {
                 string СтрокаСкан = РаботаСоСканером.Scan();
-                if (СтрокаСкан.Length != 0) {
-                    Табулятор.SelectedIndex = 1;
-                    Информация.Text = "Получение информации...";
-                    Табулятор.Update();
-                    var Обмен = new Пакеты("Информация");
-                    var ОтветСервера = Обмен.ПослатьСтроку(СтрокаСкан, СоединениеВебСервис.ИдентификаторСоединения, 0);
-                    Информация.Text = "Информация по коду не найдена, сканируйте снова";
-                    foreach (var СтрокаОтвета in ОтветСервера)
-                    {
-                        if (СтрокаОтвета.Код.Contains("ТекстИСвойства")) { Информация.Text = СтрокаОтвета.Наименование; return; }
-                    }
-                    return;
+                if (СтрокаСкан.Length != 0)
+                {
+                    ПолучениеИнформации(СтрокаСкан);
                 }
-            
-            
+                return;
+
+
             }
 
 
@@ -128,7 +137,7 @@ namespace СкладскойУчет
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.Left))
             {
-               Табулятор.SelectedIndex = 0;
+                Табулятор.SelectedIndex = 0;
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.Right))
             {
@@ -142,6 +151,31 @@ namespace СкладскойУчет
 
 
 
+        }
+
+        private void ПолучениеИнформации(string СтрокаСкан)
+        {
+
+            Табулятор.SelectedIndex = 1;
+            СписокИнформации.Text = "Получение информации...";
+            Табулятор.Update();
+
+            var Обмен = new Пакеты("Информация");
+            var ОтветСервера = Обмен.ПослатьСтроку(СтрокаСкан);
+
+            if (ОтветСервера == null || ОтветСервера.Count() == 0)
+            {
+                СписокИнформации.Text = "Информация по коду не найдена";
+                return;
+            }
+            string Информация = "";
+            foreach (var СтрокаОтвета in ОтветСервера)
+            {
+
+                Информация = Информация + СтрокаОтвета.П2 + "\r\n" + "\r\n";
+                // return;
+            }
+            СписокИнформации.Text = Информация;
         }
 
     }

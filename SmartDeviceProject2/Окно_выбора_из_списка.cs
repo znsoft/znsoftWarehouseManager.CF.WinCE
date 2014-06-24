@@ -14,29 +14,39 @@ namespace СкладскойУчет
 {
     public partial class Окно_выбора_из_списка : Form
     {
-        Пакеты Обмен = new Пакеты("ВыборЗадания");
-        СтрокаНоменклатуры[] Строки;
+        Пакеты Обмен; //= new Пакеты("ВыборЗадания");
+        public Стр[] Строки;
 
 
-        public Окно_выбора_из_списка(ПоследовательностьОкон ПоследовательностьОкон, СтрокаНоменклатуры[] Строки)
+        public Окно_выбора_из_списка(ПоследовательностьОкон ПоследовательностьОкон, Стр[] Строки)
         {
             InitializeComponent();
+            Обмен = new Пакеты("ВыборЗадания");
+
             //this.Строки = Строки;
         }
 
         public void _Назад()
         {
-            MessageBox.Show("Test");
-        
-        
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         
         }
+
+        public void _Далее()
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+
+        }
+
+
 
          private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;
             MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
-             if(method == null) 
+             if(method != null) 
             method.Invoke(this, null);
         }
 
