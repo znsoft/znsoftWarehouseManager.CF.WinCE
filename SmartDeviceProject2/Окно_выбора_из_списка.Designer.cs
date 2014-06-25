@@ -42,6 +42,7 @@
             this.СписокВыбора.Name = "СписокВыбора";
             this.СписокВыбора.Size = new System.Drawing.Size(234, 234);
             this.СписокВыбора.TabIndex = 0;
+            this.СписокВыбора.View = System.Windows.Forms.View.Details;
             // 
             // Назад
             // 
@@ -76,6 +77,7 @@
             this.Name = "Окно_выбора_из_списка";
             this.Text = "Окно_выбора_из_списка";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.Окно_выбора_из_списка_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_выбора_из_списка_KeyDown);
             this.ResumeLayout(false);
 

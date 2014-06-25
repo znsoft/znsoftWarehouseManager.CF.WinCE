@@ -159,6 +159,10 @@ namespace СкладскойУчет.СсылкаНаСервис {
         
         private string п3Field;
         
+        private string п4Field;
+        
+        private string п5Field;
+        
         /// <remarks/>
         public string П1 {
             get {
@@ -186,6 +190,26 @@ namespace СкладскойУчет.СсылкаНаСервис {
             }
             set {
                 this.п3Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string П4 {
+            get {
+                return this.п4Field;
+            }
+            set {
+                this.п4Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string П5 {
+            get {
+                return this.п5Field;
+            }
+            set {
+                this.п5Field = value;
             }
         }
     }
