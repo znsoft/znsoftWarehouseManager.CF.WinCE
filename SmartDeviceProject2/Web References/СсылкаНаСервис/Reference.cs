@@ -79,17 +79,18 @@ namespace СкладскойУчет.СсылкаНаСервис {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.dns-shop.tsd.ru#forTSD:Обмен", RequestNamespace="http://www.dns-shop.tsd.ru", ResponseNamespace="http://www.dns-shop.tsd.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayAttribute("return", IsNullable=true)]
-        [return: System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public Стр[] Обмен(string Опер, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Доп, [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)] Стр[] Список) {
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("a", IsNullable=false)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("v", IsNullable=false, NestingLevel=1)]
+        public string[][] Обмен(string Опер, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Доп, [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)] [System.Xml.Serialization.XmlArrayItemAttribute("a", IsNullable=false)] [System.Xml.Serialization.XmlArrayItemAttribute("v", IsNullable=false, NestingLevel=1)] string[][] Список) {
             object[] results = this.Invoke("Обмен", new object[] {
                         Опер,
                         Доп,
                         Список});
-            return ((Стр[])(results[0]));
+            return ((string[][])(results[0]));
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginОбмен(string Опер, string Доп, Стр[] Список, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginОбмен(string Опер, string Доп, string[][] Список, System.AsyncCallback callback, object asyncState) {
             return this.BeginInvoke("Обмен", new object[] {
                         Опер,
                         Доп,
@@ -97,9 +98,9 @@ namespace СкладскойУчет.СсылкаНаСервис {
         }
         
         /// <remarks/>
-        public Стр[] EndОбмен(System.IAsyncResult asyncResult) {
+        public string[][] EndОбмен(System.IAsyncResult asyncResult) {
             object[] results = this.EndInvoke(asyncResult);
-            return ((Стр[])(results[0]));
+            return ((string[][])(results[0]));
         }
     }
     
@@ -143,73 +144,6 @@ namespace СкладскойУчет.СсылкаНаСервис {
             }
             set {
                 this.количествоField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.dns-shop.tsd.ru")]
-    public partial class Стр {
-        
-        private string п1Field;
-        
-        private string п2Field;
-        
-        private string п3Field;
-        
-        private string п4Field;
-        
-        private string п5Field;
-        
-        /// <remarks/>
-        public string П1 {
-            get {
-                return this.п1Field;
-            }
-            set {
-                this.п1Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string П2 {
-            get {
-                return this.п2Field;
-            }
-            set {
-                this.п2Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string П3 {
-            get {
-                return this.п3Field;
-            }
-            set {
-                this.п3Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string П4 {
-            get {
-                return this.п4Field;
-            }
-            set {
-                this.п4Field = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string П5 {
-            get {
-                return this.п5Field;
-            }
-            set {
-                this.п5Field = value;
             }
         }
     }

@@ -166,9 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\System.Data.SqlServerCe.dll" />
-    <None Include="Web References\СсылкаНаСервис\Стр.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
     <Content Include="main.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
