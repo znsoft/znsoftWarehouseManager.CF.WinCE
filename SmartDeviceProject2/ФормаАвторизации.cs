@@ -62,6 +62,7 @@ namespace СкладскойУчет
                 Пароль.Focus();
             }
             ТекущийСкладТекст.Text = Текущийсклад;
+            СписокПользователей = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,6 +85,7 @@ namespace СкладскойУчет
             {
                 ПараметрыСеанса.Хранилище.ИмяПользователя = Сотрудник.Text;
                 ПараметрыСеанса.Сохранить();
+                СписокПользователей = null;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
                 return;

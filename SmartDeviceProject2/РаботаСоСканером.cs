@@ -50,7 +50,7 @@ namespace СкладскойУчет
                 }
                 return barcode;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 
                 return string.Empty;
