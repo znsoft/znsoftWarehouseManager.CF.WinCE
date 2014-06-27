@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using System.Net;
 
 namespace СкладскойУчет
 {
@@ -77,9 +78,10 @@ namespace СкладскойУчет
 
         public string УзнатьСобственныйIP()
         {
-            String host = System.Net.Dns.GetHostName();
-            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(host).AddressList[0];
-            return ip.ToString();
+            var ИмяЭтойМашины = Dns.GetHostName();
+            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First();
+
+            return IpЭтойМашины.ToString();
         }
 
         public string ПолучитьПолнуюВебСсылку()
