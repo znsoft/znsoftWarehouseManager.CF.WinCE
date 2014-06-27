@@ -33,6 +33,7 @@
             this.Инструкция = new System.Windows.Forms.Label();
             this.Назад = new System.Windows.Forms.Button();
             this.Пользователь = new System.Windows.Forms.Label();
+            this.СписокВыбора = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // Инструкция
@@ -40,15 +41,16 @@
             this.Инструкция.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.Инструкция.Location = new System.Drawing.Point(4, 4);
             this.Инструкция.Name = "Инструкция";
-            this.Инструкция.Size = new System.Drawing.Size(233, 187);
+            this.Инструкция.Size = new System.Drawing.Size(233, 176);
+            this.Инструкция.Tag = "Инструкция";
             this.Инструкция.Text = "Необходимо сканировать динамическую ячейку для начала выполнения задания на подбо" +
                 "р филиала";
             // 
             // Назад
             // 
-            this.Назад.Location = new System.Drawing.Point(41, 198);
+            this.Назад.Location = new System.Drawing.Point(41, 281);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(156, 41);
+            this.Назад.Size = new System.Drawing.Size(156, 24);
             this.Назад.TabIndex = 1;
             this.Назад.Text = "0.Назад";
             this.Назад.Click += new System.EventHandler(this.Назад_Click);
@@ -57,9 +59,22 @@
             // 
             this.Пользователь.BackColor = System.Drawing.SystemColors.Info;
             this.Пользователь.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Пользователь.Location = new System.Drawing.Point(0, 252);
+            this.Пользователь.Location = new System.Drawing.Point(0, 308);
             this.Пользователь.Name = "Пользователь";
             this.Пользователь.Size = new System.Drawing.Size(240, 12);
+            // 
+            // СписокВыбора
+            // 
+            this.СписокВыбора.BackColor = System.Drawing.SystemColors.Info;
+            this.СписокВыбора.Enabled = false;
+            this.СписокВыбора.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.СписокВыбора.Location = new System.Drawing.Point(0, 183);
+            this.СписокВыбора.Name = "СписокВыбора";
+            this.СписокВыбора.Size = new System.Drawing.Size(240, 92);
+            this.СписокВыбора.TabIndex = 3;
+            this.СписокВыбора.Tag = "Таблица";
+            this.СписокВыбора.View = System.Windows.Forms.View.Details;
+            this.СписокВыбора.Visible = false;
             // 
             // Окно_сканирования_ТС
             // 
@@ -68,6 +83,7 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
             this.ControlBox = false;
+            this.Controls.Add(this.СписокВыбора);
             this.Controls.Add(this.Пользователь);
             this.Controls.Add(this.Назад);
             this.Controls.Add(this.Инструкция);
@@ -78,7 +94,6 @@
             this.Name = "Окно_сканирования_ТС";
             this.Text = "Выбор динамической ячейки подбора";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Окно_сканирования_ТС_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_сканирования_ТС_KeyDown);
             this.ResumeLayout(false);
@@ -90,6 +105,7 @@
         private System.Windows.Forms.Label Инструкция;
         private System.Windows.Forms.Button Назад;
         private System.Windows.Forms.Label Пользователь;
+        private System.Windows.Forms.ListView СписокВыбора;
 
     }
 }

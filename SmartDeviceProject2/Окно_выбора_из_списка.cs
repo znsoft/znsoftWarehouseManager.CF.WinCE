@@ -124,45 +124,10 @@ namespace СкладскойУчет
          }
 
 
-         private void ДобавитьКолонку(string Колонка, int Ширина) {
-
-             var columnHeader = new ColumnHeader();
-             columnHeader.Text = Ширина == 0?"":Колонка;
-             columnHeader.Width = Ширина;
-             СписокВыбора.Columns.Add(columnHeader);
-         }
 
          private void Окно_выбора_из_списка_Load(object sender, EventArgs e)
          {
-             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
-            Пользователь.Text = Авторизован.UserName;
-             bool ЗаполнениеТаблицы = false;
-             foreach (var Строка in Последовательность.ОтветСервера)
-             {
-                 if (ЗаполнениеТаблицы) {
-                     if (Строка[0].Contains("КонецТаблицы")) { ЗаполнениеТаблицы = false; continue; }
-                     ListViewItem НоваяСтрока = new ListViewItem();
-                     НоваяСтрока.Text = Строка[0];
-                     for(int i = 1;i<Строка.Count();i++)
-                     {
-                         НоваяСтрока.SubItems.Add(Строка[i]);
-                     }
-
-                     for (int i = 1; i < Строка.Count(); i++)
-                     {
-                         НоваяСтрока.SubItems.Add(Строка[i]);
-                     }
-
-                     СписокВыбора.Items.Add(НоваяСтрока);
-                     continue;
-                 }
-                 if (Строка[0].Contains("ДобавитьКолонкуСписка")) ДобавитьКолонку(Строка[1], int.Parse(Строка[2]));
-                 if (Строка[0].Contains("ЗаполнитьТаблицу"))  ЗаполнениеТаблицы = true; 
-                 if (Строка[0].Contains("КолонкаРучногоВыбора"))  КолонкаРучногоВыбора = int.Parse(Строка[1]); 
-                 if (Строка[0].Contains("ТекстИнструкции")) Инструкция.Text = Строка[1];
-             
-             
-             }
+             ЗаполнениеЭлементовФормы.ЗаполнитьФорму(this,ref Последовательность.ОтветСервера,out КолонкаРучногоВыбора);
          }
 
          private void СписокВыбора_ItemActivate(object sender, EventArgs e)

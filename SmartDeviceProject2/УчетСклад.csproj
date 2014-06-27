@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SystemHelper.cs" />
+    <Compile Include="ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Окно_выбора_из_списка.cs">
       <SubType>Form</SubType>
     </Compile>
