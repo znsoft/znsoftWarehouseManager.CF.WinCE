@@ -78,7 +78,7 @@
             this.Пароль.Location = new System.Drawing.Point(4, 152);
             this.Пароль.Name = "Пароль";
             this.Пароль.PasswordChar = '*';
-            this.Пароль.Size = new System.Drawing.Size(230, 21);
+            this.Пароль.Size = new System.Drawing.Size(230, 23);
             this.Пароль.TabIndex = 7;
             this.Пароль.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Пароль_KeyDown);
             // 
@@ -86,7 +86,7 @@
             // 
             this.Сотрудник.Location = new System.Drawing.Point(4, 95);
             this.Сотрудник.Name = "Сотрудник";
-            this.Сотрудник.Size = new System.Drawing.Size(230, 22);
+            this.Сотрудник.Size = new System.Drawing.Size(230, 23);
             this.Сотрудник.TabIndex = 11;
             this.Сотрудник.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -101,7 +101,6 @@
             // 
             // ТекущийСкладТекст
             // 
-            this.ТекущийСкладТекст.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
             this.ТекущийСкладТекст.Location = new System.Drawing.Point(1, 29);
             this.ТекущийСкладТекст.Name = "ТекущийСкладТекст";
             this.ТекущийСкладТекст.Size = new System.Drawing.Size(237, 34);

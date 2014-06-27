@@ -38,7 +38,7 @@ namespace СкладскойУчет
 
         private void Окно_сканирования_ТС_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode == System.Windows.Forms.Keys.NumPad0))
+            if ((e.KeyCode == System.Windows.Forms.Keys.D0))
             {
                 _Назад();
             }

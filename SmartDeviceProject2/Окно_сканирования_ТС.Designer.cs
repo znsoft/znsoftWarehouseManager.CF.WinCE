@@ -57,9 +57,9 @@
             // 
             this.Пользователь.BackColor = System.Drawing.SystemColors.Info;
             this.Пользователь.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Пользователь.Location = new System.Drawing.Point(0, 242);
+            this.Пользователь.Location = new System.Drawing.Point(0, 252);
             this.Пользователь.Name = "Пользователь";
-            this.Пользователь.Size = new System.Drawing.Size(240, 15);
+            this.Пользователь.Size = new System.Drawing.Size(240, 12);
             // 
             // Окно_сканирования_ТС
             // 
@@ -72,8 +72,8 @@
             this.Controls.Add(this.Назад);
             this.Controls.Add(this.Инструкция);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
-            this.Location = new System.Drawing.Point(0, 0);
             this.MinimizeBox = false;
             this.Name = "Окно_сканирования_ТС";
             this.Text = "Выбор динамической ячейки подбора";

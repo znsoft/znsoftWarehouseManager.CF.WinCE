@@ -41,16 +41,16 @@
             // 
             this.СписокВыбора.Activation = System.Windows.Forms.ItemActivation.TwoClick;
             this.СписокВыбора.FullRowSelect = true;
-            this.СписокВыбора.Location = new System.Drawing.Point(0, 15);
+            this.СписокВыбора.Location = new System.Drawing.Point(0, 12);
             this.СписокВыбора.Name = "СписокВыбора";
-            this.СписокВыбора.Size = new System.Drawing.Size(234, 230);
+            this.СписокВыбора.Size = new System.Drawing.Size(234, 239);
             this.СписокВыбора.TabIndex = 0;
             this.СписокВыбора.View = System.Windows.Forms.View.Details;
             this.СписокВыбора.ItemActivate += new System.EventHandler(this.СписокВыбора_ItemActivate);
             // 
             // Назад
             // 
-            this.Назад.Location = new System.Drawing.Point(0, 244);
+            this.Назад.Location = new System.Drawing.Point(0, 251);
             this.Назад.Name = "Назад";
             this.Назад.Size = new System.Drawing.Size(118, 22);
             this.Назад.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // Далее
             // 
-            this.Далее.Location = new System.Drawing.Point(124, 244);
+            this.Далее.Location = new System.Drawing.Point(124, 251);
             this.Далее.Name = "Далее";
             this.Далее.Size = new System.Drawing.Size(109, 22);
             this.Далее.TabIndex = 2;
@@ -70,16 +70,16 @@
             // 
             this.Пользователь.BackColor = System.Drawing.SystemColors.Info;
             this.Пользователь.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Пользователь.Location = new System.Drawing.Point(4, 270);
+            this.Пользователь.Location = new System.Drawing.Point(4, 274);
             this.Пользователь.Name = "Пользователь";
-            this.Пользователь.Size = new System.Drawing.Size(229, 15);
+            this.Пользователь.Size = new System.Drawing.Size(229, 12);
             // 
             // Инструкция
             // 
             this.Инструкция.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
             this.Инструкция.Location = new System.Drawing.Point(3, 0);
             this.Инструкция.Name = "Инструкция";
-            this.Инструкция.Size = new System.Drawing.Size(230, 12);
+            this.Инструкция.Size = new System.Drawing.Size(230, 9);
             // 
             // Окно_выбора_из_списка
             // 
@@ -93,11 +93,12 @@
             this.Controls.Add(this.Далее);
             this.Controls.Add(this.Назад);
             this.Controls.Add(this.СписокВыбора);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
-            this.Location = new System.Drawing.Point(0, 0);
             this.MinimizeBox = false;
             this.Name = "Окно_выбора_из_списка";
             this.Text = "Выбор";
+            this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Окно_выбора_из_списка_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_выбора_из_списка_KeyDown);
