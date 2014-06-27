@@ -36,8 +36,8 @@
             this.Инвентаризация = new System.Windows.Forms.Button();
             this.Табулятор = new System.Windows.Forms.TabControl();
             this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
-            this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.Подбор = new System.Windows.Forms.Button();
+            this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
@@ -100,15 +100,6 @@
             this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(240, 228);
             this.Панель_ОсновногоМеню.Text = "<Задания";
             // 
-            // Панель_Информации
-            // 
-            this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
-            this.Панель_Информации.Controls.Add(this.СписокИнформации);
-            this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
-            this.Панель_Информации.Name = "Панель_Информации";
-            this.Панель_Информации.Size = new System.Drawing.Size(240, 228);
-            this.Панель_Информации.Text = "Поиск>";
-            // 
             // Подбор
             // 
             this.Подбор.Location = new System.Drawing.Point(3, 21);
@@ -117,6 +108,15 @@
             this.Подбор.TabIndex = 1;
             this.Подбор.Text = "1.Подбор";
             this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            // 
+            // Панель_Информации
+            // 
+            this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_Информации.Controls.Add(this.СписокИнформации);
+            this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
+            this.Панель_Информации.Name = "Панель_Информации";
+            this.Панель_Информации.Size = new System.Drawing.Size(232, 224);
+            this.Панель_Информации.Text = "Поиск>";
             // 
             // СписокИнформации
             // 

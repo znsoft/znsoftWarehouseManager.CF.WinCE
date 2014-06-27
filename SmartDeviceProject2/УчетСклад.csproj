@@ -66,6 +66,12 @@
     <Compile Include="Окно_выбора_из_списка.Designer.cs">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
     </Compile>
+    <Compile Include="Окно_сканирования_ТС.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Окно_сканирования_ТС.Designer.cs">
+      <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ошибка.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Окно_выбора_из_списка.resx">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Окно_сканирования_ТС.resx">
+      <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ошибка.resx">

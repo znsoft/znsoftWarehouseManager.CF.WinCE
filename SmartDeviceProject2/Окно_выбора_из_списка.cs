@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using СкладскойУчет;
 using СкладскойУчет.СсылкаНаСервис;
+using System.Net;
 
 namespace СкладскойУчет
 {
@@ -31,7 +32,7 @@ namespace СкладскойУчет
         public void _Назад()
         {
             this.DialogResult = DialogResult.Cancel;
-            this.Close();//Нажали назад, необходимо попасть на предыдущее окно
+            this.Close();//Нажали назад, необходимо попасть на предыдущее окно, думаю можно и самому решить этот вопрос без обращения к серверу
         
         }
 
@@ -101,7 +102,7 @@ namespace СкладскойУчет
              }
              if ((e.KeyCode == System.Windows.Forms.Keys.Enter))
              {
-                 // Enter
+                 _Далее();
              }
 
          }
@@ -117,6 +118,8 @@ namespace СкладскойУчет
 
          private void Окно_выбора_из_списка_Load(object sender, EventArgs e)
          {
+             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
+            Пользователь.Text = Авторизован.UserName;
              bool ЗаполнениеТаблицы = false;
              foreach (var Строка in Последовательность.ОтветСервера)
              {
@@ -140,10 +143,15 @@ namespace СкладскойУчет
                  if (Строка[0].Contains("ДобавитьКолонкуСписка")) ДобавитьКолонку(Строка[1], int.Parse(Строка[2]));
                  if (Строка[0].Contains("ЗаполнитьТаблицу")) { ЗаполнениеТаблицы = true; }
                  if (Строка[0].Contains("КолонкаРучногоВыбора")) { КолонкаРучногоВыбора = int.Parse(Строка[1]); }
-             
+                 if (Строка[0].Contains("ТекстИнструкции")) Инструкция.Text = Строка[1];
              
              
              }
+         }
+
+         private void СписокВыбора_ItemActivate(object sender, EventArgs e)
+         {
+             _Далее();
          }
 
     }
