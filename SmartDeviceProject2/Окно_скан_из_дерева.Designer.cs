@@ -36,6 +36,8 @@
             this.Таб = new System.Windows.Forms.TabControl();
             this.Подбор = new System.Windows.Forms.TabPage();
             this.Поиск = new System.Windows.Forms.TabPage();
+            this.ТекстДЯ = new System.Windows.Forms.Label();
+            this.Выход = new System.Windows.Forms.Button();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +48,8 @@
             this.Пользователь.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
             this.Пользователь.Location = new System.Drawing.Point(4, 305);
             this.Пользователь.Name = "Пользователь";
-            this.Пользователь.Size = new System.Drawing.Size(229, 12);
+            this.Пользователь.Size = new System.Drawing.Size(97, 15);
+            this.Пользователь.Text = "_";
             // 
             // Инструкция
             // 
@@ -55,6 +58,7 @@
             this.Инструкция.Name = "Инструкция";
             this.Инструкция.Size = new System.Drawing.Size(230, 9);
             this.Инструкция.Tag = "Инструкция";
+            this.Инструкция.Text = "_";
             // 
             // Дерево
             // 
@@ -90,6 +94,24 @@
             this.Поиск.Text = "Поиск";
             this.Поиск.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // ТекстДЯ
+            // 
+            this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
+            this.ТекстДЯ.Name = "ТекстДЯ";
+            this.ТекстДЯ.Size = new System.Drawing.Size(93, 15);
+            this.ТекстДЯ.Text = "_";
+            // 
+            // Выход
+            // 
+            this.Выход.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.Выход.Location = new System.Drawing.Point(203, 304);
+            this.Выход.Name = "Выход";
+            this.Выход.Size = new System.Drawing.Size(30, 16);
+            this.Выход.TabIndex = 9;
+            this.Выход.Text = "Х";
+            this.Выход.Click += new System.EventHandler(this.Выход_Click);
+            // 
             // Окно_скан_из_дерева
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -97,6 +119,8 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
             this.ControlBox = false;
+            this.Controls.Add(this.Выход);
+            this.Controls.Add(this.ТекстДЯ);
             this.Controls.Add(this.Таб);
             this.Controls.Add(this.Инструкция);
             this.Controls.Add(this.Пользователь);
@@ -122,5 +146,7 @@
         private System.Windows.Forms.TabControl Таб;
         private System.Windows.Forms.TabPage Подбор;
         private System.Windows.Forms.TabPage Поиск;
+        private System.Windows.Forms.Label ТекстДЯ;
+        private System.Windows.Forms.Button Выход;
     }
 }

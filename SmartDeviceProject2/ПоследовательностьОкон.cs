@@ -29,6 +29,7 @@ namespace СкладскойУчет
             ОтветОкна = DialogResult.Ignore;
             while (true)
             {
+                if (ОтветОкна == DialogResult.Abort) return;
                 if (ОтветОкна != DialogResult.Retry)
                 {
                     ОтветСервера = Обмен.ПослатьСтроку(Операция, ТекущееОкно, (ОтветОкна == DialogResult.Cancel) ? "Назад" : "Далее");
@@ -53,6 +54,10 @@ namespace СкладскойУчет
 
                     case "Окно сканирования ТС":
                         Окно = new Окно_сканирования_ТС(this);
+                        break;
+
+                    case "Окно скан из дерева":
+                        Окно = new Окно_скан_из_дерева(this);
                         break;
                     
 

@@ -17,58 +17,34 @@ namespace СкладскойУчет
         public int КоличествоСобрано;
         public int КоличествоТребуется;
         public int КоличествоОстаток;
-        public int Index;
+        public string Tag;
 
-        public ЭлементДерева(bool ЭтоКорень, string Адрес, int Index)
+        public ЭлементДерева(  string Tag, string Адрес ,string EAN)
         {
-            this.ЭтоКорень = ЭтоКорень;
-            this.Index = Index;
+            this.ЭтоКорень = true;
+            this.Tag = Tag;
             this.Адрес = Адрес;
+            this.EAN = EAN;
         }
 
 
 
-        public ЭлементДерева(bool ЭтоКорень, int Index, params string[] Параметры)
+        public ЭлементДерева(bool ЭтоКорень, string Tag, params string[] Параметры)
         {
 
             this.ЭтоКорень = ЭтоКорень;
-            this.Index = Index;
-
+            this.Tag = Tag;
             this.Адрес = Параметры[0];
-            //if (Параметры.Count() < 2) return;
             this.EAN = Параметры[1];
             this.EAN2 = Параметры[2];
             this.GUID = Параметры[3];
             this.Код = Параметры[4];
-            this.КоличествоСобрано = int.Parse(Параметры[5]);
-            this.КоличествоТребуется = int.Parse(Параметры[6]);
-            this.КоличествоОстаток = int.Parse(Параметры[7]);
+            this.Наименование = Параметры[5];
+            this.КоличествоСобрано = int.Parse(Параметры[6]);
+            this.КоличествоТребуется = int.Parse(Параметры[7]);
+            this.КоличествоОстаток = int.Parse(Параметры[8]);
         }
 
-        public ЭлементДерева(bool ЭтоКорень,
-                            string Адрес,
-                            string EAN,
-                            string EAN2,
-                            string GUID,
-                            string Код,
-                            string Наименование,
-                            int КоличествоСобрано,
-                            int КоличествоТребуется,
-                            int КоличествоОстаток,
-                            int Index)
-        {
-            this.ЭтоКорень = ЭтоКорень;
-            this.Адрес = Адрес;
-            this.EAN = EAN;
-            this.EAN2 = EAN2;
-            this.GUID = GUID;
-            this.Код = Код;
-            this.Наименование = Наименование;
-            this.КоличествоСобрано = КоличествоСобрано;
-            this.КоличествоТребуется = КоличествоТребуется;
-            this.КоличествоОстаток = КоличествоОстаток;
-            this.Index = Index;
-        }
 
 
         public string ПолучитьТекстЭлемента()
