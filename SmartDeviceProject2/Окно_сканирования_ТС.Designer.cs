@@ -41,7 +41,7 @@
             this.Инструкция.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.Инструкция.Location = new System.Drawing.Point(4, 4);
             this.Инструкция.Name = "Инструкция";
-            this.Инструкция.Size = new System.Drawing.Size(233, 176);
+            this.Инструкция.Size = new System.Drawing.Size(233, 166);
             this.Инструкция.Tag = "Инструкция";
             this.Инструкция.Text = "Необходимо сканировать динамическую ячейку для начала выполнения задания на подбо" +
                 "р филиала";
@@ -67,10 +67,11 @@
             // 
             this.СписокВыбора.BackColor = System.Drawing.SystemColors.Info;
             this.СписокВыбора.Enabled = false;
+            this.СписокВыбора.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.СписокВыбора.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.СписокВыбора.Location = new System.Drawing.Point(0, 183);
+            this.СписокВыбора.Location = new System.Drawing.Point(0, 172);
             this.СписокВыбора.Name = "СписокВыбора";
-            this.СписокВыбора.Size = new System.Drawing.Size(240, 92);
+            this.СписокВыбора.Size = new System.Drawing.Size(240, 108);
             this.СписокВыбора.TabIndex = 3;
             this.СписокВыбора.Tag = "Таблица";
             this.СписокВыбора.View = System.Windows.Forms.View.Details;

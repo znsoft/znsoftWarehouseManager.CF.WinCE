@@ -61,6 +61,12 @@
   <ItemGroup>
     <Compile Include="SystemHelper.cs" />
     <Compile Include="ЗаполнениеЭлементовФормы.cs" />
+    <Compile Include="Окно_скан_из_дерева.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Окно_скан_из_дерева.Designer.cs">
+      <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
+    </Compile>
     <Compile Include="Окно_выбора_из_списка.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Окно_скан_из_дерева.resx">
+      <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Окно_выбора_из_списка.resx">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -145,6 +155,7 @@
     <Compile Include="ФормаНастроек.Designer.cs">
       <DependentUpon>ФормаНастроек.cs</DependentUpon>
     </Compile>
+    <Compile Include="ЭлементДерева.cs" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />

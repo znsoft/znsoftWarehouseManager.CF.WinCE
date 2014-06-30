@@ -41,7 +41,10 @@ namespace СкладскойУчет
             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
             ListView СписокВыбора = Форма.Find<ListView>(b => b.Name == "СписокВыбора");
             Label Инструкция = Форма.Find<Label>(b => b.Name == "Инструкция");
-            Форма.Find<Label>(b => b.Name == "Пользователь").Text = Авторизован.UserName;
+            try
+            {
+                Форма.Find<Label>(b => b.Name == "Пользователь").Text = Авторизован.UserName;
+            }            catch (Exception) { }
             bool ЗаполнениеТаблицы = false;
             foreach (var Строка in ОтветСервера)
             {
