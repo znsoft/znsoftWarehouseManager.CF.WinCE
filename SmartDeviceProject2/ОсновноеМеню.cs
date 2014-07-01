@@ -21,6 +21,7 @@ namespace СкладскойУчет
 
         public ОсновноеМеню()
         {
+            Сканер = new РаботаСоСканером();
             InitializeComponent();
             this.KeyPreview = true;
             //Выход.Focus();
