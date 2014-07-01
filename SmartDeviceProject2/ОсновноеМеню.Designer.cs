@@ -61,6 +61,7 @@
             // 
             // Перемещение
             // 
+            this.Перемещение.Enabled = false;
             this.Перемещение.Location = new System.Drawing.Point(3, 105);
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);
@@ -70,6 +71,7 @@
             // 
             // Инвентаризация
             // 
+            this.Инвентаризация.Enabled = false;
             this.Инвентаризация.Location = new System.Drawing.Point(3, 63);
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);
@@ -95,9 +97,9 @@
             this.Панель_ОсновногоМеню.Controls.Add(this.Инвентаризация);
             this.Панель_ОсновногоМеню.Controls.Add(this.Выход);
             this.Панель_ОсновногоМеню.Controls.Add(this.Перемещение);
-            this.Панель_ОсновногоМеню.Location = new System.Drawing.Point(0, 0);
+            this.Панель_ОсновногоМеню.Location = new System.Drawing.Point(4, 23);
             this.Панель_ОсновногоМеню.Name = "Панель_ОсновногоМеню";
-            this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(240, 228);
+            this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(232, 224);
             this.Панель_ОсновногоМеню.Text = "<Задания";
             // 
             // Подбор
@@ -113,7 +115,7 @@
             // 
             this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
             this.Панель_Информации.Controls.Add(this.СписокИнформации);
-            this.Панель_Информации.Location = new System.Drawing.Point(0, 0);
+            this.Панель_Информации.Location = new System.Drawing.Point(4, 23);
             this.Панель_Информации.Name = "Панель_Информации";
             this.Панель_Информации.Size = new System.Drawing.Size(232, 224);
             this.Панель_Информации.Text = "Поиск>";
@@ -121,7 +123,9 @@
             // СписокИнформации
             // 
             this.СписокИнформации.AcceptsReturn = true;
-            this.СписокИнформации.Location = new System.Drawing.Point(8, 4);
+            this.СписокИнформации.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.СписокИнформации.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.СписокИнформации.Location = new System.Drawing.Point(0, 1);
             this.СписокИнформации.Multiline = true;
             this.СписокИнформации.Name = "СписокИнформации";
             this.СписокИнформации.ReadOnly = true;
