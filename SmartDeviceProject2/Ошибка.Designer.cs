@@ -45,7 +45,7 @@
             // 
             // ТекстОшибки
             // 
-            this.ТекстОшибки.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ТекстОшибки.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular);
             this.ТекстОшибки.Location = new System.Drawing.Point(0, 15);
             this.ТекстОшибки.Multiline = true;
             this.ТекстОшибки.Name = "ТекстОшибки";

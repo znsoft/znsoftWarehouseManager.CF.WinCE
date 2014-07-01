@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace СкладскойУчет
 {
-    public class ЭлементДерева
+    public class ЭлементДерева 
     {
         public bool ЭтоКорень;
         public string Адрес;
@@ -17,23 +18,24 @@ namespace СкладскойУчет
         public int КоличествоСобрано;
         public int КоличествоТребуется;
         public int КоличествоОстаток;
-        public string Tag;
+        public int КоличествоВычерк = 0;
+        public TreeNode Ветвь;
 
-        public ЭлементДерева(  string Tag, string Адрес ,string EAN)
+        public ЭлементДерева(TreeNode Ветвь, string Адрес, string EAN)
         {
             this.ЭтоКорень = true;
-            this.Tag = Tag;
+            this.Ветвь = Ветвь;
             this.Адрес = Адрес;
             this.EAN = EAN;
         }
 
 
 
-        public ЭлементДерева(bool ЭтоКорень, string Tag, params string[] Параметры)
+        public ЭлементДерева(bool ЭтоКорень, TreeNode Ветвь, params string[] Параметры)
         {
 
             this.ЭтоКорень = ЭтоКорень;
-            this.Tag = Tag;
+            this.Ветвь = Ветвь;
             this.Адрес = Параметры[0];
             this.EAN = Параметры[1];
             this.EAN2 = Параметры[2];
@@ -53,6 +55,12 @@ namespace СкладскойУчет
             return String.Format("({0}/{1})({2})({3}){4}", КоличествоСобрано, КоличествоТребуется, КоличествоОстаток, Код, Наименование);
         }
 
+        public void ОбновитьТекстЭлемента()
+        {
+            if (ЭтоКорень) { Ветвь.Text = Адрес; return; }
+            Ветвь.Text = String.Format("({0}/{1})({2})({3}){4}", КоличествоСобрано, КоличествоТребуется, КоличествоОстаток, Код, Наименование);
+            //Ветвь.TreeView.Update();
+        }
 
 
     }

@@ -66,6 +66,7 @@
             this.Дерево.Name = "Дерево";
             this.Дерево.Size = new System.Drawing.Size(222, 258);
             this.Дерево.TabIndex = 2;
+            this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
             // 
             // Таб
             // 
@@ -100,7 +101,6 @@
             this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
             this.ТекстДЯ.Name = "ТекстДЯ";
             this.ТекстДЯ.Size = new System.Drawing.Size(93, 15);
-            this.ТекстДЯ.Text = "_";
             // 
             // Выход
             // 
