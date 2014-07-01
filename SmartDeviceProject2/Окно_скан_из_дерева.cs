@@ -213,7 +213,8 @@ namespace СкладскойУчет
 
         private void Дерево_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-
+            if (e.Action == TreeViewAction.ByMouse) { }
+            //e.Node.Tag
 
         }
 

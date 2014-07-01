@@ -38,7 +38,8 @@ namespace СкладскойУчет
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
-                {"10.10.35","adm-zheludkov"}
+                {"10.10.35","adm-zheludkov"},
+                {"192.168.","adm-zheludkov"}
             };
 
         public Настройки()
@@ -91,6 +92,10 @@ namespace СкладскойУчет
                             in СоостветствиеСервисов
                          where МойАдрес.Contains(Соответствие.Key)
                          select Соответствие.Value).FirstOrDefault();
+            if (_Сервер == null) {
+                (new Ошибка(String.Format("IP Адрес вашей сети {0} не найден в списке настроек, необходимо настроить соединение вручную", МойАдрес))).ShowDialog();
+                return null;
+            }
             if (!ЗагрузитьСПроверкой())
             {
                 Хранилище.Сервер = _Сервер;
