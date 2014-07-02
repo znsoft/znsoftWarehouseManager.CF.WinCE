@@ -38,8 +38,11 @@
             this.Поиск = new System.Windows.Forms.TabPage();
             this.ТекстДЯ = new System.Windows.Forms.Label();
             this.Выход = new System.Windows.Forms.Button();
+            this.ДопИнфоОТоваре = new System.Windows.Forms.Label();
+            this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
+            this.Поиск.SuspendLayout();
             this.SuspendLayout();
             // 
             // Пользователь
@@ -64,7 +67,7 @@
             // 
             this.Дерево.Location = new System.Drawing.Point(0, 0);
             this.Дерево.Name = "Дерево";
-            this.Дерево.Size = new System.Drawing.Size(222, 258);
+            this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
             // 
@@ -81,6 +84,7 @@
             // Подбор
             // 
             this.Подбор.BackColor = System.Drawing.SystemColors.Info;
+            this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
             this.Подбор.Controls.Add(this.Дерево);
             this.Подбор.Location = new System.Drawing.Point(4, 25);
             this.Подбор.Name = "Подбор";
@@ -89,6 +93,7 @@
             // 
             // Поиск
             // 
+            this.Поиск.Controls.Add(this.СписокИнформации);
             this.Поиск.Location = new System.Drawing.Point(4, 25);
             this.Поиск.Name = "Поиск";
             this.Поиск.Size = new System.Drawing.Size(222, 261);
@@ -112,6 +117,27 @@
             this.Выход.Text = "Х";
             this.Выход.Click += new System.EventHandler(this.Выход_Click);
             // 
+            // ДопИнфоОТоваре
+            // 
+            this.ДопИнфоОТоваре.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ДопИнфоОТоваре.Location = new System.Drawing.Point(0, 214);
+            this.ДопИнфоОТоваре.Name = "ДопИнфоОТоваре";
+            this.ДопИнфоОТоваре.Size = new System.Drawing.Size(222, 46);
+            // 
+            // СписокИнформации
+            // 
+            this.СписокИнформации.AcceptsReturn = true;
+            this.СписокИнформации.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.СписокИнформации.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.СписокИнформации.Location = new System.Drawing.Point(-1, 3);
+            this.СписокИнформации.Multiline = true;
+            this.СписокИнформации.Name = "СписокИнформации";
+            this.СписокИнформации.ReadOnly = true;
+            this.СписокИнформации.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.СписокИнформации.Size = new System.Drawing.Size(225, 255);
+            this.СписокИнформации.TabIndex = 1;
+            this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
+            // 
             // Окно_скан_из_дерева
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -134,6 +160,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_выбора_из_списка_KeyDown);
             this.Таб.ResumeLayout(false);
             this.Подбор.ResumeLayout(false);
+            this.Поиск.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -148,5 +175,7 @@
         private System.Windows.Forms.TabPage Поиск;
         private System.Windows.Forms.Label ТекстДЯ;
         private System.Windows.Forms.Button Выход;
+        private System.Windows.Forms.Label ДопИнфоОТоваре;
+        private System.Windows.Forms.TextBox СписокИнформации;
     }
 }
