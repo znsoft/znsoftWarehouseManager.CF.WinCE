@@ -6,7 +6,6 @@
         /// Требуется переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Освободить все используемые ресурсы.
@@ -29,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
             this.Дерево = new System.Windows.Forms.TreeView();
             this.Таб = new System.Windows.Forms.TabControl();
             this.Подбор = new System.Windows.Forms.TabPage();
-            this.Поиск = new System.Windows.Forms.TabPage();
-            this.ТекстДЯ = new System.Windows.Forms.Label();
-            this.Выход = new System.Windows.Forms.Button();
             this.ДопИнфоОТоваре = new System.Windows.Forms.Label();
+            this.Поиск = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
+            this.ТекстДЯ = new System.Windows.Forms.Label();
+            this.МенюПодбора = new System.Windows.Forms.ContextMenu();
+            this.Подобрать = new System.Windows.Forms.MenuItem();
+            this.Вычерк = new System.Windows.Forms.MenuItem();
+            this.Завершить = new System.Windows.Forms.MenuItem();
+            this.Меню = new System.Windows.Forms.Button();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
             this.Поиск.SuspendLayout();
@@ -65,8 +69,15 @@
             // 
             // Дерево
             // 
+            this.Дерево.ContextMenu = this.МенюПодбора;
             this.Дерево.Location = new System.Drawing.Point(0, 0);
             this.Дерево.Name = "Дерево";
+            treeNode2.Text = "Узел1";
+            treeNode1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            treeNode1.Text = "Узел0";
+            this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
@@ -84,12 +95,21 @@
             // Подбор
             // 
             this.Подбор.BackColor = System.Drawing.SystemColors.Info;
+            this.Подбор.ContextMenu = this.МенюПодбора;
             this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
             this.Подбор.Controls.Add(this.Дерево);
             this.Подбор.Location = new System.Drawing.Point(4, 25);
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(222, 261);
             this.Подбор.Text = "Подбор";
+            // 
+            // ДопИнфоОТоваре
+            // 
+            this.ДопИнфоОТоваре.ContextMenu = this.МенюПодбора;
+            this.ДопИнфоОТоваре.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ДопИнфоОТоваре.Location = new System.Drawing.Point(0, 214);
+            this.ДопИнфоОТоваре.Name = "ДопИнфоОТоваре";
+            this.ДопИнфоОТоваре.Size = new System.Drawing.Size(222, 46);
             // 
             // Поиск
             // 
@@ -99,30 +119,6 @@
             this.Поиск.Size = new System.Drawing.Size(222, 261);
             this.Поиск.Text = "Поиск";
             this.Поиск.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // ТекстДЯ
-            // 
-            this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
-            this.ТекстДЯ.Name = "ТекстДЯ";
-            this.ТекстДЯ.Size = new System.Drawing.Size(93, 15);
-            // 
-            // Выход
-            // 
-            this.Выход.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Выход.Location = new System.Drawing.Point(203, 304);
-            this.Выход.Name = "Выход";
-            this.Выход.Size = new System.Drawing.Size(30, 16);
-            this.Выход.TabIndex = 9;
-            this.Выход.Text = "Х";
-            this.Выход.Click += new System.EventHandler(this.Выход_Click);
-            // 
-            // ДопИнфоОТоваре
-            // 
-            this.ДопИнфоОТоваре.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.ДопИнфоОТоваре.Location = new System.Drawing.Point(0, 214);
-            this.ДопИнфоОТоваре.Name = "ДопИнфоОТоваре";
-            this.ДопИнфоОТоваре.Size = new System.Drawing.Size(222, 46);
             // 
             // СписокИнформации
             // 
@@ -138,14 +134,54 @@
             this.СписокИнформации.TabIndex = 1;
             this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
             // 
+            // ТекстДЯ
+            // 
+            this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
+            this.ТекстДЯ.Name = "ТекстДЯ";
+            this.ТекстДЯ.Size = new System.Drawing.Size(98, 15);
+            // 
+            // МенюПодбора
+            // 
+            this.МенюПодбора.MenuItems.Add(this.Подобрать);
+            this.МенюПодбора.MenuItems.Add(this.Вычерк);
+            this.МенюПодбора.MenuItems.Add(this.Завершить);
+            this.МенюПодбора.Popup += new System.EventHandler(this.МенюПодбора_Popup);
+            // 
+            // Подобрать
+            // 
+            this.Подобрать.Text = "Подобрать";
+            this.Подобрать.Click += new System.EventHandler(this.Подобрать_Click);
+            // 
+            // Вычерк
+            // 
+            this.Вычерк.Text = "Вычерк";
+            this.Вычерк.Click += new System.EventHandler(this.Вычерк_Click);
+            // 
+            // Завершить
+            // 
+            this.Завершить.Text = "Завершить подбор";
+            this.Завершить.Click += new System.EventHandler(this.Завершить_Click);
+            // 
+            // Меню
+            // 
+            this.Меню.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.Меню.Location = new System.Drawing.Point(212, 304);
+            this.Меню.Name = "Меню";
+            this.Меню.Size = new System.Drawing.Size(21, 16);
+            this.Меню.TabIndex = 0;
+            this.Меню.Text = "...";
+            this.Меню.Click += new System.EventHandler(this.Меню_Click);
+            // 
             // Окно_скан_из_дерева
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
+            this.ContextMenu = this.МенюПодбора;
             this.ControlBox = false;
-            this.Controls.Add(this.Выход);
+            this.Controls.Add(this.Меню);
             this.Controls.Add(this.ТекстДЯ);
             this.Controls.Add(this.Таб);
             this.Controls.Add(this.Инструкция);
@@ -174,8 +210,12 @@
         private System.Windows.Forms.TabPage Подбор;
         private System.Windows.Forms.TabPage Поиск;
         private System.Windows.Forms.Label ТекстДЯ;
-        private System.Windows.Forms.Button Выход;
         private System.Windows.Forms.Label ДопИнфоОТоваре;
         private System.Windows.Forms.TextBox СписокИнформации;
+        private System.Windows.Forms.ContextMenu МенюПодбора;
+        private System.Windows.Forms.MenuItem Подобрать;
+        private System.Windows.Forms.MenuItem Вычерк;
+        private System.Windows.Forms.MenuItem Завершить;
+        private System.Windows.Forms.Button Меню;
     }
 }

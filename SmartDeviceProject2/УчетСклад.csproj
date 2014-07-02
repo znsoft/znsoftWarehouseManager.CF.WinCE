@@ -47,6 +47,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Windowsce.Forms" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,6 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SystemHelper.cs" />
+    <Compile Include="ВводКоличества.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ВводКоличества.Designer.cs">
+      <DependentUpon>ВводКоличества.cs</DependentUpon>
+    </Compile>
     <Compile Include="ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Окно_скан_из_дерева.cs">
       <SubType>Form</SubType>
@@ -106,6 +113,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ВводКоличества.resx">
+      <DependentUpon>ВводКоличества.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Окно_скан_из_дерева.resx">
       <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
       <SubType>Designer</SubType>
