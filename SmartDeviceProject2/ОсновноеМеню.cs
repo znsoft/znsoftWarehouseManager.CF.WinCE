@@ -12,6 +12,7 @@ using System.Reflection;
 using SDK.English;
 using System.Data.SqlTypes;
 
+
 namespace СкладскойУчет
 {
     public partial class ОсновноеМеню : Form
@@ -106,6 +107,7 @@ namespace СкладскойУчет
                 {
                     e.Handled = true;
                     ПолучениеИнформации(СтрокаСкан);
+                    System.Media.SoundPlayer 
                 }
                 return;
 

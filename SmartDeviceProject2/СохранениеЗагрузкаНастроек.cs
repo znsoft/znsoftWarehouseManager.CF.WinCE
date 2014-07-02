@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 using System.Net;
+using System.Net.Sockets;
 
 namespace СкладскойУчет
 {
@@ -80,7 +81,7 @@ namespace СкладскойУчет
         public string УзнатьСобственныйIP()
         {
             var ИмяЭтойМашины = Dns.GetHostName();
-            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First();
+            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First(x=>x.AddressFamily == AddressFamily.InterNetwork);
 
             return IpЭтойМашины.ToString();
         }
