@@ -188,7 +188,6 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Web References\СсылкаНаСервис\forTSD.wsdl" />
     <None Include="Web References\СсылкаНаСервис\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

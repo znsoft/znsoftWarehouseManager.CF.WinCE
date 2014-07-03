@@ -61,7 +61,6 @@
             // 
             // Перемещение
             // 
-            this.Перемещение.Enabled = false;
             this.Перемещение.Location = new System.Drawing.Point(3, 105);
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);

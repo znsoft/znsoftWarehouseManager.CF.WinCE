@@ -67,9 +67,11 @@ namespace СкладскойУчет
 
         public static bool НажатаКлавишаСкан(KeyEventArgs e)
         {
-            if (SystemHelper.DeviceTypeIsKown)
+
+            bool S = НажатаКлавишаСкан_(e);
+            if (S && SystemHelper.DeviceTypeIsKown)
                 Barcode1D_init();
-            return НажатаКлавишаСкан_(e);
+            return S;
 
         }
 

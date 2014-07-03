@@ -68,7 +68,6 @@ namespace СкладскойУчет
                         Окно = new Окно_скан_из_дерева(this);
                         break;
 
-
                     case "Выход":
                         return;
                     default:
