@@ -251,6 +251,9 @@ namespace СкладскойУчет
                 }
                 return;
             }
+            if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e)) {
+                Меню_Click(sender, new EventArgs());
+            }
 
             if ((e.KeyCode == System.Windows.Forms.Keys.D0))
             {

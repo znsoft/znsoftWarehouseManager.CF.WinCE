@@ -100,13 +100,13 @@ namespace СкладскойУчет
                  }
 
 
-             if ((e.KeyCode == System.Windows.Forms.Keys.Up))
+             if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e))
              {
-                 // Up
+                 _Далее();
              }
-             if ((e.KeyCode == System.Windows.Forms.Keys.Down))
+             if (РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e))
              {
-                 // Down
+                 _Назад();
              }
              if ((e.KeyCode == System.Windows.Forms.Keys.Left))
              {

@@ -86,6 +86,32 @@ namespace СкладскойУчет
         }
 
 
+        public static bool НажатаПраваяПодэкраннаяКлавиша(KeyEventArgs e)
+        {
+            switch (SystemHelper.CurrentDeviceType)
+            {
+                case DeviceType.C2000:
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.Tab);
+                case DeviceType.C5000:
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.F7);
+            }
+            return false;
+        }
+
+        public static bool НажатаЛеваяПодэкраннаяКлавиша(KeyEventArgs e)
+        {
+            switch (SystemHelper.CurrentDeviceType)
+            {
+                case DeviceType.C2000:
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.ESC);
+                case DeviceType.C5000:
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.F6);
+            }
+            return false;
+        }
+
+
+
         #region Члены IDisposable
 
         public void Dispose()
