@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace СкладскойУчет
 {
-    class РаботаСоСканером
+    class РаботаСоСканером:IDisposable
     {
 
         [DllImport("DeviceAPI.dll", EntryPoint = "Barcode1D_init")]
@@ -20,17 +20,21 @@ namespace СкладскойУчет
         [DllImport("DeviceAPI.dll", EntryPoint = "Barcode1D_free")]
         private static extern void Barcode1D_free();
 
+        public static bool ЭтоСканирование = false;
+        public static Звуки Звук;
+
         public РаботаСоСканером()
         {
             SystemHelper.GetDeviceType();
             if (SystemHelper.DeviceTypeIsKown)             
                 Barcode1D_init();
-            
+            Звук = new Звуки();
         }
 
 
          ~РаботаСоСканером() {
             if (SystemHelper.DeviceTypeIsKown) Barcode1D_free();
+
         }
 
 
@@ -47,6 +51,9 @@ namespace СкладскойУчет
                 if (ibarLen > 0)
                 {
                     barcode = Encoding.ASCII.GetString(pszData, 0, ibarLen).Trim();
+                    ЭтоСканирование = true;
+                    if (barcode.Length > 0) Звук.Ок();
+
                 }
                 return barcode;
             }
@@ -58,15 +65,35 @@ namespace СкладскойУчет
 
         }
 
-        public static bool НажатаКлавишаСкан(KeyEventArgs e) {
-            switch(SystemHelper.CurrentDeviceType){
+        public static bool НажатаКлавишаСкан(KeyEventArgs e)
+        {
+            if (SystemHelper.DeviceTypeIsKown)
+                Barcode1D_init();
+            return НажатаКлавишаСкан_(e);
+
+        }
+
+        private static bool НажатаКлавишаСкан_(KeyEventArgs e)
+        {
+            switch (SystemHelper.CurrentDeviceType)
+            {
                 case DeviceType.C2000:
-                    return ((int)e.KeyCode == (int)ConstantKeyValue.Scan || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12) || ((int)e.KeyCode == (int)ConstantKeyValue.F7) || ((int)e.KeyCode == (int)ConstantKeyValue.F8)); 
+                    return ((int)e.KeyCode == (int)ConstantKeyValue.Scan || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12) || ((int)e.KeyCode == (int)ConstantKeyValue.F7) || ((int)e.KeyCode == (int)ConstantKeyValue.F8));
                 case DeviceType.C5000:
                     return (((int)e.KeyCode == (int)ConstantKeyValue.Enter) || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12));
             }
             return false;
         }
+
+
+        #region Члены IDisposable
+
+        public void Dispose()
+        {
+            if (SystemHelper.DeviceTypeIsKown) Barcode1D_free();  
+        }
+
+        #endregion
 
     }
 

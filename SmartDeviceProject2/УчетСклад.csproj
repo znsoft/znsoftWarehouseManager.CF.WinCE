@@ -201,6 +201,8 @@
   <ItemGroup>
     <None Include="bin\Debug\System.Data.SqlServerCe.dll" />
     <Content Include="main.ico" />
+    <None Include="Resources\Ok.wav" />
+    <None Include="Resources\export.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

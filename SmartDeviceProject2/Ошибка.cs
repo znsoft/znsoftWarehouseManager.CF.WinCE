@@ -15,6 +15,7 @@ namespace СкладскойУчет
         {
             InitializeComponent();
             this.ТекстОшибки.Text = ОписаниеОшибки;
+            РаботаСоСканером.Звук.Ошибка();
         }
 
         private void Ошибка_KeyDown(object sender, KeyEventArgs e)

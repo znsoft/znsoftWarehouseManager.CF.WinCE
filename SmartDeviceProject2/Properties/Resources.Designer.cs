@@ -57,12 +57,17 @@ namespace СкладскойУчет.Properties {
             }
         }
         
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        internal static string Error {
+        internal static byte[] Error {
             get {
-                return ResourceManager.GetString("Error", resourceCulture);
+                object obj = ResourceManager.GetObject("Error", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] Ok {
+            get {
+                object obj = ResourceManager.GetObject("Ok", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

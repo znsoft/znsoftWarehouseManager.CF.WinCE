@@ -14,11 +14,21 @@ namespace СкладскойУчет
         [MTAThread]
         static void Main()
         {
-            var ФормаЛогинПароль = new ФормаАвторизации();
-            var РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
-            if (РезультатАвторизации == DialogResult.OK)
-            Application.Run(new ОсновноеМеню());
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            using (new РаботаСоСканером())
+            {
+                var ФормаЛогинПароль = new ФормаАвторизации();
+                var РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
+                if (РезультатАвторизации == DialogResult.OK)
+                    Application.Run(new ОсновноеМеню());
+            }
 
+
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
         }
     }
 }

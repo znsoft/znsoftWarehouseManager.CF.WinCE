@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел0");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
             this.Дерево = new System.Windows.Forms.TreeView();
+            this.МенюПодбора = new System.Windows.Forms.ContextMenu();
+            this.Подобрать = new System.Windows.Forms.MenuItem();
+            this.Вычерк = new System.Windows.Forms.MenuItem();
+            this.Завершить = new System.Windows.Forms.MenuItem();
             this.Таб = new System.Windows.Forms.TabControl();
             this.Подбор = new System.Windows.Forms.TabPage();
             this.ДопИнфоОТоваре = new System.Windows.Forms.Label();
             this.Поиск = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.ТекстДЯ = new System.Windows.Forms.Label();
-            this.МенюПодбора = new System.Windows.Forms.ContextMenu();
-            this.Подобрать = new System.Windows.Forms.MenuItem();
-            this.Вычерк = new System.Windows.Forms.MenuItem();
-            this.Завершить = new System.Windows.Forms.MenuItem();
             this.Меню = new System.Windows.Forms.Button();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
@@ -72,74 +72,15 @@
             this.Дерево.ContextMenu = this.МенюПодбора;
             this.Дерево.Location = new System.Drawing.Point(0, 0);
             this.Дерево.Name = "Дерево";
-            treeNode2.Text = "Узел1";
-            treeNode1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            treeNode1.Text = "Узел0";
+            treeNode4.Text = "Узел1";
+            treeNode3.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4});
+            treeNode3.Text = "Узел0";
             this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode3});
             this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
-            // 
-            // Таб
-            // 
-            this.Таб.Controls.Add(this.Подбор);
-            this.Таб.Controls.Add(this.Поиск);
-            this.Таб.Location = new System.Drawing.Point(3, 12);
-            this.Таб.Name = "Таб";
-            this.Таб.SelectedIndex = 0;
-            this.Таб.Size = new System.Drawing.Size(230, 290);
-            this.Таб.TabIndex = 5;
-            // 
-            // Подбор
-            // 
-            this.Подбор.BackColor = System.Drawing.SystemColors.Info;
-            this.Подбор.ContextMenu = this.МенюПодбора;
-            this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
-            this.Подбор.Controls.Add(this.Дерево);
-            this.Подбор.Location = new System.Drawing.Point(4, 25);
-            this.Подбор.Name = "Подбор";
-            this.Подбор.Size = new System.Drawing.Size(222, 261);
-            this.Подбор.Text = "Подбор";
-            // 
-            // ДопИнфоОТоваре
-            // 
-            this.ДопИнфоОТоваре.ContextMenu = this.МенюПодбора;
-            this.ДопИнфоОТоваре.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.ДопИнфоОТоваре.Location = new System.Drawing.Point(0, 214);
-            this.ДопИнфоОТоваре.Name = "ДопИнфоОТоваре";
-            this.ДопИнфоОТоваре.Size = new System.Drawing.Size(222, 46);
-            // 
-            // Поиск
-            // 
-            this.Поиск.Controls.Add(this.СписокИнформации);
-            this.Поиск.Location = new System.Drawing.Point(4, 25);
-            this.Поиск.Name = "Поиск";
-            this.Поиск.Size = new System.Drawing.Size(222, 261);
-            this.Поиск.Text = "Поиск";
-            this.Поиск.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // СписокИнформации
-            // 
-            this.СписокИнформации.AcceptsReturn = true;
-            this.СписокИнформации.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.СписокИнформации.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.СписокИнформации.Location = new System.Drawing.Point(-1, 3);
-            this.СписокИнформации.Multiline = true;
-            this.СписокИнформации.Name = "СписокИнформации";
-            this.СписокИнформации.ReadOnly = true;
-            this.СписокИнформации.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.СписокИнформации.Size = new System.Drawing.Size(225, 255);
-            this.СписокИнформации.TabIndex = 1;
-            this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
-            // 
-            // ТекстДЯ
-            // 
-            this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
-            this.ТекстДЯ.Name = "ТекстДЯ";
-            this.ТекстДЯ.Size = new System.Drawing.Size(98, 15);
             // 
             // МенюПодбора
             // 
@@ -163,6 +104,66 @@
             this.Завершить.Text = "Завершить подбор";
             this.Завершить.Click += new System.EventHandler(this.Завершить_Click);
             // 
+            // Таб
+            // 
+            this.Таб.Controls.Add(this.Подбор);
+            this.Таб.Controls.Add(this.Поиск);
+            this.Таб.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.Таб.Location = new System.Drawing.Point(3, 12);
+            this.Таб.Name = "Таб";
+            this.Таб.SelectedIndex = 0;
+            this.Таб.Size = new System.Drawing.Size(230, 290);
+            this.Таб.TabIndex = 5;
+            // 
+            // Подбор
+            // 
+            this.Подбор.BackColor = System.Drawing.SystemColors.Info;
+            this.Подбор.ContextMenu = this.МенюПодбора;
+            this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
+            this.Подбор.Controls.Add(this.Дерево);
+            this.Подбор.Location = new System.Drawing.Point(4, 22);
+            this.Подбор.Name = "Подбор";
+            this.Подбор.Size = new System.Drawing.Size(222, 264);
+            this.Подбор.Text = "1.Подбор";
+            // 
+            // ДопИнфоОТоваре
+            // 
+            this.ДопИнфоОТоваре.ContextMenu = this.МенюПодбора;
+            this.ДопИнфоОТоваре.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ДопИнфоОТоваре.Location = new System.Drawing.Point(0, 214);
+            this.ДопИнфоОТоваре.Name = "ДопИнфоОТоваре";
+            this.ДопИнфоОТоваре.Size = new System.Drawing.Size(222, 46);
+            // 
+            // Поиск
+            // 
+            this.Поиск.Controls.Add(this.СписокИнформации);
+            this.Поиск.Location = new System.Drawing.Point(4, 22);
+            this.Поиск.Name = "Поиск";
+            this.Поиск.Size = new System.Drawing.Size(222, 264);
+            this.Поиск.Text = "2.Поиск";
+            this.Поиск.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // СписокИнформации
+            // 
+            this.СписокИнформации.AcceptsReturn = true;
+            this.СписокИнформации.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.СписокИнформации.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.СписокИнформации.Location = new System.Drawing.Point(-1, 3);
+            this.СписокИнформации.Multiline = true;
+            this.СписокИнформации.Name = "СписокИнформации";
+            this.СписокИнформации.ReadOnly = true;
+            this.СписокИнформации.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.СписокИнформации.Size = new System.Drawing.Size(225, 255);
+            this.СписокИнформации.TabIndex = 1;
+            this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
+            // 
+            // ТекстДЯ
+            // 
+            this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
+            this.ТекстДЯ.Name = "ТекстДЯ";
+            this.ТекстДЯ.Size = new System.Drawing.Size(98, 15);
+            // 
             // Меню
             // 
             this.Меню.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
@@ -170,7 +171,7 @@
             this.Меню.Name = "Меню";
             this.Меню.Size = new System.Drawing.Size(21, 16);
             this.Меню.TabIndex = 0;
-            this.Меню.Text = "...";
+            this.Меню.Text = "0..";
             this.Меню.Click += new System.EventHandler(this.Меню_Click);
             // 
             // Окно_скан_из_дерева

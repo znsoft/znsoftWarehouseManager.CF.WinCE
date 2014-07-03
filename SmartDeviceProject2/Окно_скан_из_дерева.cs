@@ -252,6 +252,22 @@ namespace СкладскойУчет
                 return;
             }
 
+            if ((e.KeyCode == System.Windows.Forms.Keys.D0))
+            {
+                Меню_Click(sender,new EventArgs());
+            }
+            if ((e.KeyCode == System.Windows.Forms.Keys.D1))
+            {
+                Таб.SelectedIndex = 0;
+                Таб.Update();
+            }
+            if ((e.KeyCode == System.Windows.Forms.Keys.D2))
+            {
+                Таб.SelectedIndex = 1;
+                Таб.Update();
+            }
+
+
         }
 
         private void Окно_выбора_из_списка_Load(object sender, EventArgs e)

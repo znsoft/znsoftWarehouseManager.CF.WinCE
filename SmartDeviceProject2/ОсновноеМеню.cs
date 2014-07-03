@@ -17,15 +17,14 @@ namespace СкладскойУчет
 {
     public partial class ОсновноеМеню : Form
     {
-        private РаботаСоСканером Сканер;
+        //private РаботаСоСканером Сканер;
 
 
         public ОсновноеМеню()
         {
-            Сканер = new РаботаСоСканером();
+            new РаботаСоСканером();
             InitializeComponent();
             this.KeyPreview = true;
-            //Выход.Focus();
         }
 
         public void _Выход()
@@ -107,15 +106,9 @@ namespace СкладскойУчет
                 {
                     e.Handled = true;
                     ПолучениеИнформации(СтрокаСкан);
-                    System.Media.SoundPlayer 
                 }
                 return;
-
-
             }
-
-
-
 
             foreach (var ЭлементФормы in Панель)
                 if (ЭлементФормы is Button)
@@ -129,14 +122,15 @@ namespace СкладскойУчет
                     }
                 }
 
-            if ((e.KeyCode == System.Windows.Forms.Keys.Up))
+            if ((e.KeyCode == System.Windows.Forms.Keys.D1))
             {
-                // Up
+                Табулятор.SelectedIndex = 0;
             }
-            if ((e.KeyCode == System.Windows.Forms.Keys.Down))
+            if ((e.KeyCode == System.Windows.Forms.Keys.D2))
             {
-                // Down
+                Табулятор.SelectedIndex = 1;
             }
+
             if ((e.KeyCode == System.Windows.Forms.Keys.Left))
             {
                 Табулятор.SelectedIndex = 0;

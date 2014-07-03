@@ -3,6 +3,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Media;
+using System.Reflection;
+using System.IO;
 
 namespace СкладскойУчет
 {
@@ -10,18 +12,21 @@ namespace СкладскойУчет
     public class Звуки
     {
         SoundPlayer Звук;
+
         public Звуки() {
             Звук = new SoundPlayer();
         }
 
         public void Ошибка() {
-            Звук.SoundLocation = Properties.Resources.Error;
+            Звук.Stream = new MemoryStream(Properties.Resources.Error);
             Звук.Play();
+            РаботаСоСканером.ЭтоСканирование = false;
         }
 
         public void Ок() {
-            Звук.SoundLocation = Properties.Resources.Error;
+            Звук.Stream = new MemoryStream(Properties.Resources.Ok);
             Звук.Play();
+            РаботаСоСканером.ЭтоСканирование = false;
         }
 
     }

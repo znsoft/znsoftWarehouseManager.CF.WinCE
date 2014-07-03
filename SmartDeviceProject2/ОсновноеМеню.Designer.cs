@@ -66,7 +66,7 @@
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);
             this.Перемещение.TabIndex = 3;
-            this.Перемещение.Text = "3.Переместить";
+            this.Перемещение.Text = "5.Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Инвентаризация
@@ -76,7 +76,7 @@
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);
             this.Инвентаризация.TabIndex = 2;
-            this.Инвентаризация.Text = "2.Инвентаризация";
+            this.Инвентаризация.Text = "4.Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Табулятор
@@ -100,7 +100,7 @@
             this.Панель_ОсновногоМеню.Location = new System.Drawing.Point(4, 23);
             this.Панель_ОсновногоМеню.Name = "Панель_ОсновногоМеню";
             this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(232, 224);
-            this.Панель_ОсновногоМеню.Text = "<Задания";
+            this.Панель_ОсновногоМеню.Text = "1.Задания";
             // 
             // Подбор
             // 
@@ -108,7 +108,7 @@
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(226, 36);
             this.Подбор.TabIndex = 1;
-            this.Подбор.Text = "1.Подбор";
+            this.Подбор.Text = "3.Подбор";
             this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Панель_Информации
@@ -118,7 +118,7 @@
             this.Панель_Информации.Location = new System.Drawing.Point(4, 23);
             this.Панель_Информации.Name = "Панель_Информации";
             this.Панель_Информации.Size = new System.Drawing.Size(232, 224);
-            this.Панель_Информации.Text = "Поиск>";
+            this.Панель_Информации.Text = "2.Поиск>";
             // 
             // СписокИнформации
             // 
