@@ -10,7 +10,7 @@ using System.Net;
 
 namespace СкладскойУчет
 {
-    public partial class Окно_сканирования_ТС : Form
+    public partial class Окно_сканирования_адреса : Form
     {
         private РаботаСоСканером Сканер;
 
@@ -18,7 +18,7 @@ namespace СкладскойУчет
         public int КолонкаРучногоВыбора = 0;
         ПоследовательностьОкон Последовательность;
 
-        public Окно_сканирования_ТС(ПоследовательностьОкон ПоследовательностьОкон)
+        public Окно_сканирования_адреса(ПоследовательностьОкон ПоследовательностьОкон)
         {
             InitializeComponent();
             Последовательность = ПоследовательностьОкон;
@@ -36,30 +36,11 @@ namespace СкладскойУчет
             _Назад();
         }
 
-        private void ПолучениеИнформации(string СтрокаСкан)
-        {
-
-            СписокИнформации.Text = "Получение информации...";
-            var Обмен = new Пакеты("Информация");
-            var ОтветСервера = Обмен.ПослатьСтроку(СтрокаСкан);
-
-            if (ОтветСервера == null || ОтветСервера.Count() == 0)
-            {
-                СписокИнформации.Text = "Информация по коду не найдена";
-                return;
-            }
-            string Информация = "";
-            foreach (var СтрокаОтвета in ОтветСервера)
-            {
-                Информация = Информация + СтрокаОтвета[1] + "\r\n" + "\r\n";
-            }
-            СписокИнформации.Text = Информация;
-        }
-
         private void Окно_сканирования_ТС_KeyDown(object sender, KeyEventArgs e)
         {
             if (РаботаСоСканером.НажатаКлавишаСкан(e))
             {
+                e.Handled = true;
                 СканированиеШК(e);
                 return;
             }
@@ -69,18 +50,6 @@ namespace СкладскойУчет
             {
                 _Назад();
             }
-
-
-            if ((e.KeyCode == System.Windows.Forms.Keys.D1)||(e.KeyCode == System.Windows.Forms.Keys.Left))
-            {
-                Таб.SelectedIndex = 0;
-            }
-            if ((e.KeyCode == System.Windows.Forms.Keys.D2)||(e.KeyCode == System.Windows.Forms.Keys.Right))
-            {
-                Таб.SelectedIndex = 1;
-            }
-
-
         }
 
         private void СканированиеШК(KeyEventArgs e)
@@ -89,13 +58,7 @@ namespace СкладскойУчет
             if (СтрокаСкан.Length != 0)
             {
                 e.Handled = true;
-                if (Таб.SelectedIndex == 0)
-                {
-
-                    СканАдреса(СтрокаСкан);
-                    return;
-                }
-                ПолучениеИнформации(СтрокаСкан);
+                СканАдреса(СтрокаСкан);
             }
         }
 

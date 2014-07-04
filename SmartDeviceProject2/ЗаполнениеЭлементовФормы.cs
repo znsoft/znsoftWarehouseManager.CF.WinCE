@@ -27,25 +27,27 @@ namespace СкладскойУчет
         private static void ДобавитьКолонку(ListView СписокВыбора, string Колонка, int Ширина)
         {
 
-             var columnHeader = new ColumnHeader();
-             columnHeader.Text = Ширина == 0?"":Колонка;
-             columnHeader.Width = Ширина;
-             СписокВыбора.Columns.Add(columnHeader);
+            var columnHeader = new ColumnHeader();
+            columnHeader.Text = Ширина == 0 ? "" : Колонка;
+            columnHeader.Width = Ширина;
+            СписокВыбора.Columns.Add(columnHeader);
         }
 
 
 
-        public static void ЗаполнитьФорму(Form Форма, ref string[][] ОтветСервера, out int КолонкаВыбора)
+        public static void ЗаполнитьФорму(ЭлементыФормыЗаполнения ЭлементыФормы, ref string[][] ОтветСервера, out int КолонкаВыбора)
         {
             КолонкаВыбора = 0;
             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
-            ListView СписокВыбора = Форма.Find<ListView>(b => b.Name == "СписокВыбора");
-            Label Инструкция = Форма.Find<Label>(b => b.Name == "Инструкция");
-            Label ТекстДЯ = Форма.Find<Label>(b => b.Name == "ТекстДЯ");
+            ListView СписокВыбора = ЭлементыФормы.СписокВыбора;// Форма.Find<ListView>(b => b.Name == "СписокВыбора");
+            Label Инструкция = ЭлементыФормы.Инструкция;// Форма.Find<Label>(b => b.Name == "Инструкция");
+            Label ТекстДЯ = ЭлементыФормы.ТекстДЯ;// Форма.Find<Label>(b => b.Name == "ТекстДЯ");
             try
             {
-                Форма.Find<Label>(b => b.Name == "Пользователь").Text = Авторизован.UserName;
-            }            catch (Exception) { }
+                //Форма.Find<Label>(b => b.Name == "Пользователь").Text = Авторизован.UserName;
+                ЭлементыФормы.Пользователь.Text = Авторизован.UserName;
+            }
+            catch (Exception) { }
             bool ЗаполнениеТаблицы = false;
             foreach (var Строка in ОтветСервера)
             {

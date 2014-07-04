@@ -69,6 +69,18 @@
     </Compile>
     <Compile Include="ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Звуки.cs" />
+    <Compile Include="Окно_перемещения_списка.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Окно_перемещения_списка.Designer.cs">
+      <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Окно_сканирования_адреса.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Окно_сканирования_адреса.Designer.cs">
+      <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
+    </Compile>
     <Compile Include="Окно_скан_из_дерева.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +128,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ВводКоличества.resx">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Окно_перемещения_списка.resx">
+      <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Окно_сканирования_адреса.resx">
+      <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Окно_скан_из_дерева.resx">
@@ -168,6 +188,7 @@
       <DependentUpon>ФормаНастроек.cs</DependentUpon>
     </Compile>
     <Compile Include="ЭлементДерева.cs" />
+    <Compile Include="ЭлементыФормыЗаполнения.cs" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
