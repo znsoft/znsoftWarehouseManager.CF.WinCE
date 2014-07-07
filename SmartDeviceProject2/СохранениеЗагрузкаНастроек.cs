@@ -6,6 +6,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 
 namespace СкладскойУчет
 {
@@ -21,7 +22,7 @@ namespace СкладскойУчет
         }
 
 
-        string path_ = "//НастройкаТСД.xml";
+        string path_ = "НастройкаТСД.xml";
         string path;
         public ХранилищеНастроек Хранилище;
         Dictionary<string, string> СоостветствиеСервисов = new Dictionary<string, string>()
@@ -40,12 +41,15 @@ namespace СкладскойУчет
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
                 {"10.10.35","adm-zheludkov"},
-                {"192.168.","adm-zheludkov"}
+                {"127.0.","art-sql1"}
             };
 
         public Настройки()
         {
-            path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + path_;
+            string FullDir = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
+            var FI = new FileInfo(FullDir);
+            path = Path.Combine(FI.Directory.FullName, path_);
+            //path =  System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), path_);
             Хранилище = new ХранилищеНастроек();
         }
 
@@ -73,16 +77,19 @@ namespace СкладскойУчет
 
         public bool ЗагрузитьСПроверкой()
         {
-            if (!Загрузить()) return false;
-            if (Хранилище.Сервер == null || Хранилище.Часть3ВебСсылки == null) return false;
-            return true;
+            try
+            {
+                if (!Загрузить()) return false;
+                if (Хранилище.Сервер == null || Хранилище.Часть3ВебСсылки == null) return false;
+                return true;
+            }
+            catch (Exception) { return false; }
         }
 
         public string УзнатьСобственныйIP()
         {
             var ИмяЭтойМашины = Dns.GetHostName();
             var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First(x=>x.AddressFamily == AddressFamily.InterNetwork);
-
             return IpЭтойМашины.ToString();
         }
 
@@ -98,6 +105,7 @@ namespace СкладскойУчет
                 return null;
             }
             _Сервер = _Сервер + ".partner.ru";
+            
             if (!ЗагрузитьСПроверкой())
             {
                 Хранилище.Сервер = _Сервер;

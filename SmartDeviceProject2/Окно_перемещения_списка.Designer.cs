@@ -30,27 +30,21 @@
         private void InitializeComponent()
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
-            this.СписокПеремещения = new System.Windows.Forms.ListView();
             this.Назад = new System.Windows.Forms.Button();
             this.Далее = new System.Windows.Forms.Button();
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
             this.ТекстДЯ = new System.Windows.Forms.Label();
             this.Информация = new System.Windows.Forms.Label();
+            this.СписокПеремещения = new System.Windows.Forms.ListView();
+            this.ПанельСоСплиттером = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Сплиттер = new System.Windows.Forms.Splitter();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ПанельСоСплиттером.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // СписокПеремещения
-            // 
-            this.СписокПеремещения.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.СписокПеремещения.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.СписокПеремещения.FullRowSelect = true;
-            this.СписокПеремещения.Location = new System.Drawing.Point(0, 12);
-            this.СписокПеремещения.Name = "СписокПеремещения";
-            this.СписокПеремещения.Size = new System.Drawing.Size(238, 196);
-            this.СписокПеремещения.TabIndex = 0;
-            this.СписокПеремещения.Tag = "Таблица";
-            this.СписокПеремещения.View = System.Windows.Forms.View.Details;
-            this.СписокПеремещения.ItemActivate += new System.EventHandler(this.СписокВыбора_ItemActivate);
             // 
             // Назад
             // 
@@ -81,7 +75,7 @@
             // Инструкция
             // 
             this.Инструкция.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.Инструкция.Location = new System.Drawing.Point(128, -1);
+            this.Инструкция.Location = new System.Drawing.Point(3, 0);
             this.Инструкция.Name = "Инструкция";
             this.Инструкция.Size = new System.Drawing.Size(105, 10);
             this.Инструкция.Tag = "Инструкция";
@@ -89,17 +83,67 @@
             // ТекстДЯ
             // 
             this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
-            this.ТекстДЯ.Location = new System.Drawing.Point(3, 0);
+            this.ТекстДЯ.Location = new System.Drawing.Point(120, 0);
             this.ТекстДЯ.Name = "ТекстДЯ";
             this.ТекстДЯ.Size = new System.Drawing.Size(120, 10);
             this.ТекстДЯ.Tag = "Инструкция";
             // 
             // Информация
             // 
-            this.Информация.Location = new System.Drawing.Point(4, 211);
+            this.Информация.BackColor = System.Drawing.SystemColors.Info;
+            this.Информация.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Информация.Location = new System.Drawing.Point(0, 0);
             this.Информация.Name = "Информация";
-            this.Информация.Size = new System.Drawing.Size(229, 69);
+            this.Информация.Size = new System.Drawing.Size(237, 37);
             this.Информация.Text = "Товар";
+            // 
+            // СписокПеремещения
+            // 
+            this.СписокПеремещения.Activation = System.Windows.Forms.ItemActivation.TwoClick;
+            this.СписокПеремещения.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.СписокПеремещения.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.СписокПеремещения.FullRowSelect = true;
+            this.СписокПеремещения.Location = new System.Drawing.Point(0, 0);
+            this.СписокПеремещения.Name = "СписокПеремещения";
+            this.СписокПеремещения.Size = new System.Drawing.Size(237, 224);
+            this.СписокПеремещения.TabIndex = 0;
+            this.СписокПеремещения.Tag = "Таблица";
+            this.СписокПеремещения.View = System.Windows.Forms.View.Details;
+            this.СписокПеремещения.SelectedIndexChanged += new System.EventHandler(this.СписокПеремещения_SelectedIndexChanged);
+            // 
+            // ПанельСоСплиттером
+            // 
+            this.ПанельСоСплиттером.BackColor = System.Drawing.Color.PapayaWhip;
+            this.ПанельСоСплиттером.Controls.Add(this.panel2);
+            this.ПанельСоСплиттером.Controls.Add(this.Сплиттер);
+            this.ПанельСоСплиттером.Controls.Add(this.panel1);
+            this.ПанельСоСплиттером.Location = new System.Drawing.Point(0, 13);
+            this.ПанельСоСплиттером.Name = "ПанельСоСплиттером";
+            this.ПанельСоСплиттером.Size = new System.Drawing.Size(237, 264);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.СписокПеремещения);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(237, 224);
+            // 
+            // Сплиттер
+            // 
+            this.Сплиттер.BackColor = System.Drawing.Color.Lime;
+            this.Сплиттер.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Сплиттер.Location = new System.Drawing.Point(0, 224);
+            this.Сплиттер.Name = "Сплиттер";
+            this.Сплиттер.Size = new System.Drawing.Size(237, 3);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.Информация);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 227);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(237, 37);
             // 
             // Окно_перемещения_списка
             // 
@@ -108,13 +152,12 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
             this.ControlBox = false;
-            this.Controls.Add(this.Информация);
+            this.Controls.Add(this.ПанельСоСплиттером);
             this.Controls.Add(this.ТекстДЯ);
             this.Controls.Add(this.Инструкция);
             this.Controls.Add(this.Пользователь);
             this.Controls.Add(this.Далее);
             this.Controls.Add(this.Назад);
-            this.Controls.Add(this.СписокПеремещения);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MinimizeBox = false;
@@ -123,18 +166,25 @@
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Окно_выбора_из_списка_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_выбора_из_списка_KeyDown);
+            this.ПанельСоСплиттером.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView СписокПеремещения;
         private System.Windows.Forms.Button Назад;
         private System.Windows.Forms.Button Далее;
         private System.Windows.Forms.Label Пользователь;
         private System.Windows.Forms.Label Инструкция;
         private System.Windows.Forms.Label ТекстДЯ;
         private System.Windows.Forms.Label Информация;
+        private System.Windows.Forms.ListView СписокПеремещения;
+        private System.Windows.Forms.Panel ПанельСоСплиттером;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Splitter Сплиттер;
+        private System.Windows.Forms.Panel panel1;
     }
 }
