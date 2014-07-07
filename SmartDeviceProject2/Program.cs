@@ -28,7 +28,9 @@ namespace СкладскойУчет
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show(e.ToString());
+            Ошибка ОкноОшибки = new Ошибка("Произошла критическая ошибка " + e.ToString() + " " + e.ExceptionObject.ToString());
+            ОкноОшибки.Show();
+            //MessageBox.Show(e.ToString());
         }
     }
 }

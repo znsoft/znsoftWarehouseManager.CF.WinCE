@@ -23,7 +23,7 @@ namespace СкладскойУчет
 
 
 
-        string[][] ПодготовитьСтроку(params string[] args)
+        public string[][] ПодготовитьСтроку(params string[] args)
         {
             return new string[1][] { args };
         }
