@@ -152,12 +152,17 @@ namespace СкладскойУчет
                 var Ответ = Обмен.ПослатьСтроку(СтрокаСкан);
                 if (Ответ == null) return;
                 string Поиск = (from string[] строка in Ответ where строка[0] == "Товар" select строка[1]).FirstOrDefault();
-                if (Поиск == null) { (new Ошибка("Товар не найден")).ShowDialog(); return; }
+                if (Поиск == null) { ОшибкаТоварНеНайден(); return; }
                 НайденСкан = НайтиСкан(Поиск);
                 }
-            if (НайденСкан == null) return;
+            if (НайденСкан == null) { ОшибкаТоварНеНайден(); return; }
             НайденСкан.Selected = true;
             ПрибавитьКоличество(НайденСкан, 1);
+        }
+
+        private static void ОшибкаТоварНеНайден()
+        {
+            (new Ошибка("Товар не найден на полке")).ShowDialog();
         }
 
         private static void ПрибавитьКоличество(ListViewItem НайденСкан,int Прибавить)
