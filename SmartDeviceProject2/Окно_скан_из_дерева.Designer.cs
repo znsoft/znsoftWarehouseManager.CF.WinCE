@@ -81,7 +81,6 @@
             this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
-            this.Дерево.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Дерево_KeyDown);
             // 
             // МенюПодбора
             // 
