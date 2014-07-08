@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace СкладскойУчет
 {
@@ -24,6 +25,7 @@ namespace СкладскойУчет
 
         string path_ = "НастройкаТСД.xml";
         string path;
+        string ИмяЭтогоФайла;
         public ХранилищеНастроек Хранилище;
         Dictionary<string, string> СоостветствиеСервисов = new Dictionary<string, string>()
             {
@@ -40,17 +42,60 @@ namespace СкладскойУчет
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
-                {"10.10.35","adm-zheludkov"},
-                {"127.0.","art-sql1"}
+                {"10.10.35","adm-zheludkov"}
+                //{"127.0.","art-sql1"}
             };
 
         public Настройки()
         {
+            ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
+            path = ПолучитьПутьКЛокальномуФайлу(path_);
+            Хранилище = new ХранилищеНастроек();
+        }
+
+        public bool ПроверитьОбновление()
+        {
+            string АргументыЭтогоПроцесса = Process.GetCurrentProcess().StartInfo.Arguments;
+            if (АргументыЭтогоПроцесса != null) try
+                {
+                    File.Delete(АргументыЭтогоПроцесса);
+                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
+                    return false;
+                }
+                catch (Exception) { }
+            try
+            {
+                Пакеты Обмен = new Пакеты("");
+                Byte[] Прошивка = Обмен.UpdateFirmware();
+                if (Прошивка == null || Прошивка.Count() == 0) return false;
+                string НовыйИсполняемыйФайл = ПолучитьПутьКЛокальномуФайлу("СкладскойУчетОбновление.exe");
+                СохранитьВФайл(НовыйИсполняемыйФайл, Прошивка);
+
+                var pr = new Process();
+                pr.StartInfo.FileName = НовыйИсполняемыйФайл;
+                pr.StartInfo.Arguments = ИмяЭтогоФайла;
+                pr.Start();
+                return true;
+            }
+            catch (Exception) {  }
+            return false;
+        }
+
+
+
+        public string ПолучитьПутьКЛокальномуФайлу(string pt)
+        {
             string FullDir = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             var FI = new FileInfo(FullDir);
-            path = Path.Combine(FI.Directory.FullName, path_);
-            //path =  System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), path_);
-            Хранилище = new ХранилищеНастроек();
+            return Path.Combine(FI.Directory.FullName, pt);
+        }
+
+
+        public void СохранитьВФайл(string Файл, Byte[] Данные)
+        {
+            FileStream file = System.IO.File.Create(Файл);
+            file.Write(Данные, 0, Данные.Count());
+            file.Close();
         }
 
 
@@ -59,7 +104,7 @@ namespace СкладскойУчет
 
             System.Xml.Serialization.XmlSerializer writer =
                 new System.Xml.Serialization.XmlSerializer(typeof(ХранилищеНастроек));
-            System.IO.FileStream file = System.IO.File.Create(path);
+            FileStream file = System.IO.File.Create(path);
             writer.Serialize(file, Хранилище);
             file.Close();
         }
@@ -89,7 +134,7 @@ namespace СкладскойУчет
         public string УзнатьСобственныйIP()
         {
             var ИмяЭтойМашины = Dns.GetHostName();
-            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First(x=>x.AddressFamily == AddressFamily.InterNetwork);
+            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First(x => x.AddressFamily == AddressFamily.InterNetwork);
             return IpЭтойМашины.ToString();
         }
 
@@ -98,14 +143,15 @@ namespace СкладскойУчет
             string МойАдрес = УзнатьСобственныйIP();
             var _Сервер = (from Соответствие
                             in СоостветствиеСервисов
-                         where МойАдрес.Contains(Соответствие.Key)
-                         select Соответствие.Value).FirstOrDefault();
-            if (_Сервер == null) {
+                           where МойАдрес.Contains(Соответствие.Key)
+                           select Соответствие.Value).FirstOrDefault();
+            if (_Сервер == null)
+            {
                 (new Ошибка(String.Format("IP Адрес вашей сети {0} не найден в списке настроек, необходимо настроить соединение вручную", МойАдрес))).ShowDialog();
                 return null;
             }
             _Сервер = _Сервер + ".partner.ru";
-            
+
             if (!ЗагрузитьСПроверкой())
             {
                 Хранилище.Сервер = _Сервер;
@@ -116,9 +162,6 @@ namespace СкладскойУчет
             string ПолнаяВебСсылка = "http://" + Сервер + ":" + Порт + "/" + Хранилище.Часть3ВебСсылки + "/ws/TSD.1cws";
             return ПолнаяВебСсылка;
         }
-
-
-
 
 
     }

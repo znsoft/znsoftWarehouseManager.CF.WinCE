@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел0");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
             this.Дерево = new System.Windows.Forms.TreeView();
@@ -72,15 +72,16 @@
             this.Дерево.ContextMenu = this.МенюПодбора;
             this.Дерево.Location = new System.Drawing.Point(0, 0);
             this.Дерево.Name = "Дерево";
-            treeNode4.Text = "Узел1";
-            treeNode3.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            treeNode3.Text = "Узел0";
+            treeNode2.Text = "Узел1";
+            treeNode1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            treeNode1.Text = "Узел0";
             this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
+            this.Дерево.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Дерево_KeyDown);
             // 
             // МенюПодбора
             // 

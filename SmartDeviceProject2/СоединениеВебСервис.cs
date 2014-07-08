@@ -17,6 +17,7 @@ namespace СкладскойУчет
 {
     class СоединениеВебСервис
     {
+        public static string НомерВерсии = "c#0";
         public static string СтрокаДоступныхРолей;
         public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;

@@ -14,6 +14,16 @@ namespace СкладскойУчет
         [MTAThread]
         static void Main()
         {
+
+            
+
+            Настройки ПроверкаОбновления = new Настройки();
+            if (ПроверкаОбновления.ПроверитьОбновление())
+            {
+                Application.Exit();
+                return;
+            }
+
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             using (new РаботаСоСканером())
             {
@@ -26,11 +36,14 @@ namespace СкладскойУчет
 
         }
 
+
+
+
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Ошибка ОкноОшибки = new Ошибка("Произошла критическая ошибка " + e.ToString() + " " + e.ExceptionObject.ToString());
-            ОкноОшибки.Show();
-            //MessageBox.Show(e.ToString());
+            ОкноОшибки.ShowDialog();
+            MessageBox.Show(e.ToString());
         }
     }
 }

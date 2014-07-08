@@ -109,6 +109,7 @@
             this.СписокПеремещения.TabIndex = 0;
             this.СписокПеремещения.Tag = "Таблица";
             this.СписокПеремещения.View = System.Windows.Forms.View.Details;
+            this.СписокПеремещения.ItemActivate += new System.EventHandler(this.СписокПеремещения_ItemActivate);
             this.СписокПеремещения.SelectedIndexChanged += new System.EventHandler(this.СписокПеремещения_SelectedIndexChanged);
             // 
             // ПанельСоСплиттером

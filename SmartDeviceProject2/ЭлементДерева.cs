@@ -11,7 +11,6 @@ namespace СкладскойУчет
         public bool ЭтоКорень;
         public string Адрес;
         public string EAN;
-        public string EAN2;
         public string GUID;
         public string Код;
         public string Наименование;
@@ -20,6 +19,7 @@ namespace СкладскойУчет
         public int КоличествоОстаток;
         public int КоличествоВычерк = 0;
         public TreeNode Ветвь;
+        public string[] EANs;
 
         public ЭлементДерева(TreeNode Ветвь, string Адрес, string EAN)
         {
@@ -38,13 +38,13 @@ namespace СкладскойУчет
             this.Ветвь = Ветвь;
             this.Адрес = Параметры[0];
             this.EAN = Параметры[1];
-            this.EAN2 = Параметры[2];
             this.GUID = Параметры[3];
             this.Код = Параметры[4];
             this.Наименование = Параметры[5];
-            this.КоличествоСобрано = int.Parse(Параметры[6]);
-            this.КоличествоТребуется = int.Parse(Параметры[7]);
-            this.КоличествоОстаток = int.Parse(Параметры[8]);
+
+            this.КоличествоСобрано = int.Parse("0"+Параметры[6]);
+            this.КоличествоТребуется = int.Parse("0"+Параметры[7]);
+            this.КоличествоОстаток = int.Parse("0"+Параметры[8]);
         }
 
 
@@ -59,7 +59,6 @@ namespace СкладскойУчет
         {
             if (ЭтоКорень) { Ветвь.Text = Адрес; return; }
             if (Ветвь != null) Ветвь.Text = String.Format("({0}/{1})({2})({3}){4}", КоличествоСобрано, КоличествоТребуется, КоличествоОстаток, Код, Наименование);
-            //Ветвь.TreeView.Update();
         }
 
 

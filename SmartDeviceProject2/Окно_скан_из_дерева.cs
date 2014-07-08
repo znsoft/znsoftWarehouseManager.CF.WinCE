@@ -21,6 +21,7 @@ namespace СкладскойУчет
         private List<ЭлементДерева> ПолноеДерево = new List<ЭлементДерева>();//поскольку для работы с sql базами данных с собой необходимо нести .dll я решил использовать linq на List для эмуляции sql
         private string ТекущийАдрес = null;
         List<string[]> КоллекцияСтрок = new List<string[]>();
+        bool KeyIsPressed;
 
         public Окно_скан_из_дерева(ПоследовательностьОкон ПоследовательностьОкон)
         {
@@ -30,14 +31,24 @@ namespace СкладскойУчет
 
 
 
+
+
         private ЭлементДерева НайтиСкан(string EAN)
         {
             var Элемент = from Строка in ПолноеДерево
-                          where (Строка.EAN == EAN || Строка.EAN2 == EAN || Строка.Код == EAN || Строка.GUID == EAN)
+                          where (Строка.EAN == EAN || Строка.Код == EAN || Строка.GUID == EAN || ЕстьДругиеEAN(Строка, EAN))
                           && (Строка.Адрес == ТекущийАдрес || Строка.ЭтоКорень)
                           select Строка;
             if (Элемент.Count() == 0) return null;
             return Элемент.First();
+        }
+
+        private bool ЕстьДругиеEAN(ЭлементДерева Строка, string EAN)
+        {
+            if (Строка.EANs == null) return false;
+            var ДругиеEAN = (from string EAN1 in Строка.EANs where EAN1 == EAN select Строка).FirstOrDefault();
+            if (ДругиеEAN == null) return false;
+            return true;
         }
 
 
@@ -237,6 +248,7 @@ namespace СкладскойУчет
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
         {
+            KeyIsPressed = true;
             if (РаботаСоСканером.НажатаКлавишаСкан(e))
             {
                 string СтрокаСкан = РаботаСоСканером.Scan();
@@ -340,15 +352,27 @@ namespace СкладскойУчет
 
         private TreeNode ДобавитьТовар(TreeNode КореньАдрес, TreeNode ВыбранаСтрока, ЭлементДерева Корень, string[] Строка)
         {
+            int Строк = Строка.Count();
             TreeNode СтрокаСТоваром = new TreeNode(Строка[3]);
-            if (Строка.Count() == 9 && Строка[8] == "Выбрать") { ВыбранаСтрока = СтрокаСТоваром; }
-            //                                        string Адрес,     EAN,        EAN2,   GUID,       Код,        Наименование,int КоличествоСобрано,int КоличествоТребуется, int КоличествоОстаток,
+            if (Строк > 8 && Строка[8] == "Выбрать") { ВыбранаСтрока = СтрокаСТоваром; }
+            //root , СтрокаСТоваром, Адрес,   EAN , "" ,   GUID,       Код,        Наименование,int КоличествоСобрано,int КоличествоТребуется, int КоличествоОстаток,
             ЭлементДерева Элемент = new ЭлементДерева(false, СтрокаСТоваром, Корень.Адрес, Строка[0], Строка[1], Строка[2], Строка[3], Строка[4], Строка[5], Строка[6], Строка[7]);
+            ЗаполнитьОстальныеEAN(Строка, Элемент);
             СтрокаСТоваром.Tag = Элемент.GUID;
             СтрокаСТоваром.Text = Элемент.ПолучитьТекстЭлемента();
             КореньАдрес.Nodes.Add(СтрокаСТоваром);
             ПолноеДерево.Add(Элемент);
             return ВыбранаСтрока;
+        }
+
+        private static void ЗаполнитьОстальныеEAN(string[] Строка, ЭлементДерева Элемент)
+        {
+            int Строк = Строка.Count();
+            if (Строк > 9)
+            {
+                Элемент.EANs = new string[Строк - 9];
+                for (int i = 9; i < Строк; i++) Элемент.EANs[i - 9] = Строка[i];
+            }
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -363,6 +387,13 @@ namespace СкладскойУчет
             if (Элемент == null) return;
             if (Элемент.ЭтоКорень) return;
             ДопИнфоОТоваре.Text = Элемент.Наименование;
+            if (!KeyIsPressed)
+            {
+                ПроверитьДоступностьМеню();
+                МенюПодбора.Show(Дерево, Дерево.Location);
+            }
+
+            if (KeyIsPressed) KeyIsPressed = false;
         }
 
         private void Подобрать_Click(object sender, EventArgs e)
@@ -443,6 +474,11 @@ namespace СкладскойУчет
             Подобрать.Enabled = true;
 
         
+        }
+
+        private void Дерево_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyIsPressed = true;
         }
 
 
