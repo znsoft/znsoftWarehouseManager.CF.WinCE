@@ -39,6 +39,7 @@
             this.ПоказыватьПароль = new System.Windows.Forms.CheckBox();
             this.ТекущийСкладТекст = new System.Windows.Forms.Label();
             this.ТекстОшибки = new System.Windows.Forms.Label();
+            this.ВерсияПрограммы = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -111,8 +112,16 @@
             this.ТекстОшибки.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
             this.ТекстОшибки.Location = new System.Drawing.Point(-1, 238);
             this.ТекстОшибки.Name = "ТекстОшибки";
-            this.ТекстОшибки.Size = new System.Drawing.Size(240, 27);
+            this.ТекстОшибки.Size = new System.Drawing.Size(240, 16);
             this.ТекстОшибки.Text = "Необходимо выбрать себя из списка";
+            // 
+            // ВерсияПрограммы
+            // 
+            this.ВерсияПрограммы.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
+            this.ВерсияПрограммы.Location = new System.Drawing.Point(0, 254);
+            this.ВерсияПрограммы.Name = "ВерсияПрограммы";
+            this.ВерсияПрограммы.Size = new System.Drawing.Size(240, 14);
+            this.ВерсияПрограммы.Text = "Версия c#1";
             // 
             // ФормаАвторизации
             // 
@@ -120,6 +129,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.ВерсияПрограммы);
             this.Controls.Add(this.ТекстОшибки);
             this.Controls.Add(this.ТекущийСкладТекст);
             this.Controls.Add(this.ПоказыватьПароль);
@@ -148,6 +158,7 @@
         private System.Windows.Forms.CheckBox ПоказыватьПароль;
         private System.Windows.Forms.Label ТекущийСкладТекст;
         private System.Windows.Forms.Label ТекстОшибки;
+        private System.Windows.Forms.Label ВерсияПрограммы;
     }
 }
 

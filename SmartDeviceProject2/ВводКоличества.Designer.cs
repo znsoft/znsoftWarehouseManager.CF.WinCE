@@ -50,6 +50,7 @@
             this.Количество.Size = new System.Drawing.Size(87, 23);
             this.Количество.TabIndex = 1;
             this.Количество.Text = "1";
+            this.Количество.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Количество_KeyDown);
             this.Количество.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Количество_KeyPress);
             // 
             // Принять
@@ -74,6 +75,7 @@
             this.Name = "ВводКоличества";
             this.Text = "Ручной подбор";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.ВводКоличества_Load);
             this.ResumeLayout(false);
 
         }

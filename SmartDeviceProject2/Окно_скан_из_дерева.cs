@@ -75,6 +75,7 @@ namespace СкладскойУчет
         {
             var Элемент = НайтиСкан(EAN);
             if (Элемент == null) { ПолучитьИнфоОт1С(EAN); return null; }
+            if (Элемент.Ветвь == null) { ОшибкаТоварНеНайден(); return null; }
             return ОбработатьЭлементДерева(Элемент);
         }
 
@@ -108,9 +109,6 @@ namespace СкладскойУчет
             Элемент.ОбновитьТекстЭлемента();
 
         }
-
-
-
 
         private ЭлементДерева РаскрытьАдрес(ЭлементДерева Элемент)
         {
@@ -163,8 +161,6 @@ namespace СкладскойУчет
             УдалитьНаЭкране(Элемент);
         }
 
-
-
         private void ПолучитьИнфоОт1С(string EAN)
         {
             Обмен = new Пакеты(Последовательность.Операция + " ДругойСкан");
@@ -204,8 +200,15 @@ namespace СкладскойУчет
         private void ОбработатьТовар(string Строка)
         {
             var Элемент = НайтиСкан(Строка);
-            if (Элемент == null) { (new Ошибка("Товар не найден в задании на подбор с данного адреса")).ShowDialog(); return; }
+            if (Элемент == null) { ОшибкаТоварНеНайден(); return; }
+            if (Элемент.Ветвь == null) { ОшибкаТоварНеНайден(); return; }
+
             ОбработатьЭлементДерева(Элемент);
+        }
+
+        private static void ОшибкаТоварНеНайден()
+        {
+            (new Ошибка("Товар не найден в задании на подбор с данного адреса")).ShowDialog();
         }
 
         private void УдалитьНаЭкране(ЭлементДерева Элемент)
@@ -267,22 +270,26 @@ namespace СкладскойУчет
                 return;
             }
             if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e)) {
+                e.Handled = true;
                 Меню_Click(sender, new EventArgs());
             }
 
             if ((e.KeyCode == System.Windows.Forms.Keys.D0))
             {
+                e.Handled = true;
                 Меню_Click(sender,new EventArgs());
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.D1))
             {
                 Таб.SelectedIndex = 0;
                 Таб.Update();
+                e.Handled = true;
             }
             if ((e.KeyCode == System.Windows.Forms.Keys.D2))
             {
                 Таб.SelectedIndex = 1;
                 Таб.Update();
+                e.Handled = true;
             }
 
 

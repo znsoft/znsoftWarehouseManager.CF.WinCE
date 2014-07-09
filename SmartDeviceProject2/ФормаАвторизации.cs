@@ -32,9 +32,9 @@ namespace СкладскойУчет
             
 
             var СлучайноеЧисло = new Random();
-            СоединениеВебСервис.ИдентификаторСоединения = СлучайноеЧисло.Next().ToString();
+            СоединениеВебСервис.ИдентификаторСоединения = СоединениеВебСервис.НомерВерсии+":"+СлучайноеЧисло.Next().ToString();
             ПолучитьСписокПользователей();
-
+            ВерсияПрограммы.Text = "Версия " + СоединениеВебСервис.НомерВерсии;
 
         }
 
@@ -130,7 +130,7 @@ namespace СкладскойУчет
 
         private void Пароль_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) button1_Click(sender, e);
+            if (e.KeyCode == Keys.Enter) { e.Handled = true; button1_Click(sender, e); }
         }
 
         private void Меню_Click(object sender, EventArgs e)

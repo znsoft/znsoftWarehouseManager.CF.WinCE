@@ -11,13 +11,13 @@ namespace СкладскойУчет
 {
     public partial class ВводКоличества : Form
     {
-        public int Количество_ = 0;
+        public int Количество_ = 1;
         public ВводКоличества(string Инфо)
         {
             InitializeComponent();
             this.Информация.Text = Инфо;
             Количество.TextAlign = HorizontalAlignment.Right;
-            Количество.Text = "1";
+            
             this.DialogResult = DialogResult.Cancel;
         }
 
@@ -37,6 +37,19 @@ namespace СкладскойУчет
         {
             this.DialogResult = DialogResult.Abort;
             this.Close();
+        }
+
+        private void Количество_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Enter) { 
+            Принять_Click(sender, new EventArgs());
+            } 
+        }
+
+        private void ВводКоличества_Load(object sender, EventArgs e)
+        {
+            Количество.Text = String.Format("{0}", Количество_);
+            Количество.SelectAll();
         }
     }
 }
