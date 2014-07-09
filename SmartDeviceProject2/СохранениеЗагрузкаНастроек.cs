@@ -42,8 +42,9 @@ namespace СкладскойУчет
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
+                {"10.5.102","cht-sql-sklad"},
                 {"10.10.35","adm-zheludkov"}
-                //{"127.0.","art-sql1"}
+                
             };
 
         public Настройки()
@@ -56,7 +57,8 @@ namespace СкладскойУчет
         public bool ПроверитьОбновление()
         {
             string АргументыЭтогоПроцесса = Process.GetCurrentProcess().StartInfo.Arguments;
-            if (АргументыЭтогоПроцесса != null) try
+            if (АргументыЭтогоПроцесса != null&&АргументыЭтогоПроцесса != "")
+                try
                 {
                     File.Delete(АргументыЭтогоПроцесса);
                     File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
@@ -77,7 +79,7 @@ namespace СкладскойУчет
                 pr.Start();
                 return true;
             }
-            catch (Exception) {  }
+            catch (Exception) {}// System.Windows.Forms.MessageBox.Show(e.Message); }
             return false;
         }
 
@@ -147,7 +149,7 @@ namespace СкладскойУчет
                            select Соответствие.Value).FirstOrDefault();
             if (_Сервер == null)
             {
-                (new Ошибка(String.Format("IP Адрес вашей сети {0} не найден в списке настроек, необходимо настроить соединение вручную", МойАдрес))).ShowDialog();
+                Инфо.Ошибка(String.Format("IP Адрес вашей сети {0} не найден в списке настроек, необходимо настроить соединение вручную", МойАдрес));
                 return null;
             }
             _Сервер = _Сервер + ".partner.ru";
