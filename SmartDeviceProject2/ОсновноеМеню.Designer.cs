@@ -70,7 +70,6 @@
             // 
             // Инвентаризация
             // 
-            this.Инвентаризация.Enabled = false;
             this.Инвентаризация.Location = new System.Drawing.Point(3, 63);
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);

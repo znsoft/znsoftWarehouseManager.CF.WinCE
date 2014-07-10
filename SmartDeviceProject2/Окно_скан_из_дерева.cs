@@ -114,7 +114,9 @@ namespace СкладскойУчет
         {
             Дерево.CollapseAll();
             ТекущийАдрес = Элемент.Адрес;
+
             Элемент.Ветвь.Expand();
+
             return Элемент;
         }
 
@@ -231,7 +233,6 @@ namespace СкладскойУчет
             this.Close();
 
         }
-
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
         {
