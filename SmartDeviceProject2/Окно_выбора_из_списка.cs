@@ -26,14 +26,14 @@ namespace СкладскойУчет
             Обмен = new Пакеты(ПоследовательностьОкон.Операция+" ВыборЗадания"); //Сформировали пакет с операцией состоящей например "Подбор ВыборЗадания"
         }
 
-        public void _Назад()
+        public virtual void _Назад()
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();//Нажали назад, необходимо попасть на предыдущее окно, думаю можно и самому решить этот вопрос без обращения к серверу
         
         }
 
-        public void _Далее()
+        public virtual void _Далее()
         {
             var ВыбраннаяСтрока = СписокВыбора.FocusedItem;
             if (ВыбраннаяСтрока == null) return;
@@ -45,7 +45,7 @@ namespace СкладскойУчет
 
         }
 
-         private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
+        public void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;
             switch (Кнопка.Name)
@@ -62,7 +62,7 @@ namespace СкладскойУчет
             method.Invoke(this, null);
         }
 
-         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
+         public virtual void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
          {
              if (РаботаСоСканером.НажатаКлавишаСкан(e))
              {
@@ -106,7 +106,7 @@ namespace СкладскойУчет
 
          }
 
-         private void Окно_выбора_из_списка_Load(object sender, EventArgs e)
+         public virtual void Окно_выбора_из_списка_Load(object sender, EventArgs e)
          {
              ЭлементыФормыЗаполнения ЭлементыФормы = new ЭлементыФормыЗаполнения();
              ЭлементыФормы.Инструкция = this.Инструкция;

@@ -69,7 +69,13 @@
     </Compile>
     <Compile Include="ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Звуки.cs" />
+    <Compile Include="ИнтерактивныйВыборТовара.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Инфо.cs" />
+    <Compile Include="Окно_Инвентаризации_Списка.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Окно_перемещения_списка.cs">
       <SubType>Form</SubType>
     </Compile>

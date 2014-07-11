@@ -176,16 +176,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Назад;
-        private System.Windows.Forms.Button Далее;
-        private System.Windows.Forms.Label Пользователь;
-        private System.Windows.Forms.Label Инструкция;
-        private System.Windows.Forms.Label ТекстДЯ;
-        private System.Windows.Forms.Label Информация;
-        private System.Windows.Forms.ListView СписокПеремещения;
-        private System.Windows.Forms.Panel ПанельСоСплиттером;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Splitter Сплиттер;
-        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button Назад;
+        public System.Windows.Forms.Button Далее;
+        public System.Windows.Forms.Label Пользователь;
+        public System.Windows.Forms.Label Инструкция;
+        public System.Windows.Forms.Label ТекстДЯ;
+        public System.Windows.Forms.Label Информация;
+        public System.Windows.Forms.ListView СписокПеремещения;
+        public System.Windows.Forms.Panel ПанельСоСплиттером;
+        public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Splitter Сплиттер;
+        public System.Windows.Forms.Panel panel1;
     }
 }

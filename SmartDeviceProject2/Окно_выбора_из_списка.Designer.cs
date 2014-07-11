@@ -109,10 +109,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView СписокВыбора;
+        public System.Windows.Forms.ListView СписокВыбора;
         private System.Windows.Forms.Button Назад;
         private System.Windows.Forms.Button Далее;
-        private System.Windows.Forms.Label Пользователь;
-        private System.Windows.Forms.Label Инструкция;
+        public System.Windows.Forms.Label Пользователь;
+        public System.Windows.Forms.Label Инструкция;
     }
 }
