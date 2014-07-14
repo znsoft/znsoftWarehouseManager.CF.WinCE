@@ -53,6 +53,15 @@ namespace СкладскойУчет
 
         }
 
+        public void _Подтоварка()
+        {
+            ПоследовательностьОкон Окна = new ПоследовательностьОкон("Подтоварка");
+            Окна.ЗапуститьСледующееОкно();
+
+        }
+
+
+
         private void ОсновноеМеню_Load(object sender, EventArgs e)
         {
             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
@@ -77,11 +86,18 @@ namespace СкладскойУчет
                 case "Инвентаризация":
                     _Инвентаризация();
                     return;
+                case "Подтоварка":
+                    _Подтоварка();
+                    return;
             
             }
 
+
+
+
             MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
             method.Invoke(this, null);
+
         }
 
         private void ОсновноеМеню_Closing(object sender, CancelEventArgs e)

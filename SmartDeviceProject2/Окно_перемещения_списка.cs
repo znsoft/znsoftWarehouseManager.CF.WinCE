@@ -16,7 +16,7 @@ namespace СкладскойУчет
     public partial class Окно_перемещения_списка : Form
     {
         private Пакеты Обмен;
-        private int КолонкаРучногоВыбора = 0;
+        public int КолонкаРучногоВыбора = 5;
         public ПоследовательностьОкон Последовательность;
         //private string АдресКуда = null;
         public List<string[]> КоллекцияСтрок = new List<string[]>();
@@ -66,7 +66,7 @@ namespace СкладскойУчет
             {
                 string strCount = l.SubItems[1].Text;
                 if (strCount == "0") continue;
-                string GUID = l.SubItems[5].Text;
+                string GUID = l.SubItems[КолонкаРучногоВыбора].Text;
                 ДобавитьСтроку(АдресКуда, GUID, strCount);
 
             }
@@ -218,7 +218,7 @@ namespace СкладскойУчет
         private bool СовпадаетEAN(string СтрокаСкан, ListViewItem s)
         {
 
-            for (int НомерКолонки = 4; НомерКолонки < s.SubItems.Count; НомерКолонки++)
+            for (int НомерКолонки = КолонкаРучногоВыбора - 1 ; НомерКолонки < s.SubItems.Count; НомерКолонки++)
             {
 
                 if (s.SubItems[НомерКолонки].Text == СтрокаСкан) return true;
@@ -235,7 +235,7 @@ namespace СкладскойУчет
             ЭлементыФормы.СписокВыбора = this.СписокПеремещения;
             ЭлементыФормы.ТекстДЯ = this.ТекстДЯ;
             ЭлементыФормы.Пользователь = this.Пользователь;
-            ЗаполнениеЭлементовФормы.ЗаполнитьФорму(ЭлементыФормы, ref Последовательность.ОтветСервера, out КолонкаРучногоВыбора);
+            ЗаполнениеЭлементовФормы.ЗаполнитьФорму(ЭлементыФормы, ref Последовательность.ОтветСервера, ref КолонкаРучногоВыбора);
             СписокПеремещения_SelectedIndexChanged(sender, e);
 
         }

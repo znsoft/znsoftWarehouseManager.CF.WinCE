@@ -39,6 +39,7 @@
             this.Подбор = new System.Windows.Forms.Button();
             this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
+            this.Подтоварка = new System.Windows.Forms.Button();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -61,7 +62,7 @@
             // 
             // Перемещение
             // 
-            this.Перемещение.Location = new System.Drawing.Point(3, 105);
+            this.Перемещение.Location = new System.Drawing.Point(3, 86);
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);
             this.Перемещение.TabIndex = 3;
@@ -70,7 +71,7 @@
             // 
             // Инвентаризация
             // 
-            this.Инвентаризация.Location = new System.Drawing.Point(3, 63);
+            this.Инвентаризация.Location = new System.Drawing.Point(3, 46);
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);
             this.Инвентаризация.TabIndex = 2;
@@ -91,6 +92,7 @@
             // Панель_ОсновногоМеню
             // 
             this.Панель_ОсновногоМеню.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_ОсновногоМеню.Controls.Add(this.Подтоварка);
             this.Панель_ОсновногоМеню.Controls.Add(this.Подбор);
             this.Панель_ОсновногоМеню.Controls.Add(this.Инвентаризация);
             this.Панель_ОсновногоМеню.Controls.Add(this.Выход);
@@ -102,7 +104,7 @@
             // 
             // Подбор
             // 
-            this.Подбор.Location = new System.Drawing.Point(3, 21);
+            this.Подбор.Location = new System.Drawing.Point(3, 6);
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(226, 36);
             this.Подбор.TabIndex = 1;
@@ -131,6 +133,15 @@
             this.СписокИнформации.Size = new System.Drawing.Size(225, 221);
             this.СписокИнформации.TabIndex = 0;
             this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
+            // 
+            // Подтоварка
+            // 
+            this.Подтоварка.Location = new System.Drawing.Point(3, 128);
+            this.Подтоварка.Name = "Подтоварка";
+            this.Подтоварка.Size = new System.Drawing.Size(226, 38);
+            this.Подтоварка.TabIndex = 5;
+            this.Подтоварка.Text = "6.Подтоварка";
+            this.Подтоварка.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // ОсновноеМеню
             // 
@@ -166,5 +177,6 @@
         private System.Windows.Forms.TabPage Панель_Информации;
         private System.Windows.Forms.Button Подбор;
         private System.Windows.Forms.TextBox СписокИнформации;
+        private System.Windows.Forms.Button Подтоварка;
     }
 }

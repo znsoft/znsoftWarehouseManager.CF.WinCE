@@ -93,7 +93,7 @@ namespace СкладскойУчет
             foreach (ListViewItem l in СписокПеремещения.Items)
             {
                 string strCount = l.SubItems[1].Text;
-                string GUID = l.SubItems[5].Text;
+                string GUID = l.SubItems[КолонкаРучногоВыбора].Text;
                 ДобавитьСтроку(GUID, strCount);
 
             }
