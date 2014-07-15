@@ -78,19 +78,5 @@ namespace СкладскойУчет
         }
 
 
-        public override void СформироватьТаблицуОтправки(string АдресКуда)
-        {
-
-            КоллекцияСтрок.Clear();
-            foreach (ListViewItem l in СписокПеремещения.Items)
-            {
-                string strCount = l.SubItems[1].Text;
-                if (strCount == "0") continue;
-                string GUID = l.SubItems[КолонкаРучногоВыбора].Text;
-                ДобавитьСтроку(GUID, strCount);
-
-            }
-        }
-
     }
 }
