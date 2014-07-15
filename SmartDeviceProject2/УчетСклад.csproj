@@ -73,6 +73,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Инфо.cs" />
+    <Compile Include="Окно_Подтоварки_Списка.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Окно_Инвентаризации_Списка.cs">
       <SubType>Form</SubType>
     </Compile>

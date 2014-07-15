@@ -16,7 +16,7 @@ namespace СкладскойУчет
     public partial class Окно_перемещения_списка : Form
     {
         private Пакеты Обмен;
-        public int КолонкаРучногоВыбора = 5;
+        public int КолонкаРучногоВыбора = 5; // по умолчанию ГУИД Товара находится в 5 колонке , но при операции Подтоварки он в 7 
         public ПоследовательностьОкон Последовательность;
         //private string АдресКуда = null;
         public List<string[]> КоллекцияСтрок = new List<string[]>();
@@ -71,6 +71,11 @@ namespace СкладскойУчет
 
             }
 
+        }
+        public virtual void ПоказатьИнфооТоваре(ListViewItem НайденСкан)
+        {
+            string ВыбранноеЗначение = НайденСкан.SubItems[3].Text;
+            Информация.Text = ВыбранноеЗначение;
         }
 
 
@@ -193,11 +198,6 @@ namespace СкладскойУчет
             return РезультатОкна;
         }
 
-        private void ПоказатьИнфооТоваре(ListViewItem НайденСкан)
-        {
-            string ВыбранноеЗначение = НайденСкан.SubItems[3].Text;
-            Информация.Text = ВыбранноеЗначение;
-        }
 
         private void ПрибавитьКоличество(ListViewItem НайденСкан, int Прибавить, bool Прибавлять)
         {
