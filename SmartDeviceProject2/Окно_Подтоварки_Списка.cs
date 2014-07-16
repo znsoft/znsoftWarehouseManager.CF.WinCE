@@ -62,6 +62,7 @@ namespace СкладскойУчет
             foreach (string Адрес in arr_Адреса) Адреса = Адреса + "\n\r " + Адрес;
             return Адреса;
         }
+
         public override void _Назад()
         {
 

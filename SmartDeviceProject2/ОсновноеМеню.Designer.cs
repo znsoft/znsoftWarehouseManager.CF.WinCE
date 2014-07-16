@@ -36,10 +36,10 @@
             this.Инвентаризация = new System.Windows.Forms.Button();
             this.Табулятор = new System.Windows.Forms.TabControl();
             this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
+            this.Подтоварка = new System.Windows.Forms.Button();
             this.Подбор = new System.Windows.Forms.Button();
             this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
-            this.Подтоварка = new System.Windows.Forms.Button();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -56,7 +56,7 @@
             this.Выход.Location = new System.Drawing.Point(3, 178);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(226, 38);
-            this.Выход.TabIndex = 4;
+            this.Выход.TabIndex = 5;
             this.Выход.Text = "0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
@@ -102,6 +102,15 @@
             this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(232, 224);
             this.Панель_ОсновногоМеню.Text = "1.Задания";
             // 
+            // Подтоварка
+            // 
+            this.Подтоварка.Location = new System.Drawing.Point(3, 128);
+            this.Подтоварка.Name = "Подтоварка";
+            this.Подтоварка.Size = new System.Drawing.Size(226, 38);
+            this.Подтоварка.TabIndex = 4;
+            this.Подтоварка.Text = "6.Подтоварка";
+            this.Подтоварка.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            // 
             // Подбор
             // 
             this.Подбор.Location = new System.Drawing.Point(3, 6);
@@ -133,15 +142,6 @@
             this.СписокИнформации.Size = new System.Drawing.Size(225, 221);
             this.СписокИнформации.TabIndex = 0;
             this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
-            // 
-            // Подтоварка
-            // 
-            this.Подтоварка.Location = new System.Drawing.Point(3, 128);
-            this.Подтоварка.Name = "Подтоварка";
-            this.Подтоварка.Size = new System.Drawing.Size(226, 38);
-            this.Подтоварка.TabIndex = 5;
-            this.Подтоварка.Text = "6.Подтоварка";
-            this.Подтоварка.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // ОсновноеМеню
             // 

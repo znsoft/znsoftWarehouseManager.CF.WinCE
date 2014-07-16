@@ -22,6 +22,7 @@ namespace СкладскойУчет
             new РаботаСоСканером();
             InitializeComponent();
             this.KeyPreview = true;
+            Подбор.Focus();
         }
 
         public void _Выход()
