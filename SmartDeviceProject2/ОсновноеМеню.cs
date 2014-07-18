@@ -93,11 +93,8 @@ namespace СкладскойУчет
             
             }
 
-
-
-
-            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
-            method.Invoke(this, null);
+            //MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+            //method.Invoke(this, null);
 
         }
 
