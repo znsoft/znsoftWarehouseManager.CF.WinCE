@@ -40,7 +40,7 @@ namespace СкладскойУчет
             if (Адрес == null) return;
             СформироватьДокументВ1С(Адрес);
             if (Последовательность.ОтветСервера == null) return;
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

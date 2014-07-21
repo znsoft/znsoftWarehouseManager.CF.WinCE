@@ -55,7 +55,7 @@ namespace СкладскойУчет
             if (Адрес == null) return;
             СформироватьДокументВ1С(Адрес);
             if (Последовательность.ОтветСервера == null) return;
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -119,9 +119,9 @@ namespace СкладскойУчет
                     _Далее();
                     return;
             }
-            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
-            if (method != null)
-                method.Invoke(this, null);
+            //MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+            //if (method != null)
+            //    method.Invoke(this, null);
         }
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
@@ -182,9 +182,17 @@ namespace СкладскойУчет
                 }
             }
             if (НайденСкан == null) { Инфо.ОшибкаТоварНеНайден(); return; }
-            НайденСкан.Selected = true;
+
+            СделатьВидимым(НайденСкан);
             ПоказатьИнфооТоваре(НайденСкан);
             ПрибавитьКоличество(НайденСкан, 1, true);
+
+        }
+
+        private void СделатьВидимым(ListViewItem НайденСкан)
+        {
+            СписокПеремещения.EnsureVisible(НайденСкан.Index);
+            НайденСкан.Selected = true;
 
         }
 

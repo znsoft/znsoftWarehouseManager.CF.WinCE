@@ -73,7 +73,7 @@ namespace СкладскойУчет
         {
             СформироватьДокументВ1С("");
             if (Последовательность.ОтветСервера == null) return;
-            this.DialogResult = DialogResult.Cancel;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

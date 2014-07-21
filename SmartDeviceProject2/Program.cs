@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Threading;
+
 
 namespace СкладскойУчет
 {
@@ -11,6 +13,7 @@ namespace СкладскойУчет
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+        ///
         [MTAThread]
         static void Main()
         {

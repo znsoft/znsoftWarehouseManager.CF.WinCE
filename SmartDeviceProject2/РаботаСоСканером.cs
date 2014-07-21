@@ -5,10 +5,11 @@ using System.Text;
 using System.Runtime.InteropServices;
 using SDK.English;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace СкладскойУчет
 {
-    class РаботаСоСканером:IDisposable
+    class РаботаСоСканером : IDisposable
     {
 
         [DllImport("DeviceAPI.dll", EntryPoint = "Barcode1D_init")]
@@ -26,13 +27,14 @@ namespace СкладскойУчет
         public РаботаСоСканером()
         {
             SystemHelper.GetDeviceType();
-            if (SystemHelper.DeviceTypeIsKown)             
+            if (SystemHelper.DeviceTypeIsKown)
                 Barcode1D_init();
             Звук = new Звуки();
         }
 
 
-         ~РаботаСоСканером() {
+        ~РаботаСоСканером()
+        {
             if (SystemHelper.DeviceTypeIsKown) Barcode1D_free();
 
         }
@@ -40,10 +42,22 @@ namespace СкладскойУчет
 
         public static string Scan()
         {
+
+
+            if (SystemHelper.CurrentDeviceType == DeviceType.UnKown) {
+                return СканироватьКодЧерезБуферОбмена();
+            }
+
+
+            return СканироватьЧерезdll();
+
+        }
+
+        private static string СканироватьЧерезdll()
+        {
             int ibarLen = 0;
             byte[] pszData = new byte[2048];
             string barcode = string.Empty;
-
             try
             {
                 ibarLen = Barcode1D_scan(pszData);
@@ -59,11 +73,51 @@ namespace СкладскойУчет
             }
             catch (System.Exception)
             {
-                
+
                 return string.Empty;
             }
-
         }
+
+        private static string СканироватьКодЧерезБуферОбмена()
+        {
+            string barcode = string.Empty;
+
+            for (int i = 20; i > 0 ; i--)
+            {
+
+                barcode = ПолучитьБуферОбмена().Trim();
+                if (barcode.Length > 2) break;
+                try { Thread.Sleep(100); }
+                catch (Exception) { }
+
+            }
+
+            СтеретьБуферОбмена();
+            if (barcode.Length < 3) return string.Empty;
+            ЭтоСканирование = true;
+            Звук.Ок();
+            return barcode;
+        }
+
+        public static void СтеретьБуферОбмена()
+        {
+            
+            Clipboard.SetDataObject("");
+        
+        }
+
+        public static string ПолучитьБуферОбмена()
+        {
+                IDataObject iData = Clipboard.GetDataObject();
+                // Determines whether the data is in a format you can use.
+                if (iData.GetDataPresent(DataFormats.Text))
+                {
+                    return (String)iData.GetData(DataFormats.Text);
+                }
+            return string.Empty;
+        }
+
+
 
         public static bool НажатаКлавишаСкан(KeyEventArgs e)
         {
@@ -83,6 +137,12 @@ namespace СкладскойУчет
                     return ((int)e.KeyCode == (int)ConstantKeyValue.Scan || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12) || ((int)e.KeyCode == (int)ConstantKeyValue.F7) || ((int)e.KeyCode == (int)ConstantKeyValue.F8));
                 case DeviceType.C5000:
                     return (((int)e.KeyCode == (int)ConstantKeyValue.Enter) || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12));
+                case DeviceType.UnKown:
+                    bool r = ((int)e.KeyCode == 193);
+                    //r = r || (ПолучитьБуферОбмена().Trim().Length > 2);
+                    //if(r)Thread.Sleep(100);
+                    return r;
+
             }
             return false;
         }
@@ -118,7 +178,7 @@ namespace СкладскойУчет
 
         public void Dispose()
         {
-            if (SystemHelper.DeviceTypeIsKown) Barcode1D_free();  
+            if (SystemHelper.DeviceTypeIsKown) Barcode1D_free();
         }
 
         #endregion
@@ -145,7 +205,8 @@ namespace СкладскойУчет
         #endregion
 
 
-        public static void ВключитьРадио() {
+        public static void ВключитьРадио()
+        {
 
             SystemHelper.GetDeviceType();
             if (SystemHelper.DeviceTypeIsKown) if (!CLR_WIFI.isConnected()) CLR_WIFI.PowerOn();
