@@ -55,12 +55,12 @@
             // 
             // Назад
             // 
-            this.Назад.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Назад.Location = new System.Drawing.Point(41, 261);
+            this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.Назад.Location = new System.Drawing.Point(60, 256);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(156, 17);
+            this.Назад.Size = new System.Drawing.Size(100, 22);
             this.Назад.TabIndex = 1;
-            this.Назад.Text = "0.Назад";
+            this.Назад.Text = "&0. Назад";
             this.Назад.Click += new System.EventHandler(this.Назад_Click);
             // 
             // Пользователь
@@ -78,7 +78,7 @@
             this.СписокВыбора.Enabled = false;
             this.СписокВыбора.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.СписокВыбора.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.СписокВыбора.Location = new System.Drawing.Point(0, 150);
+            this.СписокВыбора.Location = new System.Drawing.Point(0, 149);
             this.СписокВыбора.Name = "СписокВыбора";
             this.СписокВыбора.Size = new System.Drawing.Size(229, 108);
             this.СписокВыбора.TabIndex = 3;

@@ -127,7 +127,7 @@ namespace СкладскойУчет
                 if (ЭлементФормы is Button)
                 {
                     Button Кнопка = (Button)ЭлементФормы;
-                    if ((char)Кнопка.Text[0] == (char)e.KeyValue)
+                    if ((char)Кнопка.Text[1] == (char)e.KeyValue)
                     {
                         Кнопка.Focus();
                         ПриНажатииНаКнопку(Кнопка, new EventArgs());

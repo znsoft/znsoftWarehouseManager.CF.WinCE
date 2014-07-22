@@ -36,11 +36,12 @@
             // 
             // Выход
             // 
+            this.Выход.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Выход.Location = new System.Drawing.Point(48, 201);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(140, 63);
             this.Выход.TabIndex = 0;
-            this.Выход.Text = "0.Выход";
+            this.Выход.Text = "&0. Выход";
             this.Выход.Click += new System.EventHandler(this.Выход_Click);
             // 
             // ТекстОшибки

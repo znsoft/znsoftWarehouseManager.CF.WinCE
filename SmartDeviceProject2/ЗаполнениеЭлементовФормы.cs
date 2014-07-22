@@ -24,12 +24,24 @@ namespace СкладскойУчет
     }
     public class ЗаполнениеЭлементовФормы
     {
-        private static void ДобавитьКолонку(ListView СписокВыбора, string Колонка, int Ширина)
+        private static void ДобавитьКолонку(ListView СписокВыбора, string Колонка, int Ширина, string[] Строка)
         {
 
             var columnHeader = new ColumnHeader();
             columnHeader.Text = Ширина == 0 ? "" : Колонка;
             columnHeader.Width = Ширина;
+            if (Строка.Count() > 3)
+                switch (Строка[3]) {
+                    case "Центр":
+                        columnHeader.TextAlign = HorizontalAlignment.Center;
+                        break;
+                    case "Право":
+                        columnHeader.TextAlign = HorizontalAlignment.Right;
+                        break;
+                    case "Лево":
+                        columnHeader.TextAlign = HorizontalAlignment.Left;
+                        break;
+                }
             СписокВыбора.Columns.Add(columnHeader);
         }
 
@@ -44,7 +56,6 @@ namespace СкладскойУчет
             Label ТекстДЯ = ЭлементыФормы.ТекстДЯ;// Форма.Find<Label>(b => b.Name == "ТекстДЯ");
             try
             {
-                //Форма.Find<Label>(b => b.Name == "Пользователь").Text = Авторизован.UserName;
                 ЭлементыФормы.Пользователь.Text = Авторизован.UserName;
             }
             catch (Exception) { }
@@ -58,15 +69,24 @@ namespace СкладскойУчет
                     ПерваяСтрока = ДобавитьСтрокуСписка(СписокВыбора, ПерваяСтрока, Строка);
                     continue;
                 }
-
-                if (Строка[0] == "ДобавитьКолонкуСписка") { 
-                    СписокВыбора.Visible = true;
-                    ДобавитьКолонку(СписокВыбора, Строка[1], int.Parse(Строка[2]));
+                switch (Строка[0]) {
+                    case "ДобавитьКолонкуСписка":
+                        СписокВыбора.Visible = true;
+                        ДобавитьКолонку(СписокВыбора, Строка[1], int.Parse(Строка[2]), Строка);
+                        break;
+                    case "ЗаполнитьТаблицу":
+                        ЗаполнениеТаблицы = true;
+                        break;
+                    case "КолонкаВыбора":
+                        КолонкаВыбора = int.Parse(Строка[1]);
+                        break;
+                    case "ТекстИнструкции":
+                        Инструкция.Text = Строка[1];
+                        break;
+                    case "ТекстДЯ":
+                        ТекстДЯ.Text = Строка[1];
+                        break;
                 }
-                if (Строка[0] == "ЗаполнитьТаблицу") ЗаполнениеТаблицы = true;
-                if (Строка[0] == "КолонкаВыбора") КолонкаВыбора = int.Parse(Строка[1]);
-                if (Строка[0] == "ТекстИнструкции") Инструкция.Text = Строка[1];
-                if (Строка[0] == "ТекстДЯ") ТекстДЯ.Text = Строка[1];
 
             }
         }

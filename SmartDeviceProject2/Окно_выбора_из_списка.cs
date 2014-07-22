@@ -57,9 +57,9 @@ namespace СкладскойУчет
                     _Далее();
                     return;
             }
-            MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
-             if(method != null) 
-            method.Invoke(this, null);
+            //MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
+            // if(method != null) 
+            //method.Invoke(this, null);
         }
 
          public virtual void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
@@ -82,7 +82,7 @@ namespace СкладскойУчет
                  if (ЭлементФормы is Button)
                  {
                      Button Кнопка = (Button)ЭлементФормы;
-                     if ((char)Кнопка.Text[0] == (char)e.KeyValue)
+                     if ((char)Кнопка.Text[1] == (char)e.KeyValue)
                      {
                          Кнопка.Focus();
                          ПриНажатииНаКнопку(Кнопка, new EventArgs());

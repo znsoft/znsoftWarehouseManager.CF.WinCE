@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Узел0");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Узел1");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
             this.Дерево = new System.Windows.Forms.TreeView();
@@ -72,12 +72,12 @@
             this.Дерево.ContextMenu = this.МенюПодбора;
             this.Дерево.Location = new System.Drawing.Point(0, 0);
             this.Дерево.Name = "Дерево";
-            treeNode4.Text = "Узел1";
-            treeNode3.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
-            treeNode3.Text = "Узел0";
+            treeNode2.Text = "Узел1";
+            treeNode1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            treeNode1.Text = "Узел0";
             this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.Дерево.Size = new System.Drawing.Size(222, 212);
             this.Дерево.TabIndex = 2;
             this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
@@ -162,16 +162,16 @@
             this.ТекстДЯ.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
             this.ТекстДЯ.Location = new System.Drawing.Point(108, 305);
             this.ТекстДЯ.Name = "ТекстДЯ";
-            this.ТекстДЯ.Size = new System.Drawing.Size(89, 15);
+            this.ТекстДЯ.Size = new System.Drawing.Size(81, 15);
             // 
             // Меню
             // 
-            this.Меню.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Меню.Location = new System.Drawing.Point(196, 300);
+            this.Меню.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.Меню.Location = new System.Drawing.Point(189, 300);
             this.Меню.Name = "Меню";
-            this.Меню.Size = new System.Drawing.Size(45, 22);
+            this.Меню.Size = new System.Drawing.Size(50, 22);
             this.Меню.TabIndex = 0;
-            this.Меню.Text = "0.меню";
+            this.Меню.Text = "&0.меню";
             this.Меню.Click += new System.EventHandler(this.Меню_Click);
             // 
             // Окно_скан_из_дерева

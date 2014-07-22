@@ -53,29 +53,32 @@
             // 
             // Выход
             // 
+            this.Выход.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Выход.Location = new System.Drawing.Point(3, 178);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(226, 38);
             this.Выход.TabIndex = 5;
-            this.Выход.Text = "0.Выход";
+            this.Выход.Text = "&0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Перемещение
             // 
+            this.Перемещение.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Перемещение.Location = new System.Drawing.Point(3, 86);
             this.Перемещение.Name = "Перемещение";
             this.Перемещение.Size = new System.Drawing.Size(226, 38);
             this.Перемещение.TabIndex = 3;
-            this.Перемещение.Text = "5.Переместить";
+            this.Перемещение.Text = "&5. Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Инвентаризация
             // 
+            this.Инвентаризация.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Инвентаризация.Location = new System.Drawing.Point(3, 46);
             this.Инвентаризация.Name = "Инвентаризация";
             this.Инвентаризация.Size = new System.Drawing.Size(226, 36);
             this.Инвентаризация.TabIndex = 2;
-            this.Инвентаризация.Text = "4.Инвентаризация";
+            this.Инвентаризация.Text = "&4. Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Табулятор
@@ -104,20 +107,22 @@
             // 
             // Подтоварка
             // 
+            this.Подтоварка.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Подтоварка.Location = new System.Drawing.Point(3, 128);
             this.Подтоварка.Name = "Подтоварка";
             this.Подтоварка.Size = new System.Drawing.Size(226, 38);
             this.Подтоварка.TabIndex = 4;
-            this.Подтоварка.Text = "6.Подтоварка";
+            this.Подтоварка.Text = "&6. Подтоварка";
             this.Подтоварка.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Подбор
             // 
+            this.Подбор.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Подбор.Location = new System.Drawing.Point(3, 6);
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(226, 36);
             this.Подбор.TabIndex = 1;
-            this.Подбор.Text = "3.Подбор";
+            this.Подбор.Text = "&3. Подбор";
             this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Панель_Информации

@@ -38,30 +38,32 @@
             this.Информация = new System.Windows.Forms.Label();
             this.СписокПеремещения = new System.Windows.Forms.ListView();
             this.ПанельСоСплиттером = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Сплиттер = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Сплиттер = new System.Windows.Forms.Splitter();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ПанельСоСплиттером.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Назад
             // 
+            this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.Назад.Location = new System.Drawing.Point(1, 283);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(63, 22);
+            this.Назад.Size = new System.Drawing.Size(100, 22);
             this.Назад.TabIndex = 1;
-            this.Назад.Text = "0.Назад";
+            this.Назад.Text = "&0. Назад";
             this.Назад.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Далее
             // 
-            this.Далее.Location = new System.Drawing.Point(166, 283);
+            this.Далее.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.Далее.Location = new System.Drawing.Point(138, 283);
             this.Далее.Name = "Далее";
-            this.Далее.Size = new System.Drawing.Size(67, 22);
+            this.Далее.Size = new System.Drawing.Size(100, 22);
             this.Далее.TabIndex = 2;
-            this.Далее.Text = "1.Далее";
+            this.Далее.Text = "&1. Далее";
             this.Далее.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Пользователь
@@ -122,13 +124,13 @@
             this.ПанельСоСплиттером.Name = "ПанельСоСплиттером";
             this.ПанельСоСплиттером.Size = new System.Drawing.Size(237, 264);
             // 
-            // panel1
+            // panel2
             // 
-            this.panel1.Controls.Add(this.СписокПеремещения);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 224);
+            this.panel2.Controls.Add(this.Информация);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 227);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(237, 37);
             // 
             // Сплиттер
             // 
@@ -138,13 +140,13 @@
             this.Сплиттер.Name = "Сплиттер";
             this.Сплиттер.Size = new System.Drawing.Size(237, 3);
             // 
-            // panel2
+            // panel1
             // 
-            this.panel2.Controls.Add(this.Информация);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 227);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(237, 37);
+            this.panel1.Controls.Add(this.СписокПеремещения);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(237, 224);
             // 
             // Окно_перемещения_списка
             // 
@@ -168,8 +170,8 @@
             this.Load += new System.EventHandler(this.Окно_выбора_из_списка_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Окно_выбора_из_списка_KeyDown);
             this.ПанельСоСплиттером.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

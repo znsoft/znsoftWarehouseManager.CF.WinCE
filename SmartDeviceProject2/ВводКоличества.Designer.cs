@@ -55,9 +55,9 @@
             // 
             // Принять
             // 
-            this.Принять.Location = new System.Drawing.Point(93, 90);
+            this.Принять.Location = new System.Drawing.Point(88, 88);
             this.Принять.Name = "Принять";
-            this.Принять.Size = new System.Drawing.Size(61, 20);
+            this.Принять.Size = new System.Drawing.Size(66, 22);
             this.Принять.TabIndex = 2;
             this.Принять.Text = "Принять";
             this.Принять.Click += new System.EventHandler(this.Принять_Click);
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(158, 110);
+            this.ClientSize = new System.Drawing.Size(159, 115);
             this.Controls.Add(this.Принять);
             this.Controls.Add(this.Количество);
             this.Controls.Add(this.Информация);

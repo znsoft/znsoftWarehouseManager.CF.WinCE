@@ -37,7 +37,7 @@ namespace СкладскойУчет
                  if (ЭлементФормы is Button)
                  {
                      Button Кнопка = (Button)ЭлементФормы;
-                     if ((char)Кнопка.Text[0] == (char)e.KeyValue)
+                     if ((char)Кнопка.Text[1] == (char)e.KeyValue)
                      {
                          Кнопка.Focus();
                          ПриНажатииНаКнопку(Кнопка, new EventArgs());
@@ -55,6 +55,10 @@ namespace СкладскойУчет
                  _Назад();
              }
              if ((e.KeyCode == System.Windows.Forms.Keys.Enter))
+             {
+                 _Далее();
+             }
+             if (РаботаСоСканером.НажатаКлавишаСкан(e))
              {
                  _Далее();
              }

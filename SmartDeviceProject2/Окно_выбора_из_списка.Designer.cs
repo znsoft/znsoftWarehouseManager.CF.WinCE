@@ -51,20 +51,22 @@
             // 
             // Назад
             // 
+            this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.Назад.Location = new System.Drawing.Point(0, 276);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(118, 22);
+            this.Назад.Size = new System.Drawing.Size(100, 22);
             this.Назад.TabIndex = 1;
-            this.Назад.Text = "0.Назад";
+            this.Назад.Text = "&0. Назад";
             this.Назад.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Далее
             // 
-            this.Далее.Location = new System.Drawing.Point(124, 276);
+            this.Далее.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.Далее.Location = new System.Drawing.Point(134, 276);
             this.Далее.Name = "Далее";
-            this.Далее.Size = new System.Drawing.Size(109, 22);
+            this.Далее.Size = new System.Drawing.Size(100, 22);
             this.Далее.TabIndex = 2;
-            this.Далее.Text = "1.Далее";
+            this.Далее.Text = "&1. Далее";
             this.Далее.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             // 
             // Пользователь
