@@ -60,115 +60,115 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SystemHelper.cs" />
-    <Compile Include="ВводКоличества.cs">
+    <Compile Include="Оборудование\SystemHelper.cs" />
+    <Compile Include="Интерактивные\ВводКоличества.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ВводКоличества.Designer.cs">
+    <Compile Include="Интерактивные\ВводКоличества.Designer.cs">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
     </Compile>
-    <Compile Include="ЗаполнениеЭлементовФормы.cs" />
-    <Compile Include="Звуки.cs" />
-    <Compile Include="ИнтерактивныйВыборТовара.cs">
+    <Compile Include="РаботаСФормами\ЗаполнениеЭлементовФормы.cs" />
+    <Compile Include="Оборудование\Звуки.cs" />
+    <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Инфо.cs" />
-    <Compile Include="Окно_Подтоварки_Списка.cs">
+    <Compile Include="Интерактивные\Инфо.cs" />
+    <Compile Include="РаботаСоспискомТовара\Окно_Подтоварки_Списка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_Инвентаризации_Списка.cs">
+    <Compile Include="РаботаСоспискомТовара\Окно_Инвентаризации_Списка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_перемещения_списка.cs">
+    <Compile Include="РаботаСоспискомТовара\Окно_перемещения_списка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_перемещения_списка.Designer.cs">
+    <Compile Include="РаботаСоспискомТовара\Окно_перемещения_списка.Designer.cs">
       <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
     </Compile>
-    <Compile Include="Окно_сканирования_адреса.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_сканирования_адреса.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.Designer.cs">
       <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
     </Compile>
-    <Compile Include="Окно_скан_из_дерева.cs">
+    <Compile Include="РаботаСДеревомЗначений\Окно_скан_из_дерева.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_скан_из_дерева.Designer.cs">
+    <Compile Include="РаботаСДеревомЗначений\Окно_скан_из_дерева.Designer.cs">
       <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
     </Compile>
-    <Compile Include="Окно_выбора_из_списка.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_выбора_из_списка.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.Designer.cs">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
     </Compile>
-    <Compile Include="Окно_сканирования_ТС.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Окно_сканирования_ТС.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.Designer.cs">
       <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ошибка.cs">
+    <Compile Include="Интерактивные\Ошибка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ошибка.Designer.cs">
+    <Compile Include="Интерактивные\Ошибка.Designer.cs">
       <DependentUpon>Ошибка.cs</DependentUpon>
     </Compile>
-    <Compile Include="Пакеты.cs" />
-    <Compile Include="ПоследовательностьОкон.cs" />
-    <Compile Include="РаботаСоСканером.cs" />
-    <Compile Include="СоединениеВебСервис.cs">
+    <Compile Include="Сеть\Пакеты.cs" />
+    <Compile Include="ПоследовательныйВыборЗаданий\ПоследовательностьОкон.cs" />
+    <Compile Include="Оборудование\РаботаСоСканером.cs" />
+    <Compile Include="Сеть\СоединениеВебСервис.cs">
     </Compile>
-    <Compile Include="СохранениеЗагрузкаНастроек.cs" />
-    <Compile Include="СуперКлиент.cs" />
-    <Compile Include="ФормаАвторизации.cs">
+    <Compile Include="Настройка\СохранениеЗагрузкаНастроек.cs" />
+    <Compile Include="Сеть\СуперКлиент.cs" />
+    <Compile Include="РабочийСтол\ФормаАвторизации.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ФормаАвторизации.Designer.cs">
+    <Compile Include="РабочийСтол\ФормаАвторизации.Designer.cs">
       <DependentUpon>ФормаАвторизации.cs</DependentUpon>
     </Compile>
-    <Compile Include="ОсновноеМеню.cs">
+    <Compile Include="РабочийСтол\ОсновноеМеню.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ОсновноеМеню.Designer.cs">
+    <Compile Include="РабочийСтол\ОсновноеМеню.Designer.cs">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ВводКоличества.resx">
+    <EmbeddedResource Include="Интерактивные\ВводКоличества.resx">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Окно_перемещения_списка.resx">
+    <EmbeddedResource Include="РаботаСоспискомТовара\Окно_перемещения_списка.resx">
       <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Окно_сканирования_адреса.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.resx">
       <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Окно_скан_из_дерева.resx">
+    <EmbeddedResource Include="РаботаСДеревомЗначений\Окно_скан_из_дерева.resx">
       <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Окно_выбора_из_списка.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.resx">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Окно_сканирования_ТС.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.resx">
       <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ошибка.resx">
+    <EmbeddedResource Include="Интерактивные\Ошибка.resx">
       <DependentUpon>Ошибка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ФормаАвторизации.resx">
+    <EmbeddedResource Include="РабочийСтол\ФормаАвторизации.resx">
       <DependentUpon>ФормаАвторизации.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ОсновноеМеню.resx">
+    <EmbeddedResource Include="РабочийСтол\ОсновноеМеню.resx">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -177,7 +177,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ФормаНастроек.resx">
+    <EmbeddedResource Include="Настройка\ФормаНастроек.resx">
       <DependentUpon>ФормаНастроек.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -191,14 +191,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="ФормаНастроек.cs">
+    <Compile Include="Настройка\ФормаНастроек.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ФормаНастроек.Designer.cs">
+    <Compile Include="Настройка\ФормаНастроек.Designer.cs">
       <DependentUpon>ФормаНастроек.cs</DependentUpon>
     </Compile>
-    <Compile Include="ЭлементДерева.cs" />
-    <Compile Include="ЭлементыФормыЗаполнения.cs" />
+    <Compile Include="РаботаСДеревомЗначений\ХранениеДанных\ЭлементДерева.cs" />
+    <Compile Include="РаботаСФормами\ЭлементыФормыЗаполнения.cs" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
