@@ -6,3 +6,5 @@ znsoftWarehouseManager.CF.WinCE
 Visual Studio 2008
 
 Для работы желательно наличие DeviceApi.dll т.к в ней происходит работа со сканером ШК
+
+при отсутствии этой .dll работа идет через буфер обмена на C900
