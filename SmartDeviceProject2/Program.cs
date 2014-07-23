@@ -18,7 +18,7 @@ namespace СкладскойУчет
         static void Main()
         {
 
-            
+           СоединениеВебСервис.НомерВерсии = "c#8"; 
 
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 

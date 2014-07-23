@@ -55,7 +55,7 @@ namespace СкладскойУчет
             if (Адрес == null) return;
             СформироватьДокументВ1С(Адрес);
             if (Последовательность.ОтветСервера == null) return;
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.Retry;
             this.Close();
         }
 
