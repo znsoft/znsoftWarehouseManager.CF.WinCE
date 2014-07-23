@@ -96,7 +96,7 @@
             this.Информация.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Информация.Location = new System.Drawing.Point(0, 0);
             this.Информация.Name = "Информация";
-            this.Информация.Size = new System.Drawing.Size(237, 37);
+            this.Информация.Size = new System.Drawing.Size(237, 53);
             this.Информация.Text = "Товар";
             // 
             // СписокПеремещения
@@ -107,7 +107,7 @@
             this.СписокПеремещения.FullRowSelect = true;
             this.СписокПеремещения.Location = new System.Drawing.Point(0, 0);
             this.СписокПеремещения.Name = "СписокПеремещения";
-            this.СписокПеремещения.Size = new System.Drawing.Size(237, 224);
+            this.СписокПеремещения.Size = new System.Drawing.Size(237, 208);
             this.СписокПеремещения.TabIndex = 0;
             this.СписокПеремещения.Tag = "Таблица";
             this.СписокПеремещения.View = System.Windows.Forms.View.Details;
@@ -128,15 +128,15 @@
             // 
             this.panel2.Controls.Add(this.Информация);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 227);
+            this.panel2.Location = new System.Drawing.Point(0, 211);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(237, 37);
+            this.panel2.Size = new System.Drawing.Size(237, 53);
             // 
             // Сплиттер
             // 
             this.Сплиттер.BackColor = System.Drawing.Color.Lime;
             this.Сплиттер.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Сплиттер.Location = new System.Drawing.Point(0, 224);
+            this.Сплиттер.Location = new System.Drawing.Point(0, 208);
             this.Сплиттер.Name = "Сплиттер";
             this.Сплиттер.Size = new System.Drawing.Size(237, 3);
             // 
@@ -146,7 +146,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(237, 224);
+            this.panel1.Size = new System.Drawing.Size(237, 208);
             // 
             // Окно_перемещения_списка
             // 

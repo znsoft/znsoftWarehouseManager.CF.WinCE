@@ -24,7 +24,11 @@ namespace СкладскойУчет
     }
     public class ЗаполнениеЭлементовФормы
     {
-        private static void ДобавитьКолонку(ListView СписокВыбора, string Колонка, int Ширина, string[] Строка)
+        //public Dictionary<string, int> СоответствиеКолонок = new Dictionary<string, int>();
+
+
+
+        private static int ДобавитьКолонку(ListView СписокВыбора, string Колонка, int Ширина, string[] Строка)
         {
 
             var columnHeader = new ColumnHeader();
@@ -43,11 +47,17 @@ namespace СкладскойУчет
                         break;
                 }
             СписокВыбора.Columns.Add(columnHeader);
+            return СписокВыбора.Columns.IndexOf(columnHeader);
         }
 
 
-
         public static void ЗаполнитьФорму(ЭлементыФормыЗаполнения ЭлементыФормы, ref string[][] ОтветСервера, ref int КолонкаВыбора)
+        {
+            Dictionary<string, int> СоответствиеКолонок = null;
+            ЗаполнитьФорму(ЭлементыФормы, ref ОтветСервера, ref КолонкаВыбора, ref СоответствиеКолонок);
+        }
+
+        public static void ЗаполнитьФорму(ЭлементыФормыЗаполнения ЭлементыФормы, ref string[][] ОтветСервера, ref int КолонкаВыбора, ref Dictionary<string, int> СоответствиеКолонок)
         {
             var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
             ListView СписокВыбора = ЭлементыФормы.СписокВыбора;
@@ -72,7 +82,8 @@ namespace СкладскойУчет
                 switch (Строка[0]) {
                     case "ДобавитьКолонкуСписка":
                         СписокВыбора.Visible = true;
-                        ДобавитьКолонку(СписокВыбора, Строка[1], int.Parse(Строка[2]), Строка);
+                        int index = ДобавитьКолонку(СписокВыбора, Строка[1], int.Parse(Строка[2]), Строка);
+                        if (СоответствиеКолонок != null) СоответствиеКолонок.Add(Строка[1], index);
                         break;
                     case "ЗаполнитьТаблицу":
                         ЗаполнениеТаблицы = true;

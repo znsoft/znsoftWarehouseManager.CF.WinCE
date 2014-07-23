@@ -12,6 +12,8 @@ namespace СкладскойУчет
     class РаботаСоСканером : IDisposable
     {
 
+
+
         [DllImport("DeviceAPI.dll", EntryPoint = "Barcode1D_init")]
         private static extern void Barcode1D_init();
 
