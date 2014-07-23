@@ -135,13 +135,26 @@ namespace СкладскойУчет
                     }
                 }
 
-            if ((e.KeyCode == System.Windows.Forms.Keys.D1))
+            if (!РучнойКод.Focused)
             {
-                Табулятор.SelectedIndex = 0;
+                if ((e.KeyCode == System.Windows.Forms.Keys.D1))
+                {
+                    Табулятор.SelectedIndex = 0;
+                }
+                if ((e.KeyCode == System.Windows.Forms.Keys.D2))
+                {
+                    Табулятор.SelectedIndex = 1;
+                }
             }
-            if ((e.KeyCode == System.Windows.Forms.Keys.D2))
-            {
-                Табулятор.SelectedIndex = 1;
+            else {
+                if ((e.KeyCode == System.Windows.Forms.Keys.Enter) || ((int)e.KeyCode == 119) )
+                {
+
+                    ИнформацияВРучномРежиме();
+
+                }
+            
+            
             }
 
             if ((e.KeyCode == System.Windows.Forms.Keys.Left))
@@ -153,6 +166,31 @@ namespace СкладскойУчет
                 Табулятор.SelectedIndex = 1;
             }
 
+        }
+
+        private void РучнойКод_LostFocus(object sender, EventArgs e)
+        {
+            ИнформацияВРучномРежиме();
+        }
+
+        private void ИнформацияВРучномРежиме()
+        {
+            if (РучнойКод.Text.Length > 3)
+            {
+                Инфо.ПолучениеИнформации(РучнойКод.Text, СписокИнформации, Табулятор);
+                РучнойКод.Text = "";
+                СписокИнформации.Focus();
+            }
+        }
+
+        private void РучнойКод_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == System.Windows.Forms.Keys.Enter))
+            {
+
+                ИнформацияВРучномРежиме();
+
+            }
         }
 
 

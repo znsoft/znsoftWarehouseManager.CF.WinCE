@@ -24,7 +24,7 @@ namespace СкладскойУчет
         {
             var Выборка = from string[] строка in Ответ where строка[0] == "Товар" select строка;
             if (Выборка.Count() > 1) {
-                Выборка = ВыбратьТоварИзМножества(Выборка, Ответ);
+                Выборка = ВыбратьТоварИзМножества_(Выборка, Ответ);
                 if (Выборка == null) return null;
             }
             string[] Строка = Выборка.FirstOrDefault();
@@ -44,7 +44,8 @@ namespace СкладскойУчет
             return НоваяСтрока;
         }
 
-        private IEnumerable<string[]> ВыбратьТоварИзМножества(IEnumerable<string[]> Выборка , string[][] Ответ)
+
+        private string ВыбратьТоварИзМножества(IEnumerable<string[]> Выборка)
         {
             ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
             ListView СписокВыбора = ОкноВыбора.СписокВыбора;
@@ -52,7 +53,8 @@ namespace СкладскойУчет
             СписокВыбора.Columns.Add("Товар", 160, HorizontalAlignment.Left);
             ОкноВыбора.Инструкция.Text = "Выберите товар из списка";
             //ОкноВыбора.Пользователь.Text = 
-            foreach (string[] Товар in Выборка) {
+            foreach (string[] Товар in Выборка)
+            {
                 ListViewItem НоваяСтрока = new ListViewItem();
                 НоваяСтрока.Text = Товар[2];//Код
                 НоваяСтрока.SubItems.Add(Товар[3]);//Наименование
@@ -61,8 +63,16 @@ namespace СкладскойУчет
             }
             DialogResult Результат = ОкноВыбора.ShowDialog();
             if (Результат == DialogResult.Cancel) return null;
-            return from string[] строка in Ответ where строка[1] == ОкноВыбора.ВыбранГуид select строка; 
+            return ОкноВыбора.ВыбранГуид;
         }
+
+        private IEnumerable<string[]> ВыбратьТоварИзМножества_(IEnumerable<string[]> Выборка, string[][] Ответ)
+        {
+            string ВыбранГуид = ВыбратьТоварИзМножества(Выборка);
+            return from string[] строка in Ответ where строка[1] == ВыбранГуид select строка;
+        }
+
+
 
         public override bool ПроверитьКоличество(int Сканировано, int Количество)
         {

@@ -218,10 +218,47 @@ namespace СкладскойУчет
 
         }
 
+
+        private string ВыбратьТоварИзМножества(IEnumerable<ListViewItem> Выборка)
+        {
+            ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
+            ListView СписокВыбора = ОкноВыбора.СписокВыбора;
+            СписокВыбора.Columns.Add("Код", 70, HorizontalAlignment.Left);
+            СписокВыбора.Columns.Add("Товар", 160, HorizontalAlignment.Left);
+            ОкноВыбора.Инструкция.Text = "Выберите товар из списка";
+            foreach (ListViewItem Товар in Выборка)
+            {
+                ListViewItem НоваяСтрока = new ListViewItem();
+                НоваяСтрока.Text = Товар.SubItems[СоответствиеКолонок["Код"]].Text;//Код
+                НоваяСтрока.SubItems.Add(Товар.SubItems[СоответствиеКолонок["Товар"]].Text);//Наименование
+                НоваяСтрока.SubItems.Add(Товар.SubItems[КолонкаРучногоВыбора].Text);//Гуид
+                СписокВыбора.Items.Add(НоваяСтрока);
+            }
+            DialogResult Результат = ОкноВыбора.ShowDialog();
+            if (Результат == DialogResult.Cancel) return null;
+            return ОкноВыбора.ВыбранГуид;
+        }
+
+
         private ListViewItem НайтиСкан(string СтрокаСкан)
         {
-            var Поиск = from ListViewItem s in СписокПеремещения.Items where СовпадаетEAN(СтрокаСкан, s) select s;
+            var Поиск = НайтиEANGUID(СтрокаСкан);
+            if (Поиск.Count() > 1) Поиск = ВыбратьТоварИзМножества_(Поиск);
+            if (Поиск == null)return null;
             return Поиск.FirstOrDefault();
+        }
+
+        private IEnumerable<ListViewItem> НайтиEANGUID(string СтрокаСкан)
+        {
+            var Поиск = from ListViewItem s in СписокПеремещения.Items where СовпадаетEAN(СтрокаСкан, s) select s;
+            return Поиск;
+        }
+
+        private IEnumerable<ListViewItem> ВыбратьТоварИзМножества_(IEnumerable<ListViewItem> Поиск)
+        {
+            string ВыбранГуид = ВыбратьТоварИзМножества(Поиск);
+            return НайтиEANGUID(ВыбранГуид);
+
         }
 
         private bool СовпадаетEAN(string СтрокаСкан, ListViewItem s)

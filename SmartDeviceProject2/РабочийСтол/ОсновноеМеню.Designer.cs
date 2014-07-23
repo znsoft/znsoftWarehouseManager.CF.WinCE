@@ -40,6 +40,7 @@
             this.Подбор = new System.Windows.Forms.Button();
             this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
+            this.РучнойКод = new System.Windows.Forms.TextBox();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -128,6 +129,7 @@
             // Панель_Информации
             // 
             this.Панель_Информации.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_Информации.Controls.Add(this.РучнойКод);
             this.Панель_Информации.Controls.Add(this.СписокИнформации);
             this.Панель_Информации.Location = new System.Drawing.Point(4, 23);
             this.Панель_Информации.Name = "Панель_Информации";
@@ -139,14 +141,25 @@
             this.СписокИнформации.AcceptsReturn = true;
             this.СписокИнформации.BackColor = System.Drawing.SystemColors.HighlightText;
             this.СписокИнформации.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.СписокИнформации.Location = new System.Drawing.Point(0, 1);
+            this.СписокИнформации.Location = new System.Drawing.Point(0, 20);
             this.СписокИнформации.Multiline = true;
             this.СписокИнформации.Name = "СписокИнформации";
             this.СписокИнформации.ReadOnly = true;
             this.СписокИнформации.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.СписокИнформации.Size = new System.Drawing.Size(225, 221);
+            this.СписокИнформации.Size = new System.Drawing.Size(232, 204);
             this.СписокИнформации.TabIndex = 0;
             this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
+            // 
+            // РучнойКод
+            // 
+            this.РучнойКод.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.РучнойКод.Location = new System.Drawing.Point(0, 0);
+            this.РучнойКод.Name = "РучнойКод";
+            this.РучнойКод.Size = new System.Drawing.Size(232, 19);
+            this.РучнойКод.TabIndex = 20;
+            this.РучнойКод.WordWrap = false;
+            this.РучнойКод.KeyDown += new System.Windows.Forms.KeyEventHandler(this.РучнойКод_KeyDown);
+            this.РучнойКод.LostFocus += new System.EventHandler(this.РучнойКод_LostFocus);
             // 
             // ОсновноеМеню
             // 
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Button Подбор;
         private System.Windows.Forms.TextBox СписокИнформации;
         private System.Windows.Forms.Button Подтоварка;
+        private System.Windows.Forms.TextBox РучнойКод;
     }
 }

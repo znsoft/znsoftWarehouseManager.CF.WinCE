@@ -16,7 +16,6 @@ namespace СкладскойУчет
     public partial class Окно_скан_из_дерева : Form
     {
         private Пакеты Обмен;
-        //private РаботаСоСканером Сканер;
         private ПоследовательностьОкон Последовательность;
         private List<ЭлементДерева> ПолноеДерево = new List<ЭлементДерева>();//поскольку для работы с sql базами данных с собой необходимо нести .dll я решил использовать linq на List для эмуляции sql
         private string ТекущийАдрес = null;
@@ -29,14 +28,50 @@ namespace СкладскойУчет
             Последовательность = ПоследовательностьОкон;
         }
 
+
+
+        private string ВыбратьТоварИзМножества(IEnumerable<ЭлементДерева> Выборка)
+        {
+            ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
+            ListView СписокВыбора = ОкноВыбора.СписокВыбора;
+            СписокВыбора.Columns.Add("Код", 70, HorizontalAlignment.Left);
+            СписокВыбора.Columns.Add("Товар", 160, HorizontalAlignment.Left);
+            ОкноВыбора.Инструкция.Text = "Выберите товар из списка";
+            foreach (ЭлементДерева Товар in Выборка)
+            {
+                ListViewItem НоваяСтрока = new ListViewItem();
+                НоваяСтрока.Text = Товар.Код;//Код
+                НоваяСтрока.SubItems.Add(Товар.Наименование);//Наименование
+                НоваяСтрока.SubItems.Add(Товар.GUID);//Гуид
+                СписокВыбора.Items.Add(НоваяСтрока);
+            }
+            DialogResult Результат = ОкноВыбора.ShowDialog();
+            if (Результат == DialogResult.Cancel) return null;
+            return ОкноВыбора.ВыбранГуид;
+        }
+
+
         private ЭлементДерева НайтиСкан(string EAN)
+        {
+            var Элемент = НайтиEANGUID(EAN);
+
+            if (Элемент.Count() > 1)  Элемент = ВыбратьТоварИзМножества_(Элемент);
+            if (Элемент == null || Элемент.Count() == 0) return null;
+            return Элемент.First();
+        }
+
+        private IEnumerable<ЭлементДерева> ВыбратьТоварИзМножества_(IEnumerable<ЭлементДерева> Элементы)
+        {
+            return НайтиEANGUID(ВыбратьТоварИзМножества(Элементы)); 
+        }
+
+        private IEnumerable<ЭлементДерева> НайтиEANGUID(string EAN)
         {
             var Элемент = from Строка in ПолноеДерево
                           where (Строка.EAN == EAN || Строка.Код == EAN || Строка.GUID == EAN || ЕстьДругиеEAN(Строка, EAN))
                           && (Строка.Адрес == ТекущийАдрес || Строка.ЭтоКорень)
                           select Строка;
-            if (Элемент.Count() == 0) return null;
-            return Элемент.First();
+            return Элемент;
         }
 
         private bool ЕстьДругиеEAN(ЭлементДерева Строка, string EAN)
