@@ -14,6 +14,7 @@ namespace СкладскойУчет
         /// Главная точка входа для приложения.
         /// </summary>
         ///
+        public static DialogResult РезультатАвторизации;
         [MTAThread]
         static void Main()
         {
@@ -34,7 +35,7 @@ namespace СкладскойУчет
             using (new РаботаСоСканером())
             {
                 var ФормаЛогинПароль = new ФормаАвторизации();
-                var РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
+                РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
                 if (РезультатАвторизации == DialogResult.OK)
                     Application.Run(new ОсновноеМеню());
             }
@@ -49,6 +50,14 @@ namespace СкладскойУчет
         {
             
             MessageBox.Show(e.ToString());
+            if (РезультатАвторизации == DialogResult.OK)
+            {
+                Application.Run(new ОсновноеМеню());
+            }
+            else
+            {
+                Main();
+            }
         }
     }
 }
