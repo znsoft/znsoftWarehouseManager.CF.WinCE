@@ -60,6 +60,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.Designer.cs">
+      <DependentUpon>Окно_набора_адреса.cs</DependentUpon>
+    </Compile>
+    <Compile Include="РаботаСФормами\POINT.cs" />
     <Compile Include="Оборудование\SystemHelper.cs" />
     <Compile Include="Интерактивные\ВводКоличества.cs">
       <SubType>Form</SubType>
@@ -67,6 +74,8 @@
     <Compile Include="Интерактивные\ВводКоличества.Designer.cs">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
     </Compile>
+    <Compile Include="Оборудование\WinApiWraper.cs" />
+    <Compile Include="РаботаСФормами\РасширениеСписка.cs" />
     <Compile Include="РаботаСФормами\ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Оборудование\Звуки.cs" />
     <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.cs">
@@ -138,6 +147,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Интерактивные\ВводКоличества.resx">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.resx">
+      <DependentUpon>Окно_набора_адреса.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="РаботаСоспискомТовара\Окно_перемещения_списка.resx">

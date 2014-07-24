@@ -10,7 +10,7 @@ namespace СкладскойУчет
     {
         public bool ЭтоКорень;
         public string Адрес;
-        public string EAN;
+        public string EAN; //в будущем его необходимо перенести в EANs
         public string GUID;
         public string Код;
         public string Наименование;
@@ -18,8 +18,9 @@ namespace СкладскойУчет
         public int КоличествоТребуется;
         public int КоличествоОстаток;
         public int КоличествоВычерк = 0;
-        public TreeNode Ветвь;
-        public string[] EANs;
+        public TreeNode Ветвь; // в форме с деревом тут хранится ветвь дерева
+        public ListViewItem СтрокаСписка; //в формах со списком товаров тут будет храниться элемент/строка списка
+        public string[] EANs; // куча Ean товаров
 
         public ЭлементДерева(TreeNode Ветвь, string Адрес, string EAN)
         {

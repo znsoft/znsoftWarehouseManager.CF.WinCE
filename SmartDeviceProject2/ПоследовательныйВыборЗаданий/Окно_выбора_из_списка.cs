@@ -44,7 +44,7 @@ namespace СкладскойУчет
             this.Close();
 
         }
-
+        
         public void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;

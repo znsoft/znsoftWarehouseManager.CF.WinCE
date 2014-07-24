@@ -83,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Label Информация;
-        private System.Windows.Forms.TextBox Количество;
+        public System.Windows.Forms.TextBox Количество;
         private System.Windows.Forms.Button Принять;
     }
 }

@@ -41,6 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Сплиттер = new System.Windows.Forms.Splitter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ПолеВвода = new System.Windows.Forms.TextBox();
             this.ПанельСоСплиттером.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -142,11 +143,24 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ПолеВвода);
             this.panel1.Controls.Add(this.СписокПеремещения);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(237, 208);
+            // 
+            // ПолеВвода
+            // 
+            this.ПолеВвода.BackColor = System.Drawing.Color.LightYellow;
+            this.ПолеВвода.Location = new System.Drawing.Point(41, 34);
+            this.ПолеВвода.Name = "ПолеВвода";
+            this.ПолеВвода.Size = new System.Drawing.Size(67, 23);
+            this.ПолеВвода.TabIndex = 1;
+            this.ПолеВвода.Visible = false;
+            this.ПолеВвода.WordWrap = false;
+            this.ПолеВвода.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ПолеВвода_KeyPress);
+            this.ПолеВвода.LostFocus += new System.EventHandler(this.ПолеВвода_LostFocus);
             // 
             // Окно_перемещения_списка
             // 
@@ -189,5 +203,6 @@
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Splitter Сплиттер;
         public System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox ПолеВвода;
     }
 }

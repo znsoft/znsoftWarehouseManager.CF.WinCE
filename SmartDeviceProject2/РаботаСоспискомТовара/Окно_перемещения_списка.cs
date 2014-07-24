@@ -6,16 +6,22 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using System.Reflection;
 using СкладскойУчет;
 using СкладскойУчет.СсылкаНаСервис;
 using System.Net;
+using СкладскойУчет.Оборудование;
 
 namespace СкладскойУчет
 {
     public partial class Окно_перемещения_списка : Form
     {
+
+ 
+
         private Пакеты Обмен;
+        public List<ЭлементДерева> ПолныйСписок = new List<ЭлементДерева>();
         public Dictionary<string, int> СоответствиеКолонок = new Dictionary<string, int>();
         public int КолонкаРучногоВыбора = 5; // по умолчанию ГУИД Товара находится в 5 колонке , но при операции Подтоварки он в 7 
         public ПоследовательностьОкон Последовательность;
@@ -27,6 +33,7 @@ namespace СкладскойУчет
         {
             InitializeComponent();
             Последовательность = ПоследовательностьОкон;
+
         }
 
 
@@ -36,6 +43,7 @@ namespace СкладскойУчет
         {
             return null;
         }
+
         public virtual bool ПроверитьКоличество(int Сканировано, int Количество)
         {
             return Сканировано > Количество;
@@ -127,16 +135,15 @@ namespace СкладскойУчет
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
         {
+            if (ПолеВвода.Visible) return;
+
             if (РаботаСоСканером.НажатаКлавишаСкан(e))
             {
-                e.Handled = true;
-                string СтрокаСкан = РаботаСоСканером.Scan();
-                if (СтрокаСкан.Length != 0)
-                {
-                    СканТовара(СтрокаСкан);
-                }
+                Сканировать(e);
                 return;
             }
+
+
 
             foreach (var ЭлементФормы in this.Controls)
                 if (ЭлементФормы is Button)
@@ -160,6 +167,16 @@ namespace СкладскойУчет
                 _Назад();
             }
 
+        }
+
+        private void Сканировать(KeyEventArgs e)
+        {
+            e.Handled = true;
+            string СтрокаСкан = РаботаСоСканером.Scan();
+            if (СтрокаСкан.Length != 0)
+            {
+                СканТовара(СтрокаСкан);
+            }
         }
 
         private void СканТовара(string СтрокаСкан)
@@ -281,7 +298,7 @@ namespace СкладскойУчет
             ЭлементыФормы.СписокВыбора = this.СписокПеремещения;
             ЭлементыФормы.ТекстДЯ = this.ТекстДЯ;
             ЭлементыФормы.Пользователь = this.Пользователь;
-            ЗаполнениеЭлементовФормы.ЗаполнитьФорму(ЭлементыФормы, ref Последовательность.ОтветСервера, ref КолонкаРучногоВыбора, ref СоответствиеКолонок);
+            ЗаполнениеЭлементовФормы.ЗаполнитьФорму(ЭлементыФормы, ref Последовательность.ОтветСервера, ref КолонкаРучногоВыбора, ref СоответствиеКолонок, ref ПолныйСписок);
             try
             {
                 var ВыбраннаяСтрока = СписокПеремещения.Items[0];
@@ -299,15 +316,63 @@ namespace СкладскойУчет
             ПоказатьИнфооТоваре(ВыбраннаяСтрока);
         }
 
+        
+
+
         private void СписокПеремещения_ItemActivate(object sender, EventArgs e)
         {
             var ВыбраннаяСтрока = СписокПеремещения.FocusedItem;
             if (ВыбраннаяСтрока == null) return;
             ПоказатьИнфооТоваре(ВыбраннаяСтрока);
+            ВвестиКоличествоВручную(ВыбраннаяСтрока,e );
+        }
+
+        private int ВвестиКоличествоВручную_(ListViewItem ВыбраннаяСтрока)
+        {
             ВводКоличества ОкноВвода = new ВводКоличества("Введите количество товара");
+            ОкноВвода.Количество.Text = ВыбраннаяСтрока.SubItems[1].Text;
             ОкноВвода.ShowDialog();
             int Количество = ОкноВвода.Количество_;
-            ПрибавитьКоличество(ВыбраннаяСтрока, Количество, false);
+            return Количество;
         }
+
+
+
+
+
+        private void ВвестиКоличествоВручную(ListViewItem ВыбраннаяСтрока, EventArgs e)
+        {
+            int r = СписокПеремещения.Columns[0].Width;
+            int l = СписокПеремещения.Columns[1].Width;
+            Point p = РасширениеСписка.GetItemPosition(СписокПеремещения.Handle, ВыбраннаяСтрока.Index);
+            p.X += r;
+            ПолеВвода.Location = p;
+            ПолеВвода.Width = l;
+            ПолеВвода.Visible = true;
+            ПолеВвода.Text = ВыбраннаяСтрока.SubItems[1].Text;
+            ПолеВвода.Focus();
+ 
+        }
+
+        private void ПолеВвода_LostFocus(object sender, EventArgs e)
+        {
+            
+            ПолеВвода.Visible = false;
+            var ВыбраннаяСтрока = СписокПеремещения.FocusedItem;
+            if (ВыбраннаяСтрока == null) return;
+            int Количество = int.Parse(ПолеВвода.Text);
+            ПрибавитьКоличество(ВыбраннаяСтрока, Количество, false);
+
+        }
+
+        private void ПолеВвода_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
+        }
+
+    
     }
+
+
+
 }
