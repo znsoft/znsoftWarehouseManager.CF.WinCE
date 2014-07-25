@@ -39,7 +39,11 @@ namespace СкладскойУчет
 
         public void МаксимальнаяГромкость()
         {
-            waveOutSetVolume(IntPtr.Zero, uint.MaxValue);
+            try
+            {
+                waveOutSetVolume(IntPtr.Zero, uint.MaxValue);
+            }
+            catch (Exception) { }
         }
 
 

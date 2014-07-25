@@ -14,9 +14,16 @@ namespace СкладскойУчет.Оборудование
         
         public static Point GetItemPosition(IntPtr Handle,int index)
         {
-            POINT pt = new POINT();
-            SendMessage(Handle, (0x1000 + 16), index, pt);
-            return new Point(pt.x, pt.y);
+            try
+            {
+                POINT pt = new POINT();
+                SendMessage(Handle, (0x1000 + 16), index, pt);
+                return new Point(pt.x, pt.y);
+            }
+            catch (Exception) { 
+            }
+            return new Point(10, 10);
+
         }
 
     }

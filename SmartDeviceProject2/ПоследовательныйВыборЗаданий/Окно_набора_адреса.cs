@@ -24,6 +24,8 @@ namespace СкладскойУчет
             Последовательность = ПоследовательностьОкон;
             Обмен = new Пакеты(ПоследовательностьОкон.Операция + " ВыборЗадания"); //Сформировали пакет с операцией состоящей например "Подбор ВыборЗадания"
             ВернутьСкан = false;
+            Далее.Enabled = false;
+            ВводАдреса.Focus();
         }
 
 
@@ -122,6 +124,11 @@ namespace СкладскойУчет
         private void ВводАдреса_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
+        }
+
+        private void ВводАдреса_TextChanged(object sender, EventArgs e)
+        {
+            Далее.Enabled = ВводАдреса.Text.Length < 8;
         }
     }
 }

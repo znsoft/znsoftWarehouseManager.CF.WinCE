@@ -135,7 +135,15 @@ namespace СкладскойУчет
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ПолеВвода.Visible) return;
+            if (ПолеВвода.Visible) {
+
+
+                if ((e.KeyCode == System.Windows.Forms.Keys.Enter) || РаботаСоСканером.НажатаКлавишаСкан(e))
+                {
+                    СписокПеремещения.Focus();
+    
+                }
+                return; }
 
             if (РаботаСоСканером.НажатаКлавишаСкан(e))
             {
@@ -316,9 +324,6 @@ namespace СкладскойУчет
             ПоказатьИнфооТоваре(ВыбраннаяСтрока);
         }
 
-        
-
-
         private void СписокПеремещения_ItemActivate(object sender, EventArgs e)
         {
             var ВыбраннаяСтрока = СписокПеремещения.FocusedItem;
@@ -326,19 +331,6 @@ namespace СкладскойУчет
             ПоказатьИнфооТоваре(ВыбраннаяСтрока);
             ВвестиКоличествоВручную(ВыбраннаяСтрока,e );
         }
-
-        private int ВвестиКоличествоВручную_(ListViewItem ВыбраннаяСтрока)
-        {
-            ВводКоличества ОкноВвода = new ВводКоличества("Введите количество товара");
-            ОкноВвода.Количество.Text = ВыбраннаяСтрока.SubItems[1].Text;
-            ОкноВвода.ShowDialog();
-            int Количество = ОкноВвода.Количество_;
-            return Количество;
-        }
-
-
-
-
 
         private void ВвестиКоличествоВручную(ListViewItem ВыбраннаяСтрока, EventArgs e)
         {
@@ -351,6 +343,7 @@ namespace СкладскойУчет
             ПолеВвода.Visible = true;
             ПолеВвода.Text = ВыбраннаяСтрока.SubItems[1].Text;
             ПолеВвода.Focus();
+            ПолеВвода.SelectAll();
  
         }
 

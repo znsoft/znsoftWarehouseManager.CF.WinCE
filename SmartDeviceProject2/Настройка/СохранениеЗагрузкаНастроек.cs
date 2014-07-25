@@ -67,7 +67,7 @@ namespace СкладскойУчет
                 {
                     File.Delete(АргументыЭтогоПроцесса);
                     File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
-                    return false;
+                    //return false;
                 }
                 catch (Exception) { }
             }

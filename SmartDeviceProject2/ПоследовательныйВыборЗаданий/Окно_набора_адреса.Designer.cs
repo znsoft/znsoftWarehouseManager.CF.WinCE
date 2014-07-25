@@ -79,7 +79,7 @@
             // ПрефиксАдреса
             // 
             this.ПрефиксАдреса.BackColor = System.Drawing.Color.White;
-            this.ПрефиксАдреса.Location = new System.Drawing.Point(8, 193);
+            this.ПрефиксАдреса.Location = new System.Drawing.Point(8, 191);
             this.ПрефиксАдреса.Name = "ПрефиксАдреса";
             this.ПрефиксАдреса.Size = new System.Drawing.Size(29, 22);
             this.ПрефиксАдреса.Text = "adr";
@@ -89,11 +89,12 @@
             // 
             this.ВводАдреса.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ВводАдреса.Location = new System.Drawing.Point(37, 191);
-            this.ВводАдреса.MaxLength = 10;
+            this.ВводАдреса.MaxLength = 8;
             this.ВводАдреса.Name = "ВводАдреса";
             this.ВводАдреса.Size = new System.Drawing.Size(156, 23);
             this.ВводАдреса.TabIndex = 11;
             this.ВводАдреса.WordWrap = false;
+            this.ВводАдреса.TextChanged += new System.EventHandler(this.ВводАдреса_TextChanged);
             this.ВводАдреса.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ВводАдреса_KeyPress);
             // 
             // Окно_набора_адреса
