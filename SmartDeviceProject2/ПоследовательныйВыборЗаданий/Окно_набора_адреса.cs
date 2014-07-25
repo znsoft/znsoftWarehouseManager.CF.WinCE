@@ -128,7 +128,7 @@ namespace СкладскойУчет
 
         private void ВводАдреса_TextChanged(object sender, EventArgs e)
         {
-            Далее.Enabled = ВводАдреса.Text.Length < 8;
+            Далее.Enabled = ВводАдреса.Text.Length == 7;
         }
     }
 }

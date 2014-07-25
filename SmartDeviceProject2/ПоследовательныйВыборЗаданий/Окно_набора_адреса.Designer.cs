@@ -89,7 +89,7 @@
             // 
             this.ВводАдреса.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ВводАдреса.Location = new System.Drawing.Point(37, 191);
-            this.ВводАдреса.MaxLength = 8;
+            this.ВводАдреса.MaxLength = 7;
             this.ВводАдреса.Name = "ВводАдреса";
             this.ВводАдреса.Size = new System.Drawing.Size(156, 23);
             this.ВводАдреса.TabIndex = 11;
