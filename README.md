@@ -1,5 +1,5 @@
-znsoftWarehouseManager.CF.WinCE
-===============================
+Warehouse Manager
+=================
 
 Программа для работы со складской ИБД 1С через ВебСервис WinCE .CF
 
