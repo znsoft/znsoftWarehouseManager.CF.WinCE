@@ -46,12 +46,15 @@ namespace СкладскойУчет
         {
 
 
-            if (SystemHelper.CurrentDeviceType == DeviceType.UnKown) {
-                return СканироватьКодЧерезБуферОбмена();
+            if (SystemHelper.CurrentDeviceType == DeviceType.UnKown)
+            {
+                Инфо.СчитанныйШтрихКод = СканироватьКодЧерезБуферОбмена();
             }
-
-
-            return СканироватьЧерезdll();
+            else
+            {
+                Инфо.СчитанныйШтрихКод = СканироватьЧерезdll();
+            }
+            return Инфо.СчитанныйШтрихКод;
 
         }
 
@@ -84,7 +87,7 @@ namespace СкладскойУчет
         {
             string barcode = string.Empty;
 
-            for (int i = 20; i > 0 ; i--)
+            for (int i = 20; i > 0; i--)
             {
 
                 barcode = ПолучитьБуферОбмена().Trim();
@@ -103,19 +106,19 @@ namespace СкладскойУчет
 
         public static void СтеретьБуферОбмена()
         {
-            
+
             Clipboard.SetDataObject("");
-        
+
         }
 
         public static string ПолучитьБуферОбмена()
         {
-                IDataObject iData = Clipboard.GetDataObject();
-                // Determines whether the data is in a format you can use.
-                if (iData.GetDataPresent(DataFormats.Text))
-                {
-                    return (String)iData.GetData(DataFormats.Text);
-                }
+            IDataObject iData = Clipboard.GetDataObject();
+            // Determines whether the data is in a format you can use.
+            if (iData.GetDataPresent(DataFormats.Text))
+            {
+                return (String)iData.GetData(DataFormats.Text);
+            }
             return string.Empty;
         }
 

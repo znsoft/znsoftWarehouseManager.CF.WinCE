@@ -124,6 +124,7 @@
     <Compile Include="Интерактивные\Ошибка.Designer.cs">
       <DependentUpon>Ошибка.cs</DependentUpon>
     </Compile>
+    <Compile Include="Сеть\Обновление.cs" />
     <Compile Include="Сеть\Пакеты.cs" />
     <Compile Include="ПоследовательныйВыборЗаданий\ПоследовательностьОкон.cs" />
     <Compile Include="Оборудование\РаботаСоСканером.cs" />

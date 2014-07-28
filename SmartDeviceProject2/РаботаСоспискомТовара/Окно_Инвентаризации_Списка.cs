@@ -35,7 +35,13 @@ namespace СкладскойУчет
             НоваяСтрока.SubItems.Add("0");
             for (int i = 2; i < Строка.Count(); i++)
             {
-                НоваяСтрока.SubItems.Add(Строка[i]);
+                try
+                {
+                    НоваяСтрока.SubItems.Add(Строка[i]);
+                }
+                catch (Exception e) {
+                    НоваяСтрока.SubItems.Add(e.Message.ToString());
+                }
             }
 
             СписокПеремещения.Items.Add(НоваяСтрока);
@@ -103,7 +109,7 @@ namespace СкладскойУчет
             foreach (ListViewItem l in СписокПеремещения.Items)
             {
                 string strCount = l.SubItems[1].Text;
-                string GUID = l.SubItems[КолонкаРучногоВыбора].Text;
+                string GUID = l.SubItems[НомерКонокиГУИД].Text;
                 ДобавитьСтроку(GUID, strCount);
 
             }

@@ -8,6 +8,11 @@ namespace СкладскойУчет
 {
     class Инфо
     {
+        public static string СчитанныйШтрихКод;
+        public static string Операция;
+        public static string Окно;
+        public static string ИмяЭтогоФайла;
+
         public static void ПолучениеИнформации(string СтрокаСкан, TextBox СписокИнформации, TabControl Табулятор)
         {
 

@@ -24,10 +24,8 @@ namespace СкладскойУчет
 
 
         string path_ = "НастройкаТСД.xml";
-        string СкладскойУчетОбновление = "СкладскойУчетОбновление.exe";
-        string СкладскойУчет = "СкладскойУчет.exe";
+
         string path;
-        string ИмяЭтогоФайла;
         public ХранилищеНастроек Хранилище;
         Dictionary<string, string> СоостветствиеСервисов = new Dictionary<string, string>()
             {
@@ -52,60 +50,17 @@ namespace СкладскойУчет
 
         public Настройки()
         {
-            ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
-            path = ПолучитьПутьКЛокальномуФайлу(path_);
+            path = Настройки.ПолучитьПутьКЛокальномуФайлу(path_);
             Хранилище = new ХранилищеНастроек();
         }
 
-        public bool ПроверитьОбновление()
-        {
-            string АргументыЭтогоПроцесса = Process.GetCurrentProcess().StartInfo.Arguments;
-            if (ИмяЭтогоФайла.Contains(СкладскойУчетОбновление))
-            {
-                АргументыЭтогоПроцесса = ПолучитьПутьКЛокальномуФайлу(СкладскойУчет);
-                try
-                {
-                    File.Delete(АргументыЭтогоПроцесса);
-                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
-                    //return false;
-                }
-                catch (Exception) { }
-            }
-            try
-            {
-                Пакеты Обмен = new Пакеты("");
-                Byte[] Прошивка = Обмен.UpdateFirmware();
-                if (Прошивка == null || Прошивка.Count() == 0) return false;
-                string НовыйИсполняемыйФайл = ПолучитьПутьКЛокальномуФайлу(СкладскойУчетОбновление);
-                СохранитьВФайл(НовыйИсполняемыйФайл, Прошивка);
 
-                var pr = new Process();
-                pr.StartInfo.FileName = НовыйИсполняемыйФайл;
-                pr.StartInfo.Arguments = ИмяЭтогоФайла;
-                pr.Start();
-                return true;
-            }
-            catch (Exception) {}// System.Windows.Forms.MessageBox.Show(e.Message); }
-            return false;
-        }
-
-
-
-        public string ПолучитьПутьКЛокальномуФайлу(string pt)
+        public static string ПолучитьПутьКЛокальномуФайлу(string pt)
         {
             string FullDir = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             var FI = new FileInfo(FullDir);
             return Path.Combine(FI.Directory.FullName, pt);
         }
-
-
-        public void СохранитьВФайл(string Файл, Byte[] Данные)
-        {
-            FileStream file = System.IO.File.Create(Файл);
-            file.Write(Данные, 0, Данные.Count());
-            file.Close();
-        }
-
 
         public void Сохранить()
         {

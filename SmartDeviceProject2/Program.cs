@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Threading;
+using СкладскойУчет.Сеть;
 
 
 namespace СкладскойУчет
@@ -19,12 +20,8 @@ namespace СкладскойУчет
         static void Main()
         {
 
-           СоединениеВебСервис.НомерВерсии = "c#1.1"; 
-
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-
-            Настройки ПроверкаОбновления = new Настройки();
-            if (ПроверкаОбновления.ПроверитьОбновление())
+           СоединениеВебСервис.НомерВерсии = "c#1.3(-днс)"; 
+            if (Обновление.ПроверитьОбновление())
             {
                 Application.Exit();
                 return;
@@ -37,7 +34,10 @@ namespace СкладскойУчет
                 var ФормаЛогинПароль = new ФормаАвторизации();
                 РезультатАвторизации = ФормаЛогинПароль.ShowDialog();
                 if (РезультатАвторизации == DialogResult.OK)
+                {
+                    AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
                     Application.Run(new ОсновноеМеню());
+                }
             }
 
 
@@ -48,16 +48,9 @@ namespace СкладскойУчет
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            
-            MessageBox.Show(e.ToString());
-            if (РезультатАвторизации == DialogResult.OK)
-            {
-                Application.Run(new ОсновноеМеню());
-            }
-            else
-            {
-                Main();
-            }
+            string СтрокаОшибки = Инфо.СчитанныйШтрихКод + "\n\r " + Инфо.Операция + "\n\r " + Инфо.Окно + "\n\r " + e.ExceptionObject.ToString();
+            MessageBox.Show(СтрокаОшибки);
+            Application.Run(new ОсновноеМеню());
         }
     }
 }
