@@ -22,10 +22,17 @@ namespace СкладскойУчет.Сеть
             if (ИмяЭтогоФайла.Contains(СкладскойУчетОбновление))
             {
                 АргументыЭтогоПроцесса = Настройки.ПолучитьПутьКЛокальномуФайлу(СкладскойУчет);
+                string testdialog = Настройки.ПолучитьПутьКЛокальномуФайлу("testdialog.exe");
                 try
                 {
                     File.Delete(АргументыЭтогоПроцесса);
                     File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
+                }
+                catch (Exception) { }
+                try
+                {
+                    File.Delete(testdialog);
+                    File.Copy(ИмяЭтогоФайла,testdialog);
                 }
                 catch (Exception) { }
             }
