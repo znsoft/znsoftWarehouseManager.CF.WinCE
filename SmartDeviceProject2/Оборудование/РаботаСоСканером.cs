@@ -106,18 +106,27 @@ namespace СкладскойУчет
 
         public static void СтеретьБуферОбмена()
         {
-
-            Clipboard.SetDataObject("");
+            try
+            {
+                Clipboard.SetDataObject("");
+            }
+            catch (Exception)
+            {
+            }
 
         }
 
         public static string ПолучитьБуферОбмена()
         {
-            IDataObject iData = Clipboard.GetDataObject();
-            // Determines whether the data is in a format you can use.
-            if (iData.GetDataPresent(DataFormats.Text))
+            try
             {
-                return (String)iData.GetData(DataFormats.Text);
+                return GetClipboardText();
+            }
+            catch (Exception)
+            {
+
+                return ReadClipboard();
+
             }
             return string.Empty;
         }
@@ -144,8 +153,7 @@ namespace СкладскойУчет
                     return (((int)e.KeyCode == (int)ConstantKeyValue.Enter) || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12));
                 case DeviceType.UnKown:
                     bool r = ((int)e.KeyCode == 193);
-                    //r = r || (ПолучитьБуферОбмена().Trim().Length > 2);
-                    //if(r)Thread.Sleep(100);
+                    r = r || (e.Control && e.KeyCode == System.Windows.Forms.Keys.V);//[CTRL+V]
                     return r;
 
             }
@@ -176,6 +184,37 @@ namespace СкладскойУчет
             }
             return false;
         }
+
+        public static string GetClipboardText() {
+            IDataObject iData = Clipboard.GetDataObject();
+            if (iData.GetDataPresent(DataFormats.Text))
+                return (String)iData.GetData(DataFormats.Text);
+            return String.Empty;
+        
+        }
+
+       #region PC x86 Clipboard management ПРОВЕРИЛ НЕ РАБОТАЕТ НЕОБХОДИМО НАЙТИ ДРУГОЙ СПОСОБ к примеру открыть форму ввода ШК или через компорт
+        private static string ReadClipboard()
+        {
+            string clipdata = "";
+            Thread staThread = new Thread(new ThreadStart(
+                delegate
+                {
+                    try
+                    {
+                            clipdata = GetClipboardText();
+                    }
+                    catch {
+                    
+                    }
+                }
+            ));
+            //staThread.SetApartmentState(ApartmentState.STA);  http://www.cs.binghamton.edu/~reckert/360/15_clipboard_f03.html
+            staThread.Start();
+            staThread.Join();
+            return clipdata;
+        }
+        #endregion
 
 
 

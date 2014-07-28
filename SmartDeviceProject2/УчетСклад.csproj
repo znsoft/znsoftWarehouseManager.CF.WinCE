@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.Designer.cs">
+      <DependentUpon>ИнтерактивныйВыборТовара.cs</DependentUpon>
+    </Compile>
     <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,9 +84,6 @@
     <Compile Include="РаботаСФормами\РасширениеСписка.cs" />
     <Compile Include="РаботаСФормами\ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Оборудование\Звуки.cs" />
-    <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Интерактивные\Инфо.cs" />
     <Compile Include="РаботаСоспискомТовара\Окно_Подтоварки_Списка.cs">
       <SubType>Form</SubType>
@@ -148,6 +151,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Интерактивные\ВводКоличества.resx">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Интерактивные\ИнтерактивныйВыборТовара.resx">
+      <DependentUpon>ИнтерактивныйВыборТовара.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.resx">
