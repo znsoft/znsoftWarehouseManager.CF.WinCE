@@ -31,8 +31,8 @@ namespace СкладскойУчет.Сеть
                 catch (Exception) { }
                 try
                 {
-                    File.Delete(testdialog);
-                    File.Copy(ИмяЭтогоФайла,testdialog);
+                    //File.Delete(testdialog);
+                    //File.Copy(ИмяЭтогоФайла,testdialog);
                 }
                 catch (Exception) { }
             }
