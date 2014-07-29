@@ -66,6 +66,12 @@
     <Compile Include="Интерактивные\ИнтерактивныйВыборТовара.Designer.cs">
       <DependentUpon>ИнтерактивныйВыборТовара.cs</DependentUpon>
     </Compile>
+    <Compile Include="Интерактивные\ВводШК.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Интерактивные\ВводШК.Designer.cs">
+      <DependentUpon>ВводШК.cs</DependentUpon>
+    </Compile>
     <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Интерактивные\ИнтерактивныйВыборТовара.resx">
       <DependentUpon>ИнтерактивныйВыборТовара.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Интерактивные\ВводШК.resx">
+      <DependentUpon>ВводШК.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.resx">

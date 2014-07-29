@@ -193,26 +193,12 @@ namespace СкладскойУчет
         
         }
 
-       #region PC x86 Clipboard management ПРОВЕРИЛ НЕ РАБОТАЕТ НЕОБХОДИМО НАЙТИ ДРУГОЙ СПОСОБ к примеру открыть форму ввода ШК или через компорт
+       #region PC x86 barcode 
         private static string ReadClipboard()
         {
-            string clipdata = "";
-            Thread staThread = new Thread(new ThreadStart(
-                delegate
-                {
-                    try
-                    {
-                            clipdata = GetClipboardText();
-                    }
-                    catch {
-                    
-                    }
-                }
-            ));
-            //staThread.SetApartmentState(ApartmentState.STA);  http://www.cs.binghamton.edu/~reckert/360/15_clipboard_f03.html
-            staThread.Start();
-            staThread.Join();
-            return clipdata;
+            var ФормаВвода = new ВводШК();
+            ФормаВвода.ShowDialog();
+            return ФормаВвода.BarCode;
         }
         #endregion
 

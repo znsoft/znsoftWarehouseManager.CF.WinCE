@@ -88,7 +88,7 @@ namespace СкладскойУчет
         public override void _Далее()
         {
             СформироватьДокументВ1С("");
-                                                                                                                                   if (Последовательность.ОтветСервера == null) return;
+            if (Последовательность.ОтветСервера == null) return;
             this.DialogResult = DialogResult.Retry;
             this.Close();
         }
