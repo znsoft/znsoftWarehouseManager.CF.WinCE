@@ -148,6 +148,26 @@ namespace СкладскойУчет
             return ВыбранаСтрока;
         }
 
+        private void Пользователь_ParentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ПриНажатииНаКнопку(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Назад_Click(object sender, EventArgs e)
+        {
+            _Назад();
+        }
+
+        private void Далее_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

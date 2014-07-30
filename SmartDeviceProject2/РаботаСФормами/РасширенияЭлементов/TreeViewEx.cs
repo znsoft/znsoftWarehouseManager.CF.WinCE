@@ -12,7 +12,7 @@ namespace СкладскойУчет.РаботаСФормами.Расшире
     /// Extends the standard TreeView control to add an implementation
     /// of the NodeMouseClick event.
     /// </summary>
-    public partial class TreeViewEx : TreeView
+    public class TreeViewEx : TreeView
     {
         /// <summary>
         /// The original parent of this control.
@@ -84,36 +84,33 @@ namespace СкладскойУчет.РаботаСФормами.Расшире
         {
             WinApi.NMHDR nmHdr = new WinApi.NMHDR();
             System.Runtime.InteropServices.Marshal.PtrToStructure((IntPtr)lParam, nmHdr);
+            MouseButtons MB = MouseButtons.None;
             switch (nmHdr.code)
             {
+                case 0x3e8:
+                    MB = MouseButtons.Middle;
+                    break;
+                case WinApi.NM_DBLCLK:
+                    MB = MouseButtons.Middle;
+                    break;
+                case WinApi.NM_RCLICK:
+                    MB = MouseButtons.Right;
+                    break;
+                case WinApi.NM_CLICK:
+                    MB = MouseButtons.Left;
+                    break;
+            }
+            switch (nmHdr.code)
+            {
+                case 0x3e8:
+                case WinApi.NM_DBLCLK:
                 case WinApi.NM_RCLICK:
                 case WinApi.NM_CLICK:
                     // get the cursor coordinates on the client
                     Point msgPos = WinApi.LParamToPoint((int)WinApi.GetMessagePos());
                     msgPos = this.PointToClient(msgPos);
-
-                    // check to see if the click was on an item
-                    WinApi.TVHITTESTINFO hti = new WinApi.TVHITTESTINFO();
-                    hti.pt.x = msgPos.X;
-                    hti.pt.y = msgPos.Y;
-                    int hitem = WinApi.SendMessage(this.Handle, WinApi.TVM_HITTEST, 0, ref hti);
-                    uint htMask = (
-                        WinApi.TVHT_ONITEMICON |
-                        WinApi.TVHT_ONITEMLABEL |
-                        WinApi.TVHT_ONITEMINDENT |
-                        WinApi.TVHT_ONITEMBUTTON |
-                        WinApi.TVHT_ONITEMRIGHT |
-                        WinApi.TVHT_ONITEMSTATEICON);
-                    if ((hti.flags & htMask) != 0)
-                    {
-                        bool leftButton = (nmHdr.code == WinApi.NM_CLICK);
-                        RaiseNodeMouseClickEvent(hti.hItem,
-                            leftButton ? MouseButtons.Left : MouseButtons.Right,
-                            msgPos);
+                        RaiseNodeMouseClickEvent(   MB,       msgPos);
                         return 0;
-                    }
-                    break;
-
                 default:
                     break;
             }
@@ -126,12 +123,12 @@ namespace СкладскойУчет.РаботаСФормами.Расшире
         /// <param name="hNode">The handle of the node for which the event is raised</param>
         /// <param name="button">The [mouse] buttons that were pressed to raise the event</param>
         /// <param name="coords">The [client] cursor coordinates at the time of the event</param>
-        void RaiseNodeMouseClickEvent(IntPtr hNode, MouseButtons button, Point coords)
+        void RaiseNodeMouseClickEvent( MouseButtons button, Point coords)
         {
-            TreeNode tn = FindTreeNodeFromHandle(this.Nodes, hNode);
+            //TreeNode tn = FindTreeNodeFromHandle(this.Nodes, hNode);
 
             TreeNodeMouseClickEventArgs e = new TreeNodeMouseClickEventArgs(
-                tn,
+                null,
                 button,
                 1, coords.X, coords.Y);
 
@@ -145,7 +142,7 @@ namespace СкладскойУчет.РаботаСФормами.Расшире
         /// <param name="tnc">The TreeNodeCollection to search</param>
         /// <param name="handle">The handle of the TreeNode to find in the collection</param>
         /// <returns>The TreeNode if found; null otherwise</returns>
-        TreeNode FindTreeNodeFromHandle(TreeNodeCollection tnc, IntPtr handle)
+        public TreeNode FindTreeNodeFromHandle(TreeNodeCollection tnc, IntPtr handle)
         {
             foreach (TreeNode tn in tnc)
             {

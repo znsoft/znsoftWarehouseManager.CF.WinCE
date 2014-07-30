@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
-            this.Дерево = new System.Windows.Forms.TreeView();
             this.МенюПодбора = new System.Windows.Forms.ContextMenu();
             this.Подобрать = new System.Windows.Forms.MenuItem();
             this.Вычерк = new System.Windows.Forms.MenuItem();
@@ -44,6 +41,7 @@
             this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.ТекстДЯ = new System.Windows.Forms.Label();
             this.Меню = new System.Windows.Forms.Button();
+            this.Дерево = new СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
             this.Поиск.SuspendLayout();
@@ -66,21 +64,6 @@
             this.Инструкция.Size = new System.Drawing.Size(230, 9);
             this.Инструкция.Tag = "Инструкция";
             this.Инструкция.Text = "_";
-            // 
-            // Дерево
-            // 
-            this.Дерево.ContextMenu = this.МенюПодбора;
-            this.Дерево.Location = new System.Drawing.Point(0, 0);
-            this.Дерево.Name = "Дерево";
-            treeNode2.Text = "Узел1";
-            treeNode1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            treeNode1.Text = "Узел0";
-            this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.Дерево.Size = new System.Drawing.Size(222, 212);
-            this.Дерево.TabIndex = 2;
-            this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
             // 
             // МенюПодбора
             // 
@@ -119,8 +102,8 @@
             // 
             this.Подбор.BackColor = System.Drawing.SystemColors.Info;
             this.Подбор.ContextMenu = this.МенюПодбора;
-            this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
             this.Подбор.Controls.Add(this.Дерево);
+            this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
             this.Подбор.Location = new System.Drawing.Point(4, 22);
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(222, 264);
@@ -174,6 +157,16 @@
             this.Меню.Text = "&0.меню";
             this.Меню.Click += new System.EventHandler(this.Меню_Click);
             // 
+            // Дерево
+            // 
+            this.Дерево.ContextMenu = this.МенюПодбора;
+            this.Дерево.Location = new System.Drawing.Point(0, 1);
+            this.Дерево.Name = "Дерево";
+            this.Дерево.Size = new System.Drawing.Size(222, 212);
+            this.Дерево.TabIndex = 3;
+            this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
+            this.Дерево.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Дерево_NodeMouseClick);
+            // 
             // Окно_скан_из_дерева
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -206,7 +199,6 @@
 
         private System.Windows.Forms.Label Пользователь;
         private System.Windows.Forms.Label Инструкция;
-        private System.Windows.Forms.TreeView Дерево;
         private System.Windows.Forms.TabControl Таб;
         private System.Windows.Forms.TabPage Подбор;
         private System.Windows.Forms.TabPage Поиск;
@@ -218,5 +210,6 @@
         private System.Windows.Forms.MenuItem Вычерк;
         private System.Windows.Forms.MenuItem Завершить;
         private System.Windows.Forms.Button Меню;
+        private СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx Дерево;
     }
 }

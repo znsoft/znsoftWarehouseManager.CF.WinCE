@@ -503,6 +503,14 @@ namespace СкладскойУчет
             KeyIsPressed = true;
         }
 
+        private void Дерево_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Middle) {
+                ПроверитьДоступностьМеню();
+                МенюПодбора.Show(Дерево, new Point(e.X,e.Y));
+            }
+        }
+
 
     }
 }
