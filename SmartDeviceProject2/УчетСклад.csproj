@@ -94,7 +94,10 @@
       <DependentUpon>ВводКоличества.cs</DependentUpon>
     </Compile>
     <Compile Include="Оборудование\API\WinApi.cs" />
-    <Compile Include="РаботаСФормами\РасширениеСписка.cs" />
+    <Compile Include="РаботаСФормами\РасширенияЭлементов\TreeViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="РаботаСФормами\РасширенияЭлементов\РасширениеСписка.cs" />
     <Compile Include="РаботаСФормами\ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Оборудование\Звуки.cs" />
     <Compile Include="Интерактивные\Инфо.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="Интерактивные\Ошибка.Designer.cs">
       <DependentUpon>Ошибка.cs</DependentUpon>
     </Compile>
+    <Compile Include="РаботаСФормами\РасширенияЭлементов\TreeNodeMouseClickEventArgs.cs" />
     <Compile Include="Сеть\Обновление.cs" />
     <Compile Include="Сеть\Пакеты.cs" />
     <Compile Include="ПоследовательныйВыборЗаданий\ПоследовательностьОкон.cs" />
