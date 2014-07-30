@@ -72,13 +72,20 @@
     <Compile Include="Интерактивные\ВводШК.Designer.cs">
       <DependentUpon>ВводШК.cs</DependentUpon>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.cs">
+    <Compile Include="Оборудование\API\WndProcHooker.cs" />
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_набора_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_набора_адреса.Designer.cs">
       <DependentUpon>Окно_набора_адреса.cs</DependentUpon>
     </Compile>
-    <Compile Include="РаботаСФормами\POINT.cs" />
+    <Compile Include="ПоследовательныйВыборЗаданий\ДеревоВыбора\Окно_выбора_из_дерева.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ПоследовательныйВыборЗаданий\ДеревоВыбора\Окно_выбора_из_дерева.Designer.cs">
+      <DependentUpon>Окно_выбора_из_дерева.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Оборудование\API\POINT.cs" />
     <Compile Include="Оборудование\SystemHelper.cs" />
     <Compile Include="Интерактивные\ВводКоличества.cs">
       <SubType>Form</SubType>
@@ -86,7 +93,7 @@
     <Compile Include="Интерактивные\ВводКоличества.Designer.cs">
       <DependentUpon>ВводКоличества.cs</DependentUpon>
     </Compile>
-    <Compile Include="Оборудование\WinApiWraper.cs" />
+    <Compile Include="Оборудование\API\WinApi.cs" />
     <Compile Include="РаботаСФормами\РасширениеСписка.cs" />
     <Compile Include="РаботаСФормами\ЗаполнениеЭлементовФормы.cs" />
     <Compile Include="Оборудование\Звуки.cs" />
@@ -103,10 +110,10 @@
     <Compile Include="РаботаСоспискомТовара\Окно_перемещения_списка.Designer.cs">
       <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_адреса.Designer.cs">
       <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
     </Compile>
     <Compile Include="РаботаСДеревомЗначений\Окно_скан_из_дерева.cs">
@@ -115,16 +122,16 @@
     <Compile Include="РаботаСДеревомЗначений\Окно_скан_из_дерева.Designer.cs">
       <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_выбора_из_списка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_выбора_из_списка.Designer.cs">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_ТС.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.Designer.cs">
+    <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_ТС.Designer.cs">
       <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
     </Compile>
     <Compile Include="Интерактивные\Ошибка.cs">
@@ -167,15 +174,19 @@
       <DependentUpon>ВводШК.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_набора_адреса.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_набора_адреса.resx">
       <DependentUpon>Окно_набора_адреса.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\ДеревоВыбора\Окно_выбора_из_дерева.resx">
+      <DependentUpon>Окно_выбора_из_дерева.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="РаботаСоспискомТовара\Окно_перемещения_списка.resx">
       <DependentUpon>Окно_перемещения_списка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_сканирования_адреса.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_адреса.resx">
       <DependentUpon>Окно_сканирования_адреса.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -183,11 +194,11 @@
       <DependentUpon>Окно_скан_из_дерева.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_выбора_из_списка.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_выбора_из_списка.resx">
       <DependentUpon>Окно_выбора_из_списка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\Окно_сканирования_ТС.resx">
+    <EmbeddedResource Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_сканирования_ТС.resx">
       <DependentUpon>Окно_сканирования_ТС.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

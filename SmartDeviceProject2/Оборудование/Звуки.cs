@@ -6,6 +6,7 @@ using System.Media;
 using System.Reflection;
 using System.IO;
 using System.Runtime.InteropServices;
+using СкладскойУчет.Оборудование;
 
 namespace СкладскойУчет
 {
@@ -13,9 +14,6 @@ namespace СкладскойУчет
 
     public class Звуки 
     {
-        [DllImport("coredll.dll", SetLastError = true)]
-        protected static extern int waveOutSetVolume(IntPtr device, uint volume);
-
         
         SoundPlayer Звук;
 
@@ -41,7 +39,7 @@ namespace СкладскойУчет
         {
             try
             {
-                waveOutSetVolume(IntPtr.Zero, uint.MaxValue);
+                WinApi.waveOutSetVolume(IntPtr.Zero, uint.MaxValue);
             }
             catch (Exception) { }
         }
