@@ -21,18 +21,25 @@ namespace СкладскойУчет
             Звук = new SoundPlayer();
         }
 
-        public void Ошибка() {
+
+
+        public void Ошибка()
+        {
             МаксимальнаяГромкость();
             Звук.Stream = new MemoryStream(Properties.Resources.Error);
+            //Звук.PlaySync();
             Звук.Play();
+
             РаботаСоСканером.ЭтоСканирование = false;
         }
 
         public void Ок() {
             МаксимальнаяГромкость();
             Звук.Stream = new MemoryStream(Properties.Resources.Ok);
-            Звук.Play();
+            //Звук.Play();
+            Звук.PlaySync();
             РаботаСоСканером.ЭтоСканирование = false;
+            МинимальнаяГромкость();
         }
 
         public void МаксимальнаяГромкость()
@@ -44,7 +51,14 @@ namespace СкладскойУчет
             catch (Exception) { }
         }
 
-
+        public void МинимальнаяГромкость()
+        {
+            try
+            {
+                WinApi.waveOutSetVolume(IntPtr.Zero, 0);
+            }
+            catch (Exception) { }
+        }
 
     }
 }

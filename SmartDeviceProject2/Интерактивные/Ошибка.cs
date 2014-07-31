@@ -20,12 +20,13 @@ namespace СкладскойУчет
 
         private void Ошибка_KeyDown(object sender, KeyEventArgs e)
         {
-
+            РаботаСоСканером.Звук.МинимальнаяГромкость();
             this.Close();
         }
 
         private void Выход_Click(object sender, EventArgs e)
         {
+            РаботаСоСканером.Звук.МинимальнаяГромкость();
             this.Close();
         }
     }

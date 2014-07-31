@@ -17,7 +17,6 @@ namespace СкладскойУчет.Сеть
 
         public static bool ПроверитьОбновление()
         {
-            int Попыток = 10;
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             string ИмяЭтогоФайла = Инфо.ИмяЭтогоФайла;
             string АргументыЭтогоПроцесса = Process.GetCurrentProcess().StartInfo.Arguments;
@@ -51,7 +50,7 @@ namespace СкладскойУчет.Сеть
                 try
                 {
                     File.Delete(АргументыЭтогоПроцесса);
-                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
+                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса, true);
                     break;
                 }
                 catch (Exception) { Thread.Sleep(500); }
