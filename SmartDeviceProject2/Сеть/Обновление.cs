@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace СкладскойУчет.Сеть
 {
@@ -16,6 +17,7 @@ namespace СкладскойУчет.Сеть
 
         public static bool ПроверитьОбновление()
         {
+            int Попыток = 10;
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             string ИмяЭтогоФайла = Инфо.ИмяЭтогоФайла;
             string АргументыЭтогоПроцесса = Process.GetCurrentProcess().StartInfo.Arguments;
@@ -23,18 +25,8 @@ namespace СкладскойУчет.Сеть
             {
                 АргументыЭтогоПроцесса = Настройки.ПолучитьПутьКЛокальномуФайлу(СкладскойУчет);
                 string testdialog = Настройки.ПолучитьПутьКЛокальномуФайлу("testdialog.exe");
-                try
-                {
-                    File.Delete(АргументыЭтогоПроцесса);
-                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
-                }
-                catch (Exception) { }
-                try
-                {
-                    //File.Delete(testdialog);
-                    //File.Copy(ИмяЭтогоФайла,testdialog);
-                }
-                catch (Exception) { }
+                УдалитьСкопировать(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
+                УдалитьСкопировать(ИмяЭтогоФайла, testdialog);
             }
             try
             {
@@ -51,6 +43,18 @@ namespace СкладскойУчет.Сеть
             }
             catch (Exception) { }// System.Windows.Forms.MessageBox.Show(e.Message); }
             return false;
+        }
+
+        private static void УдалитьСкопировать(string ИмяЭтогоФайла, string АргументыЭтогоПроцесса)
+        {
+            for (int Попыток = 10; Попыток > 0; Попыток--)
+                try
+                {
+                    File.Delete(АргументыЭтогоПроцесса);
+                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса);
+                    break;
+                }
+                catch (Exception) { Thread.Sleep(500); }
         }
 
         public static void СохранитьВФайл(string Файл, Byte[] Данные)
