@@ -14,7 +14,7 @@ namespace СкладскойУчет.Оборудование
     {
         #region WM_Const
 
-        public const uint NM_DBLCLK = 0xFFFFFFFF - 3;
+        public const uint NM_DBLCLK = 0xFFFFFFFD;
         public const uint WM_NOTIFY = 0x4E;
         public const uint NM_CLICK = 0xFFFFFFFE;
         public const uint NM_RCLICK = 0xFFFFFFFB;

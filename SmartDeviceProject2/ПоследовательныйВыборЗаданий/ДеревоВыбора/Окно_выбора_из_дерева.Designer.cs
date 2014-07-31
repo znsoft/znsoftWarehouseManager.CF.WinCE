@@ -28,24 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Узел0");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Узел1");
             this.Пользователь = new System.Windows.Forms.Label();
             this.Инструкция = new System.Windows.Forms.Label();
-            this.Дерево = new System.Windows.Forms.TreeView();
             this.Далее = new System.Windows.Forms.Button();
             this.Назад = new System.Windows.Forms.Button();
+            this.Дерево = new СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx();
             this.SuspendLayout();
             // 
             // Пользователь
             // 
             this.Пользователь.BackColor = System.Drawing.SystemColors.Info;
             this.Пользователь.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.Пользователь.Location = new System.Drawing.Point(0, 305);
+            this.Пользователь.Location = new System.Drawing.Point(0, 304);
             this.Пользователь.Name = "Пользователь";
-            this.Пользователь.Size = new System.Drawing.Size(97, 15);
+            this.Пользователь.Size = new System.Drawing.Size(240, 15);
             this.Пользователь.Text = "_";
-            this.Пользователь.ParentChanged += new System.EventHandler(this.Пользователь_ParentChanged);
             // 
             // Инструкция
             // 
@@ -56,25 +53,12 @@
             this.Инструкция.Tag = "Инструкция";
             this.Инструкция.Text = "_";
             // 
-            // Дерево
-            // 
-            this.Дерево.Location = new System.Drawing.Point(3, 12);
-            this.Дерево.Name = "Дерево";
-            treeNode8.Text = "Узел1";
-            treeNode7.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
-            treeNode7.Text = "Узел0";
-            this.Дерево.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            this.Дерево.Size = new System.Drawing.Size(237, 266);
-            this.Дерево.TabIndex = 2;
-            // 
             // Далее
             // 
             this.Далее.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Далее.Location = new System.Drawing.Point(137, 280);
+            this.Далее.Location = new System.Drawing.Point(134, 277);
             this.Далее.Name = "Далее";
-            this.Далее.Size = new System.Drawing.Size(100, 22);
+            this.Далее.Size = new System.Drawing.Size(104, 22);
             this.Далее.TabIndex = 6;
             this.Далее.Text = "&1. Далее";
             this.Далее.Click += new System.EventHandler(this.Далее_Click);
@@ -82,12 +66,20 @@
             // Назад
             // 
             this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Назад.Location = new System.Drawing.Point(3, 280);
+            this.Назад.Location = new System.Drawing.Point(0, 277);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(100, 22);
+            this.Назад.Size = new System.Drawing.Size(104, 22);
             this.Назад.TabIndex = 5;
             this.Назад.Text = "&0. Назад";
             this.Назад.Click += new System.EventHandler(this.Назад_Click);
+            // 
+            // Дерево
+            // 
+            this.Дерево.Location = new System.Drawing.Point(4, 12);
+            this.Дерево.Name = "Дерево";
+            this.Дерево.Size = new System.Drawing.Size(233, 265);
+            this.Дерево.TabIndex = 9;
+            this.Дерево.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Дерево_NodeMouseClick);
             // 
             // Окно_выбора_из_дерева
             // 
@@ -96,9 +88,9 @@
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 320);
             this.ControlBox = false;
+            this.Controls.Add(this.Дерево);
             this.Controls.Add(this.Далее);
             this.Controls.Add(this.Назад);
-            this.Controls.Add(this.Дерево);
             this.Controls.Add(this.Инструкция);
             this.Controls.Add(this.Пользователь);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -117,8 +109,8 @@
 
         private System.Windows.Forms.Label Пользователь;
         private System.Windows.Forms.Label Инструкция;
-        private System.Windows.Forms.TreeView Дерево;
         private System.Windows.Forms.Button Далее;
         private System.Windows.Forms.Button Назад;
+        private СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx Дерево;
     }
 }

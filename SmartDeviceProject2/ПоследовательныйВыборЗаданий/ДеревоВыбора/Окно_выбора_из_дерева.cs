@@ -17,7 +17,6 @@ namespace СкладскойУчет
     {
         private Пакеты Обмен;
         private ПоследовательностьОкон Последовательность;
-        private List<ЭлементДерева> ПолноеДерево = new List<ЭлементДерева>();//поскольку для работы с sql базами данных с собой необходимо нести .dll я решил использовать linq на List для эмуляции sql
         private string ТекущийАдрес = null;
 
         public Окно_выбора_из_дерева(ПоследовательностьОкон ПоследовательностьОкон)
@@ -26,18 +25,23 @@ namespace СкладскойУчет
             Последовательность = ПоследовательностьОкон;
         }
 
-
-
-        private void РаскрытьАдрес(ЭлементДерева Элемент)
-        {
-            Дерево.CollapseAll();
-            Элемент.Ветвь.Expand();
-        }
-
  
         public void _Назад()
         {
             this.DialogResult = DialogResult.Abort;
+            this.Close();
+        }
+
+
+        public virtual void _Далее()
+        {
+            var ВыбраннаяСтрока = Дерево.SelectedNode;
+            if (ВыбраннаяСтрока == null) { Инфо.Ошибка("Не выбрано ни одной строки"); return; }
+            string ВыбранноеЗначение = ВыбраннаяСтрока.Tag as string;
+            if(ВыбранноеЗначение == null) { Инфо.Ошибка("Выбрана ошибочная строка"); return; }
+            Последовательность.ОтветСервера = Обмен.ПослатьСтроку(ВыбранноеЗначение, Последовательность.ТекущееОкно, "РучнойВыбор");
+            if (Последовательность.ОтветСервера == null) return; // в случае ошибки остаться в этом же окне
+            this.DialogResult = DialogResult.Retry;
             this.Close();
         }
 
@@ -53,21 +57,17 @@ namespace СкладскойУчет
                 }
                 return;
             }
-            if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e)) {
-                e.Handled = true;
-            }
 
-            if ((e.KeyCode == System.Windows.Forms.Keys.D0))
+            if ((e.KeyCode == System.Windows.Forms.Keys.D0) || РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e))
             {
                 e.Handled = true;
+                _Назад();
             }
-            if ((e.KeyCode == System.Windows.Forms.Keys.D1))
+            if ((e.KeyCode == System.Windows.Forms.Keys.D1) || РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e))
             {
                 e.Handled = true;
+                _Далее();
             }
-
-
-
         }
 
         private void Окно_выбора_из_списка_Load(object sender, EventArgs e)
@@ -89,7 +89,6 @@ namespace СкладскойУчет
             TreeNode КореньАдрес = null;
             TreeNode ВыбранаСтрока = null;
             ЭлементДерева Корень = null;
-            ПолноеДерево.Clear();
             Дерево.CollapseAll();
             foreach (var Строка in Последовательность.ОтветСервера)
             {
@@ -129,34 +128,22 @@ namespace СкладскойУчет
             {
                 КореньАдрес.Collapse();
             }
-            Корень = new ЭлементДерева(КореньАдрес, Строка[1], Строка[2]);
             КореньАдрес.Tag = Строка[2];
-            КореньАдрес.Text = Корень.ПолучитьТекстЭлемента();
-            ПолноеДерево.Add(Корень);
+            КореньАдрес.Text = Строка[1];
         }
 
         private TreeNode ДобавитьТовар(TreeNode КореньАдрес, TreeNode ВыбранаСтрока, ЭлементДерева Корень, string[] Строка)
         {
             int Строк = Строка.Count();
-            TreeNode СтрокаСТоваром = new TreeNode(Строка[3]);
-            if (Строк > 8 && Строка[8] == "Выбрать") { ВыбранаСтрока = СтрокаСТоваром; }
-            ЭлементДерева Элемент = new ЭлементДерева(false, СтрокаСТоваром, Корень.Адрес, Строка[0], Строка[1], Строка[2], Строка[3], Строка[4], Строка[5], Строка[6], Строка[7]);
-            СтрокаСТоваром.Tag = Элемент.GUID;
-            СтрокаСТоваром.Text = Элемент.ПолучитьТекстЭлемента();
+            TreeNode СтрокаСТоваром = new TreeNode(Строка[0]);
+            if (Строк > 2 && Строка[2] == "Выбрать") { ВыбранаСтрока = СтрокаСТоваром; }
+            СтрокаСТоваром.Tag = Строка[1];
+            СтрокаСТоваром.Text = Строка[0];
             КореньАдрес.Nodes.Add(СтрокаСТоваром);
-            ПолноеДерево.Add(Элемент);
             return ВыбранаСтрока;
         }
 
-        private void Пользователь_ParentChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void ПриНажатииНаКнопку(object sender, EventArgs e)
-        {
-
-        }
 
         private void Назад_Click(object sender, EventArgs e)
         {
@@ -165,7 +152,12 @@ namespace СкладскойУчет
 
         private void Далее_Click(object sender, EventArgs e)
         {
+            _Далее();
+        }
 
+        private void Дерево_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Middle) _Далее();
         }
 
 

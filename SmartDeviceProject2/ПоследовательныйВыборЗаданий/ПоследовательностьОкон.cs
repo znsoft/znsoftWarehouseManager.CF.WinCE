@@ -89,6 +89,10 @@ namespace СкладскойУчет
                         Окно = new Окно_набора_адреса(this);
                         break;
 
+                    case "Окно выбора из дерева":
+                        Окно = new Окно_выбора_из_дерева(this);
+                        break;
+
                     case "Выход":
                         return;
                     default:
