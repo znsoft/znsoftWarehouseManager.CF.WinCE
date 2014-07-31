@@ -17,11 +17,11 @@ namespace СкладскойУчет
         ///
         public static DialogResult РезультатАвторизации;
         [MTAThread]
-        static void Main()
+        static void Main(string[] args)
         {
 
-           СоединениеВебСервис.НомерВерсии = "c#1.3.3"; 
-            if (Обновление.ПроверитьОбновление())
+           СоединениеВебСервис.НомерВерсии = "c#1.3.3";
+           if (Обновление.ПроверитьОбновление(args))
             {
                 Application.Exit();
                 return;
