@@ -13,13 +13,25 @@ namespace СкладскойУчет.Сеть
     {
 
         static string СкладскойУчетОбновление = "СкладскойУчетОбновление.exe";
-        public static bool ПроверитьОбновление(string[] Аргументы)
+         
+        static public void ПотокКопированияФайла(string ИмяФайлаИсточника,string ИмяФайлаПриемника){
+            if (ИмяФайлаПриемника == null || ИмяФайлаПриемника.Length < 3) return;
+            Thread staThread = new Thread(new ThreadStart(
+                delegate
+                {
+                    УдалитьСкопировать(ИмяФайлаИсточника, ИмяФайлаПриемника);
+                }
+            ));
+            staThread.Start();
+        }
+
+
+
+        public static bool ПроверитьОбновление()
         {
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             string ИмяЭтогоФайла = Инфо.ИмяЭтогоФайла;
 
-            if (Аргументы.Count() != 0)
-                УдалитьСкопировать(ИмяЭтогоФайла, Аргументы[0]);
             try
             {
                 Пакеты Обмен = new Пакеты("");
@@ -29,7 +41,7 @@ namespace СкладскойУчет.Сеть
                 СохранитьВФайл(ref НовыйИсполняемыйФайл, Прошивка);
                 var pr = new Process();
                 pr.StartInfo.FileName = НовыйИсполняемыйФайл;
-                pr.StartInfo.Arguments = (Аргументы.Count() != 0) ? Аргументы[0] : ИмяЭтогоФайла;
+                pr.StartInfo.Arguments = (Инфо.АргументЗапуска != null) ? Инфо.АргументЗапуска : ИмяЭтогоФайла;
                 pr.Start();
                 return true;
             }
