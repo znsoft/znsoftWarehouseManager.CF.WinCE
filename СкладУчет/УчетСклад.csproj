@@ -73,7 +73,6 @@
       <DependentUpon>ВводШК.cs</DependentUpon>
     </Compile>
     <Compile Include="Оборудование\API\WndProcHooker.cs" />
-    <Compile Include="Оборудование\SingleInstance.cs" />
     <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_набора_адреса.cs">
       <SubType>Form</SubType>
     </Compile>
