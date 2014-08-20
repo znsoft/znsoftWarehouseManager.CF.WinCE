@@ -18,9 +18,14 @@ namespace СкладскойУчет
         public int КоличествоТребуется;
         public int КоличествоОстаток;
         public int КоличествоВычерк = 0;
+        
         public TreeNode Ветвь; // в форме с деревом тут хранится ветвь дерева
         public ListViewItem СтрокаСписка; //в формах со списком товаров тут будет храниться элемент/строка списка
+        public int СекундПодбора = 0;
+        public int СекундВычерк = 0;
         public string[] EANs; // куча Ean товаров
+
+
 
         public ЭлементДерева(TreeNode Ветвь, string Адрес, string EAN)
         {
