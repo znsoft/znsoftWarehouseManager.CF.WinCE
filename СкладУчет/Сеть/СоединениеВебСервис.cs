@@ -18,7 +18,7 @@ namespace СкладскойУчет
     class СоединениеВебСервис
     {
         public static string НомерВерсии;
-        public static string СтрокаДоступныхРолей;
+        public static string СтрокаДоступныхРолей;  //"Отгрузка,Хранение,Подбор,Приемка,Прочие,Администратор"
         public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;
         public forTSD Сервис; 
