@@ -40,13 +40,13 @@ namespace СкладскойУчет
                 {"10.2.1","smr-sql-sklad2"},
                 {"10.2.33","kzn-sql-sklad2"},
                 {"10.2.34","kzn-sql-sklad2"},
+                {"10.2.67","skh-sql-sklad"},
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.3.87","spb-sql-sklad"},
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
                 {"10.5.102","cht-sql-sklad"},
-                {"10.10.35","adm-zheludkov"}
-                
+                {"10.10.35","adm-zheludkov"} 
             };
 
         public Настройки()
