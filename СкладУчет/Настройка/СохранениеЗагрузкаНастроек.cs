@@ -33,8 +33,9 @@ namespace СкладскойУчет
                 {"10.0.30","adm-zheludkov"},
                 {"10.0.36","khb-sql-sklad2"},
                 {"10.0.94","irk-sql-sklad"},
-                {"10.0.98","kras-sql-sklad"},
+                {"10.0.98","kras-sql-sklad2"},
                 {"10.0.138","nsb-sql-sklad2"},
+                {"10.0.150","nsb-sql-sklad3"},
                 {"10.1.50","ekb-sql-sklad2"},
                 {"10.1.161","rst-sql-sklad2"},
                 {"10.2.1","smr-sql-sklad2"},
@@ -43,8 +44,10 @@ namespace СкладскойУчет
                 {"10.2.67","skh-sql-sklad"},
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.3.87","spb-sql-sklad"},
+                {"10.4.10","vrn-sql-sklad"},
                 {"10.4.68","tula-sql-sklad2"},
                 {"10.4.171","vld-sql-sklad"},
+                {"10.4.194","ykt-sql-sklad2"},
                 {"10.5.102","cht-sql-sklad"},
                 {"10.10.35","adm-zheludkov"} 
             };
@@ -105,6 +108,7 @@ namespace СкладскойУчет
         public string ПолучитьПолнуюВебСсылку()
         {
             bool isLoadedOptions = false;
+            Хранилище.Часть3ВебСсылки = "WS_Sklad";
             string МойАдрес = УзнатьСобственныйIP();
             var _Сервер = (from Соответствие
                             in СоостветствиеСервисов
@@ -132,11 +136,11 @@ namespace СкладскойУчет
                 _Сервер = _Сервер + ".partner.ru";
                 Хранилище.Сервер = _Сервер;
                 Хранилище.Часть3ВебСсылки = Хранилище.Сервер.Contains("zheludkov") ? "zheludkov_sklad" : "WS_Sklad";
-
             }
 
             string Сервер = Хранилище.Сервер;
             string Порт = Сервер.Contains("zheludkov") ? "80" : "52081";
+            Хранилище.Часть3ВебСсылки = Сервер.Contains("zheludkov") ? "zheludkov_sklad" : "WS_Sklad";
             string ПолнаяВебСсылка = "http://" + Сервер + ":" + Порт + "/" + Хранилище.Часть3ВебСсылки + "/ws/TSD.1cws";
             return ПолнаяВебСсылка;
         }
