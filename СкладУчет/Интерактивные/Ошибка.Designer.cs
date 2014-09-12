@@ -37,7 +37,7 @@
             // Выход
             // 
             this.Выход.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.Выход.Location = new System.Drawing.Point(48, 201);
+            this.Выход.Location = new System.Drawing.Point(48, 217);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(140, 63);
             this.Выход.TabIndex = 0;
@@ -47,12 +47,12 @@
             // ТекстОшибки
             // 
             this.ТекстОшибки.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular);
-            this.ТекстОшибки.Location = new System.Drawing.Point(0, 15);
+            this.ТекстОшибки.Location = new System.Drawing.Point(0, 3);
             this.ТекстОшибки.Multiline = true;
             this.ТекстОшибки.Name = "ТекстОшибки";
             this.ТекстОшибки.ReadOnly = true;
             this.ТекстОшибки.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.ТекстОшибки.Size = new System.Drawing.Size(239, 180);
+            this.ТекстОшибки.Size = new System.Drawing.Size(239, 208);
             this.ТекстОшибки.TabIndex = 1;
             // 
             // Ошибка

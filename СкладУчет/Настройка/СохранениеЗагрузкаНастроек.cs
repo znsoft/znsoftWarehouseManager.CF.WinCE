@@ -39,6 +39,7 @@ namespace СкладскойУчет
                 {"10.1.50","ekb-sql-sklad2"},
                 {"10.1.161","rst-sql-sklad2"},
                 {"10.2.1","smr-sql-sklad2"},
+                //{"10.2.1","smr-sql-sklad3"},
                 {"10.2.33","kzn-sql-sklad2"},
                 {"10.2.34","kzn-sql-sklad2"},
                 {"10.2.67","skh-sql-sklad"},
