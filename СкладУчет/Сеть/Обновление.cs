@@ -60,7 +60,7 @@ namespace СкладскойУчет.Сеть
                     File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса, true);
                     break;
                 }
-                catch (Exception) { Thread.Sleep(500); }
+                catch (Exception) { Thread.Sleep(1500); }
         }
 
         public static void СохранитьВФайл(ref string Файл, Byte[] Данные)

@@ -32,6 +32,7 @@ namespace СкладскойУчет
                 {"10.0.6","art-sql1"},
                 {"10.0.30","adm-zheludkov"},
                 {"10.0.36","khb-sql-sklad2"},
+                {"10.0.50","khb-sql-sklad2"},
                 {"10.0.94","irk-sql-sklad"},
                 {"10.0.98","kras-sql-sklad2"},
                 {"10.0.138","nsb-sql-sklad2"},
@@ -46,7 +47,7 @@ namespace СкладскойУчет
                 {"10.3.1","msk-sql-sklad2"},
                 {"10.3.87","spb-sql-sklad"},
                 {"10.4.10","vrn-sql-sklad"},
-                {"10.4.68","tula-sql-sklad2"},
+                {"10.4.68","tula-sql-sklad"},
                 {"10.4.171","vld-sql-sklad"},
                 {"10.4.194","ykt-sql-sklad2"},
                 {"10.5.102","cht-sql-sklad"},
@@ -122,13 +123,22 @@ namespace СкладскойУчет
             }
             if (_Сервер == null)
             {
+                if(МойАдрес.Contains("127.0.0")){ 
+                try
+                {
+                    Инфо.Ошибка("Проверьте настройки WiFi, возможно вы находитесь вне зоны доступа");
+                }
+                catch (Exception) {
+                    System.Windows.Forms.MessageBox.Show("Проверьте настройки WiFi, возможно вы находитесь вне зоны доступа");
+                }
+                }else{
                 try
                 {
                     Инфо.Ошибка(String.Format("IP Адрес вашей сети {0} не найден в списке настроек, необходимо настроить соединение вручную", МойАдрес));
                 }
                 catch (Exception) {
                     System.Windows.Forms.MessageBox.Show("IP Адрес вашей сети не найден в списке настроек, необходимо настроить соединение вручную");
-                }
+                }}
                 Хранилище.Часть3ВебСсылки = "WS_Sklad";
                 return null;
             }
