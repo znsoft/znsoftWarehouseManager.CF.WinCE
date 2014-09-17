@@ -33,20 +33,20 @@ namespace СкладскойУчет
         }
 
         public string[][] Послать(string Доп, string[][] СписокСтрок)
-        {    
+        {
             try
             {
                 var ОтветСервера = Соединение.Сервис.Обмен(Операция, Доп, СписокСтрок);
                 if (ОтветСервера == null) return null;
                 var ПоискОшибок = from СтрокаКомманды in ОтветСервера where СтрокаКомманды[0] == "Обновить" || СтрокаКомманды[0] == "Ошибка" || СтрокаКомманды[0] == "ЗавершитьСеанс" select СтрокаКомманды;
-                if(ПоискОшибок.Count() == 0) return ОтветСервера;
+                if (ПоискОшибок.Count() == 0) return ОтветСервера;
                 string ТекстОшибок = "";
                 bool ЗавершитьСеанс = false;
                 bool Обновить = false;
                 foreach (string[] ОшибкаТекст in ПоискОшибок)
                 {
                     if (ОшибкаТекст[0] == "Обновить") Обновить = true;
-                    if (ОшибкаТекст[0] == "ЗавершитьСеанс") ЗавершитьСеанс = true; 
+                    if (ОшибкаТекст[0] == "ЗавершитьСеанс") ЗавершитьСеанс = true;
                     ТекстОшибок = ТекстОшибок + ОшибкаТекст[1];
                 }
                 Инфо.Ошибка(ТекстОшибок);
@@ -62,10 +62,18 @@ namespace СкладскойУчет
 
                 return null;// ОтветСервера;
             }
+            catch (System.Net.WebException eWeb)
+            {
+                
+                System.Net.HttpWebResponse Resp = eWeb.Response as System.Net.HttpWebResponse;
+                string ErrorText = (Resp == null) ? eWeb.Status.ToString() : Resp.StatusDescription;
 
+                Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText);
+                return null;
+            }
             catch (System.Exception e)
             {
-                Инфо.Ошибка(e.Message);
+                Инфо.Ошибка(e.Message );
                 return null;
 
             }
