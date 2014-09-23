@@ -67,8 +67,14 @@ namespace СкладскойУчет
                 
                 System.Net.HttpWebResponse Resp = eWeb.Response as System.Net.HttpWebResponse;
                 string ErrorText = (Resp == null) ? eWeb.Status.ToString() : Resp.StatusDescription;
-
-                Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText);
+                if (ErrorText.Contains("Unauthorized"))
+                {
+                    Инфо.Ошибка("Ошибка соединения, Не удалось пройти авторизацию на сервере.");
+                }
+                else
+                {
+                    Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText);
+                }
                 return null;
             }
             catch (System.Exception e)

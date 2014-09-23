@@ -68,16 +68,6 @@ namespace СкладскойУчет.Оборудование
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private static extern IntPtr SendMessage32POINT(IntPtr hWnd, int Msg, int wParam, POINT lParam);
 
-         //TV_FIRST  0x1100
-        //TVM_GETITEMRECT  (TV_FIRST+4)
-         //TreeView_GetItemRect(hwnd,hitem,prc,code)  (*(HTREEITEM *)prc = (hitem), (BOOL)SNDMSG((hwnd), TVM_GETITEMRECT, (WPARAM)(code), (LPARAM)(RECT *)(prc)))
-        //[DllImport("coredll.dll", EntryPoint = "SendMessage")]
-        //public extern static int SendMessageCEHitTest(
-        //IntPtr hwnd, uint msg, uint wParam, ref TVHITTESTINFO lParam);
-
-        //[DllImport("user32.dll", EntryPoint = "SendMessage")]
-        //public extern static int SendMessage32HitTest(
-        //IntPtr hwnd, uint msg, uint wParam, ref TVHITTESTINFO lParam);
 
         [DllImport("user32.dll", EntryPoint = "GetMessagePos")]
         public extern static uint GetMessagePos32();
@@ -164,26 +154,7 @@ namespace СкладскойУчет.Оборудование
             catch (Exception) { }
             return (IntPtr)(-1);
         }
-        /// <summary>
-        /// Расширение возможностей TreeView 
-        /// </summary>
-        /// <param name="hwnd"></param>
-        /// <param name="msg"></param>
-        /// <param name="wParam"></param>
-        /// <param name="lParam"></param>
-        /// <returns></returns>
-        //public static int SendMessage(
-        //IntPtr hwnd, uint msg, uint wParam, ref TVHITTESTINFO lParam)
-        //{
-        //    try
-        //    {
-        //        if (isWinCEPlatform())
-        //            return SendMessageCEHitTest(hwnd, msg, wParam, ref lParam);
-        //        return SendMessage32HitTest(hwnd, msg, wParam, ref lParam);
-        //    }
-        //    catch (Exception e) { }
-        //    return -1;
-        //}
+
 
         public static int waveOutSetVolume(IntPtr device, uint volume)
         {

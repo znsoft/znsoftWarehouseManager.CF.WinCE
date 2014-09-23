@@ -128,7 +128,6 @@ namespace СкладскойУчет
                 return ReadClipboard();
 
             }
-            return string.Empty;
         }
 
 

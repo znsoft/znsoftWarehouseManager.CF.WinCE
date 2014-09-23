@@ -29,7 +29,7 @@ namespace СкладскойУчет
         public ХранилищеНастроек Хранилище;
         Dictionary<string, string> СоостветствиеСервисов = new Dictionary<string, string>()
             {
-                {"10.0.6","art-sql1"},
+                {"10.0.6.","art-sql1"},
                 {"10.0.30","adm-zheludkov"},
                 {"10.0.36","khb-sql-sklad2"},
                 {"10.0.50","khb-sql-sklad2"},
@@ -39,19 +39,22 @@ namespace СкладскойУчет
                 {"10.0.150","nsb-sql-sklad3"},
                 {"10.1.50","ekb-sql-sklad2"},
                 {"10.1.161","rst-sql-sklad2"},
-                {"10.2.1","smr-sql-sklad2"},
+                {"10.2.1.","smr-sql-sklad2"},
                 //{"10.2.1","smr-sql-sklad3"},
                 {"10.2.33","kzn-sql-sklad2"},
                 {"10.2.34","kzn-sql-sklad2"},
                 {"10.2.67","skh-sql-sklad"},
-                {"10.3.1","msk-sql-sklad2"},
+                {"10.3.1.","msk-sql-sklad2"},
                 {"10.3.87","spb-sql-sklad"},
                 {"10.4.10","vrn-sql-sklad"},
+                {"10.4.19","vrn-sql-sklad"},
                 {"10.4.68","tula-sql-sklad"},
                 {"10.4.171","vld-sql-sklad"},
                 {"10.4.194","ykt-sql-sklad2"},
                 {"10.5.102","cht-sql-sklad"},
+                {"10.7.4.","rst-sql-sklad2"},
                 {"10.10.35","adm-zheludkov"} 
+
             };
 
         public Настройки()
