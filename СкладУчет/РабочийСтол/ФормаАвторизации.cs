@@ -25,14 +25,9 @@ namespace СкладскойУчет
 
 
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            var StartTime = DateTime.Now;
-            
-            var СлучайноеЧисло = new Random();
-            СоединениеВебСервис.ИдентификаторСоединения = СоединениеВебСервис.НомерВерсии + ":" + СлучайноеЧисло.Next().ToString().Substring(0, 4) + "@" + StartTime.Year.ToString().Substring(3,1) + StartTime.Month.ToString() + StartTime.Day.ToString() + StartTime.Second.ToString();
+            СоединениеВебСервис.ИдентификаторСоединения = Инфо.ГенерироватьИдентификатор();
             ПолучитьСписокПользователей();
             ВерсияПрограммы.Text = "Версия " + СоединениеВебСервис.НомерВерсии;
 

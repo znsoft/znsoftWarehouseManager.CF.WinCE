@@ -36,6 +36,15 @@ namespace СкладскойУчет
         }
 
 
+        public static string ГенерироватьИдентификатор() {
+
+
+            var StartTime = DateTime.Now;
+
+            var СлучайноеЧисло = new Random();
+            return СоединениеВебСервис.НомерВерсии + ":" + СлучайноеЧисло.Next().ToString().Substring(0, 4) + "@" + StartTime.Year.ToString().Substring(3, 1) + StartTime.Month.ToString() + StartTime.Day.ToString() + StartTime.Second.ToString();
+        }
+
         public static void ПолучениеИнформации(string СтрокаСкан, TextBox СписокИнформации, TabControl Табулятор)
         {
 
@@ -79,6 +88,27 @@ namespace СкладскойУчет
         }
 
 
+     //string parms = @"QUERY \\machine\HKEY_USERS";
+     //   string output = "";
+     //   string error = string.Empty;
+
+     //   ProcessStartInfo psi = new ProcessStartInfo("reg.exe", parms);
+
+     //   psi.RedirectStandardOutput = true;
+     //   psi.RedirectStandardError = true;
+     //   psi.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+     //   psi.UseShellExecute = false;
+     //   System.Diagnostics.Process reg;
+     //   reg = System.Diagnostics.Process.Start(psi);
+     //   using (System.IO.StreamReader myOutput = reg.StandardOutput)
+     //   {
+     //       output = myOutput.ReadToEnd();
+     //   }
+     //   using(System.IO.StreamReader myError = reg.StandardError)
+     //   {
+     //       error = myError.ReadToEnd();
+
+     //   }
 
 
     }

@@ -36,12 +36,13 @@
             this.Завершить = new System.Windows.Forms.MenuItem();
             this.Таб = new System.Windows.Forms.TabControl();
             this.Подбор = new System.Windows.Forms.TabPage();
+            this.Дерево = new СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx();
             this.ДопИнфоОТоваре = new System.Windows.Forms.Label();
             this.Поиск = new System.Windows.Forms.TabPage();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
             this.ТекстДЯ = new System.Windows.Forms.Label();
             this.Меню = new System.Windows.Forms.Button();
-            this.Дерево = new СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx();
+            this.СообщениеПодождите = new System.Windows.Forms.Label();
             this.Таб.SuspendLayout();
             this.Подбор.SuspendLayout();
             this.Поиск.SuspendLayout();
@@ -102,12 +103,23 @@
             // 
             this.Подбор.BackColor = System.Drawing.SystemColors.Info;
             this.Подбор.ContextMenu = this.МенюПодбора;
+            this.Подбор.Controls.Add(this.СообщениеПодождите);
             this.Подбор.Controls.Add(this.Дерево);
             this.Подбор.Controls.Add(this.ДопИнфоОТоваре);
             this.Подбор.Location = new System.Drawing.Point(4, 22);
             this.Подбор.Name = "Подбор";
             this.Подбор.Size = new System.Drawing.Size(222, 264);
             this.Подбор.Text = "1.Подбор";
+            // 
+            // Дерево
+            // 
+            this.Дерево.ContextMenu = this.МенюПодбора;
+            this.Дерево.Location = new System.Drawing.Point(0, 1);
+            this.Дерево.Name = "Дерево";
+            this.Дерево.Size = new System.Drawing.Size(222, 212);
+            this.Дерево.TabIndex = 3;
+            this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
+            this.Дерево.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Дерево_NodeMouseClick);
             // 
             // ДопИнфоОТоваре
             // 
@@ -157,15 +169,14 @@
             this.Меню.Text = "&0.меню";
             this.Меню.Click += new System.EventHandler(this.Меню_Click);
             // 
-            // Дерево
+            // СообщениеПодождите
             // 
-            this.Дерево.ContextMenu = this.МенюПодбора;
-            this.Дерево.Location = new System.Drawing.Point(0, 1);
-            this.Дерево.Name = "Дерево";
-            this.Дерево.Size = new System.Drawing.Size(222, 212);
-            this.Дерево.TabIndex = 3;
-            this.Дерево.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.Дерево_AfterSelect_1);
-            this.Дерево.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.Дерево_NodeMouseClick);
+            this.СообщениеПодождите.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.СообщениеПодождите.Location = new System.Drawing.Point(17, 35);
+            this.СообщениеПодождите.Name = "СообщениеПодождите";
+            this.СообщениеПодождите.Size = new System.Drawing.Size(184, 54);
+            this.СообщениеПодождите.Text = "Подождите идет синхронизация данных с ИБД";
+            this.СообщениеПодождите.Visible = false;
             // 
             // Окно_скан_из_дерева
             // 
@@ -211,5 +222,6 @@
         private System.Windows.Forms.MenuItem Завершить;
         private System.Windows.Forms.Button Меню;
         private СкладскойУчет.РаботаСФормами.РасширенияЭлементов.TreeViewEx Дерево;
+        private System.Windows.Forms.Label СообщениеПодождите;
     }
 }
