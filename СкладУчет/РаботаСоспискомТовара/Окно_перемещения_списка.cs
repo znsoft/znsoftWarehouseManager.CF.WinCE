@@ -18,7 +18,7 @@ namespace СкладскойУчет
     public partial class Окно_перемещения_списка : Form
     {
 
- 
+
 
         private Пакеты Обмен;
         public List<ЭлементДерева> ПолныйСписок = new List<ЭлементДерева>();
@@ -37,8 +37,37 @@ namespace СкладскойУчет
             Последовательность = ПоследовательностьОкон;
 
         }
+        /// <summary>
+        /// В случае выбора из уже имеющихся в списке 
+        /// </summary>
+        /// <param name="Выборка"></param>
+        /// <returns></returns>
+        private string ВыбратьТоварИзМножества(IEnumerable<ListViewItem> Выборка)
+        {
+            ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
+            ListView СписокВыбора = ОкноВыбора.СписокВыбора;
+            СписокВыбора.Columns.Add("Код", 70, HorizontalAlignment.Left);
+            СписокВыбора.Columns.Add("Товар", 160, HorizontalAlignment.Left);
+            ОкноВыбора.Инструкция.Text = "Выберите товар из списка";
+            foreach (ListViewItem Товар in Выборка)
+            {
+                ListViewItem НоваяСтрока = new ListViewItem();
+                НоваяСтрока.Text = Товар.SubItems[СоответствиеКолонок["Код"]].Text;//Код
+                НоваяСтрока.SubItems.Add(Товар.SubItems[СоответствиеКолонок["Товар"]].Text);//Наименование
+                НоваяСтрока.SubItems.Add(Товар.SubItems[НомерКонокиГУИД].Text);//Гуид
+                СписокВыбора.Items.Add(НоваяСтрока);
+            }
+            DialogResult Результат = ОкноВыбора.ShowDialog();
+            if (Результат == DialogResult.Cancel) return null;
+            return ОкноВыбора.ВыбранГуид;
+        }
 
-        private string ВыбратьТоварИзМножества(IEnumerable<string[]> Выборка)
+        /// <summary>
+        /// В случае ответа от 1С
+        /// </summary>
+        /// <param name="Выборка"></param>
+        /// <returns></returns>
+        private string ВыбратьТоварИзМножества(IEnumerable<string[]> Выборка)//
         {
             ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
             ListView СписокВыбора = ОкноВыбора.СписокВыбора;
@@ -58,11 +87,27 @@ namespace СкладскойУчет
             if (Результат == DialogResult.Cancel) return null;
             return ОкноВыбора.ВыбранГуид;
         }
-
+        /// <summary>
+        /// В случае ответа от 1С
+        /// </summary>
+        /// <param name="Выборка"></param>
+        /// <param name="Ответ"></param>
+        /// <returns></returns>
         private IEnumerable<string[]> ВыбратьТоварИзМножества_(IEnumerable<string[]> Выборка, string[][] Ответ)
         {
             string ВыбранГуид = ВыбратьТоварИзМножества(Выборка);
             return from string[] строка in Ответ where строка[1] == ВыбранГуид select строка;
+        }
+        /// <summary>
+        /// В случае уже имеющихся в списке
+        /// </summary>
+        /// <param name="Поиск"></param>
+        /// <returns></returns>
+        private IEnumerable<ListViewItem> ВыбратьТоварИзМножества_(IEnumerable<ListViewItem> Поиск)
+        {
+            string ВыбранГуид = ВыбратьТоварИзМножества(Поиск);
+            return НайтиEANGUID(ВыбранГуид);
+
         }
 
         //-----------------методы для переопределения в наследуемом классе других операций---------
@@ -192,15 +237,17 @@ namespace СкладскойУчет
 
         private void Окно_выбора_из_списка_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ПолеВвода.Visible) {
+            if (ПолеВвода.Visible)
+            {
 
 
                 if ((e.KeyCode == System.Windows.Forms.Keys.Enter) || РаботаСоСканером.НажатаКлавишаСкан(e))
                 {
                     СписокПеремещения.Focus();
-    
+
                 }
-                return; }
+                return;
+            }
 
             if (РаботаСоСканером.НажатаКлавишаСкан(e))
             {
@@ -248,7 +295,7 @@ namespace СкладскойУчет
         private void СканТовара(string СтрокаСкан)
         {
             ListViewItem НайденСкан = НайтиСкан(СтрокаСкан);
-            if (НайденСкан == null && СтрокаСкан.Length == 8) НайденСкан = НайтиСкан(СтрокаСкан.Substring(0,7));//скан кода товара по базе без контрольной суммы, костыль
+            if (НайденСкан == null && СтрокаСкан.Length == 8) НайденСкан = НайтиСкан(СтрокаСкан.Substring(0, 7));//скан кода товара по базе без контрольной суммы, костыль
             if (НайденСкан == null)
             {
                 Обмен = new Пакеты(Последовательность.Операция + "НайтиТовар");
@@ -307,32 +354,13 @@ namespace СкладскойУчет
         }
 
 
-        private string ВыбратьТоварИзМножества(IEnumerable<ListViewItem> Выборка)
-        {
-            ИнтерактивныйВыборТовара ОкноВыбора = new ИнтерактивныйВыборТовара(Последовательность);
-            ListView СписокВыбора = ОкноВыбора.СписокВыбора;
-            СписокВыбора.Columns.Add("Код", 70, HorizontalAlignment.Left);
-            СписокВыбора.Columns.Add("Товар", 160, HorizontalAlignment.Left);
-            ОкноВыбора.Инструкция.Text = "Выберите товар из списка";
-            foreach (ListViewItem Товар in Выборка)
-            {
-                ListViewItem НоваяСтрока = new ListViewItem();
-                НоваяСтрока.Text = Товар.SubItems[СоответствиеКолонок["Код"]].Text;//Код
-                НоваяСтрока.SubItems.Add(Товар.SubItems[СоответствиеКолонок["Товар"]].Text);//Наименование
-                НоваяСтрока.SubItems.Add(Товар.SubItems[НомерКонокиГУИД].Text);//Гуид
-                СписокВыбора.Items.Add(НоваяСтрока);
-            }
-            DialogResult Результат = ОкноВыбора.ShowDialog();
-            if (Результат == DialogResult.Cancel) return null;
-            return ОкноВыбора.ВыбранГуид;
-        }
 
 
         private ListViewItem НайтиСкан(string СтрокаСкан)
         {
             var Поиск = НайтиEANGUID(СтрокаСкан);
             if (Поиск.Count() > 1) Поиск = ВыбратьТоварИзМножества_(Поиск);
-            if (Поиск == null)return null;
+            if (Поиск == null) return null;
             return Поиск.FirstOrDefault();
         }
 
@@ -342,17 +370,12 @@ namespace СкладскойУчет
             return Поиск;
         }
 
-        private IEnumerable<ListViewItem> ВыбратьТоварИзМножества_(IEnumerable<ListViewItem> Поиск)
-        {
-            string ВыбранГуид = ВыбратьТоварИзМножества(Поиск);
-            return НайтиEANGUID(ВыбранГуид);
 
-        }
 
         private bool СовпадаетEAN(string СтрокаСкан, ListViewItem s)
         {
 
-            for (int НомерКолонки = НомерКонокиГУИД - 1 ; НомерКолонки < s.SubItems.Count; НомерКолонки++)
+            for (int НомерКолонки = НомерКонокиГУИД - 1; НомерКолонки < s.SubItems.Count; НомерКолонки++)
             {
 
                 if (s.SubItems[НомерКолонки].Text == СтрокаСкан) return true;
@@ -394,7 +417,7 @@ namespace СкладскойУчет
             var ВыбраннаяСтрока = СписокПеремещения.FocusedItem;
             if (ВыбраннаяСтрока == null) return;
             ПоказатьИнфооТоваре(ВыбраннаяСтрока);
-            ВвестиКоличествоВручную(ВыбраннаяСтрока,e );
+            ВвестиКоличествоВручную(ВыбраннаяСтрока, e);
         }
 
         private void ВвестиКоличествоВручную(ListViewItem ВыбраннаяСтрока, EventArgs e)
@@ -409,12 +432,12 @@ namespace СкладскойУчет
             ПолеВвода.Text = ВыбраннаяСтрока.SubItems[1].Text;
             ПолеВвода.Focus();
             ПолеВвода.SelectAll();
- 
+
         }
 
         private void ПолеВвода_LostFocus(object sender, EventArgs e)
         {
-            
+
             ПолеВвода.Visible = false;
             var ВыбраннаяСтрока = СписокПеремещения.FocusedItem;
             if (ВыбраннаяСтрока == null) return;
@@ -428,7 +451,7 @@ namespace СкладскойУчет
             e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
         }
 
-    
+
     }
 
 

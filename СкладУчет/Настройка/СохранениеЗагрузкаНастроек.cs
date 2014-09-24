@@ -30,7 +30,7 @@ namespace СкладскойУчет
         Dictionary<string, string> СоостветствиеСервисов = new Dictionary<string, string>()
             {
                 {"10.0.6.","art-sql1"},
-                {"10.0.30","adm-zheludkov"},
+                //{"10.0.30","adm-zheludkov"},
                 {"10.0.36","khb-sql-sklad2"},
                 {"10.0.50","khb-sql-sklad2"},
                 {"10.0.94","irk-sql-sklad"},
@@ -52,8 +52,8 @@ namespace СкладскойУчет
                 {"10.4.171","vld-sql-sklad"},
                 {"10.4.194","ykt-sql-sklad2"},
                 {"10.5.102","cht-sql-sklad"},
-                {"10.7.4.","rst-sql-sklad2"},
-                {"10.10.35","adm-zheludkov"} 
+                {"10.7.4.","rst-sql-sklad2"}
+                //{"10.10.35","adm-zheludkov"} 
 
             };
 

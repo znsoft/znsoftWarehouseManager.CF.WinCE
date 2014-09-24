@@ -13,8 +13,9 @@ namespace СкладскойУчет.Сеть
     {
 
         static string СкладскойУчетОбновление = "СкладскойУчетОбновление.exe";
-         
-        static public void ПотокКопированияФайла(string ИмяФайлаИсточника,string ИмяФайлаПриемника){
+
+        static public void ПотокКопированияФайла(string ИмяФайлаИсточника, string ИмяФайлаПриемника)
+        {
             if (ИмяФайлаПриемника == null || ИмяФайлаПриемника.Length < 3) return;
             Thread staThread = new Thread(new ThreadStart(
                 delegate
@@ -35,19 +36,26 @@ namespace СкладскойУчет.Сеть
             var Url = ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
             Пакеты Обмен = new Пакеты("");
 
-            if (!String.IsNullOrEmpty(Url)) { 
-                Обмен.Соединение.Сервис.Url = Url; 
-            } else { 
+            if (!String.IsNullOrEmpty(Url))
+            {
+                Обмен.Соединение.Сервис.Url = Url;
+            }
+            else
+            {
                 Инфо.Ошибка("Файл настроек недоступен для чтения или автоматические настройки не применились, обновление проверено с сервера разработки");
             }
-            
+
             try
             {
                 Byte[] Прошивка = Обмен.UpdateFirmware();
                 if (Прошивка == null || Прошивка.Count() == 0) return false;
                 string НовыйИсполняемыйФайл = Настройки.ПолучитьПутьКЛокальномуФайлу(СкладскойУчетОбновление);
                 СохранитьВФайл(ref НовыйИсполняемыйФайл, Прошивка);
-                if (!String.IsNullOrEmpty(Инфо.АргументЗапуска)) { Инфо.Ошибка("обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел"); }
+                if (!String.IsNullOrEmpty(Инфо.АргументЗапуска))
+                {
+                    Инфо.Ошибка("Обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел, обновление произошло из " + Обмен.Соединение.Сервис.Url.ToString());
+                    return false;
+                }
                 var pr = new Process();
                 pr.StartInfo.FileName = НовыйИсполняемыйФайл;
                 pr.StartInfo.Arguments = (Инфо.АргументЗапуска != null) ? Инфо.АргументЗапуска : ИмяЭтогоФайла;
@@ -72,17 +80,18 @@ namespace СкладскойУчет.Сеть
 
         public static void СохранитьВФайл(ref string Файл, Byte[] Данные)
         {
-            for(int НомерОбнов = 0;НомерОбнов < 10;НомерОбнов ++)
-            try
-            {
-                FileStream file = System.IO.File.Create(Файл);
-                file.Write(Данные, 0, Данные.Count());
-                file.Close();
-                break;
-            }
-            catch (Exception) {
-                Файл.Replace(".exe", String.Format("{0}",НомерОбнов)+".exe");
-            }
+            for (int НомерОбнов = 0; НомерОбнов < 10; НомерОбнов++)
+                try
+                {
+                    FileStream file = System.IO.File.Create(Файл);
+                    file.Write(Данные, 0, Данные.Count());
+                    file.Close();
+                    break;
+                }
+                catch (Exception)
+                {
+                    Файл.Replace(".exe", String.Format("{0}", НомерОбнов) + ".exe");
+                }
         }
     }
 }

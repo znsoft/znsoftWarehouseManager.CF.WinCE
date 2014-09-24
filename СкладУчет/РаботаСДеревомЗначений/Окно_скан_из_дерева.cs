@@ -204,7 +204,7 @@ namespace СкладскойУчет
         private void ВыслатьВсеДерево(Пакеты Обмен, bool ТолькоСобранное)
         {
             СообщениеПодождите.Visible = true;
-            
+            Cursor.Current = Cursors.WaitCursor;
             КоллекцияСтрок.Clear();
             ДобавитьСтрокиПодбора();
             if (!ТолькоСобранное)
@@ -216,6 +216,7 @@ namespace СкладскойУчет
                 return;
             }
             Последовательность.ОтветСервера = Обмен.Послать(ТекстДЯ.Text, КоллекцияСтрок.ToArray());
+            Cursor.Current = Cursors.Default;
             СообщениеПодождите.Visible = false;
         }
 
