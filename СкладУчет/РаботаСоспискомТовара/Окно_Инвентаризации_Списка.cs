@@ -37,7 +37,7 @@ namespace СкладскойУчет
             {
                 try
                 {
-                    НоваяСтрока.SubItems.Add(Строка[i]);
+                    if (i == 4) НоваяСтрока.SubItems.Add(Строка[2]); else НоваяСтрока.SubItems.Add(Строка[i]);
                 }
                 catch (Exception e) {
                     НоваяСтрока.SubItems.Add(e.Message.ToString());
