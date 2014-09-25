@@ -11,15 +11,24 @@ namespace СкладскойУчет
 {
     public partial class Ошибка : Form
     {
+        DateTime ВременнойПромежуток;
+
         public Ошибка(string ОписаниеОшибки)
         {
             InitializeComponent();
             this.ТекстОшибки.Text = ОписаниеОшибки;
             РаботаСоСканером.Звук.Ошибка();
+            ВременнойПромежуток = DateTime.Now;
+        }
+
+        private int ВзятьВремя()
+        {
+            return (DateTime.Now - ВременнойПромежуток).Seconds;
         }
 
         private void Ошибка_KeyDown(object sender, KeyEventArgs e)
         {
+            if (ВзятьВремя() < 1) return;
             РаботаСоСканером.Звук.МинимальнаяГромкость();
             this.Close();
         }
