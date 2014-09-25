@@ -120,6 +120,20 @@
   <metadata name="mainMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="КнопкаОбновить.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAGQSURBVFhHxZbBlcIwDETTAUeOlEAJlEAJlLAlUAIlUAIl7JEjJVDClhBGJNony2PFMRAO/+Vp
+        MnieZeO46/v+q1BxSai4JFT8BN11vQNncEp0W3yCMfgX9Ery3hbvBEErcLLB4AZ2ic8W7wIhmzHMhiet
+        //cy8RUQtAV/Jlg4MK9AxVYQNCtcoGILCJI1920/M6+Fii0gLNnpUjOfh4oKBpH/rQwWt/G6Po4+RZZh
+        w7weLg7t1HAdcFXwyrrbcGHPvIxc4GspHL139PvWX5ivRFrw/6+SdQH1wbxXT1XrlbTIZ+NJdjXqu3tP
+        uxSRFvnRyXjOEE82e7pPInKhvATKc43xfHn2Qi4Mm1BmYwf3sE7NWnuFi8Mn1AdEzNr5FioKGPTHhUSE
+        B1UEFRUMbA+jiKb2C1RUMHDpULLc2G9roaIFAXI4RZuSXjRqoaIHIXsXamlef4GKDAT5L56yZf5aqFgC
+        YRcXDpl7a6FiCQT6TXlnvjlQMQKh9t5XdeuJoOIUCNYP0eSdbwoqLgkVl6PvHk7JvUc4OFaQAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <metadata name="$this.FormFactorShadowProperty" xml:space="preserve">
     <value>WEBPAD</value>
   </metadata>

@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ФормаАвторизации));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.Меню = new System.Windows.Forms.MenuItem();
             this.Войти = new System.Windows.Forms.Button();
@@ -40,6 +41,9 @@
             this.ТекущийСкладТекст = new System.Windows.Forms.Label();
             this.ТекстОшибки = new System.Windows.Forms.Label();
             this.ВерсияПрограммы = new System.Windows.Forms.Label();
+            this.ПолеВводаСервер = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.КнопкаОбновить = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -102,10 +106,10 @@
             // 
             // ТекущийСкладТекст
             // 
-            this.ТекущийСкладТекст.Location = new System.Drawing.Point(1, 29);
+            this.ТекущийСкладТекст.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.ТекущийСкладТекст.Location = new System.Drawing.Point(9, 56);
             this.ТекущийСкладТекст.Name = "ТекущийСкладТекст";
-            this.ТекущийСкладТекст.Size = new System.Drawing.Size(237, 34);
-            this.ТекущийСкладТекст.Text = "Автоматизация складского учета компании ДНС";
+            this.ТекущийСкладТекст.Size = new System.Drawing.Size(222, 14);
             // 
             // ТекстОшибки
             // 
@@ -123,12 +127,37 @@
             this.ВерсияПрограммы.Size = new System.Drawing.Size(240, 14);
             this.ВерсияПрограммы.Text = "Версия c#1";
             // 
+            // ПолеВводаСервер
+            // 
+            this.ПолеВводаСервер.Location = new System.Drawing.Point(4, 30);
+            this.ПолеВводаСервер.Name = "ПолеВводаСервер";
+            this.ПолеВводаСервер.Size = new System.Drawing.Size(191, 23);
+            this.ПолеВводаСервер.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(9, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(222, 21);
+            this.label1.Text = "Сервер";
+            // 
+            // КнопкаОбновить
+            // 
+            this.КнопкаОбновить.Image = ((System.Drawing.Image)(resources.GetObject("КнопкаОбновить.Image")));
+            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 20);
+            this.КнопкаОбновить.Name = "КнопкаОбновить";
+            this.КнопкаОбновить.Size = new System.Drawing.Size(35, 33);
+            this.КнопкаОбновить.Click += new System.EventHandler(this.КнопкаОбновить_Click);
+            // 
             // ФормаАвторизации
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.КнопкаОбновить);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ПолеВводаСервер);
             this.Controls.Add(this.ВерсияПрограммы);
             this.Controls.Add(this.ТекстОшибки);
             this.Controls.Add(this.ТекущийСкладТекст);
@@ -138,7 +167,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Войти);
-            this.Menu = this.mainMenu1;
             this.Name = "ФормаАвторизации";
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -159,6 +187,9 @@
         private System.Windows.Forms.Label ТекущийСкладТекст;
         private System.Windows.Forms.Label ТекстОшибки;
         private System.Windows.Forms.Label ВерсияПрограммы;
+        private System.Windows.Forms.TextBox ПолеВводаСервер;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox КнопкаОбновить;
     }
 }
 

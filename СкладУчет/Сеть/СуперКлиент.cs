@@ -8,6 +8,7 @@ namespace СкладскойУчет
 {
     class СуперКлиент: СкладскойУчет.СсылкаНаСервис.forTSD
     {
+ 
             protected override System.Net.WebRequest GetWebRequest(Uri uri)
             {
                 var request = base.GetWebRequest(uri);
