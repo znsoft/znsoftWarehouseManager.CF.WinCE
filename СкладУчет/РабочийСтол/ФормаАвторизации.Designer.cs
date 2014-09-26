@@ -38,7 +38,6 @@
             this.Пароль = new System.Windows.Forms.TextBox();
             this.Сотрудник = new System.Windows.Forms.ComboBox();
             this.ПоказыватьПароль = new System.Windows.Forms.CheckBox();
-            this.ТекущийСкладТекст = new System.Windows.Forms.Label();
             this.ТекстОшибки = new System.Windows.Forms.Label();
             this.ВерсияПрограммы = new System.Windows.Forms.Label();
             this.ПолеВводаСервер = new System.Windows.Forms.TextBox();
@@ -104,13 +103,6 @@
             this.ПоказыватьПароль.Text = "показать пароль";
             this.ПоказыватьПароль.CheckStateChanged += new System.EventHandler(this.ПоказыватьПароль_CheckStateChanged);
             // 
-            // ТекущийСкладТекст
-            // 
-            this.ТекущийСкладТекст.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.ТекущийСкладТекст.Location = new System.Drawing.Point(71, 8);
-            this.ТекущийСкладТекст.Name = "ТекущийСкладТекст";
-            this.ТекущийСкладТекст.Size = new System.Drawing.Size(163, 15);
-            // 
             // ТекстОшибки
             // 
             this.ТекстОшибки.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular);
@@ -145,7 +137,7 @@
             // 
             this.КнопкаОбновить.BackColor = System.Drawing.Color.WhiteSmoke;
             this.КнопкаОбновить.Image = ((System.Drawing.Image)(resources.GetObject("КнопкаОбновить.Image")));
-            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 25);
+            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 20);
             this.КнопкаОбновить.Name = "КнопкаОбновить";
             this.КнопкаОбновить.Size = new System.Drawing.Size(35, 33);
             this.КнопкаОбновить.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -162,7 +154,6 @@
             this.Controls.Add(this.ПолеВводаСервер);
             this.Controls.Add(this.ВерсияПрограммы);
             this.Controls.Add(this.ТекстОшибки);
-            this.Controls.Add(this.ТекущийСкладТекст);
             this.Controls.Add(this.ПоказыватьПароль);
             this.Controls.Add(this.Сотрудник);
             this.Controls.Add(this.Пароль);
@@ -186,7 +177,6 @@
         private System.Windows.Forms.MenuItem Меню;
         private System.Windows.Forms.ComboBox Сотрудник;
         private System.Windows.Forms.CheckBox ПоказыватьПароль;
-        private System.Windows.Forms.Label ТекущийСкладТекст;
         private System.Windows.Forms.Label ТекстОшибки;
         private System.Windows.Forms.Label ВерсияПрограммы;
         private System.Windows.Forms.TextBox ПолеВводаСервер;
