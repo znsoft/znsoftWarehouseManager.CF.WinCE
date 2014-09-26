@@ -74,31 +74,12 @@ namespace СкладскойУчет
             catch (Exception) { return false; }
         }
 
-        public string УзнатьСобственныйIP()
-        {
-            var ИмяЭтойМашины = Dns.GetHostName();
-            var IpЭтойМашины = Dns.GetHostEntry(ИмяЭтойМашины).AddressList.First(x => x.AddressFamily == AddressFamily.InterNetwork);
-            return IpЭтойМашины.ToString();
-        }
-
         public string ПолучитьПолнуюВебСсылку()
         {
             string _Сервер = null;
-            string МойАдрес = УзнатьСобственныйIP();
             if (ЗагрузитьСПроверкой())
             {
                 _Сервер = Хранилище.Сервер;
-            }
-            if (_Сервер == null)
-            {
-                if(МойАдрес.Contains("127.0.0"))
-                try
-                {
-                    Инфо.Ошибка("Проверьте настройки WiFi, возможно вы находитесь вне зоны доступа");
-                }
-                catch (Exception) {
-                    System.Windows.Forms.MessageBox.Show("Проверьте настройки WiFi, возможно вы находитесь вне зоны доступа");
-                }
             }
 
             return СформироватьСсылку();

@@ -107,9 +107,9 @@
             // ТекущийСкладТекст
             // 
             this.ТекущийСкладТекст.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.ТекущийСкладТекст.Location = new System.Drawing.Point(9, 56);
+            this.ТекущийСкладТекст.Location = new System.Drawing.Point(71, 8);
             this.ТекущийСкладТекст.Name = "ТекущийСкладТекст";
-            this.ТекущийСкладТекст.Size = new System.Drawing.Size(222, 14);
+            this.ТекущийСкладТекст.Size = new System.Drawing.Size(163, 15);
             // 
             // ТекстОшибки
             // 
@@ -138,15 +138,17 @@
             // 
             this.label1.Location = new System.Drawing.Point(9, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 21);
+            this.label1.Size = new System.Drawing.Size(53, 21);
             this.label1.Text = "Сервер";
             // 
             // КнопкаОбновить
             // 
+            this.КнопкаОбновить.BackColor = System.Drawing.Color.WhiteSmoke;
             this.КнопкаОбновить.Image = ((System.Drawing.Image)(resources.GetObject("КнопкаОбновить.Image")));
-            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 20);
+            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 25);
             this.КнопкаОбновить.Name = "КнопкаОбновить";
             this.КнопкаОбновить.Size = new System.Drawing.Size(35, 33);
+            this.КнопкаОбновить.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.КнопкаОбновить.Click += new System.EventHandler(this.КнопкаОбновить_Click);
             // 
             // ФормаАвторизации

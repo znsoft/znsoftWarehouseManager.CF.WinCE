@@ -11,6 +11,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
+using СкладскойУчет.Сеть;
 
 namespace СкладскойУчет
 {
@@ -29,10 +30,17 @@ namespace СкладскойУчет
         private void Form1_Load(object sender, EventArgs e)
         {
             СоединениеВебСервис.ИдентификаторСоединения = Инфо.ГенерироватьИдентификатор();
-            ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
+            string Ссылка = ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
             ПолучитьСписокПользователей();
             ПолеВводаСервер.Text = ПараметрыСеанса.Хранилище.Сервер;
             ВерсияПрограммы.Text = "Версия " + СоединениеВебСервис.НомерВерсии;
+
+            if(!string.IsNullOrEmpty(Ссылка))
+            if (Обновление.ПроверитьОбновление())
+            {
+                Application.Exit();
+                return;
+            }
 
         }
 
@@ -59,7 +67,7 @@ namespace СкладскойУчет
                 Сотрудник.Text = ПараметрыСеанса.Хранилище.ИмяПользователя;
                 Пароль.Focus();
             }
-            ТекущийСкладТекст.Text = Текущийсклад;
+            //ТекущийСкладТекст.Text = Текущийсклад;
             СписокПользователей = null;
             return true;
         }
@@ -140,12 +148,21 @@ namespace СкладскойУчет
 
         private void КнопкаОбновить_Click(object sender, EventArgs e)
         {
+            КнопкаОбновить.BackColor = Color.Gray;
+            КнопкаОбновить.Update();
+            КнопкаОбновить.BackColor = Color.WhiteSmoke;
             ПараметрыСеанса.Хранилище.Сервер = ПолеВводаСервер.Text;
             
             string Url = ПараметрыСеанса.СформироватьСсылку();
             if (Url == null) return;
             Обмен.Соединение.Сервис.Url = Url;
             if(ПолучитьСписокПользователей()) ПараметрыСеанса.Сохранить();
+            if (!string.IsNullOrEmpty(Url))
+                if (Обновление.ПроверитьОбновление())
+                {
+                    Application.Exit();
+                    return;
+                }
 
         }
     }
