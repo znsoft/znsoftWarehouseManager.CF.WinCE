@@ -61,7 +61,7 @@
             this.Войти.Size = new System.Drawing.Size(150, 24);
             this.Войти.TabIndex = 0;
             this.Войти.Text = "Войти";
-            this.Войти.Click += new System.EventHandler(this.button1_Click);
+            this.Войти.Click += new System.EventHandler(this.кнопкаВойтиНажатие);
             // 
             // label2
             // 

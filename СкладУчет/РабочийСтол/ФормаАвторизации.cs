@@ -72,7 +72,7 @@ namespace СкладскойУчет
             return true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void кнопкаВойтиНажатие(object sender, EventArgs e)
         {
             Обмен = new Пакеты("Авторизация");
             var Url = ПараметрыСеанса.ПолучитьПолнуюВебСсылку();
@@ -135,7 +135,7 @@ namespace СкладскойУчет
 
         private void Пароль_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) { e.Handled = true; button1_Click(sender, e); }
+            if (e.KeyCode == Keys.Enter) { e.Handled = true; кнопкаВойтиНажатие(sender, e); }
         }
 
         private void Меню_Click(object sender, EventArgs e)
