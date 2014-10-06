@@ -157,14 +157,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Инструкция;
+        public System.Windows.Forms.Label Инструкция;
         private System.Windows.Forms.Button Назад;
         private System.Windows.Forms.Label Пользователь;
-        private System.Windows.Forms.ListView СписокВыбора;
-        private System.Windows.Forms.TabControl Таб;
+        public System.Windows.Forms.ListView СписокВыбора;
+        public System.Windows.Forms.TabControl Таб;
         private System.Windows.Forms.TabPage Сканирование;
         private System.Windows.Forms.TabPage Поиск;
-        private System.Windows.Forms.TextBox СписокИнформации;
+        public System.Windows.Forms.TextBox СписокИнформации;
 
     }
 }

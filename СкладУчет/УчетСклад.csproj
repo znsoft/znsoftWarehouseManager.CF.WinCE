@@ -72,6 +72,9 @@
     <Compile Include="Интерактивные\ВводШК.Designer.cs">
       <DependentUpon>ВводШК.cs</DependentUpon>
     </Compile>
+    <Compile Include="Интерактивные\ОкноСканированиеДЯ.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Оборудование\API\WndProcHooker.cs" />
     <Compile Include="ПоследовательныйВыборЗаданий\СписокВыбора\Окно_набора_адреса.cs">
       <SubType>Form</SubType>
