@@ -10,7 +10,6 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using SDK.English;
-using System.Data.SqlTypes;
 
 
 namespace СкладскойУчет
@@ -25,7 +24,10 @@ namespace СкладскойУчет
             this.KeyPreview = true;
             Подбор.Focus();
             string стрРоли = СоединениеВебСервис.СтрокаДоступныхРолей;
-            var Роли = "Отгрузка,Хранение,Подбор,Приемка,Прочие,Администратор".Split(',').ToDictionary(s => s, s => стрРоли.IndexOf(s) > 0);
+        
+            
+            СоединениеВебСервис.Роли = "Отгрузка,Хранение,Подбор,Приемка,Прочие,Администратор".Split(',').ToDictionary(s => s, s => стрРоли.IndexOf(s) > 0);
+            var Роли = СоединениеВебСервис.Роли;
             if (Роли["Администратор"]) return;
             Подбор.Enabled = Роли["Подбор"];
             Инвентаризация.Enabled = Роли["Хранение"];
