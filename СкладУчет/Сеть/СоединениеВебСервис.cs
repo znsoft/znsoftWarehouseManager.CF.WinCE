@@ -21,7 +21,8 @@ namespace СкладскойУчет
         public static string СтрокаДоступныхРолей;  //"Отгрузка,Хранение,Подбор,Приемка,Прочие,Администратор"
         public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;
-        public forTSD Сервис; 
+        public forTSD Сервис;
+        public static Dictionary<String,bool> Роли;
 
 
         //Синглтон для работы с классом из всех окон приложения
