@@ -1,85 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<definitions xmlns:tns="http://www.dns-shop.tsd.ru" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd2="http://v8.1c.ru/8.1/data/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.dns-shop.tsd.ru" name="forTSD" targetNamespace="http://www.dns-shop.tsd.ru" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<definitions xmlns:tns="http://www.dns-shop.tsd.ru" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd1="http://v8.1c.ru/8.1/data/core" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd2="http://www.dns-shop.tsd.ru" name="forTSD" targetNamespace="http://www.dns-shop.tsd.ru" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
-    <xs:schema xmlns:xs2="http://v8.1c.ru/8.1/data/core" xmlns:xs1="http://www.dns-shop.tsd.ru" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.dns-shop.tsd.ru" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:import namespace="http://v8.1c.ru/8.1/data/core" />
-      <xs:complexType name="СписокНоменклатуры">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="Номенклатура" type="xs1:СтрокаНоменклатуры" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="Стр">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="v" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="Стр_">
-        <xs:sequence>
-          <xs:element name="П1" type="xs:string" />
-          <xs:element name="П2" type="xs:string" />
-          <xs:element name="П3" type="xs:string" />
-          <xs:element name="П4" type="xs:string" />
-          <xs:element name="П5" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="СтрокаНоменклатуры">
-        <xs:sequence>
-          <xs:element name="Код" type="xs:string" />
-          <xs:element name="Наименование" type="xs:string" />
-          <xs:element name="Количество" type="xs:integer" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:complexType name="Таб">
-        <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="a" type="xs1:Стр" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="ОбменТСД">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="ВидОперации" type="xs:string" />
-            <xs:element name="Список" type="xs1:СписокНоменклатуры" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ОбменТСДResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" type="xs1:СписокНоменклатуры" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="updatefirmware">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="version" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="updatefirmwareResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" nillable="true" type="xs:base64Binary" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="Обмен">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Опер" type="xs:string" />
-            <xs:element name="Доп" nillable="true" type="xs:string" />
-            <xs:element name="Список" nillable="true" type="xs1:Таб" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ОбменResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" nillable="true" type="xs1:Таб" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:schema>
     <xs:schema xmlns:tns="http://v8.1c.ru/8.1/data/core" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://v8.1c.ru/8.1/data/core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:simpleType name="AllowedLength">
         <xs:restriction base="xs:string">
@@ -355,6 +276,8 @@
           <xs:element minOccurs="0" name="checkState" type="xs:decimal" />
           <xs:element minOccurs="0" name="picture" />
           <xs:element minOccurs="0" name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="formatPresentationSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="formatPresentation" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ValueListType">
@@ -414,40 +337,119 @@
         </xs:sequence>
       </xs:complexType>
     </xs:schema>
+    <xs:schema xmlns:xs2="http://www.dns-shop.tsd.ru" xmlns:xs1="http://v8.1c.ru/8.1/data/core" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.dns-shop.tsd.ru" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://v8.1c.ru/8.1/data/core" />
+      <xs:complexType name="СписокНоменклатуры">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Номенклатура" type="xs2:СтрокаНоменклатуры" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Стр">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="v" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Стр_">
+        <xs:sequence>
+          <xs:element name="П1" type="xs:string" />
+          <xs:element name="П2" type="xs:string" />
+          <xs:element name="П3" type="xs:string" />
+          <xs:element name="П4" type="xs:string" />
+          <xs:element name="П5" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="СтрокаНоменклатуры">
+        <xs:sequence>
+          <xs:element name="Код" type="xs:string" />
+          <xs:element name="Наименование" type="xs:string" />
+          <xs:element name="Количество" type="xs:integer" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Таб">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="a" type="xs2:Стр" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ОбменТСД">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ВидОперации" type="xs:string" />
+            <xs:element name="Список" type="xs2:СписокНоменклатуры" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ОбменТСДResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs2:СписокНоменклатуры" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatefirmware">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="version" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatefirmwareResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs:base64Binary" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Обмен">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Опер" type="xs:string" />
+            <xs:element name="Доп" nillable="true" type="xs:string" />
+            <xs:element name="Список" nillable="true" type="xs2:Таб" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ОбменResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" nillable="true" type="xs2:Таб" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
   </types>
   <message name="ОбменТСДRequestMessage">
-    <part name="parameters" element="xsd1:ОбменТСД" />
+    <part name="parameters" element="xsd2:ОбменТСД" />
   </message>
   <message name="ОбменТСДResponseMessage">
-    <part name="parameters" element="xsd1:ОбменТСДResponse" />
+    <part name="parameters" element="xsd2:ОбменТСДResponse" />
   </message>
   <message name="updatefirmwareRequestMessage">
-    <part name="parameters" element="xsd1:updatefirmware" />
+    <part name="parameters" element="xsd2:updatefirmware" />
   </message>
   <message name="updatefirmwareResponseMessage">
-    <part name="parameters" element="xsd1:updatefirmwareResponse" />
+    <part name="parameters" element="xsd2:updatefirmwareResponse" />
   </message>
   <message name="ОбменRequestMessage">
-    <part name="parameters" element="xsd1:Обмен" />
+    <part name="parameters" element="xsd2:Обмен" />
   </message>
   <message name="ОбменResponseMessage">
-    <part name="parameters" element="xsd1:ОбменResponse" />
+    <part name="parameters" element="xsd2:ОбменResponse" />
   </message>
   <portType name="forTSDPortType">
     <operation name="ОбменТСД">
-      <input message="xsd1:ОбменТСДRequestMessage" />
-      <output message="xsd1:ОбменТСДResponseMessage" />
+      <input message="xsd2:ОбменТСДRequestMessage" />
+      <output message="xsd2:ОбменТСДResponseMessage" />
     </operation>
     <operation name="updatefirmware">
-      <input message="xsd1:updatefirmwareRequestMessage" />
-      <output message="xsd1:updatefirmwareResponseMessage" />
+      <input message="xsd2:updatefirmwareRequestMessage" />
+      <output message="xsd2:updatefirmwareResponseMessage" />
     </operation>
     <operation name="Обмен">
-      <input message="xsd1:ОбменRequestMessage" />
-      <output message="xsd1:ОбменResponseMessage" />
+      <input message="xsd2:ОбменRequestMessage" />
+      <output message="xsd2:ОбменResponseMessage" />
     </operation>
   </portType>
-  <binding name="forTSDSoapBinding" type="xsd1:forTSDPortType">
+  <binding name="forTSDSoapBinding" type="xsd2:forTSDPortType">
     <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="ОбменТСД">
       <soapbind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:ОбменТСД" style="document" />
@@ -477,7 +479,7 @@
       </output>
     </operation>
   </binding>
-  <binding name="forTSDSoap12Binding" type="xsd1:forTSDPortType">
+  <binding name="forTSDSoap12Binding" type="xsd2:forTSDPortType">
     <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="ОбменТСД">
       <soap12bind:operation soapAction="http://www.dns-shop.tsd.ru#forTSD:ОбменТСД" style="document" />
@@ -508,14 +510,14 @@
     </operation>
   </binding>
   <service name="forTSD">
-    <port name="forTSDSoap" binding="xsd1:forTSDSoapBinding">
+    <port name="forTSDSoap" binding="xsd2:forTSDSoapBinding">
       <documentation>
         <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
       </documentation>
-      <soapbind:address location="http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws" />
+      <soapbind:address location="http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws" />
     </port>
-    <port name="forTSDSoap12" binding="xsd1:forTSDSoap12Binding">
-      <soap12bind:address location="http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws" />
+    <port name="forTSDSoap12" binding="xsd2:forTSDSoap12Binding">
+      <soap12bind:address location="http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws" />
     </port>
   </service>
 </definitions>

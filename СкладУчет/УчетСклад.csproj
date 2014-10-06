@@ -253,10 +253,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
+    <WebReferenceUrl Include="http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl">
+      <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\СсылкаНаСервис\</RelPath>
-      <UpdateFromURL>http://adm-zheludkov/zheludkov_sklad/ws/TSD.1cws%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
