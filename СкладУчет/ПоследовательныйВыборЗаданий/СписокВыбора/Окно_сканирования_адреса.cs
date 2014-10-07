@@ -90,10 +90,6 @@ namespace СкладскойУчет
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            СканАдреса("adr1301011");
 
-        }
     }
 }
