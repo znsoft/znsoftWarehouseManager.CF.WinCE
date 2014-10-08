@@ -115,18 +115,25 @@ namespace СкладскойУчет
                     _Далее();
                     return;
             }
-            //MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);
-            // if(method != null) 
-            //method.Invoke(this, null);
+
         }
 
         private void ВводАдреса_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (string.IsNullOrEmpty(ВводАдреса.Text))
+            { ПрефиксАдреса.Visible = true; ВводАдреса.MaxLength = 7; }
             e.Handled = (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar));
         }
 
         private void ВводАдреса_TextChanged(object sender, EventArgs e)
         {
+            
+            ПрефиксАдреса.Visible = true;
+            ВводАдреса.Text = ВводАдреса.Text.Replace("adr", "");
+            ВводАдреса.MaxLength = 7;
+            if (string.IsNullOrEmpty(ВводАдреса.Text)) {
+                 ПрефиксАдреса.Visible = false; ВводАдреса.MaxLength = 10; 
+            }
             Далее.Enabled = ВводАдреса.Text.Length == 7;
         }
     }

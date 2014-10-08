@@ -84,12 +84,13 @@
             this.ПрефиксАдреса.Size = new System.Drawing.Size(29, 22);
             this.ПрефиксАдреса.Text = "adr";
             this.ПрефиксАдреса.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.ПрефиксАдреса.Visible = false;
             // 
             // ВводАдреса
             // 
             this.ВводАдреса.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ВводАдреса.Location = new System.Drawing.Point(37, 191);
-            this.ВводАдреса.MaxLength = 7;
+            this.ВводАдреса.MaxLength = 10;
             this.ВводАдреса.Name = "ВводАдреса";
             this.ВводАдреса.Size = new System.Drawing.Size(156, 23);
             this.ВводАдреса.TabIndex = 11;
