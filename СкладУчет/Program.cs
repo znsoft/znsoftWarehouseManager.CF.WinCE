@@ -6,6 +6,7 @@ using System.Threading;
 using СкладскойУчет.Сеть;
 using System.Reflection;
 using System.Diagnostics;
+using СкладскойУчет.Интерактивные;
 
 
 
@@ -22,10 +23,12 @@ namespace СкладскойУчет
         static void Main(string[] args)
         {
             СоединениеВебСервис.НомерВерсии = "c#1.4.7";
-
+            Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             Инфо.АргументЗапуска = null;
+            
             if (args != null && args.Count() > 0) Инфо.АргументЗапуска = args[0];
 
+            Logs.WriteLog("start:" + СоединениеВебСервис.НомерВерсии +" "+ Инфо.АргументЗапуска);
             if (!string.IsNullOrEmpty(Инфо.АргументЗапуска)) Обновление.ПотокКопированияФайла(Инфо.ИмяЭтогоФайла, Инфо.АргументЗапуска);
 
             using (new РаботаСоСканером())

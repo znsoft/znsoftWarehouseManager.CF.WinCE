@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using СкладскойУчет.Интерактивные;
 
 namespace СкладскойУчет.Сеть
 {
@@ -53,8 +54,12 @@ namespace СкладскойУчет.Сеть
             Обмен.Соединение.Сервис.Url = Url;
             try
             {
+                Logs.WriteLog("start update check " + СоединениеВебСервис.НомерВерсии);
+
                 Byte[] Прошивка = Обмен.UpdateFirmware();
                 if (Прошивка == null || Прошивка.Count() == 0) return false;
+                Logs.WriteLog("is there ");
+
                 string НовыйИсполняемыйФайл = Настройки.ПолучитьПутьКЛокальномуФайлу(СкладскойУчетОбновление);
                 СохранитьВФайл(ref НовыйИсполняемыйФайл, Прошивка);
                 if (!String.IsNullOrEmpty(Инфо.АргументЗапуска))
@@ -62,9 +67,11 @@ namespace СкладскойУчет.Сеть
                     Инфо.Ошибка("Обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел");
                     return false;
                 }
+                Logs.WriteLog("Start prog");
+
                 var pr = new Process();
                 pr.StartInfo.FileName = НовыйИсполняемыйФайл;
-                pr.StartInfo.Arguments = ИмяЭтогоФайла;
+                pr.StartInfo.Arguments = "\""+ИмяЭтогоФайла+"\"";
                 pr.Start();
                 return true;
             }
@@ -74,11 +81,15 @@ namespace СкладскойУчет.Сеть
 
         private static void УдалитьСкопировать(string ИмяЭтогоФайла, string АргументыЭтогоПроцесса)
         {
+            //Thread.Sleep(2000);
             for (int Попыток = 10; Попыток > 0; Попыток--)
                 try
                 {
                     //File.Delete(АргументыЭтогоПроцесса);
-                    File.Copy(ИмяЭтогоФайла, АргументыЭтогоПроцесса, true);
+                    Logs.WriteLog("copy to " + ИмяЭтогоФайла);
+                    File.Copy(ИмяЭтогоФайла, Инфо.АргументЗапуска, true);
+                    Logs.WriteLog("ok from " + АргументыЭтогоПроцесса);
+
                     break;
                 }
                 catch (Exception) { Thread.Sleep(1500); }

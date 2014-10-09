@@ -10,6 +10,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using SDK.English;
+using СкладскойУчет.Интерактивные;
 
 
 namespace СкладскойУчет
@@ -36,6 +37,7 @@ namespace СкладскойУчет
 
         public void _Выход()
         {
+            Logs.DeleteLog();
             Выход.Enabled = false;
             Выход.Text = "Отключение...";
             this.Close();

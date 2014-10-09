@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 using СкладскойУчет.Сеть;
+using СкладскойУчет.Интерактивные;
 
 namespace СкладскойУчет
 {
@@ -38,6 +39,8 @@ namespace СкладскойУчет
             if(!string.IsNullOrEmpty(Ссылка))
             if (Обновление.ПроверитьОбновление())
             {
+                Logs.WriteLog("Exit " + СоединениеВебСервис.НомерВерсии);
+
                 Application.Exit();
                 return;
             }

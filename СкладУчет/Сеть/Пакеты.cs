@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using СкладскойУчет.СсылкаНаСервис;
 using System.Windows.Forms;
+using СкладскойУчет.Интерактивные;
 using СкладскойУчет.Сеть;
+
 namespace СкладскойУчет
 {
     class Пакеты
@@ -54,6 +56,8 @@ namespace СкладскойУчет
                 {
                     if (Обновление.ПроверитьОбновление())
                     {
+                        Logs.WriteLog("Exit "+ СоединениеВебСервис.НомерВерсии);
+
                         Application.Exit();
                         return null;
                     }
