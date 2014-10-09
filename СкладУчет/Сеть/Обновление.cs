@@ -27,6 +27,17 @@ namespace СкладскойУчет.Сеть
             staThread.Start();
         }
 
+        public static void УдалитьФайлОбновления() {
+            try
+            {
+                string ПутьДоФайла = Настройки.ПолучитьПутьКЛокальномуФайлу(СкладскойУчетОбновление);
+                File.Delete(ПутьДоФайла);
+            }
+            catch (Exception) { }
+        
+        }
+
+
         static string СоздатьCMDСкрипт(string СтарыйФайл, string СкачанныйФайл) {
             string ПутьДоСкрипта = Настройки.ПолучитьПутьКЛокальномуФайлу("runme.cmd");
             var FI = new FileInfo(СтарыйФайл);

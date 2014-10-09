@@ -22,11 +22,12 @@ namespace СкладскойУчет
         [MTAThread]
         static void Main(string[] args)
         {
-            СоединениеВебСервис.НомерВерсии = "c#1.4.7";
+            СоединениеВебСервис.НомерВерсии = "c#1.4.8";
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             Инфо.АргументЗапуска = null;
-            
-            if (args != null && args.Count() > 0) Инфо.АргументЗапуска = args[0];
+
+
+            if (args != null && args.Count() > 0) { Инфо.АргументЗапуска = args[0]; } else { Обновление.УдалитьФайлОбновления(); }
 
             Logs.WriteLog("start:" + СоединениеВебСервис.НомерВерсии +" "+ Инфо.АргументЗапуска);
             if (!string.IsNullOrEmpty(Инфо.АргументЗапуска)) Обновление.ПотокКопированияФайла(Инфо.ИмяЭтогоФайла, Инфо.АргументЗапуска);
