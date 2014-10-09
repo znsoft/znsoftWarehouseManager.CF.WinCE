@@ -62,13 +62,9 @@ namespace СкладскойУчет.Сеть
                     Инфо.Ошибка("Обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел");
                     return false;
                 }
-                var скрипт = СоздатьCMDСкрипт(ИмяЭтогоФайла, НовыйИсполняемыйФайл);
-
                 var pr = new Process();
                 pr.StartInfo.FileName = НовыйИсполняемыйФайл;
-                pr.StartInfo.Arguments = (Инфо.АргументЗапуска != null) ? Инфо.АргументЗапуска : ИмяЭтогоФайла;
-                //pr.StartInfo.FileName = скрипт;//НовыйИсполняемыйФайл;
-                //pr.StartInfo.Arguments = "\""+ИмяЭтогоФайла+"\"";
+                pr.StartInfo.Arguments = ИмяЭтогоФайла;
                 pr.Start();
                 return true;
             }

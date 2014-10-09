@@ -73,7 +73,7 @@ namespace СкладскойУчет
                 }
                 else
                 {
-                    Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText);
+                    Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText + Соединение.Сервис.Url.ToString());
                 }
                 return null;
             }
