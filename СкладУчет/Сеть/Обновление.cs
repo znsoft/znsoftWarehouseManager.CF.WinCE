@@ -12,7 +12,7 @@ namespace СкладскойУчет.Сеть
     class Обновление
     {
 
-        static string СкладскойУчетОбновление = "СкладскойУчетОбновление.exe";
+        static string СкладскойУчетОбновление = "update.exe";
 
         static public void ПотокКопированияФайла(string ИмяФайлаИсточника, string ИмяФайлаПриемника)
         {
@@ -26,6 +26,20 @@ namespace СкладскойУчет.Сеть
             staThread.Start();
         }
 
+        static string СоздатьCMDСкрипт(string СтарыйФайл, string СкачанныйФайл) {
+            string ПутьДоСкрипта = Настройки.ПолучитьПутьКЛокальномуФайлу("runme.cmd");
+            var FI = new FileInfo(СтарыйФайл);
+            var FA = new FileInfo(СкачанныйФайл);
+
+            StreamWriter sw = new StreamWriter(ПутьДоСкрипта);
+                sw.WriteLine("del /Q %1");
+                sw.WriteLine("move " + FA.Name + " %1");
+                sw.WriteLine("%1 Update");
+                sw.WriteLine("rem del /Q %0");
+                sw.WriteLine("pause");
+                sw.Close();
+            return ПутьДоСкрипта;
+        }
 
 
         public static bool ПроверитьОбновление()
@@ -45,12 +59,16 @@ namespace СкладскойУчет.Сеть
                 СохранитьВФайл(ref НовыйИсполняемыйФайл, Прошивка);
                 if (!String.IsNullOrEmpty(Инфо.АргументЗапуска))
                 {
-                    Инфо.Ошибка("Обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел, обновление произошло из " + Обмен.Соединение.Сервис.Url.ToString());
+                    Инфо.Ошибка("Обновленная версия не совпадает с версией в хранилище, обратитесь в ИТ отдел");
                     return false;
                 }
+                var скрипт = СоздатьCMDСкрипт(ИмяЭтогоФайла, НовыйИсполняемыйФайл);
+
                 var pr = new Process();
                 pr.StartInfo.FileName = НовыйИсполняемыйФайл;
                 pr.StartInfo.Arguments = (Инфо.АргументЗапуска != null) ? Инфо.АргументЗапуска : ИмяЭтогоФайла;
+                //pr.StartInfo.FileName = скрипт;//НовыйИсполняемыйФайл;
+                //pr.StartInfo.Arguments = "\""+ИмяЭтогоФайла+"\"";
                 pr.Start();
                 return true;
             }

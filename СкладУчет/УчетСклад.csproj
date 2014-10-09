@@ -254,7 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl">
-      <UrlBehavior>Static</UrlBehavior>
+      <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\СсылкаНаСервис\</RelPath>
       <UpdateFromURL>http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
