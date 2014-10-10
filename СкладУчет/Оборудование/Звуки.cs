@@ -29,16 +29,14 @@ namespace СкладскойУчет
             Звук.Stream = new MemoryStream(Properties.Resources.Error);
             //Звук.PlaySync();
             Звук.Play();
-
-            РаботаСоСканером.ЭтоСканирование = false;
+            МинимальнаяГромкость();
         }
 
         public void Ок() {
             МаксимальнаяГромкость();
             Звук.Stream = new MemoryStream(Properties.Resources.Ok);
-            //Звук.Play();
-            Звук.PlaySync();
-            РаботаСоСканером.ЭтоСканирование = false;
+            //Звук.PlaySync();
+            Звук.Play();
             МинимальнаяГромкость();
         }
 

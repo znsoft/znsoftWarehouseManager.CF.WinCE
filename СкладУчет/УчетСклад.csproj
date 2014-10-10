@@ -89,7 +89,6 @@
     <Compile Include="ПоследовательныйВыборЗаданий\ДеревоВыбора\Окно_выбора_из_дерева.Designer.cs">
       <DependentUpon>Окно_выбора_из_дерева.cs</DependentUpon>
     </Compile>
-    <Compile Include="Оборудование\API\POINT.cs" />
     <Compile Include="Оборудование\SystemHelper.cs" />
     <Compile Include="Интерактивные\ВводКоличества.cs">
       <SubType>Form</SubType>

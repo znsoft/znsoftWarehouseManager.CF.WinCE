@@ -24,7 +24,7 @@ namespace СкладскойУчет
 
         }
 
-        private void Количество_KeyDown(object sender, KeyEventArgs e)
+        private void РучнойШК_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == System.Windows.Forms.Keys.Enter){
                 BarCode = РучнойШК.Text;
@@ -38,7 +38,7 @@ namespace СкладскойУчет
             }
         }
 
-        private void ВводКоличества_Load(object sender, EventArgs e)
+        private void ВводШК_ПриОткрытии(object sender, EventArgs e)
         {
             РучнойШК.Focus();
         }

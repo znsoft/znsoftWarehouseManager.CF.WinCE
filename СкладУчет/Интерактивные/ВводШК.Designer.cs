@@ -41,7 +41,7 @@
             this.РучнойШК.Name = "РучнойШК";
             this.РучнойШК.Size = new System.Drawing.Size(159, 23);
             this.РучнойШК.TabIndex = 1;
-            this.РучнойШК.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Количество_KeyDown);
+            this.РучнойШК.KeyDown += new System.Windows.Forms.KeyEventHandler(this.РучнойШК_KeyDown);
             // 
             // ВводШК
             // 
@@ -56,7 +56,7 @@
             this.Name = "ВводШК";
             this.Text = "Ручной Ввод ШК";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.ВводКоличества_Load);
+            this.Load += new System.EventHandler(this.ВводШК_ПриОткрытии);
             this.ResumeLayout(false);
 
         }

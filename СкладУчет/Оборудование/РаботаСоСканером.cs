@@ -23,7 +23,6 @@ namespace СкладскойУчет
         [DllImport("DeviceAPI.dll", EntryPoint = "Barcode1D_free")]
         private static extern void Barcode1D_free();
 
-        public static bool ЭтоСканирование = false;
         public static Звуки Звук;
 
         public РаботаСоСканером()
@@ -70,7 +69,6 @@ namespace СкладскойУчет
                 if (ibarLen > 0)
                 {
                     barcode = Encoding.ASCII.GetString(pszData, 0, ibarLen).Trim();
-                    ЭтоСканирование = true;
                     if (barcode.Length > 0) Звук.Ок();
 
                 }
@@ -99,7 +97,6 @@ namespace СкладскойУчет
 
             СтеретьБуферОбмена();
             if (barcode.Length < 3) return string.Empty;
-            ЭтоСканирование = true;
             Звук.Ок();
             return barcode;
         }
@@ -151,7 +148,9 @@ namespace СкладскойУчет
                 case DeviceType.C5000:
                     return (((int)e.KeyCode == (int)ConstantKeyValue.Enter) || (int)e.KeyCode == (int)ConstantKeyValue.F9 || (int)e.KeyCode == (int)ConstantKeyValue.F10 || (int)e.KeyCode == (int)ConstantKeyValue.F11 || ((int)e.KeyCode == (int)ConstantKeyValue.F12));
                 case DeviceType.UnKown:
-                    bool r = ((int)e.KeyCode == 193);
+
+                    bool r = ((int)e.KeyCode == 193); // SC900
+                    //if (r) СтеретьБуферОбмена();
                     r = r || (e.Control && e.KeyCode == System.Windows.Forms.Keys.V);//[CTRL+V]
                     return r;
 
@@ -192,13 +191,15 @@ namespace СкладскойУчет
         
         }
 
-       #region PC x86 barcode 
+        #region PC x86 barcode 
+
         private static string ReadClipboard()
         {
             var ФормаВвода = new ВводШК();
             ФормаВвода.ShowDialog();
             return ФормаВвода.BarCode;
         }
+
         #endregion
 
 
