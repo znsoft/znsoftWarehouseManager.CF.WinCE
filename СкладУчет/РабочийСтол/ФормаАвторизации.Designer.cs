@@ -6,7 +6,6 @@
         /// Требуется переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Освободить все используемые ресурсы.
@@ -30,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ФормаАвторизации));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.Меню = new System.Windows.Forms.MenuItem();
             this.Войти = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,14 +43,9 @@
             this.КнопкаОбновить = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
-            // mainMenu1
-            // 
-            this.mainMenu1.MenuItems.Add(this.Меню);
-            // 
             // Меню
             // 
-            this.Меню.Text = "Настройки";
-            this.Меню.Click += new System.EventHandler(this.Меню_Click);
+            this.Меню.Text = "";
             // 
             // Войти
             // 

@@ -141,14 +141,6 @@ namespace СкладскойУчет
             if (e.KeyCode == Keys.Enter) { e.Handled = true; кнопкаВойтиНажатие(sender, e); }
         }
 
-        private void Меню_Click(object sender, EventArgs e)
-        {
-            var ФормаНастроек = new ФормаНастроек();
-            var РезультатНастроек = ФормаНастроек.ShowDialog();
-            if (РезультатНастроек == DialogResult.OK) {
-                ПолучитьСписокПользователей();
-            }
-        }
 
         private void КнопкаОбновить_Click(object sender, EventArgs e)
         {
