@@ -39,7 +39,7 @@ namespace СкладскойУчет
         {
             Logs.DeleteLog();
             Выход.Enabled = false;
-            Выход.Text = "Отключение...";
+            Выход.Text = "Отключение....";
             this.Close();
         }
 
