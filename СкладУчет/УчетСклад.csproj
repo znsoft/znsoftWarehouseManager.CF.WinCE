@@ -280,6 +280,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.ico" />
+    <None Include="Resources\КнопкаОбновить2.png" />
+    <None Include="Resources\КнопкаОбновить.png" />
+    <None Include="КнопкаОбновить.png" />
+    <None Include="КнопкаОбновить2.png" />
     <None Include="Resources\Ok.wav" />
     <None Include="Resources\export.wav" />
   </ItemGroup>

@@ -125,6 +125,7 @@
             this.ПолеВводаСервер.Name = "ПолеВводаСервер";
             this.ПолеВводаСервер.Size = new System.Drawing.Size(191, 23);
             this.ПолеВводаСервер.TabIndex = 15;
+            this.ПолеВводаСервер.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ПолеВводаСервер_KeyDown);
             // 
             // label1
             // 
@@ -135,11 +136,11 @@
             // 
             // КнопкаОбновить
             // 
-            this.КнопкаОбновить.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.КнопкаОбновить.BackColor = System.Drawing.Color.Transparent;
             this.КнопкаОбновить.Image = ((System.Drawing.Image)(resources.GetObject("КнопкаОбновить.Image")));
-            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 20);
+            this.КнопкаОбновить.Location = new System.Drawing.Point(199, 30);
             this.КнопкаОбновить.Name = "КнопкаОбновить";
-            this.КнопкаОбновить.Size = new System.Drawing.Size(35, 33);
+            this.КнопкаОбновить.Size = new System.Drawing.Size(32, 23);
             this.КнопкаОбновить.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.КнопкаОбновить.Click += new System.EventHandler(this.КнопкаОбновить_Click);
             // 

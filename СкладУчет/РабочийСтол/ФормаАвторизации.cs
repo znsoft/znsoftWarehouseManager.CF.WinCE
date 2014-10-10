@@ -152,17 +152,24 @@ namespace СкладскойУчет
 
         private void КнопкаОбновить_Click(object sender, EventArgs e)
         {
-            КнопкаОбновить.BackColor = Color.Gray;
+            КнопкаОбновить.Image = Properties.Resources.КнопкаОбновить2;
+
+            //КнопкаОбновить.BackColor = Color.Gray;
             КнопкаОбновить.Update();
             КнопкаОбновить.Refresh();
-            КнопкаОбновить.BackColor = Color.WhiteSmoke;
+            ОбработатьВводСервера();
+            //КнопкаОбновить.BackColor = Color.Transparent;
+            КнопкаОбновить.Image = Properties.Resources.КнопкаОбновить;
+
+        }
+        private void ОбработатьВводСервера() {
             if (string.IsNullOrEmpty(ПолеВводаСервер.Text)) { Инфо.Ошибка("Не заполнено имя сервера"); return; }
             ПараметрыСеанса.Хранилище.Сервер = ПолеВводаСервер.Text;
             string Url = ПараметрыСеанса.СформироватьСсылку();
-            
+
             if (Url == null) return;
             Обмен.Соединение.Сервис.Url = Url;
-            if(ПолучитьСписокПользователей()) ПараметрыСеанса.Сохранить();
+            if (ПолучитьСписокПользователей()) ПараметрыСеанса.Сохранить();
             if (!string.IsNullOrEmpty(Url))
                 if (Обновление.ПроверитьОбновление())
                 {
@@ -170,6 +177,12 @@ namespace СкладскойУчет
                     return;
                 }
 
+        
+        }
+
+        private void ПолеВводаСервер_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { e.Handled = true; КнопкаОбновить_Click(sender, new EventArgs());}
         }
     }
 }
