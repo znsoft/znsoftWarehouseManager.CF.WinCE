@@ -64,6 +64,13 @@ namespace СкладскойУчет.Properties {
             }
         }
         
+        internal static byte[] Error_ {
+            get {
+                object obj = ResourceManager.GetObject("Error_", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] Ok {
             get {
                 object obj = ResourceManager.GetObject("Ok", resourceCulture);
