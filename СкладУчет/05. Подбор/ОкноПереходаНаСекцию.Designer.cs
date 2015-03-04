@@ -49,7 +49,7 @@
             this.Далее.Location = new System.Drawing.Point(6, 155);
             this.Далее.Name = "Далее";
             this.Далее.Size = new System.Drawing.Size(228, 70);
-            this.Далее.TabIndex = 8;
+            this.Далее.TabIndex = 1;
             this.Далее.Text = "&1. Да";
             this.Далее.Click += new System.EventHandler(this.Да_Click);
             // 
@@ -59,7 +59,7 @@
             this.Назад.Location = new System.Drawing.Point(6, 237);
             this.Назад.Name = "Назад";
             this.Назад.Size = new System.Drawing.Size(228, 70);
-            this.Назад.TabIndex = 6;
+            this.Назад.TabIndex = 2;
             this.Назад.Text = "&0. Нет";
             this.Назад.Click += new System.EventHandler(this.Нет_Click);
             // 

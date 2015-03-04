@@ -47,7 +47,7 @@
             this.НадписьАдрес.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.НадписьАдрес.Location = new System.Drawing.Point(69, 1);
             this.НадписьАдрес.Name = "НадписьАдрес";
-            this.НадписьАдрес.Size = new System.Drawing.Size(115, 19);
+            this.НадписьАдрес.Size = new System.Drawing.Size(168, 19);
             this.НадписьАдрес.Text = "Адрес: А01-01-1";
             // 
             // НадписьДинамическаяЯчейка

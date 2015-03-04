@@ -89,7 +89,7 @@
             // КолонкаТовар
             // 
             this.КолонкаТовар.Text = "Товар";
-            this.КолонкаТовар.Width = 162;
+            this.КолонкаТовар.Width = 140;
             // 
             // КолонкаКод
             // 
@@ -105,7 +105,7 @@
             // 
             this.КолонкаКоличество.Text = "Кол.";
             this.КолонкаКоличество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.КолонкаКоличество.Width = 50;
+            this.КолонкаКоличество.Width = 70;
             // 
             // ДопИнфо
             // 
