@@ -104,58 +104,64 @@
     <Compile Include="05. Подбор\ОкноВыбораЗаданийНаПодбор.Designer.cs">
       <DependentUpon>ОкноВыбораЗаданийНаПодбор.cs</DependentUpon>
     </Compile>
-    <Compile Include="06. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.cs">
+    <Compile Include="06. Подбор заказов клиентов\ОкноПодбораЗаказовКлиента.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="06. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.Designer.cs">
+    <Compile Include="06. Подбор заказов клиентов\ОкноПодбораЗаказовКлиента.Designer.cs">
+      <DependentUpon>ОкноПодбораЗаказовКлиента.cs</DependentUpon>
+    </Compile>
+    <Compile Include="07. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="07. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.Designer.cs">
       <DependentUpon>ОкноВыбораЗаданийНаИнвентаризацию.cs</DependentUpon>
     </Compile>
-    <Compile Include="06. Инвентаризация\ОкноИнвентаризацииТоваров.cs">
+    <Compile Include="07. Инвентаризация\ОкноИнвентаризацииТоваров.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="06. Инвентаризация\ОкноИнвентаризацииТоваров.Designer.cs">
+    <Compile Include="07. Инвентаризация\ОкноИнвентаризацииТоваров.Designer.cs">
       <DependentUpon>ОкноИнвентаризацииТоваров.cs</DependentUpon>
     </Compile>
-    <Compile Include="08. Подтоварка\ОкноВыбораЗаданийПодтоварку.cs">
+    <Compile Include="09. Подтоварка\ОкноВыбораЗаданийПодтоварку.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="08. Подтоварка\ОкноВыбораЗаданийПодтоварку.Designer.cs">
+    <Compile Include="09. Подтоварка\ОкноВыбораЗаданийПодтоварку.Designer.cs">
       <DependentUpon>ОкноВыбораЗаданийПодтоварку.cs</DependentUpon>
     </Compile>
-    <Compile Include="08. Подтоварка\ОкноПодтоваркиТоваров.cs">
+    <Compile Include="09. Подтоварка\ОкноПодтоваркиТоваров.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="08. Подтоварка\ОкноПодтоваркиТоваров.Designer.cs">
+    <Compile Include="09. Подтоварка\ОкноПодтоваркиТоваров.Designer.cs">
       <DependentUpon>ОкноПодтоваркиТоваров.cs</DependentUpon>
     </Compile>
-    <Compile Include="09. Погрузка и разгрузка мест\ПогрузкаМест.cs">
+    <Compile Include="11. Погрузка авто\ПогрузкаМест.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="09. Погрузка и разгрузка мест\ПогрузкаМест.Designer.cs">
+    <Compile Include="11. Погрузка авто\ПогрузкаМест.Designer.cs">
       <DependentUpon>ПогрузкаМест.cs</DependentUpon>
     </Compile>
-    <Compile Include="09. Погрузка и разгрузка мест\ФормаПриемГрузовыхМест.cs">
+    <Compile Include="10. Разгрузка авто\ФормаПриемГрузовыхМест.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="09. Погрузка и разгрузка мест\ФормаПриемГрузовыхМест.designer.cs">
+    <Compile Include="10. Разгрузка авто\ФормаПриемГрузовыхМест.designer.cs">
       <DependentUpon>ФормаПриемГрузовыхМест.cs</DependentUpon>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаВыборТТН.cs">
+    <Compile Include="11. Погрузка авто\ФормаВыборТТН.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаВыборТТН.Designer.cs">
+    <Compile Include="11. Погрузка авто\ФормаВыборТТН.Designer.cs">
       <DependentUpon>ФормаВыборТТН.cs</DependentUpon>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаВыборФилиала.cs">
+    <Compile Include="11. Погрузка авто\ФормаВыборФилиала.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаВыборФилиала.Designer.cs">
+    <Compile Include="11. Погрузка авто\ФормаВыборФилиала.Designer.cs">
       <DependentUpon>ФормаВыборФилиала.cs</DependentUpon>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаПогрузка.cs">
+    <Compile Include="11. Погрузка авто\ФормаПогрузка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="10. Погрузка авто\ФормаПогрузка.Designer.cs">
+    <Compile Include="11. Погрузка авто\ФормаПогрузка.Designer.cs">
       <DependentUpon>ФормаПогрузка.cs</DependentUpon>
     </Compile>
     <Compile Include="Старое перемещение\ОкноНабораАдреса.cs">
@@ -175,10 +181,10 @@
     </Compile>
     <Compile Include="00. Модули работы с оборудованием\API\POINT.cs" />
     <Compile Include="00. Модули работы с оборудованием\API\WndProcHooker.cs" />
-    <Compile Include="07. Перемещение\ОкноВыбораАдреса.cs">
+    <Compile Include="08. Перемещение\ОкноВыбораАдреса.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="07. Перемещение\ОкноВыбораАдреса.Designer.cs">
+    <Compile Include="08. Перемещение\ОкноВыбораАдреса.Designer.cs">
       <DependentUpon>ОкноВыбораАдреса.cs</DependentUpon>
     </Compile>
     <Compile Include="Старая инвентаризация\ОкноВыбораИзДерева.cs">
@@ -201,16 +207,16 @@
     </Compile>
     <Compile Include="00. Модули работы с оборудованием\Звуки.cs" />
     <Compile Include="02. Общие модули\Инфо.cs" />
-    <Compile Include="08. Подтоварка\ОкноПодтоваркиСписка.cs">
+    <Compile Include="09. Подтоварка\ОкноПодтоваркиСписка.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Старая инвентаризация\ОкноИнвентаризацииСписка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="07. Перемещение\ОкноПеремещенияТоваров.cs">
+    <Compile Include="08. Перемещение\ОкноПеремещенияТоваров.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="07. Перемещение\ОкноПеремещенияТоваров.Designer.cs">
+    <Compile Include="08. Перемещение\ОкноПеремещенияТоваров.Designer.cs">
       <DependentUpon>ОкноПеремещенияТоваров.cs</DependentUpon>
     </Compile>
     <Compile Include="04. Общие формы\ОкноСканированияАдреса.cs">
@@ -274,39 +280,43 @@
       <DependentUpon>ОкноПереходаНаСекцию.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="06. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.resx">
+    <EmbeddedResource Include="06. Подбор заказов клиентов\ОкноПодбораЗаказовКлиента.resx">
+      <DependentUpon>ОкноПодбораЗаказовКлиента.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="07. Инвентаризация\ОкноВыбораЗаданийНаИнвентаризацию.resx">
       <DependentUpon>ОкноВыбораЗаданийНаИнвентаризацию.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="06. Инвентаризация\ОкноИнвентаризацииТоваров.resx">
+    <EmbeddedResource Include="07. Инвентаризация\ОкноИнвентаризацииТоваров.resx">
       <DependentUpon>ОкноИнвентаризацииТоваров.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="08. Подтоварка\ОкноВыбораЗаданийПодтоварку.resx">
+    <EmbeddedResource Include="09. Подтоварка\ОкноВыбораЗаданийПодтоварку.resx">
       <DependentUpon>ОкноВыбораЗаданийПодтоварку.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="08. Подтоварка\ОкноПодтоваркиТоваров.resx">
+    <EmbeddedResource Include="09. Подтоварка\ОкноПодтоваркиТоваров.resx">
       <DependentUpon>ОкноПодтоваркиТоваров.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="09. Погрузка и разгрузка мест\ПогрузкаМест.resx">
+    <EmbeddedResource Include="11. Погрузка авто\ПогрузкаМест.resx">
       <DependentUpon>ПогрузкаМест.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="09. Погрузка и разгрузка мест\ФормаПриемГрузовыхМест.resx">
+    <EmbeddedResource Include="10. Разгрузка авто\ФормаПриемГрузовыхМест.resx">
       <DependentUpon>ФормаПриемГрузовыхМест.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="10. Погрузка авто\ФормаВыборТТН.resx">
+    <EmbeddedResource Include="11. Погрузка авто\ФормаВыборТТН.resx">
       <DependentUpon>ФормаВыборТТН.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="10. Погрузка авто\ФормаВыборФилиала.resx">
+    <EmbeddedResource Include="11. Погрузка авто\ФормаВыборФилиала.resx">
       <DependentUpon>ФормаВыборФилиала.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="10. Погрузка авто\ФормаПогрузка.resx">
+    <EmbeddedResource Include="11. Погрузка авто\ФормаПогрузка.resx">
       <DependentUpon>ФормаПогрузка.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -342,7 +352,7 @@
       <DependentUpon>ОкноВыбораЗаданийНаПодбор.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="07. Перемещение\ОкноВыбораАдреса.resx">
+    <EmbeddedResource Include="08. Перемещение\ОкноВыбораАдреса.resx">
       <DependentUpon>ОкноВыбораАдреса.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -350,7 +360,7 @@
       <DependentUpon>ОкноВыбораИзДерева.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="07. Перемещение\ОкноПеремещенияТоваров.resx">
+    <EmbeddedResource Include="08. Перемещение\ОкноПеремещенияТоваров.resx">
       <DependentUpon>ОкноПеремещенияТоваров.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
