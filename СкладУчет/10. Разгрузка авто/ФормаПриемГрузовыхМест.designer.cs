@@ -48,21 +48,22 @@
             // 
             this.СписокГрузовыхМест.Columns.Add(this.Место);
             this.СписокГрузовыхМест.FullRowSelect = true;
+            this.СписокГрузовыхМест.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.СписокГрузовыхМест.Location = new System.Drawing.Point(1, 2);
             this.СписокГрузовыхМест.Name = "СписокГрузовыхМест";
-            this.СписокГрузовыхМест.Size = new System.Drawing.Size(225, 233);
+            this.СписокГрузовыхМест.Size = new System.Drawing.Size(225, 240);
             this.СписокГрузовыхМест.TabIndex = 0;
-            this.СписокГрузовыхМест.View = System.Windows.Forms.View.List;
+            this.СписокГрузовыхМест.View = System.Windows.Forms.View.Details;
             // 
             // Место
             // 
             this.Место.Text = "Место";
-            this.Место.Width = 210;
+            this.Место.Width = 200;
             // 
             // Назад
             // 
             this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Назад.Location = new System.Drawing.Point(3, 295);
+            this.Назад.Location = new System.Drawing.Point(3, 296);
             this.Назад.Name = "Назад";
             this.Назад.Size = new System.Drawing.Size(110, 22);
             this.Назад.TabIndex = 2;
@@ -72,7 +73,7 @@
             // Завершить
             // 
             this.Завершить.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Завершить.Location = new System.Drawing.Point(127, 295);
+            this.Завершить.Location = new System.Drawing.Point(127, 296);
             this.Завершить.Name = "Завершить";
             this.Завершить.Size = new System.Drawing.Size(110, 22);
             this.Завершить.TabIndex = 3;
@@ -95,7 +96,7 @@
             this.ОсновнаяПанель.Location = new System.Drawing.Point(2, 25);
             this.ОсновнаяПанель.Name = "ОсновнаяПанель";
             this.ОсновнаяПанель.SelectedIndex = 0;
-            this.ОсновнаяПанель.Size = new System.Drawing.Size(236, 264);
+            this.ОсновнаяПанель.Size = new System.Drawing.Size(236, 270);
             this.ОсновнаяПанель.TabIndex = 4;
             this.ОсновнаяПанель.SelectedIndexChanged += new System.EventHandler(this.ОсновнаяПанель_SelectedIndexChanged);
             // 
@@ -104,7 +105,7 @@
             this.СтраницаМеста.Controls.Add(this.СписокГрузовыхМест);
             this.СтраницаМеста.Location = new System.Drawing.Point(4, 23);
             this.СтраницаМеста.Name = "СтраницаМеста";
-            this.СтраницаМеста.Size = new System.Drawing.Size(228, 237);
+            this.СтраницаМеста.Size = new System.Drawing.Size(228, 243);
             this.СтраницаМеста.Text = "< Места";
             // 
             // СтраницаПоиск
@@ -114,7 +115,7 @@
             this.СтраницаПоиск.Controls.Add(this.ТекстДляПоискаМест);
             this.СтраницаПоиск.Location = new System.Drawing.Point(4, 23);
             this.СтраницаПоиск.Name = "СтраницаПоиск";
-            this.СтраницаПоиск.Size = new System.Drawing.Size(228, 237);
+            this.СтраницаПоиск.Size = new System.Drawing.Size(228, 243);
             this.СтраницаПоиск.Text = "Поиск >";
             // 
             // СписокНайденныхГрузовыхМест
@@ -165,6 +166,7 @@
             this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.ПриемГрузовыхМест_Deactivate);
             this.Load += new System.EventHandler(this.ФормаПриемГрузовыхМест_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.ПриемГрузовыхМест_Closing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ФормаПриемГрузовыхМест_KeyDown);
             this.ОсновнаяПанель.ResumeLayout(false);
             this.СтраницаМеста.ResumeLayout(false);

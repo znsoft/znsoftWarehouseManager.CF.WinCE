@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
+using System.Reflection;
+using System.Xml.Serialization;
 
 namespace СкладскойУчет
 {
@@ -9,24 +13,163 @@ namespace СкладскойУчет
     {
         private Пакеты Обмен;
         private string[][] ОтветСервера;
+        private ДанныеФормы Данные;
 
         public ПриемГрузовыхМест()
         {
-            Обмен = new Пакеты("ПриемГрузовыхМест");
+            Обмен  = new Пакеты("ПриемГрузовыхМест");
+            Данные = new ДанныеФормы();
+
             InitializeComponent();
         }
-
-
-        private void ПриНажатииНаКнопку(object sender, EventArgs e)
+        
+        [Serializable]
+        public class СтрокаСпискаГрузовыхМест
         {
+            public string НомерМеста;
+            public string ЛишнееМесто;
 
+            public СтрокаСпискаГрузовыхМест(string _НомерМеста, string _ЛишнееМесто)
+            {
+                НомерМеста  = _НомерМеста;
+                ЛишнееМесто = _ЛишнееМесто;
+            }
+
+            public СтрокаСпискаГрузовыхМест()
+            {}
+        }
+
+        [Serializable]
+        public class ДанныеФормы
+        {
+            public List<СтрокаСпискаГрузовыхМест> СписокГрузовыхМест;
+
+            [field: NonSerialized]
+            private string ПолноеИмяФайла;
+
+            [field: NonSerialized]
+            private string ИмяФайла = "ПриемГрузовыхМест.xml";
+
+            public ДанныеФормы()
+            {
+                ПолноеИмяФайла = ПолучитьПолноеИмяФайла(ИмяФайла);
+                СписокГрузовыхМест = new List<СтрокаСпискаГрузовыхМест>();
+            }
+
+            public void СписокГрузовыхМестДобавить(string _НомерМеста, string _ЛишнееМесто)
+            {
+                СписокГрузовыхМест.Add(new СтрокаСпискаГрузовыхМест(_НомерМеста, _ЛишнееМесто));
+
+                СохранитьВФайл();
+            }
+
+            public void СписокГрузовыхМестУдалить(string _НомерМеста)
+            {
+                foreach (var str in СписокГрузовыхМест)
+                {
+                    if (String.Equals(str.НомерМеста, _НомерМеста))
+                    {
+                        СписокГрузовыхМест.Remove(str);
+                        break;
+                    }
+                }
+
+                СохранитьВФайл();
+            }
+
+            public void СохранитьВФайл()
+            {
+                XmlSerializer writer = new XmlSerializer(typeof(ДанныеФормы));
+                FileStream file      = File.Create(ПолноеИмяФайла);
+
+                writer.Serialize(file, this);
+
+                file.Close();
+            }
+
+            public bool ВосстановитьИзФайла()
+            {
+                try
+                {
+                    if (!File.Exists(ПолноеИмяФайла)) return false;
+
+                    // запросим подтверждение восстановления данных
+
+                    string message = "Восстановить данные предыдущего сеанса работы?";
+                    string caption = "Подтверждение";
+
+                    // отобразить MessageBox.
+
+                    DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                    if (result != System.Windows.Forms.DialogResult.Yes)
+                    {
+                        return false;
+                    }
+
+                    XmlSerializer reader = new XmlSerializer(typeof(ДанныеФормы));
+                    StreamReader file    = new StreamReader(ПолноеИмяФайла);
+
+                    ДанныеФормы tmp = (ДанныеФормы)reader.Deserialize(file);
+
+                    this.СписокГрузовыхМест.Clear();
+
+                    foreach (var str in tmp.СписокГрузовыхМест)
+                    {
+                        this.СписокГрузовыхМест.Add(str);
+                    }
+
+                    file.Close();
+                    return true;
+                }
+                catch 
+                {
+                    this.СписокГрузовыхМест.Clear();
+                    return false; 
+                }
+            }
+
+            private string ПолучитьПолноеИмяФайла(string _ИмяФайла)
+            {
+                var Авторизован = (NetworkCredential)СоединениеВебСервис.ПолучитьСервис().Сервис.Credentials;
+
+                string FullDir = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
+                var FI         = new FileInfo(FullDir);
+
+                string pathString = Path.Combine(FI.Directory.FullName, Авторизован.UserName);
+
+                Directory.CreateDirectory(pathString);
+
+                return Path.Combine(pathString, _ИмяФайла);
+            }
+
+            public void УдалитьФайл()
+            {
+                File.Delete(ПолноеИмяФайла);
+            }
         }
 
         private void ФормаПриемГрузовыхМест_Load(object sender, EventArgs e)
         {
+            if (Данные.ВосстановитьИзФайла())
+            {
+                foreach (var str in Данные.СписокГрузовыхМест)
+                {
+                    string[] row = { str.НомерМеста };
+
+                    var НоваяСтрока = СписокГрузовыхМест.Items.Add(new ListViewItem(row));
+
+                    if (str.ЛишнееМесто == "1")
+                    {
+                        НоваяСтрока.BackColor = Color.LightPink;
+                    }
+                }
+
+                СписокГрузовыхМест.Focus();
+            }
+
             УстановитьДоступностьЭлементовФормы();
             УстановитьТекстПодсказки();
-                        
         }
 
         private void ФормаПриемГрузовыхМест_KeyDown(object sender, KeyEventArgs e)
@@ -141,19 +284,16 @@ namespace СкладскойУчет
             {
                 // запросить подтверждение
 
-                string message = "Внимание! Остались непринятые места. В случае закрытия окна список мест будет очищен. Продолжить?";
+                string message = "Внимание! Остались непринятые места. Сохранить данные для восстановления при следующем открытии?";
                 string caption = "Подтверждение";
-
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result;
 
                 // отобразить MessageBox.
 
-                result = MessageBox.Show(message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
                 if (result != System.Windows.Forms.DialogResult.Yes)
                 {
-                    return;
+                    Данные.УдалитьФайл();
                 }
             }
 
@@ -241,6 +381,7 @@ namespace СкладскойУчет
                 foreach (ListViewItem item in СписокСтрокДляУдаления)
                 {
                     СписокГрузовыхМест.Items.Remove(item);
+                    Данные.СписокГрузовыхМестУдалить(item.SubItems[0].Text);
                 }
 
                 // оповестим о ошибке
@@ -355,6 +496,7 @@ namespace СкладскойУчет
 
             УстановитьДоступностьЭлементовФормы();
             УстановитьТекстПодсказки();
+            Данные.СписокГрузовыхМестДобавить(ТекущиеМесто, ЛишнееМесто);
 
         }
 
@@ -385,12 +527,9 @@ namespace СкладскойУчет
             string message = "Вы уверены, что хотите удалить выбранное грузовое место?";
             string caption = "Подтверждение";
 
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
             // отобразить MessageBox.
 
-            result = MessageBox.Show(message, caption, buttons, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -400,6 +539,7 @@ namespace СкладскойУчет
 
                 УстановитьДоступностьЭлементовФормы();
                 УстановитьТекстПодсказки();
+                Данные.СписокГрузовыхМестУдалить(_Строка.SubItems[0].Text);
             }
         }
 
@@ -537,6 +677,14 @@ namespace СкладскойУчет
             if (ОсновнаяПанель.SelectedIndex == 1) // СтраницаПоиск
             {
                 ТекстДляПоискаМест.Focus();
+            }
+        }
+
+        private void ПриемГрузовыхМест_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (СписокГрузовыхМест.Items.Count == 0)
+            {
+                Данные.УдалитьФайл();
             }
         }
 
