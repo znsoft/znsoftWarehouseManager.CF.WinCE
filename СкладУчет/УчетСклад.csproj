@@ -104,6 +104,18 @@
     <Compile Include="05. Подбор\ОкноВыбораЗаданийНаПодбор.Designer.cs">
       <DependentUpon>ОкноВыбораЗаданийНаПодбор.cs</DependentUpon>
     </Compile>
+    <Compile Include="06. Подбор заказов клиентов\ОкноЗаказовКлиента.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="06. Подбор заказов клиентов\ОкноЗаказовКлиента.Designer.cs">
+      <DependentUpon>ОкноЗаказовКлиента.cs</DependentUpon>
+    </Compile>
+    <Compile Include="06. Подбор заказов клиентов\ОкноВыбораЗаказовКлиента.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="06. Подбор заказов клиентов\ОкноВыбораЗаказовКлиента.Designer.cs">
+      <DependentUpon>ОкноВыбораЗаказовКлиента.cs</DependentUpon>
+    </Compile>
     <Compile Include="06. Подбор заказов клиентов\ОкноПодбораЗаказовКлиента.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +175,24 @@
     </Compile>
     <Compile Include="11. Погрузка авто\ФормаПогрузка.Designer.cs">
       <DependentUpon>ФормаПогрузка.cs</DependentUpon>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаВыборТТНТерминал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаВыборТТНТерминал.Designer.cs">
+      <DependentUpon>ФормаВыборТТНТерминал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаВыборФилиалаТерминал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаВыборФилиалаТерминал.Designer.cs">
+      <DependentUpon>ФормаВыборФилиалаТерминал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаПогрузкаТерминал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаПогрузкаТерминал.Designer.cs">
+      <DependentUpon>ФормаПогрузкаТерминал.cs</DependentUpon>
     </Compile>
     <Compile Include="Старое перемещение\ОкноНабораАдреса.cs">
       <SubType>Form</SubType>
@@ -280,6 +310,14 @@
       <DependentUpon>ОкноПереходаНаСекцию.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="06. Подбор заказов клиентов\ОкноЗаказовКлиента.resx">
+      <DependentUpon>ОкноЗаказовКлиента.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="06. Подбор заказов клиентов\ОкноВыбораЗаказовКлиента.resx">
+      <DependentUpon>ОкноВыбораЗаказовКлиента.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="06. Подбор заказов клиентов\ОкноПодбораЗаказовКлиента.resx">
       <DependentUpon>ОкноПодбораЗаказовКлиента.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -318,6 +356,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="11. Погрузка авто\ФормаПогрузка.resx">
       <DependentUpon>ФормаПогрузка.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаВыборТТНТерминал.resx">
+      <DependentUpon>ФормаВыборТТНТерминал.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаВыборФилиалаТерминал.resx">
+      <DependentUpon>ФормаВыборФилиалаТерминал.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаПогрузкаТерминал.resx">
+      <DependentUpon>ФормаПогрузкаТерминал.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Старое перемещение\ОкноНабораАдреса.resx">

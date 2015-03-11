@@ -33,13 +33,13 @@
             this.ДопИнфо = new System.Windows.Forms.Label();
             this.КнопкаПовторитьЗавершение = new System.Windows.Forms.Button();
             this.СписокВыбора = new System.Windows.Forms.ListView();
-            this.Товар = new System.Windows.Forms.ColumnHeader();
-            this.Количество = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаТовар = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаКоличество = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаГуид = new System.Windows.Forms.ColumnHeader();
             this.МенюПодбора = new System.Windows.Forms.ContextMenu();
             this.Вычерк = new System.Windows.Forms.MenuItem();
             this.Завершить = new System.Windows.Forms.MenuItem();
             this.Меню = new System.Windows.Forms.Button();
-            this.Гуид = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // НадписьАдрес
@@ -81,9 +81,9 @@
             // СписокВыбора
             // 
             this.СписокВыбора.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.СписокВыбора.Columns.Add(this.Товар);
-            this.СписокВыбора.Columns.Add(this.Количество);
-            this.СписокВыбора.Columns.Add(this.Гуид);
+            this.СписокВыбора.Columns.Add(this.КолонкаТовар);
+            this.СписокВыбора.Columns.Add(this.КолонкаКоличество);
+            this.СписокВыбора.Columns.Add(this.КолонкаГуид);
             this.СписокВыбора.ContextMenu = this.МенюПодбора;
             this.СписокВыбора.FullRowSelect = true;
             this.СписокВыбора.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -95,16 +95,21 @@
             this.СписокВыбора.View = System.Windows.Forms.View.Details;
             this.СписокВыбора.SelectedIndexChanged += new System.EventHandler(this.СписокВыбора_SelectedIndexChanged);
             // 
-            // Товар
+            // КолонкаТовар
             // 
-            this.Товар.Text = " Товар";
-            this.Товар.Width = 140;
+            this.КолонкаТовар.Text = " Товар";
+            this.КолонкаТовар.Width = 140;
             // 
-            // Количество
+            // КолонкаКоличество
             // 
-            this.Количество.Text = "Кол-во";
-            this.Количество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Количество.Width = 80;
+            this.КолонкаКоличество.Text = "Кол-во";
+            this.КолонкаКоличество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.КолонкаКоличество.Width = 80;
+            // 
+            // КолонкаГуид
+            // 
+            this.КолонкаГуид.Text = "ColumnHeader";
+            this.КолонкаГуид.Width = 0;
             // 
             // МенюПодбора
             // 
@@ -132,11 +137,6 @@
             this.Меню.TabIndex = 11;
             this.Меню.Text = "&0.меню";
             this.Меню.Click += new System.EventHandler(this.Меню_Click);
-            // 
-            // Гуид
-            // 
-            this.Гуид.Text = "ColumnHeader";
-            this.Гуид.Width = 0;
             // 
             // ОкноПодбораТоваров
             // 
@@ -170,13 +170,13 @@
         private System.Windows.Forms.Label ДопИнфо;
         private System.Windows.Forms.Button КнопкаПовторитьЗавершение;
         public System.Windows.Forms.ListView СписокВыбора;
-        private System.Windows.Forms.ColumnHeader Товар;
-        private System.Windows.Forms.ColumnHeader Количество;
+        private System.Windows.Forms.ColumnHeader КолонкаТовар;
+        private System.Windows.Forms.ColumnHeader КолонкаКоличество;
         private System.Windows.Forms.Button Меню;
         private System.Windows.Forms.ContextMenu МенюПодбора;
         private System.Windows.Forms.MenuItem Вычерк;
         private System.Windows.Forms.MenuItem Завершить;
-        private System.Windows.Forms.ColumnHeader Гуид;
+        private System.Windows.Forms.ColumnHeader КолонкаГуид;
 
     }
 }

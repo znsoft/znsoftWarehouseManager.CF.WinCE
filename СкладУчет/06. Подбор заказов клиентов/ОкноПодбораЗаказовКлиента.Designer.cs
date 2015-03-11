@@ -31,9 +31,9 @@
             this.НадписьАдрес = new System.Windows.Forms.Label();
             this.ДопИнфо = new System.Windows.Forms.Label();
             this.СписокВыбора = new System.Windows.Forms.ListView();
-            this.Товар = new System.Windows.Forms.ColumnHeader();
-            this.Количество = new System.Windows.Forms.ColumnHeader();
-            this.Гуид = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаТовар = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаКоличество = new System.Windows.Forms.ColumnHeader();
+            this.КолонкаГуид = new System.Windows.Forms.ColumnHeader();
             this.НадписьРН = new System.Windows.Forms.Label();
             this.Далее = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -58,9 +58,9 @@
             // СписокВыбора
             // 
             this.СписокВыбора.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.СписокВыбора.Columns.Add(this.Товар);
-            this.СписокВыбора.Columns.Add(this.Количество);
-            this.СписокВыбора.Columns.Add(this.Гуид);
+            this.СписокВыбора.Columns.Add(this.КолонкаТовар);
+            this.СписокВыбора.Columns.Add(this.КолонкаКоличество);
+            this.СписокВыбора.Columns.Add(this.КолонкаГуид);
             this.СписокВыбора.FullRowSelect = true;
             this.СписокВыбора.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.СписокВыбора.Location = new System.Drawing.Point(-1, 19);
@@ -71,21 +71,21 @@
             this.СписокВыбора.View = System.Windows.Forms.View.Details;
             this.СписокВыбора.SelectedIndexChanged += new System.EventHandler(this.СписокВыбора_SelectedIndexChanged);
             // 
-            // Товар
+            // КолонкаТовар
             // 
-            this.Товар.Text = " Товар";
-            this.Товар.Width = 140;
+            this.КолонкаТовар.Text = " Товар";
+            this.КолонкаТовар.Width = 140;
             // 
-            // Количество
+            // КолонкаКоличество
             // 
-            this.Количество.Text = "Кол-во";
-            this.Количество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Количество.Width = 80;
+            this.КолонкаКоличество.Text = "Кол-во";
+            this.КолонкаКоличество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.КолонкаКоличество.Width = 80;
             // 
-            // Гуид
+            // КолонкаГуид
             // 
-            this.Гуид.Text = "ColumnHeader";
-            this.Гуид.Width = 0;
+            this.КолонкаГуид.Text = "ColumnHeader";
+            this.КолонкаГуид.Width = 0;
             // 
             // НадписьРН
             // 
@@ -135,9 +135,9 @@
         private System.Windows.Forms.Label НадписьАдрес;
         private System.Windows.Forms.Label ДопИнфо;
         public System.Windows.Forms.ListView СписокВыбора;
-        private System.Windows.Forms.ColumnHeader Товар;
-        private System.Windows.Forms.ColumnHeader Количество;
-        private System.Windows.Forms.ColumnHeader Гуид;
+        private System.Windows.Forms.ColumnHeader КолонкаТовар;
+        private System.Windows.Forms.ColumnHeader КолонкаКоличество;
+        private System.Windows.Forms.ColumnHeader КолонкаГуид;
         private System.Windows.Forms.Label НадписьРН;
         private System.Windows.Forms.Button Далее;
 
