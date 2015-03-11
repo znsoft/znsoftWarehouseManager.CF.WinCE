@@ -70,7 +70,7 @@ namespace СкладскойУчет
                 // Переходим в окно подбора
                 Form Окно = new ОкноПодбораТоваров();
                 this.Close();
-                Окно.Show();              
+                Окно.ShowDialog();             
                 return;
             }
 
@@ -243,7 +243,7 @@ namespace СкладскойУчет
                          // Переходим в окно подбора
                          Form Окно = new ОкноПодбораТоваров();
                          this.Close();
-                         Окно.Show();
+                         Окно.ShowDialog();
                          return;
                      }
 
