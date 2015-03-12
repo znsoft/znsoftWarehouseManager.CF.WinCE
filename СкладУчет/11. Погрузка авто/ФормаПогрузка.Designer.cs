@@ -106,7 +106,7 @@
             this.СписокПогрузки.Items.Add(listViewItem6);
             this.СписокПогрузки.Location = new System.Drawing.Point(2, 46);
             this.СписокПогрузки.Name = "СписокПогрузки";
-            this.СписокПогрузки.Size = new System.Drawing.Size(236, 243);
+            this.СписокПогрузки.Size = new System.Drawing.Size(236, 248);
             this.СписокПогрузки.TabIndex = 6;
             this.СписокПогрузки.View = System.Windows.Forms.View.Details;
             // 

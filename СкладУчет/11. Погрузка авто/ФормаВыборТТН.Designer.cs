@@ -47,7 +47,7 @@
             this.СписокТТН.FullRowSelect = true;
             this.СписокТТН.Location = new System.Drawing.Point(2, 25);
             this.СписокТТН.Name = "СписокТТН";
-            this.СписокТТН.Size = new System.Drawing.Size(236, 264);
+            this.СписокТТН.Size = new System.Drawing.Size(236, 269);
             this.СписокТТН.TabIndex = 0;
             this.СписокТТН.View = System.Windows.Forms.View.Details;
             // 
@@ -94,7 +94,8 @@
             this.ПодсказкаПользователю.Location = new System.Drawing.Point(2, 2);
             this.ПодсказкаПользователю.Name = "ПодсказкаПользователю";
             this.ПодсказкаПользователю.Size = new System.Drawing.Size(236, 20);
-            this.ПодсказкаПользователю.Text = "Выберите ТС погрузки";
+            this.ПодсказкаПользователю.Text = "ВЫБЕРИТЕ ТС ПОГРУЗКИ";
+            this.ПодсказкаПользователю.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ФормаВыборТТН
             // 

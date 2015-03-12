@@ -32,7 +32,8 @@
             this.Далее = new System.Windows.Forms.Button();
             this.Назад = new System.Windows.Forms.Button();
             this.СписокГрузовыхМест = new System.Windows.Forms.ListView();
-            this.Место = new System.Windows.Forms.ColumnHeader();
+            this.МестоНомер = new System.Windows.Forms.ColumnHeader();
+            this.МестоАналог = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // ПодсказкаПользователю
@@ -41,7 +42,7 @@
             this.ПодсказкаПользователю.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.ПодсказкаПользователю.Location = new System.Drawing.Point(2, 3);
             this.ПодсказкаПользователю.Name = "ПодсказкаПользователю";
-            this.ПодсказкаПользователю.Size = new System.Drawing.Size(236, 40);
+            this.ПодсказкаПользователю.Size = new System.Drawing.Size(236, 60);
             this.ПодсказкаПользователю.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Далее
@@ -67,20 +68,26 @@
             // СписокГрузовыхМест
             // 
             this.СписокГрузовыхМест.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.СписокГрузовыхМест.Columns.Add(this.Место);
+            this.СписокГрузовыхМест.Columns.Add(this.МестоНомер);
+            this.СписокГрузовыхМест.Columns.Add(this.МестоАналог);
             this.СписокГрузовыхМест.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.СписокГрузовыхМест.FullRowSelect = true;
             this.СписокГрузовыхМест.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.СписокГрузовыхМест.Location = new System.Drawing.Point(2, 46);
+            this.СписокГрузовыхМест.Location = new System.Drawing.Point(2, 66);
             this.СписокГрузовыхМест.Name = "СписокГрузовыхМест";
-            this.СписокГрузовыхМест.Size = new System.Drawing.Size(236, 243);
+            this.СписокГрузовыхМест.Size = new System.Drawing.Size(236, 228);
             this.СписокГрузовыхМест.TabIndex = 6;
             this.СписокГрузовыхМест.View = System.Windows.Forms.View.Details;
             // 
-            // Место
+            // МестоНомер
             // 
-            this.Место.Text = "ColumnHeader";
-            this.Место.Width = 200;
+            this.МестоНомер.Text = "ColumnHeader";
+            this.МестоНомер.Width = 0;
+            // 
+            // МестоАналог
+            // 
+            this.МестоАналог.Text = "ColumnHeader";
+            this.МестоАналог.Width = 200;
             // 
             // ФормаПогрузкаТерминал
             // 
@@ -111,6 +118,7 @@
         public System.Windows.Forms.Button Далее;
         public System.Windows.Forms.Button Назад;
         public System.Windows.Forms.ListView СписокГрузовыхМест;
-        private System.Windows.Forms.ColumnHeader Место;
+        private System.Windows.Forms.ColumnHeader МестоНомер;
+        private System.Windows.Forms.ColumnHeader МестоАналог;
     }
 }

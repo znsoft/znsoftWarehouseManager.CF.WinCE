@@ -123,7 +123,7 @@
             this.СписокНайденныхГрузовыхМест.FullRowSelect = true;
             this.СписокНайденныхГрузовыхМест.Location = new System.Drawing.Point(1, 28);
             this.СписокНайденныхГрузовыхМест.Name = "СписокНайденныхГрузовыхМест";
-            this.СписокНайденныхГрузовыхМест.Size = new System.Drawing.Size(225, 207);
+            this.СписокНайденныхГрузовыхМест.Size = new System.Drawing.Size(225, 214);
             this.СписокНайденныхГрузовыхМест.TabIndex = 2;
             this.СписокНайденныхГрузовыхМест.View = System.Windows.Forms.View.List;
             this.СписокНайденныхГрузовыхМест.KeyDown += new System.Windows.Forms.KeyEventHandler(this.СписокНайденныхГрузовыхМест_KeyDown);

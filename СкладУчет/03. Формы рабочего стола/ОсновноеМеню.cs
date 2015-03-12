@@ -90,12 +90,8 @@ namespace СкладскойУчет
 
         public void _ПогрузкаМест()
         {
-            //Form Окно = new ПогрузкаМест();
-            //Окно.ShowDialog();
-
             Form Окно = new ФормаВыборТТН();
             Окно.ShowDialog();
-
         }
 
         private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)

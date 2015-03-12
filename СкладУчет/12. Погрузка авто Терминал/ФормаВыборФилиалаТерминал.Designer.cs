@@ -76,7 +76,7 @@
             this.СписокФилиалов.FullRowSelect = true;
             this.СписокФилиалов.Location = new System.Drawing.Point(2, 46);
             this.СписокФилиалов.Name = "СписокФилиалов";
-            this.СписокФилиалов.Size = new System.Drawing.Size(236, 244);
+            this.СписокФилиалов.Size = new System.Drawing.Size(236, 248);
             this.СписокФилиалов.TabIndex = 6;
             this.СписокФилиалов.View = System.Windows.Forms.View.Details;
             // 
