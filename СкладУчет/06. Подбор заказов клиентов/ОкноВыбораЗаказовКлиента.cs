@@ -43,6 +43,7 @@ namespace СкладскойУчет
             }
 
             // Заполнение таблицы
+            ТаблицаДокументов.Items.Clear();
             foreach (var Строка in ОтветСервера)
             {
                 ListViewItem НоваяСтрока = new ListViewItem();

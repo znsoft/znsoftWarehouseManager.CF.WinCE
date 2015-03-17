@@ -62,11 +62,11 @@ namespace СкладскойУчет
                 string ErrorText = (Resp == null) ? eWeb.Status.ToString() : Resp.StatusDescription;
                 if (ErrorText.Contains("Unauthorized"))
                 {
-                    Инфо.Ошибка("Ошибка соединения, Не удалось пройти авторизацию на сервере.");
+                    Инфо.Ошибка("Ошибка соединения, не удалось пройти авторизацию на сервере.");
                 }
                 else
                 {
-                    Инфо.Ошибка("Ошибка сети:" + eWeb.Message + " . " + ErrorText + Соединение.Сервис.Url.ToString());
+                    Инфо.Ошибка("Ошибка сети: " + eWeb.Message + ", " + ErrorText + ", " + Соединение.Сервис.Url.ToString());
                 }
                 return null;
             }

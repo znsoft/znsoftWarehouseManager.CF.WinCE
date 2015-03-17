@@ -123,6 +123,7 @@
             this.Назад.Size = new System.Drawing.Size(100, 20);
             this.Назад.TabIndex = 22;
             this.Назад.Text = "Назад";
+            this.Назад.Click += new System.EventHandler(this.Назад_Click);
             // 
             // ОкноЗаказовКлиента
             // 
