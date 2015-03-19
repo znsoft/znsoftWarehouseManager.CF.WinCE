@@ -49,7 +49,7 @@
             this.ТекстОшибки.Multiline = true;
             this.ТекстОшибки.Name = "ТекстОшибки";
             this.ТекстОшибки.ReadOnly = true;
-            this.ТекстОшибки.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.ТекстОшибки.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ТекстОшибки.Size = new System.Drawing.Size(239, 208);
             this.ТекстОшибки.TabIndex = 1;
             // 
