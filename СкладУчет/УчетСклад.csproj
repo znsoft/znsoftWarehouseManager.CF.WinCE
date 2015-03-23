@@ -188,6 +188,12 @@
     <Compile Include="12. Погрузка авто Терминал\ФормаВыборФилиалаТерминал.Designer.cs">
       <DependentUpon>ФормаВыборФилиалаТерминал.cs</DependentUpon>
     </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаКолвоМестПаллетТерминал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="12. Погрузка авто Терминал\ФормаКолвоМестПаллетТерминал.Designer.cs">
+      <DependentUpon>ФормаКолвоМестПаллетТерминал.cs</DependentUpon>
+    </Compile>
     <Compile Include="12. Погрузка авто Терминал\ФормаПогрузкаТерминал.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +370,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаВыборФилиалаТерминал.resx">
       <DependentUpon>ФормаВыборФилиалаТерминал.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаКолвоМестПаллетТерминал.resx">
+      <DependentUpon>ФормаКолвоМестПаллетТерминал.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="12. Погрузка авто Терминал\ФормаПогрузкаТерминал.resx">

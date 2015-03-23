@@ -34,6 +34,7 @@
             this.СписокГрузовыхМест = new System.Windows.Forms.ListView();
             this.МестоНомер = new System.Windows.Forms.ColumnHeader();
             this.МестоАналог = new System.Windows.Forms.ColumnHeader();
+            this.НомерСтроки = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // ПодсказкаПользователю
@@ -68,6 +69,7 @@
             // СписокГрузовыхМест
             // 
             this.СписокГрузовыхМест.Activation = System.Windows.Forms.ItemActivation.TwoClick;
+            this.СписокГрузовыхМест.Columns.Add(this.НомерСтроки);
             this.СписокГрузовыхМест.Columns.Add(this.МестоНомер);
             this.СписокГрузовыхМест.Columns.Add(this.МестоАналог);
             this.СписокГрузовыхМест.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
@@ -87,7 +89,12 @@
             // МестоАналог
             // 
             this.МестоАналог.Text = "ColumnHeader";
-            this.МестоАналог.Width = 200;
+            this.МестоАналог.Width = 180;
+            // 
+            // НомерСтроки
+            // 
+            this.НомерСтроки.Text = "ColumnHeader";
+            this.НомерСтроки.Width = 20;
             // 
             // ФормаПогрузкаТерминал
             // 
@@ -120,5 +127,6 @@
         public System.Windows.Forms.ListView СписокГрузовыхМест;
         private System.Windows.Forms.ColumnHeader МестоНомер;
         private System.Windows.Forms.ColumnHeader МестоАналог;
+        private System.Windows.Forms.ColumnHeader НомерСтроки;
     }
 }

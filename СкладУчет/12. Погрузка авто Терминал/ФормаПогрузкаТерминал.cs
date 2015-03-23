@@ -52,11 +52,15 @@ namespace СкладскойУчет
 
             try
             {
+                int iter = 1;
+
                 foreach (var str in ОтветСервера)
                 {
-                    string[] row = { str[0], str[1] };
+                    string[] row = { iter.ToString(), str[0], str[1] };
 
                     СписокГрузовыхМест.Items.Add(new ListViewItem(row));
+
+                    iter++;
                 }
             }
             catch { return; }
@@ -123,7 +127,7 @@ namespace СкладскойУчет
 
         public virtual void _Далее()
         {
-            Form Окно = new ФормаВыборФилиалаТерминал(НомерТС, ТТННомер, ТТНСсылка);
+            Form Окно = new ФормаКолвоМестПаллетТерминал(НомерТС, ТТННомер, ТТНСсылка, ФилиалНаименование, ФилиалСсылка);
             Окно.Show();
 
             this.Close();
@@ -180,7 +184,9 @@ namespace СкладскойУчет
 
             if (ОтветСервера[0][0] == "ГрузовоеМестоДобавлено")
             {
-                string[] row = { ТекущиеМесто, ОтветСервера[0][1] };
+                int iter = СписокГрузовыхМест.Items.Count + 1;
+
+                string[] row = { iter.ToString(), ТекущиеМесто, ОтветСервера[0][1] };
 
                 СписокГрузовыхМест.Items.Add(new ListViewItem(row));
                 РаботаСоСканером.Звук.Ок();
