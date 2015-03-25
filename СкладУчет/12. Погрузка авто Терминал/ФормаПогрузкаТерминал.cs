@@ -86,18 +86,32 @@ namespace СкладскойУчет
                 return;
             }
 
-            if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e) || (e.KeyCode == System.Windows.Forms.Keys.Enter))
+            if (e.KeyCode == System.Windows.Forms.Keys.Back) // удаление
+            {
+                СписокГрузовыхМестУдалитьСтроку(СписокГрузовыхМест.FocusedItem);
+
+                e.Handled = true;
+                return;
+            }
+
+            if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e) || (e.KeyCode == System.Windows.Forms.Keys.Enter)) // далее
             {
                 Cursor.Current = Cursors.WaitCursor;
                 _Далее();
                 Cursor.Current = Cursors.Default;
+
+                e.Handled = true;
+                return;
             }
 
-            if (РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e) || (e.KeyCode == System.Windows.Forms.Keys.Escape))
+            if (РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e) || (e.KeyCode == System.Windows.Forms.Keys.Escape)) // назад
             {
                 Cursor.Current = Cursors.WaitCursor;
                 _Назад();
                 Cursor.Current = Cursors.Default;
+
+                e.Handled = true;
+                return;
             }
         }
 
@@ -190,6 +204,53 @@ namespace СкладскойУчет
 
                 СписокГрузовыхМест.Items.Add(new ListViewItem(row));
                 РаботаСоСканером.Звук.Ок();
+            }
+        }
+
+        private void СписокГрузовыхМестУдалитьСтроку(ListViewItem _Строка)
+        {
+            if (_Строка == null)
+            {
+                return;
+            }
+
+            // запросить подтверждение
+
+            string message = "Удалить выбранное место из списка?";
+            string caption = "Подтверждение";
+
+            // отобразить MessageBox.
+
+            DialogResult result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                // удалить место из ТТН
+
+                Cursor.Current = Cursors.WaitCursor;
+                ОтветСервера = Обмен.ПослатьСтроку("ПогрузкаУдалениеГрузовогоМеста", _Строка.SubItems[1].Text, ТТНСсылка, ФилиалСсылка);
+                Cursor.Current = Cursors.Default;
+
+                if (ОтветСервера == null) return;
+
+                if (ОтветСервера[0][0] == "ГрузовоеМестоУдалено")
+                {
+                    // удалить место из списка
+
+                    СписокГрузовыхМест.Items.Remove(_Строка);
+
+                    // обновить нумерацию списка
+
+                    int count = 1;
+
+                    foreach (ListViewItem item in СписокГрузовыхМест.Items)
+                    {
+                        item.SubItems[0].Text = count.ToString();
+                        count++; 
+                    }
+
+                    РаботаСоСканером.Звук.Ок();
+                }
             }
         }
 
