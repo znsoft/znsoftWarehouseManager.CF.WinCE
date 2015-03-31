@@ -41,9 +41,9 @@
             // НадписьАдрес
             // 
             this.НадписьАдрес.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.НадписьАдрес.Location = new System.Drawing.Point(64, 0);
+            this.НадписьАдрес.Location = new System.Drawing.Point(0, 0);
             this.НадписьАдрес.Name = "НадписьАдрес";
-            this.НадписьАдрес.Size = new System.Drawing.Size(113, 19);
+            this.НадписьАдрес.Size = new System.Drawing.Size(240, 19);
             this.НадписьАдрес.Text = "Адрес: А01-01-1";
             this.НадписьАдрес.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -90,9 +90,9 @@
             // НадписьРН
             // 
             this.НадписьРН.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.НадписьРН.Location = new System.Drawing.Point(0, 299);
+            this.НадписьРН.Location = new System.Drawing.Point(1, 299);
             this.НадписьРН.Name = "НадписьРН";
-            this.НадписьРН.Size = new System.Drawing.Size(113, 19);
+            this.НадписьРН.Size = new System.Drawing.Size(123, 19);
             this.НадписьРН.Text = "РН: Аэ3-123456";
             this.НадписьРН.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 

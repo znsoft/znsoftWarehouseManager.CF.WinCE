@@ -52,9 +52,12 @@ namespace СкладскойУчет
             Form Окно = new ОкноВыбораЗаданийНаПодбор("ПодборВыборФилиала", "", "", "", "");
             Окно.ShowDialog();
 
-            //Form Окно = new ОкноВыбораЗаказовКлиента();
-            //Окно.ShowDialog();
+        }
 
+        public void _ПодборЗК()
+        {
+            Form Окно = new ОкноВыбораЗаказовКлиента();
+            Окно.ShowDialog();
         }
 
         public void _Перемещение()
@@ -129,7 +132,10 @@ namespace СкладскойУчет
                     return;
                 case "ПогрузкаМест":
                     _ПогрузкаМест();
-                    return;          
+                    return;
+                case "ПодборЗК":
+                    _ПодборЗК();
+                    return;      
             }
 
             //MethodInfo method = this.GetType().GetMethod("_" + Кнопка.Name);

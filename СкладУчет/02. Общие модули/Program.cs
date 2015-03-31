@@ -13,7 +13,7 @@ namespace СкладскойУчет
         [MTAThread]
         static void Main(string[] args)
         {
-            СоединениеВебСервис.НомерВерсии = "c#1.7.0";
+            СоединениеВебСервис.НомерВерсии = "c#1.7.1";
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             Инфо.АргументЗапуска = null;
 
