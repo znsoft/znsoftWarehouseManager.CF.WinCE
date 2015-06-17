@@ -63,9 +63,9 @@
             // Назад
             // 
             this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Назад.Location = new System.Drawing.Point(3, 296);
+            this.Назад.Location = new System.Drawing.Point(2, 296);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(110, 22);
+            this.Назад.Size = new System.Drawing.Size(105, 22);
             this.Назад.TabIndex = 2;
             this.Назад.Text = "Назад";
             this.Назад.Click += new System.EventHandler(this.Назад_Click);
@@ -73,9 +73,9 @@
             // Завершить
             // 
             this.Завершить.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Завершить.Location = new System.Drawing.Point(127, 296);
+            this.Завершить.Location = new System.Drawing.Point(133, 296);
             this.Завершить.Name = "Завершить";
-            this.Завершить.Size = new System.Drawing.Size(110, 22);
+            this.Завершить.Size = new System.Drawing.Size(105, 22);
             this.Завершить.TabIndex = 3;
             this.Завершить.Text = "Завершить";
             this.Завершить.Click += new System.EventHandler(this.Завершить_Click);
@@ -96,7 +96,7 @@
             this.ОсновнаяПанель.Location = new System.Drawing.Point(2, 25);
             this.ОсновнаяПанель.Name = "ОсновнаяПанель";
             this.ОсновнаяПанель.SelectedIndex = 0;
-            this.ОсновнаяПанель.Size = new System.Drawing.Size(236, 270);
+            this.ОсновнаяПанель.Size = new System.Drawing.Size(236, 269);
             this.ОсновнаяПанель.TabIndex = 4;
             this.ОсновнаяПанель.SelectedIndexChanged += new System.EventHandler(this.ОсновнаяПанель_SelectedIndexChanged);
             // 
@@ -105,7 +105,7 @@
             this.СтраницаМеста.Controls.Add(this.СписокГрузовыхМест);
             this.СтраницаМеста.Location = new System.Drawing.Point(4, 23);
             this.СтраницаМеста.Name = "СтраницаМеста";
-            this.СтраницаМеста.Size = new System.Drawing.Size(228, 243);
+            this.СтраницаМеста.Size = new System.Drawing.Size(228, 242);
             this.СтраницаМеста.Text = "< Места";
             // 
             // СтраницаПоиск
@@ -115,7 +115,7 @@
             this.СтраницаПоиск.Controls.Add(this.ТекстДляПоискаМест);
             this.СтраницаПоиск.Location = new System.Drawing.Point(4, 23);
             this.СтраницаПоиск.Name = "СтраницаПоиск";
-            this.СтраницаПоиск.Size = new System.Drawing.Size(228, 243);
+            this.СтраницаПоиск.Size = new System.Drawing.Size(228, 242);
             this.СтраницаПоиск.Text = "Поиск >";
             // 
             // СписокНайденныхГрузовыхМест

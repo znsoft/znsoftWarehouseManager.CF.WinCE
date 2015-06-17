@@ -12,6 +12,7 @@ namespace СкладскойУчет
         public static string СтрокаДоступныхРолей;  //"Отгрузка,Хранение,Подбор,Приемка,Прочие"
         public static bool ПодборТовараВМеста;
         public static bool ЭтоТерминал;
+        public static bool ПодборЗаказовКлиентов;
         public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;
         public forTSD Сервис;

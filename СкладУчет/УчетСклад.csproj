@@ -80,6 +80,12 @@
     <Compile Include="04. Общие формы\ВыборТовараИзМножества.Designer.cs">
       <DependentUpon>ВыборТовараИзМножества.cs</DependentUpon>
     </Compile>
+    <Compile Include="04. Общие формы\ФормаВыбораСотрудников.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04. Общие формы\ФормаВыбораСотрудников.Designer.cs">
+      <DependentUpon>ФормаВыбораСотрудников.cs</DependentUpon>
+    </Compile>
     <Compile Include="05. Подбор\ОкноПереходаНаСекцию.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,12 +151,6 @@
     </Compile>
     <Compile Include="09. Подтоварка\ОкноПодтоваркиТоваров.Designer.cs">
       <DependentUpon>ОкноПодтоваркиТоваров.cs</DependentUpon>
-    </Compile>
-    <Compile Include="11. Погрузка авто\ПогрузкаМест.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="11. Погрузка авто\ПогрузкаМест.Designer.cs">
-      <DependentUpon>ПогрузкаМест.cs</DependentUpon>
     </Compile>
     <Compile Include="10. Разгрузка авто\ФормаПриемГрузовыхМест.cs">
       <SubType>Form</SubType>
@@ -312,6 +312,10 @@
       <DependentUpon>ВыборТовараИзМножества.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="04. Общие формы\ФормаВыбораСотрудников.resx">
+      <DependentUpon>ФормаВыбораСотрудников.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="05. Подбор\ОкноПереходаНаСекцию.resx">
       <DependentUpon>ОкноПереходаНаСекцию.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -342,10 +346,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="09. Подтоварка\ОкноПодтоваркиТоваров.resx">
       <DependentUpon>ОкноПодтоваркиТоваров.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="11. Погрузка авто\ПогрузкаМест.resx">
-      <DependentUpon>ПогрузкаМест.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="10. Разгрузка авто\ФормаПриемГрузовыхМест.resx">
