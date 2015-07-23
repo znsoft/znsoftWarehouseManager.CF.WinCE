@@ -80,10 +80,10 @@
     <Compile Include="04. Общие формы\ФормаВыбораСотрудников.Designer.cs">
       <DependentUpon>ФормаВыбораСотрудников.cs</DependentUpon>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноПереходаНаСекцию.cs">
+    <Compile Include="05. Подбор\ОкноПереходаНаСекцию.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноПереходаНаСекцию.Designer.cs">
+    <Compile Include="05. Подбор\ОкноПереходаНаСекцию.Designer.cs">
       <DependentUpon>ОкноПереходаНаСекцию.cs</DependentUpon>
     </Compile>
     <Compile Include="04. Общие формы\ОкноВводКоличества.cs">
@@ -92,16 +92,16 @@
     <Compile Include="04. Общие формы\ОкноВводКоличества.Designer.cs">
       <DependentUpon>ОкноВводКоличества.cs</DependentUpon>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноПодбораТоваров.cs">
+    <Compile Include="05. Подбор\ОкноПодбораТоваров.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноПодбораТоваров.Designer.cs">
+    <Compile Include="05. Подбор\ОкноПодбораТоваров.Designer.cs">
       <DependentUpon>ОкноПодбораТоваров.cs</DependentUpon>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноВыбораЗаданийНаПодбор.cs">
+    <Compile Include="05. Подбор\ОкноВыбораЗаданийНаПодбор.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="04. Общие формы\05. Подбор\ОкноВыбораЗаданийНаПодбор.Designer.cs">
+    <Compile Include="05. Подбор\ОкноВыбораЗаданийНаПодбор.Designer.cs">
       <DependentUpon>ОкноВыбораЗаданийНаПодбор.cs</DependentUpon>
     </Compile>
     <Compile Include="06. Подбор заказов клиентов\ОкноЗаказовКлиента.cs">
@@ -259,7 +259,7 @@
       <DependentUpon>ФормаВыбораСотрудников.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="04. Общие формы\05. Подбор\ОкноПереходаНаСекцию.resx">
+    <EmbeddedResource Include="05. Подбор\ОкноПереходаНаСекцию.resx">
       <DependentUpon>ОкноПереходаНаСекцию.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -339,11 +339,11 @@
       <DependentUpon>ОкноВводКоличества.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="04. Общие формы\05. Подбор\ОкноПодбораТоваров.resx">
+    <EmbeddedResource Include="05. Подбор\ОкноПодбораТоваров.resx">
       <DependentUpon>ОкноПодбораТоваров.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="04. Общие формы\05. Подбор\ОкноВыбораЗаданийНаПодбор.resx">
+    <EmbeddedResource Include="05. Подбор\ОкноВыбораЗаданийНаПодбор.resx">
       <DependentUpon>ОкноВыбораЗаданийНаПодбор.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
