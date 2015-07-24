@@ -15,6 +15,9 @@ namespace СкладскойУчет
         private string[][] ОтветСервера;
         public СписокСотрудников Список;
 
+
+        // КОНСТРУКТОРЫ
+
         public ФормаВыбораСотрудников()
         {
             InitializeComponent();
@@ -30,6 +33,8 @@ namespace СкладскойУчет
         }
 
 
+        // ОБРАБОТЧИКИ СОБЫТИЙ ФОРМЫ
+
         private void ФормаВыбораСотрудников_Load(object sender, EventArgs e)
         {
             // отобразим список сотрудников на форме
@@ -43,48 +48,52 @@ namespace СкладскойУчет
 
         private void ФормаВыбораСотрудников_KeyDown(object sender, KeyEventArgs e)
         {
-            if (РаботаСоСканером.НажатаКлавишаСкан(e)) // сканирование
+            if (!e.Handled && РаботаСоСканером.НажатаКлавишаСкан(e)) // сканирование
             {
                 СканированиеШК(e);
                 e.Handled = true;
                 return;
             }
 
-            if ((int)e.KeyCode == 8) // BKSP
-            {
-                e.Handled = true;
+            if (!e.Handled && (int)e.KeyCode == 8) // BKSP
+            {                
                 СписокСотрудниковУдалитьСтроку(СписокСотрудников.FocusedItem);
+                e.Handled = true;
             }
 
-            if (РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e))
+            if (!e.Handled && РаботаСоСканером.НажатаЛеваяПодэкраннаяКлавиша(e))
             {
-                e.Handled = true;
                 _Назад();
+                e.Handled = true;
             }
 
-            if (РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e))
+            if (!e.Handled && РаботаСоСканером.НажатаПраваяПодэкраннаяКлавиша(e))
             {
-                e.Handled = true;
                 _Далее();
+                e.Handled = true;
             }
         }
 
+
+        // КНОПКИ
 
         private void Далее_Click(object sender, EventArgs e)
         {
             _Далее();
         }
 
+        private void Назад_Click(object sender, EventArgs e)
+        {
+            _Назад();
+        }
+
+
+        // СЛУЖЕБНЫЕ ПРОЦЕДУРЫ
+
         private void _Далее()
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-
-        private void Назад_Click(object sender, EventArgs e)
-        {
-            _Назад();
         }
 
         private void _Назад()

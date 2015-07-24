@@ -27,6 +27,9 @@ namespace СкладскойУчет
         private СписокСотрудников Сотрудники;
         private DateTime ВремяНачала;
 
+        
+        // КОНСТРУКТОРЫ
+
         public ФормаПогрузка(string _НомерТС, string _ТТННомер, string _ТТНСсылка, string _ФилиалНаименование, string _ФилиалСсылка, СписокСотрудников _Сотрудники, DateTime _ВремяНачала)
         {
             InitializeComponent();
@@ -43,6 +46,8 @@ namespace СкладскойУчет
             ВремяНачала = _ВремяНачала;
         }
 
+        
+        // ОБРАБОТЧИКИ СОБЫТИЙ ФОРМЫ
 
         private void ФормаПогрузка_Load(object sender, EventArgs e)
         {
@@ -101,18 +106,24 @@ namespace СкладскойУчет
                 return;
             }
 
-            if (e.KeyCode == System.Windows.Forms.Keys.F8 || e.KeyCode == System.Windows.Forms.Keys.Enter)
+            if (!e.Handled && e.KeyCode == System.Windows.Forms.Keys.F1) // поиск грузового места
             {
+                НайтиГрузовоеМесто();
                 e.Handled = true;
-                РучнойВводКоличества();
             }
+
 
             if (e.KeyCode == System.Windows.Forms.Keys.F3) // редактирование списка сотрудников
-            {
-                e.Handled = true;
+            {  
                 СотрудникиРедактироватьСписок();
+                e.Handled = true;
             }
 
+            if (e.KeyCode == System.Windows.Forms.Keys.F8 || e.KeyCode == System.Windows.Forms.Keys.Enter)
+            {               
+                РучнойВводКоличества();
+                e.Handled = true;
+            }
 
             if ((e.KeyCode == System.Windows.Forms.Keys.Right))
             {
@@ -172,6 +183,8 @@ namespace СкладскойУчет
         }
 
 
+        // КНОПКИ
+
         private void Далее_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -185,6 +198,9 @@ namespace СкладскойУчет
             _Назад();
             Cursor.Current = Cursors.Default;
         }
+
+
+        // СЛУЖЕБНЫЕ ПРОЦЕДУРЫ
 
         public virtual void _Назад()
         {
@@ -328,7 +344,6 @@ namespace СкладскойУчет
 
         }
 
-
         private void СканированиеШК(KeyEventArgs e)
         {
             string СтрокаСкан = РаботаСоСканером.Scan();
@@ -438,6 +453,21 @@ namespace СкладскойУчет
                 Сотрудники = фСотрудники.Список;
 
                 РаботаСоСканером.Звук.Ок(); // список отредактирован
+            }
+        }
+
+        private void НайтиГрузовоеМесто()
+        {
+            ФормаПоискаГрузовыхМест фПоискГрузовыхМест = new ФормаПоискаГрузовыхМест();
+
+            DialogResult d = фПоискГрузовыхМест.ShowDialog();
+
+            if (d == DialogResult.OK)
+            {
+                string НайденноеГрузовоеМесто = фПоискГрузовыхМест.НайденноеГрузовоеМесто;
+
+                ОбработкаВводаМеста("mst" + НайденноеГрузовоеМесто);
+
             }
         }
 
