@@ -124,7 +124,7 @@
             // 
             // КолонкаКоличество
             // 
-            this.КолонкаКоличество.Text = "Кол / Ост";
+            this.КолонкаКоличество.Text = "К / Р / О";
             this.КолонкаКоличество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.КолонкаКоличество.Width = 67;
             // 
