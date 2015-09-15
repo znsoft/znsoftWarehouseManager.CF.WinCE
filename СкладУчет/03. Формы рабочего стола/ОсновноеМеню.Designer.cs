@@ -34,6 +34,7 @@
             this.Инвентаризация = new System.Windows.Forms.Button();
             this.Табулятор = new System.Windows.Forms.TabControl();
             this.Панель_ОсновногоМеню = new System.Windows.Forms.TabPage();
+            this.ПодборЗК = new System.Windows.Forms.Button();
             this.ПогрузкаМест = new System.Windows.Forms.Button();
             this.РазгрузкаМест = new System.Windows.Forms.Button();
             this.Подтоварка = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             this.Панель_Информации = new System.Windows.Forms.TabPage();
             this.РучнойКод = new System.Windows.Forms.TextBox();
             this.СписокИнформации = new System.Windows.Forms.TextBox();
-            this.ПодборЗК = new System.Windows.Forms.Button();
+            this.ОбработкаМест = new System.Windows.Forms.Button();
             this.Табулятор.SuspendLayout();
             this.Панель_ОсновногоМеню.SuspendLayout();
             this.Панель_Информации.SuspendLayout();
@@ -60,7 +61,7 @@
             this.Выход.Location = new System.Drawing.Point(3, 198);
             this.Выход.Name = "Выход";
             this.Выход.Size = new System.Drawing.Size(226, 23);
-            this.Выход.TabIndex = 8;
+            this.Выход.TabIndex = 9;
             this.Выход.Text = "&0.Выход";
             this.Выход.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
             this.Выход.GotFocus += new System.EventHandler(this.ФокусированиеКнопки);
@@ -69,9 +70,9 @@
             // Перемещение
             // 
             this.Перемещение.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.Перемещение.Location = new System.Drawing.Point(3, 59);
+            this.Перемещение.Location = new System.Drawing.Point(3, 53);
             this.Перемещение.Name = "Перемещение";
-            this.Перемещение.Size = new System.Drawing.Size(226, 23);
+            this.Перемещение.Size = new System.Drawing.Size(226, 21);
             this.Перемещение.TabIndex = 3;
             this.Перемещение.Text = "&5. Переместить";
             this.Перемещение.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -81,9 +82,9 @@
             // Инвентаризация
             // 
             this.Инвентаризация.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.Инвентаризация.Location = new System.Drawing.Point(3, 32);
+            this.Инвентаризация.Location = new System.Drawing.Point(3, 29);
             this.Инвентаризация.Name = "Инвентаризация";
-            this.Инвентаризация.Size = new System.Drawing.Size(226, 23);
+            this.Инвентаризация.Size = new System.Drawing.Size(226, 21);
             this.Инвентаризация.TabIndex = 2;
             this.Инвентаризация.Text = "&4. Инвентаризация";
             this.Инвентаризация.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -104,6 +105,7 @@
             // Панель_ОсновногоМеню
             // 
             this.Панель_ОсновногоМеню.BackColor = System.Drawing.SystemColors.Info;
+            this.Панель_ОсновногоМеню.Controls.Add(this.ОбработкаМест);
             this.Панель_ОсновногоМеню.Controls.Add(this.ПодборЗК);
             this.Панель_ОсновногоМеню.Controls.Add(this.ПогрузкаМест);
             this.Панель_ОсновногоМеню.Controls.Add(this.РазгрузкаМест);
@@ -117,12 +119,24 @@
             this.Панель_ОсновногоМеню.Size = new System.Drawing.Size(232, 224);
             this.Панель_ОсновногоМеню.Text = "1.Задания";
             // 
+            // ПодборЗК
+            // 
+            this.ПодборЗК.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.ПодборЗК.Location = new System.Drawing.Point(3, 173);
+            this.ПодборЗК.Name = "ПодборЗК";
+            this.ПодборЗК.Size = new System.Drawing.Size(226, 21);
+            this.ПодборЗК.TabIndex = 8;
+            this.ПодборЗК.Text = "&1&0. Подбор заказов клиентов";
+            this.ПодборЗК.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            this.ПодборЗК.GotFocus += new System.EventHandler(this.ФокусированиеКнопки);
+            this.ПодборЗК.LostFocus += new System.EventHandler(this.РасфокусированиеКнопки);
+            // 
             // ПогрузкаМест
             // 
             this.ПогрузкаМест.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.ПогрузкаМест.Location = new System.Drawing.Point(3, 140);
+            this.ПогрузкаМест.Location = new System.Drawing.Point(3, 125);
             this.ПогрузкаМест.Name = "ПогрузкаМест";
-            this.ПогрузкаМест.Size = new System.Drawing.Size(226, 23);
+            this.ПогрузкаМест.Size = new System.Drawing.Size(226, 21);
             this.ПогрузкаМест.TabIndex = 6;
             this.ПогрузкаМест.Text = "&8. Погрузка мест";
             this.ПогрузкаМест.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -132,9 +146,9 @@
             // РазгрузкаМест
             // 
             this.РазгрузкаМест.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.РазгрузкаМест.Location = new System.Drawing.Point(3, 113);
+            this.РазгрузкаМест.Location = new System.Drawing.Point(3, 101);
             this.РазгрузкаМест.Name = "РазгрузкаМест";
-            this.РазгрузкаМест.Size = new System.Drawing.Size(226, 23);
+            this.РазгрузкаМест.Size = new System.Drawing.Size(226, 21);
             this.РазгрузкаМест.TabIndex = 5;
             this.РазгрузкаМест.Text = "&7. Разгрузка мест";
             this.РазгрузкаМест.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -144,9 +158,9 @@
             // Подтоварка
             // 
             this.Подтоварка.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.Подтоварка.Location = new System.Drawing.Point(3, 86);
+            this.Подтоварка.Location = new System.Drawing.Point(3, 77);
             this.Подтоварка.Name = "Подтоварка";
-            this.Подтоварка.Size = new System.Drawing.Size(226, 23);
+            this.Подтоварка.Size = new System.Drawing.Size(226, 21);
             this.Подтоварка.TabIndex = 4;
             this.Подтоварка.Text = "&6. Подтоварка";
             this.Подтоварка.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -158,7 +172,7 @@
             this.Подбор.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
             this.Подбор.Location = new System.Drawing.Point(3, 5);
             this.Подбор.Name = "Подбор";
-            this.Подбор.Size = new System.Drawing.Size(226, 23);
+            this.Подбор.Size = new System.Drawing.Size(226, 21);
             this.Подбор.TabIndex = 1;
             this.Подбор.Text = "&3. Подбор";
             this.Подбор.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
@@ -200,17 +214,17 @@
             this.СписокИнформации.TabIndex = 0;
             this.СписокИнформации.Text = "Сканируйте ШК для получения информации";
             // 
-            // ПодборЗК
+            // ОбработкаМест
             // 
-            this.ПодборЗК.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.ПодборЗК.Location = new System.Drawing.Point(3, 168);
-            this.ПодборЗК.Name = "ПодборЗК";
-            this.ПодборЗК.Size = new System.Drawing.Size(226, 23);
-            this.ПодборЗК.TabIndex = 7;
-            this.ПодборЗК.Text = "&9. Подбор заказов клиентов";
-            this.ПодборЗК.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
-            this.ПодборЗК.GotFocus += new System.EventHandler(this.ФокусированиеКнопки);
-            this.ПодборЗК.LostFocus += new System.EventHandler(this.РасфокусированиеКнопки);
+            this.ОбработкаМест.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
+            this.ОбработкаМест.Location = new System.Drawing.Point(3, 149);
+            this.ОбработкаМест.Name = "ОбработкаМест";
+            this.ОбработкаМест.Size = new System.Drawing.Size(226, 21);
+            this.ОбработкаМест.TabIndex = 7;
+            this.ОбработкаМест.Text = "&9. Обработка мест";
+            this.ОбработкаМест.Click += new System.EventHandler(this.ПриНажатииНаКнопку);
+            this.ОбработкаМест.GotFocus += new System.EventHandler(this.ФокусированиеКнопки);
+            this.ОбработкаМест.LostFocus += new System.EventHandler(this.РасфокусированиеКнопки);
             // 
             // ОсновноеМеню
             // 
@@ -250,5 +264,6 @@
         private System.Windows.Forms.Button РазгрузкаМест;
         private System.Windows.Forms.Button ПогрузкаМест;
         private System.Windows.Forms.Button ПодборЗК;
+        private System.Windows.Forms.Button ОбработкаМест;
     }
 }

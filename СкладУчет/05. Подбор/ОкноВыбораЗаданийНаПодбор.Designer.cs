@@ -40,17 +40,17 @@
             // Инструкция
             // 
             this.Инструкция.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.Инструкция.Location = new System.Drawing.Point(6, 7);
+            this.Инструкция.Location = new System.Drawing.Point(2, 2);
             this.Инструкция.Name = "Инструкция";
-            this.Инструкция.Size = new System.Drawing.Size(228, 19);
+            this.Инструкция.Size = new System.Drawing.Size(236, 20);
             this.Инструкция.Text = "Инструкция";
             // 
             // Далее
             // 
             this.Далее.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Далее.Location = new System.Drawing.Point(135, 283);
+            this.Далее.Location = new System.Drawing.Point(133, 296);
             this.Далее.Name = "Далее";
-            this.Далее.Size = new System.Drawing.Size(100, 25);
+            this.Далее.Size = new System.Drawing.Size(105, 22);
             this.Далее.TabIndex = 8;
             this.Далее.Text = "Далее";
             this.Далее.Click += new System.EventHandler(this.Далее_Click);
@@ -58,9 +58,9 @@
             // Назад
             // 
             this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Назад.Location = new System.Drawing.Point(5, 283);
+            this.Назад.Location = new System.Drawing.Point(2, 296);
             this.Назад.Name = "Назад";
-            this.Назад.Size = new System.Drawing.Size(100, 25);
+            this.Назад.Size = new System.Drawing.Size(105, 22);
             this.Назад.TabIndex = 6;
             this.Назад.Text = "Назад";
             this.Назад.Click += new System.EventHandler(this.Назад_Click);
@@ -78,9 +78,9 @@
             this.СписокВыбора.Columns.Add(this.Объем);
             this.СписокВыбора.Columns.Add(this.Количество);
             this.СписокВыбора.FullRowSelect = true;
-            this.СписокВыбора.Location = new System.Drawing.Point(5, 30);
+            this.СписокВыбора.Location = new System.Drawing.Point(2, 25);
             this.СписокВыбора.Name = "СписокВыбора";
-            this.СписокВыбора.Size = new System.Drawing.Size(230, 254);
+            this.СписокВыбора.Size = new System.Drawing.Size(236, 269);
             this.СписокВыбора.TabIndex = 4;
             this.СписокВыбора.Tag = "Таблица";
             this.СписокВыбора.View = System.Windows.Forms.View.Details;
@@ -97,7 +97,7 @@
             this.Объем.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.Объем.Width = 40;
             // 
-            // ОкноВыбораЗаданий
+            // ОкноВыбораЗаданийНаПодбор
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -111,7 +111,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MinimizeBox = false;
-            this.Name = "ОкноВыбораЗаданий";
+            this.Name = "ОкноВыбораЗаданийНаПодбор";
             this.Text = "Выбор заданий";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ОкноВыбораЗаданий_Load);

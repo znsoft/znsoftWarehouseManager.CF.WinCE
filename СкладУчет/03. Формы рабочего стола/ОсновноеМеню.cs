@@ -52,7 +52,6 @@ namespace СкладскойУчет
 
             Form Окно = new ОкноВыбораЗаданийНаПодбор("ПодборВыборФилиала", "", "", "", "");
             Окно.ShowDialog();
-
         }
 
         public void _ПодборЗК()
@@ -110,6 +109,12 @@ namespace СкладскойУчет
             }
         }
 
+        public void _ОбработкаМест()
+        {
+            Form Окно = new ОбработкаГрузовыхМест();
+            Окно.ShowDialog();
+        }
+
         private void ПриНажатииНаКнопку(object sender, EventArgs Аргументы)
         {
             Button Кнопка = (Button)sender;
@@ -134,6 +139,9 @@ namespace СкладскойУчет
                     return;
                 case "ПогрузкаМест":
                     _ПогрузкаМест();
+                    return;
+                case "ОбработкаМест":
+                    _ОбработкаМест();
                     return;
                 case "ПодборЗК":
                     _ПодборЗК();
