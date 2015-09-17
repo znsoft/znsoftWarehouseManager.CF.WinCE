@@ -52,7 +52,7 @@
             // Назад
             // 
             this.Назад.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Назад.Location = new System.Drawing.Point(2, 294);
+            this.Назад.Location = new System.Drawing.Point(2, 296);
             this.Назад.Name = "Назад";
             this.Назад.Size = new System.Drawing.Size(105, 22);
             this.Назад.TabIndex = 2;
@@ -62,7 +62,7 @@
             // Далее
             // 
             this.Далее.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.Далее.Location = new System.Drawing.Point(133, 294);
+            this.Далее.Location = new System.Drawing.Point(133, 296);
             this.Далее.Name = "Далее";
             this.Далее.Size = new System.Drawing.Size(105, 22);
             this.Далее.TabIndex = 3;
@@ -110,7 +110,7 @@
             // КолонкаТовар
             // 
             this.КолонкаТовар.Text = "Товар";
-            this.КолонкаТовар.Width = 80;
+            this.КолонкаТовар.Width = 60;
             // 
             // КолонкаКод
             // 
@@ -126,7 +126,7 @@
             // 
             this.КолонкаКоличество.Text = "К / Р / О";
             this.КолонкаКоличество.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.КолонкаКоличество.Width = 67;
+            this.КолонкаКоличество.Width = 87;
             // 
             // КолонкаАдрес
             // 
