@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 
 namespace СкладскойУчет
 {
@@ -9,9 +11,13 @@ namespace СкладскойУчет
         Настройки ПараметрыСеанса = new Настройки();
         Пакеты Обмен;
 
+        Dictionary<string, string> ДоступныеФилиалы;
+
         public ФормаАвторизации()
         {
-            InitializeComponent();         
+            InitializeComponent();
+
+            ДоступныеФилиалы = new Dictionary<string, string>();
         }
 
         private void ФормаАвторизации_Load(object sender, EventArgs e)
@@ -51,7 +57,7 @@ namespace СкладскойУчет
 
             foreach (var СтрокаПользователь in СписокПользователей)
             {
-                Сотрудник.Items.Add(СтрокаПользователь[1]);
+                Сотрудник.Items.Add(СтрокаПользователь[0]);
             }
 
             if (ПараметрыСеанса.Хранилище.ИмяПользователя == null)
@@ -77,7 +83,8 @@ namespace СкладскойУчет
             Обмен = new Пакеты("Авторизация");
             Обмен.Соединение.Сервис.Url = Url;
             Обмен.Соединение.Сервис.Credentials = new NetworkCredential(Сотрудник.Text, Пароль.Text);
-            var ОтветСервера = Обмен.ПослатьСтроку(СоединениеВебСервис.ИдентификаторСоединения);
+
+            var ОтветСервера = Обмен.ПослатьСтроку(СоединениеВебСервис.ИдентификаторСоединения, ДоступныеФилиалы[свДоступныеФилиалы.Text]);
 
             if (ОтветСервера == null)
             {
@@ -143,6 +150,45 @@ namespace СкладскойУчет
                 Logs.WriteLog("Exit for update " + СоединениеВебСервис.НомерВерсии);
                 Application.Exit();
                 return;
+            }
+        }
+
+        private void Сотрудник_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             //при изменении сотрудника обновим доступные филиалы
+
+            ДоступныеФилиалы.Clear();
+            свДоступныеФилиалы.Items.Clear();
+
+            // получим сотрудника
+
+            if (string.IsNullOrEmpty(Сотрудник.Text))
+                return;
+
+            string Url = ПараметрыСеанса.СформироватьСсылку();
+
+            if (string.IsNullOrEmpty(Url)) return;
+
+            Обмен = new Пакеты("ДоступныеФилиалы");
+            Обмен.Соединение.Сервис.Url = Url;
+
+            string[][] ОтветСервера = Обмен.ПослатьСтроку(Сотрудник.Text);
+
+            if (ОтветСервера == null)
+                return;
+
+            foreach (string[] str in ОтветСервера)
+            {
+                ДоступныеФилиалы.Add(str[1], str[0]);
+                свДоступныеФилиалы.Items.Add(str[1]);
+            }
+
+            // спозиционируемя на первой строке списка выбора
+
+            if (свДоступныеФилиалы.Items.Count > 0)
+            {
+                свДоступныеФилиалы.SelectedIndex = 0;
+                свДоступныеФилиалы.Focus();
             }
         }
 
