@@ -262,6 +262,16 @@
     <Compile Include="14. Обработка грузовых мест\ФормаОбработкаГрузовыхМест.Designer.cs">
       <DependentUpon>ФормаОбработкаГрузовыхМест.cs</DependentUpon>
     </Compile>
+    <Compile Include="JSON\Converter.cs" />
+    <Compile Include="JSON\JsonDeserializer.cs" />
+    <Compile Include="JSON\JsonException.cs" />
+    <Compile Include="JSON\JsonReader.cs" />
+    <Compile Include="JSON\JsonSerializer.cs" />
+    <Compile Include="JSON\JsonTokens.cs" />
+    <Compile Include="JSON\JsonWriter.cs" />
+    <Compile Include="JSON\ListHelper.cs" />
+    <Compile Include="JSON\ReflectionHelper.cs" />
+    <Compile Include="JSON\SerializeIncludingBaseAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="04. Общие формы\ВыборТовараИзМножества.resx">
       <DependentUpon>ВыборТовараИзМножества.cs</DependentUpon>

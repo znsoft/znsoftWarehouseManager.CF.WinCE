@@ -60,7 +60,8 @@ namespace СкладскойУчет
         {
             if (String.IsNullOrEmpty(Хранилище.Сервер)) return null;
             string Сервер = Хранилище.Сервер;
-            string ПолнаяВебСсылка = "http://" + Сервер + ":52081/WS_Sklad/ws/TSD.1cws";
+            //string ПолнаяВебСсылка = "http://" + Сервер + ":52081/WS_Sklad/ws/TSD.1cws";
+            string ПолнаяВебСсылка = "http://" + Сервер + ":52081/WS_Sklad/hs/forTSD/";
             return ПолнаяВебСсылка;
         }
 

@@ -51,12 +51,12 @@ namespace СкладскойУчет
             public uint code;
         }
 
-        public struct TVHITTESTINFO
-        {
-            public POINT pt;
-            public uint flags;
-            public IntPtr hItem;
-        }
+        //public struct TVHITTESTINFO
+        //{
+        //    public POINT pt;
+        //    public uint flags;
+        //    public IntPtr hItem;
+        //}
 
         #region Win imports
         [DllImport("coredll.dll", EntryPoint = "SendMessage")]

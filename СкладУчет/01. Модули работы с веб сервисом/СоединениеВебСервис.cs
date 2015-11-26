@@ -1,7 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Net;
+using System.IO;
+using System.Collections.Generic;
 using СкладскойУчет.СсылкаНаСервис;
+using CodeBetter.Json;
 
 namespace СкладскойУчет
 {
@@ -15,7 +19,7 @@ namespace СкладскойУчет
         public static bool ПодборЗаказовКлиентов;
         public static string ИдентификаторСоединения;
         private static СоединениеВебСервис Экземпляр;
-        public forTSD Сервис;
+        public httpссылка Сервис;
         public static Dictionary<String,bool> Роли;
 
 
@@ -29,7 +33,7 @@ namespace СкладскойУчет
 
      
         private СоединениеВебСервис() {
-            Сервис = new СуперКлиент();
+            Сервис = new httpссылка();
             Сервис.Credentials = new NetworkCredential("WebConnection", "951");
             Сервис.PreAuthenticate = false;
             Сервис.AllowAutoRedirect = false;
@@ -43,4 +47,109 @@ namespace СкладскойУчет
         }
 
     }
+
+    class httpссылка
+    {
+
+        public bool PreAuthenticate;
+        public bool AllowAutoRedirect;
+        public NetworkCredential Credentials;
+        public string Url;
+
+        public Byte[] updatefirmware(string НомерВерсии)
+        {
+
+            HttpWebRequest updatefirmwarereq = (HttpWebRequest)HttpWebRequest.Create(Url + "updatefirmware/csharp");
+
+            updatefirmwarereq.Credentials = Credentials;
+            updatefirmwarereq.Headers.Add("Authorization", "Basic " + GetEncodedCredentialsString());
+
+            updatefirmwarereq.Method = "POST";
+
+            byte[] sentData = Encoding.UTF8.GetBytes(СоединениеВебСервис.НомерВерсии);
+            updatefirmwarereq.ContentLength = sentData.Length;
+            Stream sendStream = updatefirmwarereq.GetRequestStream();
+            sendStream.Write(sentData, 0, sentData.Length);
+            sendStream.Close();
+
+            HttpWebResponse res = (HttpWebResponse)updatefirmwarereq.GetResponse();
+
+            if (res.ContentLength == 0) { return null; }
+
+            byte[] buffer = new byte[res.ContentLength];
+            Stream str = res.GetResponseStream();
+
+            int pos = 0;
+            int a = 0;
+
+            while (true)
+            {
+                a = str.Read(buffer, pos, (int)res.ContentLength - 1 - pos);
+                if (a == 0) { break; }
+                pos = pos + a;
+
+            }
+
+            res.Close();
+
+            return buffer;
+
+
+        }
+
+        public string[][] Обмен(string Операция, string Доп, string[][] СписокСтрок)
+        {
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(Url + "exchange");
+            request.AllowAutoRedirect = AllowAutoRedirect;
+            request.PreAuthenticate = PreAuthenticate;
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.Credentials = Credentials;
+            request.Headers.Add("Authorization", "Basic " + GetEncodedCredentialsString());
+            request.Headers.Add("Accept-Encoding", "gzip, deflate");
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+
+            string j = Converter.Serialize(new ДанныеДляHttpСервисаЗапрос(Операция, Доп, СписокСтрок));
+            byte[] sentData = Encoding.UTF8.GetBytes(j);
+            request.ContentLength = sentData.Length;
+
+            Stream sendStream = request.GetRequestStream();
+            sendStream.Write(sentData, 0, sentData.Length);
+            sendStream.Close();
+
+            HttpWebResponse res = (HttpWebResponse)request.GetResponse();
+
+            string rez = new StreamReader(res.GetResponseStream()).ReadToEnd();
+            res.Close();
+
+            if (rez == "null")
+                return null;
+
+            return Converter.Deserialize<string[][]>(rez);
+        }
+
+        private string GetEncodedCredentialsString()
+        {
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(Credentials.UserName + ":" + Credentials.Password));
+        }
+    }
+
+    public struct ДанныеДляHttpСервисаЗапрос
+    {
+
+        public string Опер;
+        public string Доп;
+        public string[][] Список;
+
+        public ДанныеДляHttpСервисаЗапрос(string Операция, string Допполнительно, string[][] СписокСтрок)
+        {
+            Список = СписокСтрок;
+            Опер = Операция;
+            Доп = Допполнительно;
+
+        }
+
+    }
+
 }
