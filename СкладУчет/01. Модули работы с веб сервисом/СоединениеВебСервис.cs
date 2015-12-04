@@ -4,7 +4,6 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Collections.Generic;
-using СкладскойУчет.СсылкаНаСервис;
 using CodeBetter.Json;
 
 namespace СкладскойУчет
@@ -106,8 +105,11 @@ namespace СкладскойУчет
             request.Method = "POST";
             request.KeepAlive = true;
             request.Credentials = Credentials;
+
             request.Headers.Add("Authorization", "Basic " + GetEncodedCredentialsString());
             request.Headers.Add("Accept-Encoding", "gzip, deflate");
+            request.Headers.Add("AppID", СоединениеВебСервис.ИдентификаторСоединения);
+
             request.AutomaticDecompression = DecompressionMethods.GZip;
 
             string j = Converter.Serialize(new ДанныеДляHttpСервисаЗапрос(Операция, Доп, СписокСтрок));

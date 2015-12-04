@@ -13,7 +13,7 @@ namespace СкладскойУчет
         [MTAThread]
         static void Main(string[] args)
         {
-            СоединениеВебСервис.НомерВерсии = "c#1.8.7";
+            СоединениеВебСервис.НомерВерсии = "c#1.8.9";
             Инфо.ИмяЭтогоФайла = Assembly.GetCallingAssembly().ManifestModule.FullyQualifiedName;
             Инфо.АргументЗапуска = null;
 
@@ -42,13 +42,5 @@ namespace СкладскойУчет
                 Application.Run(new ОсновноеМеню());
             }
         }
-
-        // ???
-        //static void currentdomain_unhandledexception(object sender, unhandledexceptioneventargs e)
-        //{
-        //    string строкаошибки = инфо.считанныйштрихкод + "\n\r " + инфо.операция + "\n\r " + инфо.окно + "\n\r " + e.exceptionobject.tostring();
-        //    messagebox.show(строкаошибки);
-        //    application.run(new основноеменю());
-        //}
     }
 }

@@ -9,7 +9,6 @@ namespace СкладскойУчет
 {
     class Обновление
     {
-
         static string СкладскойУчетОбновление = "update.exe";
 
         static public void СкопироватьФайлОбновления(string ИмяФайлаИсточника, string ИмяФайлаПриемника)
@@ -93,10 +92,11 @@ namespace СкладскойУчет
                 
                 try
                 {
-                    FileStream file = System.IO.File.Create(Файл);
-                    file.Write(Данные, 0, Данные.Count());
-                    file.Close();
-                    break;
+                    using (FileStream file = File.Create(Файл))
+                    {
+                        file.Write(Данные, 0, Данные.Count()); 
+                        break;                      
+                    }                   
                 }
                 catch (Exception)
                 {

@@ -75,8 +75,7 @@ namespace СкладскойУчет
         }
 
         private void КнопкаВойтиНажатие(object sender, EventArgs e)
-        {
-            
+        {    
             string Url = ПараметрыСеанса.СформироватьСсылку();
             if (string.IsNullOrEmpty(Url)) { Инфо.Ошибка("Неверно заполнены параметры сервера!"); return; }
 

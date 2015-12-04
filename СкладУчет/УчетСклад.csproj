@@ -242,7 +242,6 @@
     <Compile Include="01. Модули работы с веб сервисом\СоединениеВебСервис.cs">
     </Compile>
     <Compile Include="02. Общие модули\СохранениеЗагрузкаНастроек.cs" />
-    <Compile Include="01. Модули работы с веб сервисом\СуперКлиент.cs" />
     <Compile Include="03. Формы рабочего стола\ФормаАвторизации.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,39 +406,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Web References\СсылкаНаСервис\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\СсылкаНаСервис\</RelPath>
-      <UpdateFromURL>http://adm-zheludkov:52081/WS_Sklad/ws/TSD.1cws%3fwsdl</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>
-      </CachedAppSettingsObjectName>
-      <CachedSettingsPropName>
-      </CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\СсылкаНаСервис\forTSD.wsdl" />
-    <None Include="Web References\СсылкаНаСервис\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\СсылкаНаСервис\СтрокаНоменклатуры.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.ico" />

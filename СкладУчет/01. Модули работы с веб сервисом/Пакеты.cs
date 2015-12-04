@@ -57,7 +57,7 @@ namespace СкладскойУчет
             }
             catch (System.Net.WebException eWeb)
             {
-                
+
                 System.Net.HttpWebResponse Resp = eWeb.Response as System.Net.HttpWebResponse;
                 string ErrorText = (Resp == null) ? eWeb.Status.ToString() : Resp.StatusDescription;
                 if (ErrorText.Contains("Unauthorized"))
@@ -72,9 +72,8 @@ namespace СкладскойУчет
             }
             catch (System.Exception e)
             {
-                Инфо.Ошибка(e.Message );
+                Инфо.Ошибка("Message" + System.Environment.NewLine + e.Message + System.Environment.NewLine + "InnerException" + System.Environment.NewLine + e.InnerException + System.Environment.NewLine + "StackTrace" + System.Environment.NewLine + e.StackTrace);
                 return null;
-
             }
         }
 
