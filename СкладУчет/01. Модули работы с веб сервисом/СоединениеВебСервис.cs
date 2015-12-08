@@ -49,7 +49,6 @@ namespace СкладскойУчет
 
     class httpссылка
     {
-
         public bool PreAuthenticate;
         public bool AllowAutoRedirect;
         public NetworkCredential Credentials;
@@ -98,37 +97,44 @@ namespace СкладскойУчет
 
         public string[][] Обмен(string Операция, string Доп, string[][] СписокСтрок)
         {
+            // подготовка запроса
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(Url + "exchange");
+
             request.AllowAutoRedirect = AllowAutoRedirect;
             request.PreAuthenticate = PreAuthenticate;
             request.Method = "POST";
             request.KeepAlive = true;
             request.Credentials = Credentials;
-
             request.Headers.Add("Authorization", "Basic " + GetEncodedCredentialsString());
-            request.Headers.Add("Accept-Encoding", "gzip, deflate");
             request.Headers.Add("AppID", СоединениеВебСервис.ИдентификаторСоединения);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate; // ответ придет в сжатом виде
 
-            request.AutomaticDecompression = DecompressionMethods.GZip;
+            string outputDataString = Converter.Serialize(new ДанныеДляHttpСервисаЗапрос(Операция, Доп, СписокСтрок));
 
-            string j = Converter.Serialize(new ДанныеДляHttpСервисаЗапрос(Операция, Доп, СписокСтрок));
-            byte[] sentData = Encoding.UTF8.GetBytes(j);
-            request.ContentLength = sentData.Length;
+            byte[] outputDadaByte = Encoding.UTF8.GetBytes(outputDataString);
 
-            Stream sendStream = request.GetRequestStream();
-            sendStream.Write(sentData, 0, sentData.Length);
-            sendStream.Close();
+            request.ContentLength = outputDadaByte.Length;
 
-            HttpWebResponse res = (HttpWebResponse)request.GetResponse();
+            // отправка запроса на сервер
 
-            string rez = new StreamReader(res.GetResponseStream()).ReadToEnd();
-            res.Close();
+            using (Stream output = request.GetRequestStream())
+            {
+                output.Write(outputDadaByte, 0, outputDadaByte.Length);
+            }
 
-            if (rez == "null")
-                return null;
+            // чтение ответа
 
-            return Converter.Deserialize<string[][]>(rez);
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            {
+                string result = sr.ReadToEnd();
+
+                if (result == "null")
+                    return null;
+
+                return Converter.Deserialize<string[][]>(result);
+            }
         }
 
         private string GetEncodedCredentialsString()

@@ -35,9 +35,9 @@
             // Выход
             // 
             this.Выход.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold);
-            this.Выход.Location = new System.Drawing.Point(48, 217);
+            this.Выход.Location = new System.Drawing.Point(24, 216);
             this.Выход.Name = "Выход";
-            this.Выход.Size = new System.Drawing.Size(140, 63);
+            this.Выход.Size = new System.Drawing.Size(192, 74);
             this.Выход.TabIndex = 0;
             this.Выход.Text = "&0. Выход";
             this.Выход.Click += new System.EventHandler(this.Выход_Click);
@@ -63,6 +63,7 @@
             this.Controls.Add(this.ТекстОшибки);
             this.Controls.Add(this.Выход);
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Ошибка";
             this.Text = "Ошибка";
